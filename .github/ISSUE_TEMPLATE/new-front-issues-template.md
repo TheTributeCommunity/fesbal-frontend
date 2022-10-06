@@ -1,5 +1,5 @@
 ---
-name: New issues
+name: New front issues template
 about: Describe this issue template's purpose here.
 title: ''
 labels: ''
