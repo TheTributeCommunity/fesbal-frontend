@@ -1,5 +1,5 @@
 ---
-name: New front issues template
+name: Propose a new issue or feature
 about: Describe this issue template's purpose here.
 title: ''
 labels: ''
