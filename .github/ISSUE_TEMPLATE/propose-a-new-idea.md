@@ -1,6 +1,6 @@
 ---
-name: Propose a new issue or feature
-about: Describe this issue template's purpose here.
+name: Propose a new idea
+about: Use this template to suggest an idea or feature
 title: ''
 labels: ''
 assignees: ''
