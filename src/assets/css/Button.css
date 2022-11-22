@@ -1,0 +1,35 @@
+.button {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 93px;
+  gap: 10px;
+  font-family: 'Roboto Flex', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  align-items: flex-end;
+  text-align: center;
+  color: #fff;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.dark-blue-button {
+  background: #002E5D;
+}
+
+.blue-button {
+  background: #0F95CE;
+}
+
+button:hover {
+  background-color: #c8ffff;
+  color: black;
+}
+
+button:disabled {
+  background-color: rgba(0, 0, 0, 0);
+  color: #000;
+  cursor: default;
+}
