@@ -1,15 +1,11 @@
 ---
-name: Propose a new idea
+name: Create new issue
 about: Use this template to suggest an idea or feature
 title: ''
 labels: ''
 assignees: ''
 
 ---
-
-* **Technologies**: React, Typescript.
-* **Difficulty of the issue**: Advance, Medium, Beginners
-* **Topics**: 
 
 # Description
 
