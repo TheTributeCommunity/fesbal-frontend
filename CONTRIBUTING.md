@@ -17,17 +17,16 @@ Remember that if something here doesn't make sense, you can also propose a chang
   - [Github flow](#github-flow)
   - [Publishing your Pull Request](#publishing-your-pull-request)
   - [Branch naming conventions](#branch-naming-conventions)
-  - [Commit message guidelines](#commit-message-guidelines)
+  - [Commit guidelines](#commit-guidelines)
 - [Code Style Guidelines](#code-style-guidelines)
   - [Importing other files and libraries](#importing-other-files-and-libraries)
-  - [Functional style](#functional-style)
   - [Use `const` and `let`](#use-const-and-let)
 
 <!-- tocstop -->
 
 ## Code of Conduct
 
-This project and everyone participating in it are expected to uphold the [Tribute's Code of Conduct](), based on the Covenant Code of Conduct.
+This project and everyone participating in it are expected to uphold the [Tribute's Code of Conduct](https://github.com/TheTributeCommunity/fesbal-frontend/blob/main/CODE_OF_CONDUCT.md), based on the Covenant Code of Conduct.
 If you see unacceptable behavior, please communicate so to any Tribute admin.
 
 ## How Can I Contribute?
@@ -57,7 +56,7 @@ Features suggestions are tracked as GitHub issues. Make sure you provide the fol
 - Provide a step-by-step description of the suggested enhancement in as many details as possible.
 - Provide specific examples to demonstrate the steps. Include copy/pasteable snippets which you use in those examples, as Markdown code blocks.
 - Describe the current behavior and explain which behavior you expected to see instead and why.
-- Explain why this enhancement would be useful to most Booster users and isn't something that can or should be implemented as a community package.
+- Explain why this enhancement would be useful to most users and isn't something that can or should be implemented as a community package.
 - List some other libraries or frameworks where this enhancement exists.
 
 ### Improving documentation
@@ -162,7 +161,7 @@ So decide one or another being conscious about your intention.
 
 ## Your First Code Contribution
 
-Unsure where to begin contributing to Booster? You can start by looking through issued tagged as `good-first-issue` and `help-wanted`:
+Unsure where to begin contributing to a Tribute project? You can start by looking through issued tagged as `good-first-issue` and `help-wanted`:
 
 - Beginner issues - issues which should only require a few lines of code, and a test or two.
 - Help wanted issues - issues which should be a bit more involved than beginner issues.
@@ -189,7 +188,7 @@ The preferred way of accepting contributions is following the [Github flow](http
 
 Make sure that you describe your change thoroughly in the PR body, adding references for any related issues and links to any resource that helps clarifying the intent and goals of the change.
 
-When you submit a PR to the Booster repository:
+When you submit a PR to a Tribute repository:
 
 - Your code will be reviewed by one or two people. Clarifications or improvements might be asked, and they reserve the right to close any PR that do not meet the project quality standards, goals or philosophy, so it's always a good idea to discuss your plans in an issue or the Spectrum channel before committing to significant changes.
 - Code must be mergeable and all conflicts solved before merging it.
