@@ -1,0 +1,107 @@
+#root {
+  box-sizing: border-box;
+
+  position: relative;
+  width: 414px;
+  height: 896px;
+
+  background: linear-gradient(169.42deg, #FFFFFF 10.03%, 
+  #E8F8FF 35.86%, #E8F8FF 68.88%, #FFFFFF 89.63%);
+  border: 1px solid #002E5D;
+  border-radius: 40px;
+}
+
+.email_title {
+  position: absolute;
+  width: 62px;
+  height: 28px;
+  left: 32px;
+  top: 104px;
+
+  font-family: 'Roboto Flex';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  
+  color: #002E5D;
+}
+
+.email_description {
+  position: absolute;
+  width: 350px;
+  height: 72px;
+  left: 32px;
+  top: 148px;
+
+  /* App - Text */
+
+  font-family: 'Roboto Flex';
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 150% */
+
+  display: flex;
+  align-items: flex-end;
+
+  /* Midnight Blue */
+
+  color: #002E5D;
+}
+
+.back_button {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  left: 32px;
+  top: 32px;
+}
+
+.email_input {
+
+  position: absolute;
+  width: 350px;
+  height: 56px;
+  left: 32px;
+  top: 260px;
+
+}
+
+.rectangle {
+  /* Rectangle 34 */
+
+  box-sizing: border-box;
+
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+
+  background: #FFFFFF;
+  /* Alice Blue */
+
+  border: 1px solid #F2FBFF;
+  border-radius: 8px;
+}
+
+@font-face {
+  font-family: 'Roboto Flex';
+  src: url(assets/RobotoFlext.ttf);
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Roboto Flex';
+  src: url(assets/RobotoFlext.ttf);
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Roboto Flex';
+  src: url(assets/RobotoFlext.ttf);
+  font-style: normal;
+  font-weight: 400;
+}
