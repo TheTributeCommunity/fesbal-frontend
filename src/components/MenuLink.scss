@@ -14,8 +14,11 @@
 
 .link_container {
   padding: 2px;
+  display: flex;
+  align-items:center;
 }
 .link_container.img {
   height: 100%;
   width: 100%;
+
 }
