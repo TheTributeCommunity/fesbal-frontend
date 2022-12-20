@@ -1,0 +1,21 @@
+.link_text {
+  /* App - input */
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  /* identical to box height */
+
+  /* Midnight Blue */
+  color: #002E5D;
+}
+
+.link_container {
+  padding: 2px;
+}
+.link_container.img {
+  height: 100%;
+  width: 100%;
+}
