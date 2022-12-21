@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.scss';
 import profile from './assets/profile.svg';
 import notification from './assets/notification.svg';
@@ -10,7 +9,6 @@ import delete_account from './assets/delete_account.svg';
 import MenuLink from './components/MenuLink';
 
 function App() {
-  const [count, setCount] = useState(0);
   return (
     <div className="App">
       <div className='Title'>
