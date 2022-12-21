@@ -1,28 +1,31 @@
 import { useState } from 'react';
 import './App.scss';
-import reactLogo from './assets/react.svg';
-import notification from './assets/notification.svg'
+import profile from './assets/profile.svg';
+import notification from './assets/notification.svg';
+import clock from './assets/clock.svg';
+import vectorImg from './assets/vector.svg';
+import document from './assets/paper.svg';
+import help from './assets/help.svg';
+import delete_account from './assets/delete_account.svg';
 import MenuLink from './components/MenuLink';
 
 function App() {
   const [count, setCount] = useState(0);
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='Title'>
+        FESBAL
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <MenuLink img={notification} link="#" linkName="Notificacion"/>
-        <MenuLink img={reactLogo} link="https://reactjs.org" linkName="Link de REact"/>
+      <div className='MainMenu'>
+        <MenuLink img={notification} link="#" linkName="Notificaciones"/>
+        <MenuLink img={profile} link="#" linkName="Perfil"/>
+        <MenuLink img={clock} link="#" linkName="Histórico de recogidas"/>
+        <MenuLink img={vectorImg} link="#" linkName="Punto de recogida"/>
+        <MenuLink img={document} link="#" linkName="Hoja de derivación"/>
+        <MenuLink img={help} link="#" linkName="Ayuda"/>
+        <MenuLink img={delete_account} link="#" linkName="Eliminar cuenta"/>
+        <div></div>
       </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </div>
   );
 }

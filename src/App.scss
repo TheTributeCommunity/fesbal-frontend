@@ -2,40 +2,51 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: right;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App {
+  position: absolute;
+  width: 398px;
+  height: 896px;
+  left: 16px;
+  top: 0px;
+  
+  /* White */
+  background: #FFFFFF;
+  box-shadow: -4px 2px 8px rgba(0, 46, 93, 0.08);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.Title {
+  width: 97px;
+  height: 28px;
+
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  
+  padding-top: 43px;
+  padding-bottom: 26px;
+  
+  margin-left: auto;
+  margin-right: auto;
+
+  color: #058CCC;
 }
 
-.card {
-  padding: 2em;
+.MainMenu {
+  @media (min-width: 600px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 1rem;
+    }
 }
-
-.read-the-docs {
-  color: #888;
+  width: 398px;
+  height: 720px;
+  left: 16px;
+  top: 97px;
+  background: #F2FBFF;
 }
