@@ -61,6 +61,7 @@ import document from './assets/paper.svg';
 import help from './assets/help.svg';
 import delete_account from './assets/delete_account.svg';
 import turn_off from './assets/turn_off.svg';
+import cross from './assets/cross.svg';
 import MenuLink from './components/MenuLink';
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
       <div className='Title'>
         FESBAL
       </div>
+      <button id='XButton' onClick={() => {}}><img src={cross}/></button>
       <div className='MainMenu'>
         <MenuLink img={profile} link="#" linkName="Perfil"/>
         <MenuLink img={notification} link="#" linkName="Notificaciones"/>
