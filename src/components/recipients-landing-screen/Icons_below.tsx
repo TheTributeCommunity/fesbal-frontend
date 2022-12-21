@@ -6,7 +6,7 @@
  *                           "alt" if image not found }
  * @returns HTML element with an image link
  */
-const ImageLink = (props: { 
+const ImageLink = (props: {
                    href_link: string; 
                    src_img: string; 
                    alt: string }) => {
