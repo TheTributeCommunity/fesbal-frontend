@@ -6,6 +6,7 @@ import vectorImg from './assets/vector.svg';
 import document from './assets/paper.svg';
 import help from './assets/help.svg';
 import delete_account from './assets/delete_account.svg';
+import turn_off from './assets/turn_off.svg';
 import MenuLink from './components/MenuLink';
 
 function App() {
@@ -15,14 +16,16 @@ function App() {
         FESBAL
       </div>
       <div className='MainMenu'>
-        <MenuLink img={notification} link="#" linkName="Notificaciones"/>
         <MenuLink img={profile} link="#" linkName="Perfil"/>
+        <MenuLink img={notification} link="#" linkName="Notificaciones"/>
         <MenuLink img={clock} link="#" linkName="Histórico de recogidas"/>
         <MenuLink img={vectorImg} link="#" linkName="Punto de recogida"/>
         <MenuLink img={document} link="#" linkName="Hoja de derivación"/>
         <MenuLink img={help} link="#" linkName="Ayuda"/>
         <MenuLink img={delete_account} link="#" linkName="Eliminar cuenta"/>
-        <div></div>
+      </div>
+      <div id='LogOut'>
+        <MenuLink img={turn_off} link="#" linkName="Log out"/>
       </div>
     </div>
   );
