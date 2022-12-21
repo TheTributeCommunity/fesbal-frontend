@@ -1,3 +1,4 @@
+import '../../styles/recipients-landing-screen/Icons_below.scss'
 
 /**
  * Creates a basic structure for an icon with a link
