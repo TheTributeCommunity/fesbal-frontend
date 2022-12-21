@@ -17,7 +17,7 @@ import './Menu.scss'
 
 const Menu = () => {
   return (
-    <div>
+    <div className='Menu'>
       <div className='Title'>
         FESBAL
       </div>
