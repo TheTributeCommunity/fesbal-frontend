@@ -5,52 +5,155 @@
   text-align: center;
 }
 
-Form {
+div.Header {
+  width: 100%;
+  height: 11%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  align-content: center;
+  justify-content: left;
+}
+
+h2.Title {
+  // display: flex;
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F95CE;
+  justify-self: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+div.Header > button {
+  justify-self: flex-start;
+  background-color: #FFFFFF;
+  color: black;
+  height: 100%;
+  width: 20%;
+}
+
+div.NewFamilyMember {
   background: linear-gradient(169.42deg, #FFFFFF 10.03%, #E8F8FF 35.86%, #E8F8FF 68.88%, #FFFFFF 89.63%);
-  width: 100vw;
-  height: 100vh;
+  // border: 1px solid #002E5D;
+  // border-radius: 40px;
+  width: 90vw;
+  height: 64vh;
   margin: 0px;
-  position:absolute;
+  position: absolute;
   top:0px;
   right:0px;
   bottom:0px;
   left:0px;
+  padding: 6%;
 }
 
-Title {
+Form {
+  width: 100%;
+  height: 100%;
+  // padding: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+div.DocumentType {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+div.DocumentType > Input {
+  width: 200px;
+  height: 56px;
+}
+
+div.DocumentType > Select {
+  width: 84px;
+  height: 56px;
+
+  box-sizing: border-box;
+  background: #FFFFFF;
+  border: 1px solid #F2FBFF;
+  border-radius: 8px;
+
+  // Text
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  display: flex;
+  align-items: flex-end;
+
   color: #0F95CE;
 }
 
-// Input {
-//   box-sizing: border-box;
+Input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 11%;
 
-//   background: #FFFFFF;
+  background: #FFFFFF;
+  border: 1px solid #F2FBFF;
+  border-radius: 8px;
 
-//   /* Alice Blue */
-//   border: 1px solid #F2FBFF;
-//   border-radius: 8px;
-  
-//   // position: absolute;
-//   // left: 4.57%;
-//   // right: 72.29%;
-//   // top: 50%;
-//   // bottom: 24.32%;
+  display: flex;
+  text-align: left;
+  justify-content: space-between;
+  padding-left: 4.57%;
 
-//   /* App - input */
-//   font-family: 'Roboto Flex';
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 16px;
-//   line-height: 19px;
+  // Text
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
 
-//   /* identical to box height */
-//   display: flex;
-//   align-items: flex-end;
+  display: flex;
+  align-items: flex-end;
 
-//   /* Midnight Blue */
-//   color: #002E5D;
-// }
+  color: #0F95CE;
+}
 
-// Document-Type {
-//   display: flexbox;
-// }
+button.AddRelative {
+  width: 100%;
+  height: 11%;
+
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 93px;
+  gap: 10px;
+  opacity: 0.5;
+
+  border: 1px solid #0F95CE;
+  border-radius: 16px;
+
+  // Text
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+
+  color: #0F95CE;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
