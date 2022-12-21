@@ -11,6 +11,10 @@ import cross from '../assets/cross.svg';
 
 import './Menu.scss'
 
+/**
+ * TODO: Add Props to menu (vector of MenuLinkProps and Button callback)  
+*/ 
+
 const Menu = () => {
   return (
     <div>
