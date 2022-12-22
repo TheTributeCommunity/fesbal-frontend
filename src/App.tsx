@@ -15,6 +15,20 @@ import EditNewPassword from "./pages/EditNewPassword";
 import RegistrationUserID from "./pages/RegistrationUserID";
 import RegistrationName from "./pages/RegistrationName";
 
+const EmailCheck = (event: ChangeEvent<HTMLInputElement> ) => {
+  const email = event.target.value;
+  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const button = document.getElementById("continue_button");
+  const continue_text = document.getElementById("continue_text");
+  if (emailRegex.test(email)) {
+    button!.style.background = "0F95CE";
+    continue_text!.style.color = "FFFFFF";
+  } else {
+    button!.style.background = "FFFFFF";
+    continue_text!.style.color = "0F95CE";
+  }
+}
+
 function App() {
     return (
         <Router>
@@ -40,17 +54,5 @@ function App() {
         </Router>
     );
 }
-
-function validEmail() {
-  const button = document.getElementById("button");
-  const email = (document.getElementById("email") as HTMLInputElement).value;
-  const emailRegex = /^[a-zA-Z0-9_.+]+(?<!^[0-9]*)@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-  if (emailRegex.test(email)) {
-    button!.style.background = "0F95CE";
-  } else {
-    button!.style.border = "FFFFFF";
-  }
-}
-
 
 export default App;

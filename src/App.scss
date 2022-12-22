@@ -33,18 +33,13 @@
   left: 32px;
   top: 148px;
 
-  /* App - Text */
-
   font-family: 'Roboto Flex';
   font-weight: 300;
   font-size: 16px;
   line-height: 24px;
-  /* or 150% */
 
   display: flex;
   align-items: flex-end;
-
-  /* Midnight Blue */
 
   color: #002E5D;
 }
@@ -58,18 +53,11 @@
 }
 
 .ellipse {
-  /* Ellipse 5 */
-
   position: absolute;
   left: 0%;
   right: 0%;
   top: 0%;
   bottom: 0%;
-
-  /* White */
-
-  background: #FFFFFF;
-  box-shadow: 0px 2px 4px rgba(0, 46, 93, 0.08);
 }
 
 .arrow {
@@ -78,10 +66,25 @@
   right: 26.31%;
   top: 33.33%;
   bottom: 33.33%;
+}
 
-  /* Midnight Blue */
+.small_email {
+  position: absolute;
+  left: 0%;
+  right: 91.14%;
+  top: 0%;
+  bottom: 81.08%;
 
-  background: #002E5D;
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+
+  display: flex;
+  align-items: flex-end;
+
+  color: #0F95CE;
 }
 
 .email_input {
@@ -101,26 +104,19 @@
   top: 50%;
   bottom: 24.32%;
 
-  /* App - input */
-
   font-family: 'Roboto Flex';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  /* identical to box height */
 
   display: flex;
   align-items: flex-end;
-
-  /* Midnight Blue */
 
   color: #002E5D;
 }
 
 .rectangle {
-  /* Rectangle 34 */
-
   box-sizing: border-box;
 
   position: absolute;
@@ -130,7 +126,6 @@
   bottom: 0%;
 
   background: #FFFFFF;
-  /* Alice Blue */
 
   border: 1px solid #F2FBFF;
   border-radius: 8px;
@@ -140,25 +135,17 @@
   width: 74px;
   height: 19px;
 
-  /* App - Button */
-
   font-family: 'Roboto Flex';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
-  /* identical to box height */
 
   display: flex;
   align-items: flex-end;
   text-align: center;
-
-  /* Cerulean */
-
+  
   color: #0F95CE;
-
-
-  /* Inside auto layout */
 
   flex: none;
   order: 0;
@@ -167,8 +154,6 @@
 
 .continue_button {
   box-sizing: border-box;
-
-  /* Auto layout */
 
   display: flex;
   flex-direction: row;
@@ -184,7 +169,6 @@
   top: 784px;
 
   opacity: 0.5;
-  /* Cerulean */
 
   border: 1px solid #0F95CE;
   border-radius: 16px;
@@ -211,18 +195,22 @@
   font-weight: 400;
 }
 
+@font-face {
+  font-family: 'Roboto Flex';
+  src: url(assets/RobotoFlext.ttf);
+  font-style: normal;
+  font-weight: 500;
+}
+
 input[type="text"] {
   font-family: 'Roboto Flex';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  /* identical to box height */
 
   display: flex;
   align-items: flex-end;
-
-  /* Midnight Blue */
 
   color: #002E5D;
 }
