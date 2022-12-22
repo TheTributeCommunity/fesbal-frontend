@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  // max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -32,29 +32,27 @@ div.Header > button {
   justify-self: flex-start;
   background-color: #FFFFFF;
   color: black;
-  height: 100%;
-  width: 20%;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
 }
 
 div.NewFamilyMember {
   background: linear-gradient(169.42deg, #FFFFFF 10.03%, #E8F8FF 35.86%, #E8F8FF 68.88%, #FFFFFF 89.63%);
   // border: 1px solid #002E5D;
   // border-radius: 40px;
-  width: 90vw;
-  height: 64vh;
+  width: calc(100vw - 4rem);
+  height: calc(100vh - 2rem);
   margin: 0px;
   position: absolute;
   top:0px;
   right:0px;
   bottom:0px;
   left:0px;
-  padding: 6%;
-}
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
 
-Form {
-  width: 100%;
-  height: 100%;
-  // padding: 6%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -64,6 +62,7 @@ Form {
 
 div.DocumentType {
   width: 100%;
+  height: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -71,14 +70,18 @@ div.DocumentType {
   align-items: center;
 }
 
-div.DocumentType > Input {
-  width: 200px;
-  height: 56px;
+div.DocumentType > div.InputWrapper {
+  width: 45%;
+  // height: 100%;
 }
 
-div.DocumentType > Select {
-  width: 84px;
-  height: 56px;
+// div.DocumentType > div.InputWrapper > Input {
+//   height: 3rem;
+// }
+
+div.DocumentType > div.InputWrapper > Select {
+  width: 100%;
+  height: 3rem;
 
   box-sizing: border-box;
   background: #FFFFFF;
@@ -94,14 +97,33 @@ div.DocumentType > Select {
 
   display: flex;
   align-items: flex-end;
+  align-items: center;
 
   color: #0F95CE;
 }
 
+div.InputWrapper {
+  width: 100%;
+  height: 5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+a.InputName {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  color: rgba(15, 149, 206, 1);
+  align-self: left;
+  margin-right: auto;
+  padding-left: 0.5rem;
+}
+
+
 Input {
   box-sizing: border-box;
   width: 100%;
-  height: 11%;
+  height: 3rem;
 
   background: #FFFFFF;
   border: 1px solid #F2FBFF;
@@ -109,7 +131,6 @@ Input {
 
   display: flex;
   text-align: left;
-  justify-content: space-between;
   padding-left: 4.57%;
 
   // Text
@@ -120,20 +141,22 @@ Input {
   line-height: 19px;
 
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 
   color: #0F95CE;
 }
 
 button.AddRelative {
   width: 100%;
-  height: 11%;
+  height: 4em;
 
   background-color: rgba(0, 0, 0, 0);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  align-content: center;
+  justify-items: center;
   padding: 18px 93px;
   gap: 10px;
   opacity: 0.5;
@@ -156,4 +179,8 @@ button.AddRelative {
   flex: none;
   order: 0;
   flex-grow: 0;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #0F95CE;
 }
