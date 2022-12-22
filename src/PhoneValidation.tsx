@@ -1,7 +1,7 @@
 import type { ChangeEvent } from 'react'
 import { useRef, useState } from 'react'
 import BackButton from './components/BackButton'
-import ValidationMessage from './components/ValidationMessage'
+import ValidationMessage from './components/ValidationMessage/ValidationMessage'
 // import CorrectValidation from './components/ValidationMessage'
 import './PhoneValidation.scss'
 
@@ -20,6 +20,12 @@ const PhoneValidation = ({}: Props) => {
 
     const new_number = Number(event.target.value[event.target.value.length - 1])
     setNumbers((array) => array.map((value, i) => (i === index ? new_number : value)))
+  }
+
+  const resetNumbers = () => {
+    setNumbers([-1, -1, -1, -1])
+    setValidated(undefined)
+    inputsRef[0]?.current?.focus()
   }
 
   return (
@@ -51,15 +57,15 @@ const PhoneValidation = ({}: Props) => {
         </form>
         {/* This is a link to itself so it reset data and resend code*/}
         <div className="resend">
-          <a onClick={() => window.location.reload()}>Reenviar código</a>
+          <a>Reenviar código</a>
         </div>
       </div>
 
-      <button ref={buttonRef} disabled={numbers.some((value) => value === -1)} onClick={() => setValidated(true)}>
+      <button ref={buttonRef} disabled={numbers.some((value) => value === -1)} onClick={() => setValidated(false)}>
         Continuar
       </button>
 
-      {validated !== undefined && <ValidationMessage validated={validated} />}
+      {validated !== undefined && <ValidationMessage validated={validated} errorCallback={resetNumbers} />}
     </div>
   )
 }
