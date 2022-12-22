@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import './NewFamilyMember.scss';
 
-function handleChangeName(name: string) {
-  const  emailValid = name ? true : false;
-}
-
 enum DocumentType {
   type,
   dni,
