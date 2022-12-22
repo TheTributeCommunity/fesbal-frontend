@@ -24,10 +24,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   position: absolute;
-  bottom: 3%;
+  bottom: 0%;
   width: 100%;
-  
-  /* Cerulean */
-  
-  //background: #0F95CE;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 16px 
+            rgba(0, 46, 93, 0.08);
 }
