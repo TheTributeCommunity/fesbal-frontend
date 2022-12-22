@@ -14,14 +14,23 @@ import './Menu.scss'
 /**
  * TODO: Add Props to menu (vector of MenuLinkProps and Button callback)  
 */ 
+export type Props =   {
+  callback : Function;
+}
 
-const Menu = () => {
+/**
+ * Creates a menu with a given function that is used on the
+ * top button
+ * @param {Props} param0 callback function of the button
+ * @returns container with the menu
+ */
+const Menu = ({callback} : Props) => {
   return (
     <div className='Menu'>
       <div className='Title'>
         FESBAL
       </div>
-      <button id='XButton' onClick={() => {}}><img src={cross}/></button>
+      <button id='XButton' onClick={() => callback()}><img src={cross}/></button>
       <div className='MainMenu'>
         <MenuLink img={profile} link="#" linkName="Perfil"/>
         <MenuLink img={notification} link="#" linkName="Notificaciones"/>
