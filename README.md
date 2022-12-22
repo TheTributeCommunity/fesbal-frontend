@@ -1,6 +1,7 @@
 Se ha realizado parte del frontend del issue #22.
 
 Anotaciones:
+
     - Toda la página está en el directorio src2. Hemos hecho esto debido a que al intentar poner los diferentes ficheros dentro del directorio src, siguiendo la estructura de carpetas que ya está creada, el css de tailwind no hace efecto. 
 
 Cosas que faltan / hay que cambiar:
