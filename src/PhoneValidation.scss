@@ -1,0 +1,46 @@
+#root {
+  max-width: 1280px;
+  height: calc(100vh - 4rem);
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.PhoneValidation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.numbers-menu {
+  text-align: left;
+}
+
+.numbers-inputs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.number-input {
+  text-align: center;
+  font-size: 24px;
+  width: 4rem;
+  height: 3rem;
+}
+
+input[type='number'] {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.resend {
+  display: flex;
+  flex-direction: row-reverse;
+}

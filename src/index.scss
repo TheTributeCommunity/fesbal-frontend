@@ -16,9 +16,18 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
   text-decoration: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+
+  display: flex;
+  align-items: flex-end;
+  text-align: right;
+  text-decoration-line: underline;
+
+  color: #002e5d;
 }
 a:hover {
   color: #535bf2;
@@ -30,23 +39,34 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: linear-gradient(169.42deg, #ffffff 10.03%, #e8f8ff 35.86%, #e8f8ff 68.88%, #ffffff 89.63%);
 }
 
 h1 {
-  font-size: 3.2em;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #002e5d;
   line-height: 1.1;
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 1rem;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  padding: 1.12rem 5.8rem;
+  font-size: 1rem;
+  font-weight: 700;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background: #0f95ce;
   cursor: pointer;
   transition: border-color 0.25s;
+  &:disabled {
+    background: transparent;
+    opacity: 0.5;
+    color: #0f95ce;
+    border: 1px solid #0f95ce;
+  }
 }
 button:hover {
   border-color: #646cff;
@@ -54,6 +74,36 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+label {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #0f95ce;
+}
+
+p {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: flex-end;
+
+  color: #002e5d;
+}
+
+input {
+  background: #ffffff;
+  /* Alice Blue */
+
+  border: 1px solid #f2fbff;
+  border-radius: 8px;
+  color: black;
 }
 
 @media (prefers-color-scheme: light) {
