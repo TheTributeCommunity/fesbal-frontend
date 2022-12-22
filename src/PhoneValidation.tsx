@@ -1,6 +1,8 @@
 import type { ChangeEvent } from 'react'
 import { useRef, useState } from 'react'
 import BackButton from './components/BackButton'
+import ValidationMessage from './components/ValidationMessage'
+// import CorrectValidation from './components/ValidationMessage'
 import './PhoneValidation.scss'
 
 type Props = {}
@@ -9,6 +11,7 @@ const PhoneValidation = ({}: Props) => {
   const inputsRef = [null, null, null, null].map(() => useRef<HTMLInputElement>(null))
   const [numbers, setNumbers] = useState<number[]>([-1, -1, -1, -1])
   const buttonRef = useRef<HTMLButtonElement>(null)
+  const [validated, setValidated] = useState<boolean>()
 
   const OnChangeNumber = (event: ChangeEvent<HTMLInputElement>, index: number) => {
     if (!event.target.value) return setNumbers((array) => array.map((value, i) => (i === index ? -1 : value)))
@@ -52,9 +55,11 @@ const PhoneValidation = ({}: Props) => {
         </div>
       </div>
 
-      <button ref={buttonRef} disabled={numbers.some((value) => value === -1)}>
+      <button ref={buttonRef} disabled={numbers.some((value) => value === -1)} onClick={() => setValidated(true)}>
         Continuar
       </button>
+
+      {validated !== undefined && <ValidationMessage validated={validated} />}
     </div>
   )
 }
