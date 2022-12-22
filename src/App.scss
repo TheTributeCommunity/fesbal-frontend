@@ -21,6 +21,8 @@
 }
 
 .Bottom-Images {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   position: absolute;
   left: 7.62%;
   right: 4.81%;
