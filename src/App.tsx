@@ -41,4 +41,16 @@ function App() {
     );
 }
 
+function validEmail() {
+  const button = document.getElementById("button");
+  const email = (document.getElementById("email") as HTMLInputElement).value;
+  const emailRegex = /^[a-zA-Z0-9_.+]+(?<!^[0-9]*)@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  if (emailRegex.test(email)) {
+    button!.style.background = "0F95CE";
+  } else {
+    button!.style.border = "FFFFFF";
+  }
+}
+
+
 export default App;
