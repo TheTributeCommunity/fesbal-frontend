@@ -4,7 +4,7 @@ import Menu from './components/Menu';
 function App() {
   return (
     <div className="App">
-      <Menu/>
+      <Menu callback={() => {console.log("Button clicked")}}/>
     </div>
   );
 }
