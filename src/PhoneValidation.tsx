@@ -23,7 +23,7 @@ const PhoneValidation = ({}: Props) => {
     <div className="PhoneValidation">
       <div className="numbers-menu">
         <BackButton />
-        <h1>Validar teléfono</h1>
+        <h2>Validar teléfono</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacus purus, hendrerit eu libero sit amet.
         </p>
