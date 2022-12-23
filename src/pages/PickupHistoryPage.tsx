@@ -1,54 +1,38 @@
+import { useEffect, useMemo, useState } from 'react';
+import AppBackButton from '../components/atom/AppBackButton';
+import AppBurgerMenuButton from '../components/atom/AppBurgerMenuButton';
 import HistoryCard from '../components/atom/HistoryCard';
-import BurgerMenuIcon from '../components/icons/BurgerMenuIcon';
-import RightArrowIcon from '../components/icons/RightArrowIcon';
+import PickupService from '../services/PickupService';
+import { Pickup } from '../types/Pickup';
 
 const PickupHistoryPage = () => {
+  const [pickupHistory, setPickupHistory] = useState<Pickup[]>([]);
+  const lastPickup = useMemo(() => pickupHistory[0], [pickupHistory]);
+
+  useEffect(() => {
+    PickupService.getPickupHistory().then(setPickupHistory);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col page-bg mb-16">
       <div className="flex flex-row justify-between items-center p-8 text-[#0F95CE] text-base font-bold">
-        <button className="bg-white h-12 w-12 rounded-full flex justify-center items-center app-shadow">
-          <RightArrowIcon />
-        </button>
+        <AppBackButton />
         <h1>Historial de recogidas</h1>
-        <button className="bg-white h-12 w-12 rounded-full flex justify-center items-center app-shadow">
-          <BurgerMenuIcon />
-        </button>
+        <AppBurgerMenuButton />
       </div>
       <div className="mb-6">
         <h2 className="text-[#002E5D] text-xs px-8 mb-1">Última recogida</h2>
-        <HistoryCard
-          title="Whatever"
-          date="22/07/2022"
-          time="10:30"
-          description="5 botes de garbanzos, 3 litros de leche, 2 paquetes de galletas, 250ml de aceite, 3 botes"
-        />
+        {!lastPickup ? (
+          <p>No hay última recogida</p>
+        ) : (
+          <HistoryCard title={lastPickup.title} isoDate={lastPickup.date} description={lastPickup.description} />
+        )}
       </div>
       <h2 className="text-[#002E5D] text-xs px-8 mb-1">Recogidas anteriores</h2>
       <div className="flex flex-col gap-2">
-        <HistoryCard
-          title="Asociación de vecinos"
-          date="22/07/2022"
-          time="10:30"
-          description="5 botes de garbanzos, 3 litros de leche, 2 paquetes de galletas, 250ml de aceite, 3 botes"
-        />
-        <HistoryCard
-          title="Asociación de vecinos"
-          date="22/07/2022"
-          time="10:30"
-          description="5 botes de garbanzos, 3 litros de leche, 2 paquetes de galletas, 250ml de aceite, 3 botes"
-        />
-        <HistoryCard
-          title="Asociación de vecinos"
-          date="22/07/2022"
-          time="10:30"
-          description="5 botes de garbanzos, 3 litros de leche, 2 paquetes de galletas, 250ml de aceite, 3 botes"
-        />
-        <HistoryCard
-          title="Asociación de vecinos"
-          date="22/07/2022"
-          time="10:30"
-          description="5 botes de garbanzos, 3 litros de leche, 2 paquetes de galletas, 250ml de aceite, 3 botes"
-        />
+        {pickupHistory.slice(1).map((pickup) => (
+          <HistoryCard title={pickup.title} isoDate={pickup.date} description={pickup.description} />
+        ))}
       </div>
     </div>
   );
