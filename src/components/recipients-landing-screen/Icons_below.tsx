@@ -1,4 +1,4 @@
-import '../../styles/recipients-landing-screen/Icons_below.scss'
+import '../../styles/recipients-landing-screen/icons-below.scss'
 
 /**
  * Creates a basic structure for an icon with a link

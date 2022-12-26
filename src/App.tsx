@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Bottom-Images">
+      <div className="bottom-images">
         <ImageLink href_link='#' src_img={clock} alt='clock image'/>
         <ImageLink href_link='#' src_img={location} alt='location image'/>
         <ImageLink href_link='#' src_img={notification} alt='ring image'/>
