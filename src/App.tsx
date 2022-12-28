@@ -1,5 +1,5 @@
 import './App.scss';
-import ImageLink from './components/recipients-landing-screen/Icons_below';
+import ImageLink from './components/recipients-landing-screen/icons-below';
 import clock from './assets/clock.svg';
 import location from './assets/location.svg';
 import notification from './assets/notification.svg';
