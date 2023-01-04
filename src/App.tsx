@@ -21,11 +21,11 @@ const EmailCheck = (event: ChangeEvent<HTMLInputElement> ) => {
   const button = document.getElementById("continue_button");
   const continue_text = document.getElementById("continue_text");
   if (emailRegex.test(email)) {
-    button!.style.background = "0F95CE";
-    continue_text!.style.color = "FFFFFF";
+    button!.style.background = "#0F95CE";
+    continue_text!.style.color = "#FFFFFF";
   } else {
-    button!.style.background = "FFFFFF";
-    continue_text!.style.color = "0F95CE";
+    button!.style.background = "#FFFFFF";
+    continue_text!.style.color = "#0F95CE";
   }
 }
 
