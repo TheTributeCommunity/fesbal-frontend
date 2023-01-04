@@ -15,17 +15,7 @@ import EditNewPassword from "./pages/EditNewPassword";
 import RegistrationUserID from "./pages/RegistrationUserID";
 import RegistrationName from "./pages/RegistrationName";
 
-const EmailCheck = (event: ChangeEvent<HTMLInputElement> ) => {
-  const email = event.target;
-  const button = document.getElementById("continue_button");
-
-  if (email.value == "") {
-    button.disabled = true
-  }
-  else {
-    button.disabled = !email.validity.valid
-  }
-}
+import RegisterEmailPage from './pages/RegisterEmailPage';
 
 function App() {
     return (
