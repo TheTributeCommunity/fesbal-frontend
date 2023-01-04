@@ -5,7 +5,7 @@
   width: 414px;
   height: 896px;
 
-  background: linear-gradient(169.42deg, #FFFFFF 10.03%, 
+  background: linear-gradient(169.42deg, #FFFFFF 10.03%,
   #E8F8FF 35.86%, #E8F8FF 68.88%, #FFFFFF 89.63%);
   border: 1px solid #002E5D;
   border-radius: 40px;
@@ -22,7 +22,7 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  
+
   color: #002E5D;
 }
 
@@ -144,7 +144,7 @@
   display: flex;
   align-items: flex-end;
   text-align: center;
-  
+
   color: #0F95CE;
 
   flex: none;
@@ -211,6 +211,8 @@ input[type="text"] {
 
   display: flex;
   align-items: flex-end;
+
+  padding-left: 16px;
 
   color: #002E5D;
 }
