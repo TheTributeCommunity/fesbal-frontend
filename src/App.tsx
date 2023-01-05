@@ -1,6 +1,8 @@
+import LoginProcess from "./pages/LoginProcess";
+
 function App() {
 
-    return
+    return <LoginProcess/>;
 }
 
 export default App;
