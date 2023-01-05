@@ -14,7 +14,7 @@ const IdentificationSelect: FC<IdentificationSelectProps> = ({options, value, on
 
     return (
         <div className="relative rounded-md text-blue-light bg-white">
-            <div onClick={toggleDropdown}>
+            <div onClick={toggleDropdown} className="cursor-pointer">
                 <div className="flex flex-row items-center px-4 py-5">
                     {value
                         ? <span className="text-blue-dark">{value}</span>
@@ -24,7 +24,7 @@ const IdentificationSelect: FC<IdentificationSelectProps> = ({options, value, on
             </div>
             {isDropdownOpen && (
                 <div className="origin-top-left absolute left-0 z-10 mt-1 w-full rounded-md">
-                    <ul className="py-1 bg-white rounded-md">
+                    <ul className="py-1 bg-white rounded-md cursor-pointer">
                         {options!.map((option) => (
                             <li
                                 key={option}
