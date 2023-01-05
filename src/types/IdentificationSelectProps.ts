@@ -1,5 +1,5 @@
 export interface IdentificationSelectProps {
-    options: IdentificationSelectOption[];
+    options?: IdentificationSelectOption[];
     value: IdentificationSelectOption
     onChange: (value: IdentificationSelectOption) => void;
 }
