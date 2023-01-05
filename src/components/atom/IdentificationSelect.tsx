@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import {IdentificationSelectOption, IdentificationSelectProps} from "../../types/IdentificationSelectProps";
-import IdentificationSelected from "../atom/IdentificationSelected";
+import DropDownIcon from "../icons/DropDown";
 
 
 const IdentificationSelect: FC<IdentificationSelectProps> = ({options, value, onChange}) => {
@@ -17,7 +17,12 @@ const IdentificationSelect: FC<IdentificationSelectProps> = ({options, value, on
     return (
         <div className="relative rounded-md text-blue-light bg-white">
             <div onClick={toggleDropdown}>
-                <IdentificationSelected value={selectedOption}/>
+                <div className="flex flex-row items-center px-4 py-5">
+                    {value
+                        ? <span className="text-blue-dark">{value}</span>
+                        : <span className="text-blue-light">Tipo</span>}
+                    <DropDownIcon/>
+                </div>
             </div>
             {isDropdownOpen && (
                 <div className="origin-top-left absolute left-0 z-10 mt-1 w-full rounded-md">
