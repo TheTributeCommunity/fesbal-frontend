@@ -1,18 +1,16 @@
-import React, {FC, useState} from 'react';
-import {IdentificationSelectOption, IdentificationSelectProps} from "../../types/IdentificationSelectProps";
+import React, {FC} from 'react';
+import {IdentificationSelectProps} from "../../types/IdentificationSelectProps";
 import DropDownIcon from "../icons/DropDown";
+import useIdentificationSelect from "../../hooks/useIdentificationSelect";
 
 
 const IdentificationSelect: FC<IdentificationSelectProps> = ({options, value, onChange}) => {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(value);
-    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-    const closeDropdown = () => setIsDropdownOpen(false);
-    const handleOptionClick = (option: IdentificationSelectOption) => {
-        setSelectedOption(option);
-        onChange(option);
-        closeDropdown();
-    }
+    const {
+        isDropdownOpen,
+        toggleDropdown,
+        selectedOption,
+        handleOptionClick
+    } = useIdentificationSelect({value, onChange});
 
     return (
         <div className="relative rounded-md text-blue-light bg-white">
@@ -27,7 +25,7 @@ const IdentificationSelect: FC<IdentificationSelectProps> = ({options, value, on
             {isDropdownOpen && (
                 <div className="origin-top-left absolute left-0 z-10 mt-1 w-full rounded-md">
                     <ul className="py-1 bg-white rounded-md">
-                        {options.map((option) => (
+                        {options!.map((option) => (
                             <li
                                 key={option}
                                 className="block px-4 py-2 text-sm leading-5 text-blue-light hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
