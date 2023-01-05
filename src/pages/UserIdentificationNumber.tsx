@@ -1,8 +1,10 @@
-import IndentificationSelect from "../components/molecules/IdentificationSelect";
-import AppBackButton from "../components/atom/AppBackButton";
 import {useState} from "react";
+import IdentificationSelect from "../components/atom/IdentificationSelect";
+import AppBackButton from "../components/atom/AppBackButton";
 import {IdentificationSelectOption} from "../types/IdentificationSelectProps";
 import {validateDNI, validateNIE} from "../helpers"
+import AppContinueButton from "../components/atom/AppContinueButton";
+import IdentificationInput from "../components/atom/IdentificationInput";
 
 const selectOptions: IdentificationSelectOption[] = ["DNI", "NIE"]
 const UserIdentificationNumber = () => {
@@ -11,7 +13,8 @@ const UserIdentificationNumber = () => {
     const validateInput = (): boolean => {
         return selectedOption === "DNI" ? validateDNI(inputValue) : validateNIE(inputValue);
     }
-    const handleOnChange = (value: IdentificationSelectOption) => setSelectedOption(value);
+    const handleSelectOnChange = (value: IdentificationSelectOption) => setSelectedOption(value);
+    const handleContinueClick = () => console.log("Continue");
 
     return (
         <div className="h-screen flex flex-col justify-between p-8 page-bg text-blue-dark">
@@ -28,29 +31,18 @@ const UserIdentificationNumber = () => {
                     <div className="flex flex-col gap-1 text-sm text-blue-light relative">
                         {selectedOption &&
                             <label htmlFor="identityType" className="absolute bottom-16 left-0">Tipo</label>}
-                        <IndentificationSelect options={selectOptions} value={selectedOption}
-                                               onChange={handleOnChange}/>
+                        <IdentificationSelect options={selectOptions} value={selectedOption}
+                                              onChange={handleSelectOnChange}/>
                     </div>
                     <div className="flex flex-col gap-1 text-sm text-blue-light relative">
                         {inputValue &&
                             <label htmlFor="identityNumber" className="absolute bottom-16 left-0">Número de
                                 documento</label>}
-                        <input type="text" placeholder="Número de documento"
-                               className="text-blue-dark placeholder-[#0F95CE] rounded-md px-4 py-5 w-full"
-                               value={inputValue}
-                               onChange={(e) => setInputValue(e.target.value)}
-                        />
+                        <IdentificationInput value={inputValue} onChange={setInputValue}/>
                     </div>
                 </form>
             </div>
-
-            <button
-                className="rounded-2xl flex items-center justify-center py-5 text-white font-bold bg-blue-light
-                disabled:bg-white disabled:text-[#0F95CE] border border-[#0F95CE] disabled:opacity-50"
-                disabled={!validateInput()}
-            >
-                Continuar
-            </button>
+            <AppContinueButton disabled={!validateInput()} onClick={handleContinueClick}/>
         </div>
     )
 }
