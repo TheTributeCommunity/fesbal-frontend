@@ -1,7 +1,7 @@
 import AppBackButton from "../components/atom/AppBackButton";
 import LoginForm from "../components/molecules/LoginForm";
 
-const Login = () => {
+const LoginScreen = () => {
     return (
         <div className="h-screen flex flex-col page-bg text-blue-dark p-8 justify-between">
             <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3">
@@ -20,4 +20,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginScreen;

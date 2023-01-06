@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import Login from "./pages/Login";
+import LoginScreen from "./pages/LoginScreen";
 import PasswordRecovery from "./pages/PasswordRecovery";
 import PickupPoint from "./pages/PickupPoint";
 import NotificationsScreen from "./pages/NotificationsScreen";
@@ -9,12 +9,12 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/login" element={<Login/>}/>
+                <Route path="/login" element={<LoginScreen/>}/>
                 <Route path="/password-recovery" element={<PasswordRecovery/>}/>
                 <Route path="/pickup-point" element={<PickupPoint/>}/>
                 <Route path="/notifications" element={<NotificationsScreen/>}/>
                 <Route path="/notifications/:id" element={<NotificationDetails/>}/>
-                <Route path="*" element={<Login/>}/>
+                <Route path="*" element={<LoginScreen/>}/>
             </Routes>
         </Router>
     );
