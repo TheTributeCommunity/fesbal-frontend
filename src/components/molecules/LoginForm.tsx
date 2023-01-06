@@ -1,7 +1,7 @@
+import {NavLink} from "react-router-dom";
 import useLoginForm from "../../hooks/useLoginForm";
 import EyeShowPassword from "../icons/EyeShowPassword";
-import {NavLink} from "react-router-dom";
-import AppNextButton from "./AppNextButton";
+import AppNextButton from "../atom/AppNextButton";
 
 const LoginForm = () => {
     const {user, onChange, hasError, onSubmit, toggleShowPassword, showPassword} = useLoginForm(
@@ -9,6 +9,8 @@ const LoginForm = () => {
             id: "",
             password: ""
         });
+
+    const buttonDisabled = user.id.length !== 9 || user.password.length < 3 || hasError;
 
     return (
         <form noValidate onSubmit={onSubmit}
@@ -23,7 +25,7 @@ const LoginForm = () => {
                         value={user.id}
                         onChange={onChange}
                         placeholder="Documento de identidad"
-                        className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 mb-0`}
+                        className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
                     />
                 </div>
                 <div className="flex flex-col gap-1.5">
@@ -36,14 +38,14 @@ const LoginForm = () => {
                             value={user.password}
                             onChange={onChange}
                             placeholder="Contraseña"
-                            className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5`}
+                            className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
                             <EyeShowPassword/>
                         </div>
                     </div>
                     {hasError &&
-                        <p className="text-red-500">El Documento de identidad y/o la contraseña no coinciden. Inténtalo
+                        <p className="text-red-500 text-sm">El Documento de identidad y/o la contraseña no coinciden. Inténtalo
                             de nuevo.</p>}
                     <NavLink to="/password-recovery"
                              className="text-blue-dark font-bold text-sm self-end underline">
@@ -54,8 +56,7 @@ const LoginForm = () => {
             <div className="flex flex-col gap-4">
                 <a href="#" className="text-blue-dark font-bold text-sm self-center underline text-center px-6">¿Has
                     realizado una solicitud de registro y aún no has recibido tus credenciales?</a>
-                <AppNextButton disabled={hasError || user.id.length === 0 || user.password.length === 0}
-                               title="Iniciar sesión"/>
+                <AppNextButton disabled={buttonDisabled} title="Iniciar sesión"/>
             </div>
         </form>
     );
