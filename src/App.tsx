@@ -2,6 +2,8 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Login from "./pages/Login";
 import PasswordRecovery from "./pages/PasswordRecovery";
 import PickupPoint from "./pages/PickupPoint";
+import NotificationsScreen from "./pages/NotificationsScreen";
+import NotificationDetails from "./pages/NotificationDetails";
 
 function App() {
     return (
@@ -10,6 +12,8 @@ function App() {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/password-recovery" element={<PasswordRecovery/>}/>
                 <Route path="/pickup-point" element={<PickupPoint/>}/>
+                <Route path="/notifications" element={<NotificationsScreen/>}/>
+                <Route path="/notifications/:id" element={<NotificationDetails/>}/>
                 <Route path="*" element={<Login/>}/>
             </Routes>
         </Router>
