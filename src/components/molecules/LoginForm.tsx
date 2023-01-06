@@ -1,5 +1,7 @@
 import useLoginForm from "../../hooks/useLoginForm";
 import EyeShowPassword from "../icons/EyeShowPassword";
+import {NavLink} from "react-router-dom";
+import AppNextButton from "./AppNextButton";
 
 const LoginForm = () => {
     const {user, onChange, hasError, onSubmit, toggleShowPassword, showPassword} = useLoginForm(
@@ -9,7 +11,8 @@ const LoginForm = () => {
         });
 
     return (
-        <form noValidate onSubmit={onSubmit} className="flex flex-col justify-between h-full mt-8 self-center md:w-1/2 lg:w-1/3">
+        <form noValidate onSubmit={onSubmit}
+              className="flex flex-col justify-between h-full mt-8 self-center md:w-1/2 lg:w-1/3">
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {user.id.length > 0 &&
@@ -42,18 +45,17 @@ const LoginForm = () => {
                     {hasError &&
                         <p className="text-red-500">El Documento de identidad y/o la contraseña no coinciden. Inténtalo
                             de nuevo.</p>}
-                    <a href="#" className="text-blue-dark font-bold text-sm self-end underline">¿Olvidaste tu
-                        contraseña?</a>
+                    <NavLink to="/password-recovery"
+                             className="text-blue-dark font-bold text-sm self-end underline">
+                        ¿Olvidaste tu contraseña?
+                    </NavLink>
                 </div>
             </div>
             <div className="flex flex-col gap-4">
                 <a href="#" className="text-blue-dark font-bold text-sm self-center underline text-center px-6">¿Has
                     realizado una solicitud de registro y aún no has recibido tus credenciales?</a>
-                <button type="submit" className="rounded-2xl flex items-center justify-center py-5 text-white font-bold bg-blue-light
-                disabled:bg-white disabled:text-[#0F95CE] border border-[#0F95CE] disabled:opacity-50 w-full"
-                        disabled={hasError || user.id.length === 0 || user.password.length === 0}>
-                    Iniciar sesión
-                </button>
+                <AppNextButton disabled={hasError || user.id.length === 0 || user.password.length === 0}
+                               title="Iniciar sesión"/>
             </div>
         </form>
     );
