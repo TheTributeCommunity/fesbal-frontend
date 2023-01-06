@@ -9,7 +9,7 @@ const PasswordRecoveryForm = () => {
 
     return (
         <form noValidate onSubmit={onSubmit}
-              className="flex flex-col justify-between h-full mt-8 self-center md:w-1/2 lg:w-1/3">
+              className="flex flex-col justify-between h-full mt-8 self-center md:w-1/2 lg:w-1/3 w-full">
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {email.length > 0 &&
