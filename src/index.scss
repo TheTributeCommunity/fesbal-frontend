@@ -22,4 +22,27 @@
   .bg-blue-light {
     background-color: #0F95CE;
   }
+
+  .swal2-border-radius {
+    border-radius: 1rem !important;
+  }
+  .swal2-text-left {
+    text-align: left !important;
+  }
+  .swal2-confirm-button{
+    background-color: #0F95CE !important;
+    border-radius: 1rem !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    width: 100% !important;
+    padding: 1.25rem 0 !important;
+  }
+  .swal2-actions{
+    width: 95% !important;
+  }
+
+  .swal2-title{
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+  }
 }
