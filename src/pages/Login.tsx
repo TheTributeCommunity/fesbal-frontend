@@ -1,11 +1,11 @@
 import AppBackButton from "../components/atom/AppBackButton";
-import LoginForm from "../components/atom/LoginForm";
+import LoginForm from "../components/molecules/LoginForm";
 
-const LoginProcess = () => {
+const Login = () => {
     return (
         <div className="h-screen flex flex-col page-bg text-blue-dark p-8 justify-between">
                 <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3">
-                    <AppBackButton/>
+                    <AppBackButton goTo="/password-recovery"/>
                     <div>
                         <h1 className="text-1xl font-bold mb-4">
                             Inicia sesión
@@ -20,4 +20,4 @@ const LoginProcess = () => {
     );
 };
 
-export default LoginProcess;
+export default Login;
