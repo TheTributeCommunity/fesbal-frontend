@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react';
 
 import AppBackButton from '../components/atoms/AppBackButton';
+import AppContinueButton from '../components/atoms/AppContinueButton';
 
 const EmailCheck = (event: ChangeEvent<HTMLInputElement> ) => {
   const email = event.target;
@@ -35,11 +36,7 @@ const RegisterEmailPage = () => {
             onChange={(event) => EmailCheck(event)}
           />
         </div>
-        <div>
-          <button id="continue_button" className="continue_button" disabled={true}>
-            Continuar
-          </button>
-        </div>
+        <AppContinueButton disabled={true} />
       </div>
     </div>
   );

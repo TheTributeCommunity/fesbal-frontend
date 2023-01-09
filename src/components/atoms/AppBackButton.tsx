@@ -3,7 +3,7 @@ import RightArrowIcon from '../icons/RightArrowIcon';
 const AppBackButton = () => {
 
   function goBack() {
-    console.log("Not implemented yet!")
+    console.log("Go back not implemented yet!")
   }
 
   return (

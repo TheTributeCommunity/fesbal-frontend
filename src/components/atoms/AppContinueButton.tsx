@@ -1,0 +1,25 @@
+import {FC} from 'react';
+
+interface AppContinueButtonProps {
+  disabled: boolean
+}
+
+const AppContinueButton: FC<AppContinueButtonProps> = ({ disabled }) => {
+
+  function goNext() {
+    console.log("Go next not implemented yet!")
+  }
+
+  return (
+    <button
+      id="continue_button"
+      className="continue_button"
+      disabled={disabled}
+      onClick={goNext}
+    >
+        Continuar
+    </button>
+  );
+};
+
+export default AppContinueButton;
