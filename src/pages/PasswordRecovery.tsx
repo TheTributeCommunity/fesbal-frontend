@@ -11,8 +11,8 @@ export const PasswordRecovery = () => {
                         Recuperar contraseña
                     </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacus purus, hendrerit eu
-                        libero
-                        sit amet.</p>
+                        libero sit amet.
+                    </p>
                 </div>
             </div>
             <PasswordRecoveryForm/>
