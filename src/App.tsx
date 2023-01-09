@@ -8,6 +8,7 @@ import EditEmail from "./pages/EditEmail";
 import EditPrevPassword from "./pages/EditPrevPassword";
 import ProfileScreen from "./pages/ProfileScreen";
 import EditNewPassword from "./pages/EditNewPassword";
+import RegistrationUserID from "./pages/RegistrationUserID";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/profile/edit-email" element={<EditEmail/>}/>
                 <Route path="/profile/edit-prev-password" element={<EditPrevPassword/>}/>
                 <Route path="/profile/edit-new-password" element={<EditNewPassword/>}/>
+                <Route path="/registration/user-id" element={<RegistrationUserID/>}/>
                 <Route path="*" element={<LoginScreen/>}/>
             </Routes>
         </Router>
