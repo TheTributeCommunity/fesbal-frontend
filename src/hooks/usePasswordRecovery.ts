@@ -1,12 +1,14 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import {UserEmail} from "../types/UserLoginProps";
 import usersMock from "../mocks/users.mock";
 import Swal from 'sweetalert2'
+import {useNavigate} from "react-router-dom";
 
-const usePasswordRecovery = <T extends UserEmail>(initialState: T) => {
+const usePasswordRecovery = <T extends string>(initialState: T) => {
     const [email, setEmail] = useState<T>(initialState);
     const [hasError, setHasError] = useState<boolean>(false);
-    const isFormValid = (email: UserEmail) => {
+
+    const navigate = useNavigate();
+    const isFormValid = (email: string): boolean => {
         return usersMock.some((user) => user.email === email);
     }
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,10 +29,15 @@ const usePasswordRecovery = <T extends UserEmail>(initialState: T) => {
             confirmButtonColor: '#0F95CE',
             position: 'bottom',
             padding: '1rem',
-            customClass: { popup: "swal2-border-radius", htmlContainer: "swal2-text-left",
-                confirmButton: "swal2-confirm-button", actions:"swal2-actions", title: "swal2-title" },
-            width: parent.innerWidth < 768 ? '95%' : '50%',
-        })
+            customClass: {
+                popup: "swal2-border-radius",
+                htmlContainer: "swal2-text-left",
+                confirmButton: "swal2-confirm-button",
+                actions:"swal2-actions",
+                title: "swal2-title"
+            },
+            width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
+        }).then(() => navigate('/login'));
     }
 
     return {
