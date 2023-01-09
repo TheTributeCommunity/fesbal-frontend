@@ -1,21 +1,22 @@
-import { ChangeEvent } from 'react';
+import {ChangeEvent, useState} from 'react';
 
 import AppBackButton from '../components/atoms/AppBackButton';
 import AppContinueButton from '../components/atoms/AppContinueButton';
 
-const EmailCheck = (event: ChangeEvent<HTMLInputElement> ) => {
-  const email = event.target;
-  const button = document.getElementById("continue_button");
-
-  if (email.value == "") {
-    button.disabled = true
-  }
-  else {
-    button.disabled = !email.validity.valid
-  }
-}
-
 const RegisterEmailPage = () => {
+  const [emailValidity, setValidity] = useState(false)
+
+  const validEmail = (event: ChangeEvent<HTMLInputElement> ) => {
+    const email = event.target;
+
+    if (email.value == "") {
+      return false
+    }
+    else {
+      return email.validity.valid
+    }
+  }
+
   return (
     <div className="App">
       <AppBackButton />
@@ -33,10 +34,10 @@ const RegisterEmailPage = () => {
             className ="rectangle"
             type="email"
             placeholder="Email"
-            onChange={(event) => EmailCheck(event)}
+            onChange={event => setValidity(validEmail(event))}
           />
         </div>
-        <AppContinueButton disabled={true} />
+        <AppContinueButton disabled={!emailValidity} />
       </div>
     </div>
   );
