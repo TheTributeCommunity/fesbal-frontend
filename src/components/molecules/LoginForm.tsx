@@ -1,14 +1,16 @@
 import {NavLink} from "react-router-dom";
 import useLoginForm from "../../hooks/useLoginForm";
-import EyeShowPassword from "../icons/EyeShowPassword";
+import EyeShowPasswordIcon from "../icons/EyeShowPasswordIcon";
 import AppNextButton from "../atom/AppNextButton";
+import useShowPassword from "../../hooks/useShowPassword";
 
 const LoginForm = () => {
-    const {user, onChange, hasError, onSubmit, toggleShowPassword, showPassword} = useLoginForm(
+    const {user, onChange, hasError, onSubmit} = useLoginForm(
         {
             id: "",
             password: ""
         });
+    const {showPassword, toggleShowPassword} = useShowPassword();
 
     const buttonDisabled = user.id.length !== 9 || user.password.length < 3 || hasError;
 
@@ -41,7 +43,7 @@ const LoginForm = () => {
                             className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
-                            <EyeShowPassword/>
+                            <EyeShowPasswordIcon/>
                         </div>
                     </div>
                     {hasError &&

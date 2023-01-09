@@ -1,4 +1,4 @@
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import usePasswordRecovery from "../../hooks/usePasswordRecovery";
 import AppNextButton from "../atom/AppNextButton";
 
@@ -24,13 +24,13 @@ const PasswordRecoveryForm = () => {
                     />
                     {hasError &&
                         <p className="text-red-500 text-sm">El email no es válido</p>}
-                    <NavLink to="/password-recovery"
+                    <Link to="/password-recovery"
                              className="text-blue-dark font-bold text-sm self-end underline">
                         No recuerdo mi email
-                    </NavLink>
+                    </Link>
                 </div>
             </div>
-            <AppNextButton disabled={buttonDisabled} title="Enviar Email"/>
+            <AppNextButton disabled={buttonDisabled} title="Enviar email"/>
         </form>
     );
 }
