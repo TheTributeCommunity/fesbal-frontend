@@ -1,0 +1,55 @@
+.swal2-border-radius {
+  border-radius: 1rem !important;
+}
+
+.swal2-text-left {
+  text-align: left !important;
+}
+
+.swal2-confirm-button {
+  width: 100% !important;
+  border-radius: 1rem !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  padding: 1.25rem 0 !important;
+}
+
+.swal2-confirm-button--half {
+  width: 100% !important;
+  border-radius: 1rem !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  padding: 1.25rem 0 !important;
+}
+
+.swal2-cancel-button--half {
+  width: 100% !important;
+  border-radius: 1rem !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  padding: 1.25rem 0 !important;
+}
+
+.swal2-actions {
+  width: 100% !important;
+}
+
+.swal2-title {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+.line-breaks {
+  white-space: pre-line;
+  vertical-align: bottom;
+}
+
+@media (min-width: 768px) {
+  .swal2-confirm-button--half {
+    width: 45% !important;
+  }
+
+  .swal2-cancel-button--half {
+    width: 45% !important;
+  }
+}
