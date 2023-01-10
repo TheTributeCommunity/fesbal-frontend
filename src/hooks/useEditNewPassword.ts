@@ -1,11 +1,14 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import Swal from 'sweetalert2'
 import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import {namespaces} from "../i18n/i18n.constants";
 
 const useEditNewPassword = () => {
     const [password, setPassword] = useState<string>('');
     const [passwordConfirm, setPasswordConfirm] = useState<string>('');
     const [hasError, setHasError] = useState<boolean>(false);
+    const {t} = useTranslation(namespaces.pages.editNewPassword);
 
     const navigate = useNavigate();
 
@@ -22,11 +25,12 @@ const useEditNewPassword = () => {
         e.preventDefault();
         setHasError(!arePasswordsEqual);
         if (arePasswordsEqual) Swal.fire({
-            title: '¿Estás seguro de que quieres cambiar tu contraseña?',
-            icon: 'warning',
             showCancelButton: true,
+            title: t('sweetAlert.title') as string,
+            confirmButtonText: t('sweetAlert.confirmButtonText') as string,
+            cancelButtonText: t('sweetAlert.cancelButtonText') as string,
+            icon: 'warning',
             iconColor: '#EB5757',
-            confirmButtonText: 'Sí, cambiar contraseña',
             buttonsStyling: false,
             position: 'bottom',
             padding: '1rem',
@@ -44,13 +48,13 @@ const useEditNewPassword = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: 'Contraseña cambiada',
+                    title: t('sweetAlertSuccess.title') as string,
+                    confirmButtonText: t('sweetAlertSuccess.confirmButtonText') as string,
                     icon: 'success',
                     iconColor: '#3085d6',
+                    buttonsStyling: false,
                     position: 'bottom',
                     padding: '1rem',
-                    buttonsStyling: false,
-                    confirmButtonText: 'Ir a mi perfil',
                     customClass: {
                         popup: "rounded-md",
                         actions: "w-full",

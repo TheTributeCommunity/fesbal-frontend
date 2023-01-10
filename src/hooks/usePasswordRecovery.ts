@@ -2,12 +2,15 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import usersMock from "../mocks/users.mock";
 import Swal from 'sweetalert2'
 import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import {namespaces} from "../i18n/i18n.constants";
 
 const usePasswordRecovery = <T extends string>(initialState: T) => {
     const [email, setEmail] = useState<T>(initialState);
     const [hasError, setHasError] = useState<boolean>(false);
 
     const navigate = useNavigate();
+    const {t} = useTranslation(namespaces.pages.passwordRecovery);
     const isFormValid = (email: string): boolean => {
         return usersMock.some((user) => user.email === email);
     }
@@ -19,11 +22,11 @@ const usePasswordRecovery = <T extends string>(initialState: T) => {
         e.preventDefault();
         setHasError(!isFormValid(email));
         if (isFormValid(email)) Swal.fire({
-            title: 'Email enviado',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacus purus.',
+            title: t("sweetAlert.title") as string,
+            text: t("sweetAlert.description") as string,
             icon: 'success',
             iconColor: '#0F95CE',
-            confirmButtonText: 'Ir a Iniciar Sesión',
+            confirmButtonText: t("sweetAlert.confirm") as string,
             buttonsStyling: false,
             position: 'bottom',
             padding: '1rem',

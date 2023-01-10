@@ -3,6 +3,8 @@ import useLoginForm from "../../hooks/useLoginForm";
 import AppNextButton from "../atom/AppNextButton";
 import useShowPassword from "../../hooks/useShowPassword";
 import EyeHidePasswordIcon from "../icons/EyeHidePasswordIcon";
+import {useTranslation} from "react-i18next";
+import {namespaces} from "../../i18n/i18n.constants";
 
 const LoginForm = () => {
     const {user, onChange, hasError, onSubmit} = useLoginForm(
@@ -11,6 +13,7 @@ const LoginForm = () => {
             password: ""
         });
     const {showPassword, toggleShowPassword} = useShowPassword();
+    const {t} = useTranslation(namespaces.pages.loginScreen);
 
     const buttonDisabled = user.id.length !== 9 || user.password.length < 3 || hasError;
 
@@ -20,26 +23,26 @@ const LoginForm = () => {
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {user.id.length > 0 &&
-                        <label htmlFor="id" className="text-primary-color">Documento de Identidad</label>}
+                        <label htmlFor="id" className="text-primary-color">{t("id")}</label>}
                     <input
                         type="text"
                         name="id"
                         value={user.id}
                         onChange={onChange}
-                        placeholder="Documento de identidad"
+                        placeholder={t("id") as string}
                         className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
                     />
                 </div>
                 <div className="flex flex-col gap-1.5">
                     {user.password.length > 0 &&
-                        <label htmlFor="password" className="text-primary-color">Contraseña</label>}
+                        <label htmlFor="password" className="text-primary-color">{t("password")}</label>}
                     <div className="relative">
                         <input
                             type={showPassword ? "text" : "password"}
                             name="password"
                             value={user.password}
                             onChange={onChange}
-                            placeholder="Contraseña"
+                            placeholder={t("password") as string}
                             className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
@@ -47,19 +50,18 @@ const LoginForm = () => {
                         </div>
                     </div>
                     {hasError &&
-                        <p className="text-red-500 text-sm">El Documento de identidad y/o la contraseña no coinciden.
-                            Inténtalo
-                            de nuevo.</p>}
+                        <p className="text-red-500 text-sm">{t("error")}</p>}
                     <NavLink to="/password-recovery"
                              className="text-secondary-color font-bold text-sm self-end underline">
-                        ¿Olvidaste tu contraseña?
+                        {t("forgotPassword")}
                     </NavLink>
                 </div>
             </div>
             <div className="flex flex-col gap-4">
-                <a href="#" className="text-secondary-color font-bold text-sm self-center underline text-center px-6">¿Has
-                    realizado una solicitud de registro y aún no has recibido tus credenciales?</a>
-                <AppNextButton disabled={buttonDisabled} title="Iniciar sesión"/>
+                <a href="#" className="text-secondary-color font-bold text-sm self-center underline text-center px-6">
+                    {t("credentials")}
+                </a>
+                <AppNextButton disabled={buttonDisabled} title={t("next")}/>
             </div>
         </form>
     );

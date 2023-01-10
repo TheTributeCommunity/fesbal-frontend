@@ -1,5 +1,5 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import usersMock from "../mocks/users.mock";
 
 const useEditPrevPassword = () => {

@@ -2,10 +2,14 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import Swal from 'sweetalert2'
 import usersMock from "../mocks/users.mock";
+import {useTranslation} from "react-i18next";
+import {namespaces} from "../i18n/i18n.constants";
 
 const useEditEmail = <T extends string>(initialState: T) => {
     const [email, setEmail] = useState<T>(initialState);
     const [hasError, setHasError] = useState<boolean>(false);
+    const {t} = useTranslation(namespaces.pages.editEmail);
+
 
     const navigate = useNavigate();
     const isAnEmail = (email: string): boolean => {
@@ -22,18 +26,28 @@ const useEditEmail = <T extends string>(initialState: T) => {
         setEmail(email => e.target.value as T);
         setHasError(false);
     }
+    const sweetAlert = {
+        title: t("sweetAlert.title"),
+        confirmButtonText: t("sweetAlert.confirmButtonText"),
+        cancelButtonText: t("sweetAlert.cancelButtonText"),
+    }
+    const sweetAlertSuccess = {
+        title: t("sweetAlertSuccess.title"),
+        confirmButtonText: t("sweetAlertSuccess.confirmButtonText"),
+    }
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setHasError(!validateEmail(email));
         if (validateEmail(email)) Swal.fire({
-            title: '¿Estás seguro de que quieres cambiar tu email?',
-            icon: 'warning',
             showCancelButton: true,
+            title: sweetAlert.title,
+            confirmButtonText: sweetAlert.confirmButtonText,
+            cancelButtonText: sweetAlert.cancelButtonText,
+            icon: 'warning',
             iconColor: '#EB5757',
-            confirmButtonText: 'Sí, cambiar email',
+            buttonsStyling: false,
             position: 'bottom',
             padding: '1rem',
-            buttonsStyling: false,
             customClass: {
                 popup: "rounded-md",
                 actions: "flex gap-2 w-full",
@@ -48,13 +62,13 @@ const useEditEmail = <T extends string>(initialState: T) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: 'Email cambiado correctamente',
+                    title: sweetAlertSuccess.title,
+                    confirmButtonText: sweetAlertSuccess.confirmButtonText,
                     icon: 'success',
                     iconColor: '#3085d6',
+                    buttonsStyling: false,
                     position: 'bottom',
                     padding: '1rem',
-                    buttonsStyling: false,
-                    confirmButtonText: 'Ir a mi perfil',
                     customClass: {
                         popup: "rounded-md",
                         actions: "w-full",
