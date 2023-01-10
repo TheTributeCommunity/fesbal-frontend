@@ -1,10 +1,9 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faLocationDot} from "@fortawesome/free-solid-svg-icons";
+import LocationIcon from "../icons/LocationIcon";
 
 const AppLocationButton = () => {
     return (
         <button>
-            <FontAwesomeIcon icon={faLocationDot} className="text-primary-color"/>
+            <LocationIcon/>
         </button>
     );
 };

@@ -6,7 +6,7 @@ const AppCopyClipboardButton = ({text}: { text: string }) => {
         <div className="flex flex-row gap-4">
             <p>{text}</p>
             <button onClick={() => navigator.clipboard.writeText(text)}>
-                <FontAwesomeIcon icon={faCopy} className="text-primary-color"/>
+                <FontAwesomeIcon icon={faCopy}/>
             </button>
         </div>
     );

@@ -2,8 +2,7 @@ import {NavLink} from "react-router-dom";
 import useLoginForm from "../../hooks/useLoginForm";
 import AppNextButton from "../atom/AppNextButton";
 import useShowPassword from "../../hooks/useShowPassword";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEyeSlash} from "@fortawesome/free-regular-svg-icons";
+import EyeHidePasswordIcon from "../icons/EyeHidePasswordIcon";
 
 const LoginForm = () => {
     const {user, onChange, hasError, onSubmit} = useLoginForm(
@@ -44,7 +43,7 @@ const LoginForm = () => {
                             className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
-                            <FontAwesomeIcon icon={faEyeSlash} className="text-primary-color"/>
+                            <EyeHidePasswordIcon/>
                         </div>
                     </div>
                     {hasError &&
