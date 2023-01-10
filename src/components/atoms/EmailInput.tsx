@@ -1,3 +1,5 @@
+import "../../styles/EmailInput.scss"
+
 import {ChangeEventHandler, FC, useState} from 'react';
 
 interface EmailInputProps {
@@ -8,15 +10,15 @@ const EmailInput: FC<EmailInputProps> = ({ onChangeUpdate }) => {
   const [emptyInput, setEmptiness] = useState(true)
 
   return (
-    <div className="email_input">
+    <div className="email_input_group">
       {emptyInput ?
         null :
-        <label className="small_email">
+        <label className="email_label">
           Email
         </label>
       }
       <input
-        className ="rectangle"
+        className ="email_input"
         type="email"
         placeholder="Email"
         onChange={event => {

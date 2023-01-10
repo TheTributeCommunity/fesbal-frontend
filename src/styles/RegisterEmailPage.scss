@@ -1,0 +1,32 @@
+.email_title {
+  position: absolute;
+  width: 62px;
+  height: 28px;
+  left: 32px;
+  top: 104px;
+
+  font-family: 'Roboto Flex';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #002E5D;
+}
+
+.email_description {
+  position: absolute;
+  width: 350px;
+  height: 72px;
+  left: 32px;
+  top: 148px;
+
+  font-family: 'Roboto Flex';
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: flex-end;
+
+  color: #002E5D;
+}

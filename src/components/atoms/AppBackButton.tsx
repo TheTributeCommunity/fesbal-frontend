@@ -1,3 +1,5 @@
+import "../../styles/AppBackButton.scss"
+
 import RightArrowIcon from '../icons/RightArrowIcon';
 
 const AppBackButton = () => {

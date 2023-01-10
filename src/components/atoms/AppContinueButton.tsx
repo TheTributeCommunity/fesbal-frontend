@@ -1,3 +1,5 @@
+import "../../styles/AppContinueButton.scss"
+
 import {FC} from 'react';
 
 interface AppContinueButtonProps {

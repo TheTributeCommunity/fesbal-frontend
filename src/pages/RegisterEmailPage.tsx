@@ -1,3 +1,5 @@
+import "../styles/RegisterEmailPage.scss"
+
 import {ChangeEvent, useState} from 'react';
 
 import AppBackButton from '../components/atoms/AppBackButton';
