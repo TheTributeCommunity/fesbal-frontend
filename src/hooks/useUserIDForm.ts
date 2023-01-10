@@ -1,24 +1,23 @@
 import {validateDNI, validateNIE} from "../helpers";
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {UserIDSelectOption} from "../types/UserIdSelectProps";
 
 const useUserIDForm = () => {
-    const [selectedOption, setSelectedOption] = useState<UserIDSelectOption>();
+    const [selectedOption, setSelectedOption] = useState<string>("");
     const [userID, setUserID] = useState<string>('');
 
     const navigate = useNavigate();
     const validateUserID = (): boolean => {
         return selectedOption === 'DNI' ? validateDNI(userID) : validateNIE(userID);
     }
-    const onSelectedOptionChange = (option: UserIDSelectOption) => {
+    const onSelectedOptionChange = (option: string) => {
         setSelectedOption(option);
     }
     const onUserIDChange = (id: string) => {
         setUserID(id);
     }
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateUserID()) {
             navigate('/profile');

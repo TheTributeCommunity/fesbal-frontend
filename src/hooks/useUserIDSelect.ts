@@ -1,12 +1,12 @@
-import {FC, useState} from "react";
-import UserIDSelectProps, {UserIDSelectOption} from "../types/UserIdSelectProps";
+import {useState} from "react";
+import SelectProps from "../types/SelectProps";
 
-const useIdentificationSelect = ({value, onChange}: UserIDSelectProps) => {
+const useUserIDSelect = ({value, onChange}: SelectProps) => {
     const [openDropdown, setOpenDropdown] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<UserIDSelectOption>(value);
+    const [selectedOption, setSelectedOption] = useState<string>(value);
     const toggleDropdown = () => setOpenDropdown(!openDropdown);
     const closeDropdown = () => setOpenDropdown(false);
-    const onOptionClick = (option: UserIDSelectOption) => {
+    const onOptionClick = (option: string) => {
         setSelectedOption(option);
         onChange(option);
         closeDropdown();
@@ -20,4 +20,4 @@ const useIdentificationSelect = ({value, onChange}: UserIDSelectProps) => {
     }
 }
 
-export default useIdentificationSelect;
+export default useUserIDSelect;
