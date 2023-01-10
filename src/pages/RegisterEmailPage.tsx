@@ -2,6 +2,7 @@ import {ChangeEvent, useState} from 'react';
 
 import AppBackButton from '../components/atoms/AppBackButton';
 import AppContinueButton from '../components/atoms/AppContinueButton';
+import EmailInput from "../components/atoms/EmailInput";
 
 const RegisterEmailPage = () => {
   const [emailValidity, setValidity] = useState(false)
@@ -29,14 +30,7 @@ const RegisterEmailPage = () => {
           consectetur adipiscing elit.
           Maecenas lacus purus, hendrerit eu libero sit amet.
         </label>
-        <div className="email_input">
-          <input
-            className ="rectangle"
-            type="email"
-            placeholder="Email"
-            onChange={event => setValidity(validEmail(event))}
-          />
-        </div>
+        <EmailInput onChangeUpdate={event => setValidity(validEmail(event))} />
         <AppContinueButton disabled={!emailValidity} />
       </div>
     </div>
