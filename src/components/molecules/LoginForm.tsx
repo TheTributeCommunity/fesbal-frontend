@@ -20,7 +20,7 @@ const LoginForm = () => {
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {user.id.length > 0 &&
-                        <label htmlFor="id" className="text-blue-light">Documento de Identidad</label>}
+                        <label htmlFor="id" className="text-primary-color">Documento de Identidad</label>}
                     <input
                         type="text"
                         name="id"
@@ -32,7 +32,7 @@ const LoginForm = () => {
                 </div>
                 <div className="flex flex-col gap-1.5">
                     {user.password.length > 0 &&
-                        <label htmlFor="password" className="text-blue-light">Contraseña</label>}
+                        <label htmlFor="password" className="text-primary-color">Contraseña</label>}
                     <div className="relative">
                         <input
                             type={showPassword ? "text" : "password"}
@@ -50,13 +50,13 @@ const LoginForm = () => {
                         <p className="text-red-500 text-sm">El Documento de identidad y/o la contraseña no coinciden. Inténtalo
                             de nuevo.</p>}
                     <NavLink to="/password-recovery"
-                             className="text-blue-dark font-bold text-sm self-end underline">
+                             className="text-secondary-color font-bold text-sm self-end underline">
                         ¿Olvidaste tu contraseña?
                     </NavLink>
                 </div>
             </div>
             <div className="flex flex-col gap-4">
-                <a href="#" className="text-blue-dark font-bold text-sm self-center underline text-center px-6">¿Has
+                <a href="#" className="text-secondary-color font-bold text-sm self-center underline text-center px-6">¿Has
                     realizado una solicitud de registro y aún no has recibido tus credenciales?</a>
                 <AppNextButton disabled={buttonDisabled} title="Iniciar sesión"/>
             </div>

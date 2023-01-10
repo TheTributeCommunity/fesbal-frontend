@@ -1,18 +1,18 @@
 import React, {FC} from 'react';
 import DropDownIcon from "../icons/DropDownIcon";
 import useUserIDSelect from "../../hooks/useUserIDSelect";
-import UserIDSelectProps from "../../types/UserIdSelectProps";
+import SelectProps from "../../types/SelectProps";
 
 
-const IdentificationSelect: FC<UserIDSelectProps> = ({options, value, onChange}) => {
+const IdentificationSelect: FC<SelectProps> = ({options, value, onChange}) => {
     const {onOptionClick, openDropdown, toggleDropdown, selectedOption} = useUserIDSelect({value, onChange});
     return (
-        <div className="relative rounded-md text-blue-light bg-white">
+        <div className="relative rounded-md text-primary-color bg-white">
             <div onClick={toggleDropdown} className="cursor-pointer">
                 <div className="flex flex-row items-center justify-between px-4 py-5 gap-2">
                     {selectedOption
-                        ? <span className="text-blue-dark">{selectedOption}</span>
-                        : <span className="text-blue-light">Tipo</span>}
+                        ? <span className="text-secondary-color">{selectedOption}</span>
+                        : <span className="text-primary-color">Tipo</span>}
                     <DropDownIcon/>
                 </div>
             </div>
@@ -22,7 +22,7 @@ const IdentificationSelect: FC<UserIDSelectProps> = ({options, value, onChange})
                         {options!.map((option) => (
                             <li
                                 key={option}
-                                className="block px-4 py-2 text-sm leading-5 text-blue-light hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                                className="block px-4 py-2 text-sm leading-5 text-primary-color hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                                 role="menuitem"
                                 onClick={() => onOptionClick(option)}
                             >

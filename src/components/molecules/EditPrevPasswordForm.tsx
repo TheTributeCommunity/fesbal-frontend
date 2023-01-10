@@ -15,7 +15,7 @@ const EditPrevPasswordForm = () => {
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {password.length > 0 &&
-                        <label htmlFor="password" className="text-blue-light">Contraseña actual</label>}
+                        <label htmlFor="password" className="text-primary-color">Contraseña actual</label>}
                     <div className="relative">
                         <input
                             type={showPassword ? "text" : "password"}

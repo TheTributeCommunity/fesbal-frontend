@@ -49,9 +49,9 @@ const getFamilyMembers = (id: string) => {
 
 const ProfileScreen = () => {
     return (
-        <div className="h-screen flex flex-col page-bg text-blue-dark p-8 justify-between">
+        <div className="h-screen flex flex-col page-bg text-secondary-color p-8 justify-between">
             <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3">
-                <div className="flex flex-row justify-between items-center text-blue-light text-base font-bold">
+                <div className="flex flex-row justify-between items-center text-primary-color text-base font-bold">
                     <AppBackButton goTo="/login"/>
                     <h1>Datos personales</h1>
                     <AppBurgerMenuButton/>

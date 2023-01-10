@@ -1,4 +1,3 @@
-@import "src/styles/swal";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,15 +11,15 @@
     box-shadow: 0px 2px 4px rgba(0, 46, 93, 0.08);
   }
 
-  .text-blue-dark {
+  .text-secondary-color {
     color: #002E5D;
   }
 
-  .text-blue-light {
+  .text-primary-color {
     color: #0F95CE;
   }
 
-  .bg-blue-light {
+  .bg-primary-color {
     background-color: #0F95CE;
   }
 }

@@ -13,7 +13,7 @@ const PasswordRecoveryForm = () => {
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {email.length > 0 &&
-                        <label htmlFor="email" className="text-blue-light">Email</label>}
+                        <label htmlFor="email" className="text-primary-color">Email</label>}
                     <input
                         type="email"
                         name="email"
@@ -25,7 +25,7 @@ const PasswordRecoveryForm = () => {
                     {hasError &&
                         <p className="text-red-500 text-sm">El email no es válido</p>}
                     <Link to="/password-recovery"
-                             className="text-blue-dark font-bold text-sm self-end underline">
+                             className="text-secondary-color font-bold text-sm self-end underline">
                         No recuerdo mi email
                     </Link>
                 </div>

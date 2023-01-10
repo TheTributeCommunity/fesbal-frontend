@@ -17,7 +17,7 @@ const EditPrevPasswordForm = () => {
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {password.length > 0 &&
-                        <label htmlFor="password" className="text-blue-light">Nueva contraseña</label>}
+                        <label htmlFor="password" className="text-primary-color">Nueva contraseña</label>}
                     <div className="relative">
                         <input
                             type={showPassword ? "text" : "password"}
@@ -36,7 +36,7 @@ const EditPrevPasswordForm = () => {
                 </div>
                 <div className="flex flex-col gap-1.5">
                     {passwordConfirm.length > 0 &&
-                        <label htmlFor="password-confirm" className="text-blue-light">Confirmar la nueva contraseña</label>}
+                        <label htmlFor="password-confirm" className="text-primary-color">Confirmar la nueva contraseña</label>}
                     <div className="relative">
                         <input
                             type={showPassword2 ? "text" : "password"}

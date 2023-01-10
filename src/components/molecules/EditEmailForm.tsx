@@ -12,7 +12,7 @@ const EditEmailForm = () => {
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {email.length > 0 &&
-                        <label htmlFor="email" className="text-blue-light">Email</label>}
+                        <label htmlFor="email" className="text-primary-color">Email</label>}
                     <input
                         type="email"
                         name="email"

@@ -9,9 +9,9 @@ const address = "Calle de los Jazmines 835100 San Bartolomé de Tirajana, Las Pa
 
 const PickupPoint = () => {
     return (
-        <div className="h-screen flex flex-col page-bg text-blue-dark p-8 justify-between">
+        <div className="h-screen flex flex-col page-bg text-secondary-color p-8 justify-between">
             <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3">
-                <div className="flex flex-row justify-between items-center text-blue-light text-base font-bold">
+                <div className="flex flex-row justify-between items-center text-primary-color text-base font-bold">
                     <AppBackButton goTo="/login"/>
                     <h1>Punto de recogida</h1>
                     <AppBurgerMenuButton/>
@@ -20,7 +20,7 @@ const PickupPoint = () => {
                     <h1 className="text-2xl font-bold mb-4">
                         Asociación de Vecinos de Maspalomas
                     </h1>
-                    <p className="text-blue-light text-sm">Dirección</p>
+                    <p className="text-primary-color text-sm">Dirección</p>
                     <AppCopyClipboardButton text={address}/>
                 </div>
             </div>
