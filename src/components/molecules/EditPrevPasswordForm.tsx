@@ -26,7 +26,7 @@ const EditPrevPasswordForm = () => {
                             value={password}
                             onChange={onChange}
                             placeholder={t("placeholder") as string}
-                            className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
+                            className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
                             <EyeHidePasswordIcon/>

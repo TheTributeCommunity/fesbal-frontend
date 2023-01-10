@@ -30,7 +30,7 @@ const LoginForm = () => {
                         value={user.id}
                         onChange={onChange}
                         placeholder={t("id") as string}
-                        className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
+                        className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color`}
                     />
                 </div>
                 <div className="flex flex-col gap-1.5">
@@ -43,7 +43,7 @@ const LoginForm = () => {
                             value={user.password}
                             onChange={onChange}
                             placeholder={t("password") as string}
-                            className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
+                            className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
                             <EyeHidePasswordIcon/>

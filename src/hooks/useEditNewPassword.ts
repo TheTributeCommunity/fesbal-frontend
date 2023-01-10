@@ -38,10 +38,10 @@ const useEditNewPassword = () => {
                 popup: "rounded-md",
                 actions: "flex gap-2 w-full",
                 title: "text-2xl font-bold",
-                confirmButton: "bg-[#EB5757] hover:bg-[#D14A4A] text-white rounded-xl font-medium w-full" +
-                    " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-[#EB5757] h-20",
-                cancelButton: "bg-[#3085d6] hover:bg-[#2D7DB5] text-white rounded-xl font-medium w-full" +
-                    " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-[#3085d6] h-20",
+                confirmButton: "bg-warning-color hover-warning-color text-white rounded-xl font-medium w-full" +
+                    " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-warning-color h-20",
+                cancelButton: "bg-primary-color hover-primary-color text-white rounded-xl font-medium w-full" +
+                    " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-20",
             },
             width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
 
@@ -59,8 +59,8 @@ const useEditNewPassword = () => {
                         popup: "rounded-md",
                         actions: "w-full",
                         title: "text-2xl font-bold",
-                        confirmButton: "bg-[#3085d6] hover:bg-[#2D7DB5] text-white rounded-xl font-medium w-full" +
-                            " focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-[#3085d6] h-20",
+                        confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-medium w-full" +
+                            " focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-20",
                     },
                     width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
                 }).then(() => navigate('/profile'));

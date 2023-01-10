@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 const NotificationItem: FC<NotificationProps> = ({id, title, message, date, hasBeenRead}) => {
     return (
         <>
-            <NavLink className={`${hasBeenRead ? "bg-[#F2FBFF]" : "bg-white"} rounded-xl py-5 px-8`}
+            <NavLink className={`${hasBeenRead ? "bg-terciary-color" : "bg-white"} rounded-xl py-5 px-8`}
                      to={`/notifications/${id}`}>
                 <p className="text-primary-color text-sm">{date}</p>
                 <h2 className="text-l font-bold">{title}</h2>

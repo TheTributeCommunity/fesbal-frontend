@@ -35,8 +35,8 @@ const usePasswordRecovery = <T extends string>(initialState: T) => {
                 title: "text-2xl font-bold",
                 actions: "w-full",
                 htmlContainer: "text-left",
-                confirmButton: "bg-[#3085d6] hover:bg-[#2D7DB5] text-white rounded-xl font-medium w-full" +
-                    " focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-[#3085d6] h-20",
+                confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-medium w-full" +
+                    " focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-20",
             },
             width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
         }).then(() => navigate('/login'));

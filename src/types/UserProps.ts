@@ -8,7 +8,7 @@ interface UserProps {
     familyMembers?: FamilyMember[];
 }
 
-type FamilyMember = {
+interface FamilyMember {
     FullName: string;
     id: string;
 }

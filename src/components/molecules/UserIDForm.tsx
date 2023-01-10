@@ -22,7 +22,7 @@ const UserIDForm = () => {
                 <div className="flex flex-col gap-1.5 text-sm text-primary-color w-full">
                     <label htmlFor="identityNumber" className={userID ? "opacity-100" : "opacity-0"}>{t("id")}</label>
                     <input type="text" placeholder={t("id") as string}
-                           className="text-secondary-color placeholder-[#0F95CE] rounded-md px-4 py-5 w-full"
+                           className="text-secondary-color placeholder-primary-color rounded-md px-4 py-5 w-full"
                            value={userID} onChange={(e) => onUserIDChange(e.target.value)}/>
                 </div>
             </div>
