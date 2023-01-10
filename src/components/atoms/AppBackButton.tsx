@@ -9,8 +9,11 @@ const AppBackButton = () => {
   }
 
   return (
-    <button className="back_button" onClick={goBack}>
-      <RightArrowIcon />
+    <button
+      className="back_button white-background-color"
+      onClick={goBack}
+    >
+        <RightArrowIcon />
     </button>
   );
 };

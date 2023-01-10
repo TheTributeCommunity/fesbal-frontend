@@ -24,14 +24,14 @@ const RegisterEmailPage = () => {
     <div className="App">
       <AppBackButton />
       <div>
-        <label className="email_title">
+        <div className="email_title big-title-font midnight-blue-color">
           Email
-        </label>
-        <label className="email_description">
+        </div>
+        <div className="email_description text-font midnight-blue-color">
           Lorem ipsum dolor sit amet,
           consectetur adipiscing elit.
           Maecenas lacus purus, hendrerit eu libero sit amet.
-        </label>
+        </div>
         <EmailInput onChangeUpdate={event => setValidity(validEmail(event))} />
         <AppContinueButton disabled={!emailValidity} />
       </div>

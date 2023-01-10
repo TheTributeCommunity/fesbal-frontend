@@ -14,8 +14,7 @@ const AppContinueButton: FC<AppContinueButtonProps> = ({ disabled }) => {
 
   return (
     <button
-      id="continue_button"
-      className="continue_button"
+      className="continue_button button-font"
       disabled={disabled}
       onClick={goNext}
     >

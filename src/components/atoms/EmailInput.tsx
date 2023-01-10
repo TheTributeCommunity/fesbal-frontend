@@ -13,12 +13,12 @@ const EmailInput: FC<EmailInputProps> = ({ onChangeUpdate }) => {
     <div className="email_input_group">
       {emptyInput ?
         null :
-        <label className="email_label">
+        <label className="email_label label-font cerulean-color">
           Email
         </label>
       }
       <input
-        className ="email_input"
+        className ="email_input input-font midnight-blue-color"
         type="email"
         placeholder="Email"
         onChange={event => {
