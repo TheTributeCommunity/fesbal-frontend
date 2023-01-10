@@ -21,20 +21,19 @@ const usePasswordRecovery = <T extends string>(initialState: T) => {
         if (isFormValid(email)) Swal.fire({
             title: 'Email enviado',
             text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacus purus.',
-
             icon: 'success',
-            confirmButtonText: 'Ir a Iniciar Sesión',
-            color: '#002E5D',
             iconColor: '#0F95CE',
-            confirmButtonColor: '#0F95CE',
+            confirmButtonText: 'Ir a Iniciar Sesión',
+            buttonsStyling: false,
             position: 'bottom',
             padding: '1rem',
             customClass: {
-                popup: "swal2-border-radius",
-                htmlContainer: "swal2-text-left",
-                confirmButton: "swal2-confirm-button",
-                actions:"swal2-actions",
-                title: "swal2-title"
+                popup: "rounded-md",
+                title: "text-2xl font-bold",
+                actions: "w-full",
+                htmlContainer: "text-left",
+                confirmButton: "bg-[#3085d6] hover:bg-[#2D7DB5] text-white rounded-xl font-medium w-full" +
+                    " focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-[#3085d6] h-20",
             },
             width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
         }).then(() => navigate('/login'));
