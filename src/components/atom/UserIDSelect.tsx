@@ -1,7 +1,8 @@
 import React, {FC} from 'react';
-import DropDownIcon from "../icons/DropDownIcon";
 import useUserIDSelect from "../../hooks/useUserIDSelect";
 import SelectProps from "../../types/SelectProps";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
 
 
 const IdentificationSelect: FC<SelectProps> = ({options, value, onChange}) => {
@@ -13,7 +14,7 @@ const IdentificationSelect: FC<SelectProps> = ({options, value, onChange}) => {
                     {selectedOption
                         ? <span className="text-secondary-color">{selectedOption}</span>
                         : <span className="text-primary-color">Tipo</span>}
-                    <DropDownIcon/>
+                    <FontAwesomeIcon icon={faChevronDown} className="text-primary-color"/>
                 </div>
             </div>
             {openDropdown && (

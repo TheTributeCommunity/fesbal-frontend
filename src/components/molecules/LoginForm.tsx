@@ -1,8 +1,9 @@
 import {NavLink} from "react-router-dom";
 import useLoginForm from "../../hooks/useLoginForm";
-import EyeShowPasswordIcon from "../icons/EyeShowPasswordIcon";
 import AppNextButton from "../atom/AppNextButton";
 import useShowPassword from "../../hooks/useShowPassword";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEyeSlash} from "@fortawesome/free-regular-svg-icons";
 
 const LoginForm = () => {
     const {user, onChange, hasError, onSubmit} = useLoginForm(
@@ -43,11 +44,12 @@ const LoginForm = () => {
                             className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
-                            <EyeShowPasswordIcon/>
+                            <FontAwesomeIcon icon={faEyeSlash} className="text-primary-color"/>
                         </div>
                     </div>
                     {hasError &&
-                        <p className="text-red-500 text-sm">El Documento de identidad y/o la contraseña no coinciden. Inténtalo
+                        <p className="text-red-500 text-sm">El Documento de identidad y/o la contraseña no coinciden.
+                            Inténtalo
                             de nuevo.</p>}
                     <NavLink to="/password-recovery"
                              className="text-secondary-color font-bold text-sm self-end underline">

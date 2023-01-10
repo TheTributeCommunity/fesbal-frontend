@@ -7,7 +7,8 @@ import PersonalDataItem from "../components/atom/PersonalDataItem";
 import usersMock from "../mocks/users.mock";
 import users from "../mocks/users.mock";
 import PersonalDataItemProps from "../types/PersonalDataItemProps";
-import FamilyMembersIcon from "../components/icons/FamilyMembersIcon";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUserGroup} from "@fortawesome/free-solid-svg-icons";
 
 const user = usersMock[0];
 const getPersonalData = (): PersonalDataItemProps[] => {
@@ -62,7 +63,7 @@ const ProfileScreen = () => {
                     ))}
                 </ul>
                 <div className="flex flex-row gap-2 items-center font-bold pl-2">
-                    <FamilyMembersIcon/>
+                    <FontAwesomeIcon icon={faUserGroup} className="text-primary-color"/>
                     Miembros de la unidad familiar
                 </div>
                 <ul className="flex flex-col gap-2 pl-2 bg-white rounded-md p-4">

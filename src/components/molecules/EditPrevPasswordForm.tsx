@@ -1,7 +1,8 @@
 import AppNextButton from "../atom/AppNextButton";
 import useEditPrevPassword from "../../hooks/useEditPrevPassword";
-import EyeShowPasswordIcon from "../icons/EyeShowPasswordIcon";
 import useShowPassword from "../../hooks/useShowPassword";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEyeSlash} from "@fortawesome/free-regular-svg-icons";
 
 const EditPrevPasswordForm = () => {
     const {password, onChange, hasError, onSubmit} = useEditPrevPassword();
@@ -26,7 +27,7 @@ const EditPrevPasswordForm = () => {
                             className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
-                            <EyeShowPasswordIcon/>
+                            <FontAwesomeIcon icon={faEyeSlash} className="text-primary-color"/>
                         </div>
                     </div>
                     {hasError &&

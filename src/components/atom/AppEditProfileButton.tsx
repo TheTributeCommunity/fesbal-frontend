@@ -1,10 +1,11 @@
-import EditProfileIcon from "../icons/EditProfileIcon";
 import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPen} from "@fortawesome/free-solid-svg-icons";
 
 const AppEditProfileButton = ({goTo}: { goTo: string }) => {
     return (
         <Link to={goTo}>
-            <EditProfileIcon/>
+            <FontAwesomeIcon icon={faPen} className="text-secondary-color"/>
         </Link>
     );
 };

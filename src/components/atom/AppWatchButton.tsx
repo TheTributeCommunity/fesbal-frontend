@@ -1,9 +1,10 @@
-import WatchIcon from "../icons/WatchIcon";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faClock} from "@fortawesome/free-regular-svg-icons";
 
 const AppWatchButton = () => {
     return (
         <button>
-            <WatchIcon/>
+            <FontAwesomeIcon icon={faClock} className="text-primary-color"/>
         </button>
     );
 };

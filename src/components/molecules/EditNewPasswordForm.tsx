@@ -1,11 +1,11 @@
 import AppNextButton from "../atom/AppNextButton";
-import useEditPrevPassword from "../../hooks/useEditPrevPassword";
-import EyeShowPasswordIcon from "../icons/EyeShowPasswordIcon";
 import useShowPassword from "../../hooks/useShowPassword";
 import useEditNewPassword from "../../hooks/useEditNewPassword";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEyeSlash} from "@fortawesome/free-regular-svg-icons";
 
 const EditPrevPasswordForm = () => {
-    const {password, onChange, hasError, onSubmit, passwordConfirm, onChangeConfirm } = useEditNewPassword()
+    const {password, onChange, hasError, onSubmit, passwordConfirm, onChangeConfirm} = useEditNewPassword()
     const {showPassword, toggleShowPassword} = useShowPassword();
     const {showPassword: showPassword2, toggleShowPassword: toggleShowPassword2} = useShowPassword();
 
@@ -28,7 +28,7 @@ const EditPrevPasswordForm = () => {
                             className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
-                            <EyeShowPasswordIcon/>
+                            <FontAwesomeIcon icon={faEyeSlash} className="text-primary-color"/>
                         </div>
                     </div>
                     {hasError &&
@@ -36,7 +36,8 @@ const EditPrevPasswordForm = () => {
                 </div>
                 <div className="flex flex-col gap-1.5">
                     {passwordConfirm.length > 0 &&
-                        <label htmlFor="password-confirm" className="text-primary-color">Confirmar la nueva contraseña</label>}
+                        <label htmlFor="password-confirm" className="text-primary-color">Confirmar la nueva
+                            contraseña</label>}
                     <div className="relative">
                         <input
                             type={showPassword2 ? "text" : "password"}
@@ -47,7 +48,7 @@ const EditPrevPasswordForm = () => {
                             className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-[#0F95CE]`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword2}>
-                            <EyeShowPasswordIcon/>
+                            <FontAwesomeIcon icon={faEyeSlash} className="text-primary-color"/>
                         </div>
                     </div>
                     {hasError &&
