@@ -3,7 +3,7 @@ import {faLocationDot} from "@fortawesome/free-solid-svg-icons";
 
 const LocationIcon = () => {
     return (
-        <FontAwesomeIcon icon={faLocationDot} className="text-primary-color"/>
+        <FontAwesomeIcon icon={faLocationDot} className="text-primary-color text-2xl" />
     );
 }
 

@@ -3,7 +3,7 @@ import {faClock} from "@fortawesome/free-regular-svg-icons";
 
 const WatchIcon = () => {
     return (
-        <FontAwesomeIcon icon={faClock} className="text-primary-color"/>
+        <FontAwesomeIcon icon={faClock} className="text-primary-color text-2xl" />
     );
 }
 

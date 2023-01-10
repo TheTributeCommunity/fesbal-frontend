@@ -3,7 +3,7 @@ import {faBell} from "@fortawesome/free-regular-svg-icons";
 
 const BellIcon = () => {
     return (
-        <FontAwesomeIcon icon={faBell} className="text-primary-color"/>
+        <FontAwesomeIcon icon={faBell} className="text-primary-color text-2xl" />
     );
 }
 

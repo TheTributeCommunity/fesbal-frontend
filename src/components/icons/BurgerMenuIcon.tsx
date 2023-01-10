@@ -3,8 +3,9 @@ import {faBars} from "@fortawesome/free-solid-svg-icons";
 
 const BurgerMenuIcon = () => {
     return (
-        <FontAwesomeIcon icon={faBars} className="text-secondary-color"/>
+        <FontAwesomeIcon icon={faBars} className="text-secondary-color text-xl"/>
     );
 }
 
 export default BurgerMenuIcon;
+

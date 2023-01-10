@@ -3,7 +3,7 @@ import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 const LeftArrowIcon = () => {
     return (
-        <FontAwesomeIcon icon={faArrowLeft} className="text-secondary-color"/>
+        <FontAwesomeIcon icon={faArrowLeft} className="text-secondary-color text-xl"/>
     );
 }
 

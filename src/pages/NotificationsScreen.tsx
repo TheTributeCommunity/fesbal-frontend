@@ -31,7 +31,7 @@ const NotificationsScreen = () => {
                 </ul>
             </div>
             <nav
-                className="flex flex-row justify-between items-center self-center w-full md:w-1/2 lg:w-1/3 bg-white rounded-xl p-4 sticky bottom-0">
+                className="flex flex-row justify-between items-center self-center w-full md:w-1/2 lg:w-1/3 bg-white rounded-xl p-4 sticky bottom-0 px-10">
                 <AppWatchButton/>
                 <AppLocationButton/>
                 <AppBellButton/>
