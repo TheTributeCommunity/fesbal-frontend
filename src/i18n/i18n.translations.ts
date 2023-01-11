@@ -1,9 +1,9 @@
 import {namespaces} from "./i18n.constants";
-import {editEmailEn, editEmailEs} from "./pages/profileEditEmail";
-import {editNewPasswordEn, editNewPasswordEs} from "./pages/profileEditNewPassword";
-import {editPrevPasswordEn, editPrevPasswordEs} from "./pages/profileEditPrevPassword";
+import {loginPasswordRecoveryEn, loginPasswordRecoveryEs} from "./pages/loginPasswordRecovery";
 import {loginScreenEn, loginScreenEs} from "./pages/loginScreen";
-import {passwordRecoveryEn, passwordRecoveryEs} from "./pages/loginPasswordRecovery";
+import {profileEditEmailEn, profileEditEmailEs} from "./pages/profileEditEmail";
+import {profileEditNewPasswordEn, profileEditNewPasswordEs} from "./pages/profileEditNewPassword";
+import {profileEditPrevPasswordEn, profileEditPrevPasswordEs} from "./pages/profileEditPrevPassword";
 import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
 import {registerIDEn, registerIDEs} from "./pages/registerID";
 import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
@@ -15,13 +15,13 @@ export const es = {
             cancel: "Cancelar",
         },
     },
-    [namespaces.pages.loginPasswordRecovery]: passwordRecoveryEs,
+    [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEs,
     [namespaces.pages.loginScreen]: loginScreenEs,
     [namespaces.pages.notifications]: {title: "Notificaciones"},
     [namespaces.pages.pickupPoint]: {title: "Punto de recogida", address: "Dirección"},
-    [namespaces.pages.profileEditEmail]: editEmailEs,
-    [namespaces.pages.profileEditNewPassword]: editNewPasswordEs,
-    [namespaces.pages.profileEditPrevPassword]: editPrevPasswordEs,
+    [namespaces.pages.profileEditEmail]: profileEditEmailEs,
+    [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEs,
+    [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEs,
     [namespaces.pages.profileScreen]: profileScreenEs,
     [namespaces.pages.registerID]: registerIDEs,
     [namespaces.pages.registerLegal]: registerLegalEs,
@@ -36,13 +36,13 @@ export const en = {
             cancel: "Cancel",
         },
     },
-    [namespaces.pages.loginPasswordRecovery]: passwordRecoveryEn,
+    [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEn,
     [namespaces.pages.loginScreen]: loginScreenEn,
     [namespaces.pages.notifications]: {title: "Notifications"},
     [namespaces.pages.pickupPoint]: {title: "Pickup point", address: "Address"},
-    [namespaces.pages.profileEditEmail]: editEmailEn,
-    [namespaces.pages.profileEditNewPassword]: editNewPasswordEn,
-    [namespaces.pages.profileEditPrevPassword]: editPrevPasswordEn,
+    [namespaces.pages.profileEditEmail]: profileEditEmailEn,
+    [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEn,
+    [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEn,
     [namespaces.pages.profileScreen]: profileScreenEn,
     [namespaces.pages.registerID]: registerIDEn,
     [namespaces.pages.registerLegal]: registerLegalEn,
