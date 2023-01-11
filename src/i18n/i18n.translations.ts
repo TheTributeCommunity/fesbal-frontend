@@ -7,6 +7,7 @@ import {profileEditPrevPasswordEn, profileEditPrevPasswordEs} from "./pages/prof
 import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
 import {registerIDEn, registerIDEs} from "./pages/registerID";
 import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
+import {registrationNameEn, registrationNameEs} from "./pages/registrationName";
 
 export const es = {
     [namespaces.common]: {
@@ -26,6 +27,7 @@ export const es = {
     [namespaces.pages.registerID]: registerIDEs,
     [namespaces.pages.registerLegal]: registerLegalEs,
     [namespaces.pages.welcomeScreen]: {login: "Iniciar sesión", register: "Registrarse"},
+    [namespaces.pages.registrationName]: registrationNameEs,
 
 };
 
@@ -47,4 +49,5 @@ export const en = {
     [namespaces.pages.registerID]: registerIDEn,
     [namespaces.pages.registerLegal]: registerLegalEn,
     [namespaces.pages.welcomeScreen]: {login: "Login", register: "Register"},
+    [namespaces.pages.registrationName]: registrationNameEn,
 };

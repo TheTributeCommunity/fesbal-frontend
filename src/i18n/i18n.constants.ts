@@ -11,6 +11,8 @@ export const namespaces = {
         registerID: "pages.registerID",
         registerLegal: "pages.registerLegal",
         welcomeScreen: "pages.welcomeScreen",
+        registrationUserID: "pages.registrationUserID",
+        registrationName: "pages.registrationName",
     },
     common: "common",
 };

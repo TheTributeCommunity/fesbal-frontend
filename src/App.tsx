@@ -11,6 +11,9 @@ import ProfileScreen from "./pages/ProfileScreen";
 import RegisterID from "./pages/RegisterID";
 import RegisterLegal from "./pages/RegisterLegal";
 import WelcomeScreen from "./pages/WelcomeScreen";
+import EditNewPassword from "./pages/EditNewPassword";
+import RegistrationUserID from "./pages/RegistrationUserID";
+import RegistrationName from "./pages/RegistrationName";
 
 function App() {
     return (
@@ -29,6 +32,10 @@ function App() {
                 <Route path="/register" element={<RegisterLegal/>}/>
                 <Route path="/register/id" element={<RegisterID/>}/>
                 <Route path="/welcome" element={<WelcomeScreen/>}/>
+                <Route path="/profile/edit-new-password" element={<EditNewPassword/>}/>
+                <Route path="/registration/user-id" element={<RegistrationUserID/>}/>
+                <Route path="/registration/name" element={<RegistrationName/>}/>
+                <Route path="*" element={<LoginScreen/>}/>
             </Routes>
         </Router>
     );
