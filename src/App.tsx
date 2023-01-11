@@ -1,30 +1,33 @@
-import { useState } from 'react';
-import './App.css';
-import reactLogo from './assets/react.svg';
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import LoginScreen from "./pages/LoginScreen";
+import PasswordRecovery from "./pages/PasswordRecovery";
+import PickupPoint from "./pages/PickupPoint";
+import NotificationsScreen from "./pages/NotificationsScreen";
+import NotificationDetails from "./pages/NotificationDetails";
+import EditEmail from "./pages/EditEmail";
+import EditPrevPassword from "./pages/EditPrevPassword";
+import ProfileScreen from "./pages/ProfileScreen";
+import EditNewPassword from "./pages/EditNewPassword";
+import RegistrationUserID from "./pages/RegistrationUserID";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/login" element={<LoginScreen/>}/>
+                <Route path="/password-recovery" element={<PasswordRecovery/>}/>
+                <Route path="/pickup-point" element={<PickupPoint/>}/>
+                <Route path="/notifications" element={<NotificationsScreen/>}/>
+                <Route path="/notifications/:id" element={<NotificationDetails/>}/>
+                <Route path="/profile/*" element={<ProfileScreen/>}/>
+                <Route path="/profile/edit-email" element={<EditEmail/>}/>
+                <Route path="/profile/edit-prev-password" element={<EditPrevPassword/>}/>
+                <Route path="/profile/edit-new-password" element={<EditNewPassword/>}/>
+                <Route path="/registration/user-id" element={<RegistrationUserID/>}/>
+                <Route path="*" element={<LoginScreen/>}/>
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;

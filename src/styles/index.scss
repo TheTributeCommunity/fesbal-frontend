@@ -1,0 +1,61 @@
+@import "variables";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .page-bg {
+    background: $page-bg;
+  }
+
+  .app-shadow {
+    box-shadow: $shadow-color;
+  }
+
+  .text-primary-color {
+    color: $primary-color;
+  }
+
+  .bg-primary-color {
+    background-color: $primary-color;
+  }
+
+  .border-primary-color {
+    border-color: $primary-color;
+  }
+
+  .placeholder-primary-color {
+    &::placeholder {
+      color: $primary-color;
+    }
+  }
+
+  .text-secondary-color {
+    color: $secondary-color;
+  }
+
+  .bg-terciary-color {
+    background-color: $terciary-color;
+  }
+
+  .bg-warning-color {
+    background-color: $warning-color;
+  }
+
+  .hover-warning-color:hover {
+    background-color: $hover-warning-color;
+  }
+
+  .focus-warning-color:focus {
+    background-color: $focus-warning-color;
+  }
+
+  .hover-primary-color:hover {
+    background-color: $hover-primary-color;
+  }
+
+  .focus-primary-color:focus {
+    background-color: $focus-primary-color;
+  }
+}
