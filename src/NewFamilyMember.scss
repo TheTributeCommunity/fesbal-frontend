@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-div.Header {
+.header {
   width: 100%;
   height: 11%;
   display: flex;
@@ -15,7 +15,7 @@ div.Header {
   justify-content: left;
 }
 
-h2.Title {
+.title {
   // display: flex;
   font-family: 'Roboto Flex';
   font-style: normal;
@@ -28,7 +28,7 @@ h2.Title {
   margin-left: auto;
 }
 
-div.Header > button {
+.header > button {
   justify-self: flex-start;
   background-color: #FFFFFF;
   color: black;
@@ -37,7 +37,7 @@ div.Header > button {
   border-radius: 50%;
 }
 
-div.NewFamilyMember {
+.new-family-member {
   background: linear-gradient(169.42deg, #FFFFFF 10.03%, #E8F8FF 35.86%, #E8F8FF 68.88%, #FFFFFF 89.63%);
   // border: 1px solid #002E5D;
   // border-radius: 40px;
@@ -60,7 +60,7 @@ div.NewFamilyMember {
   align-items: center;
 }
 
-div.DocumentType {
+.document-type {
   width: 100%;
   height: 5rem;
   display: flex;
@@ -70,16 +70,16 @@ div.DocumentType {
   align-items: center;
 }
 
-div.DocumentType > div.InputWrapper {
+.document-type > .input-wrapper {
   width: 45%;
   // height: 100%;
 }
 
-// div.DocumentType > div.InputWrapper > Input {
+// div.document-type > div.input-wrapper > Input {
 //   height: 3rem;
 // }
 
-div.DocumentType > div.InputWrapper > Select {
+Select.input {
   width: 100%;
   height: 3rem;
 
@@ -102,7 +102,7 @@ div.DocumentType > div.InputWrapper > Select {
   color: #0F95CE;
 }
 
-div.InputWrapper {
+.input-wrapper {
   width: 100%;
   height: 5rem;
 
@@ -110,7 +110,7 @@ div.InputWrapper {
   flex-direction: column;
 }
 
-a.InputName {
+.input-name {
   font-family: 'Roboto Flex';
   font-style: normal;
   color: rgba(15, 149, 206, 1);
@@ -146,7 +146,7 @@ Input {
   color: #0F95CE;
 }
 
-button.AddRelative {
+.add-relative {
   width: 100%;
   height: 4em;
 
