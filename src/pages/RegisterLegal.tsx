@@ -1,8 +1,8 @@
 import {useTranslation} from "react-i18next";
-import {namespaces} from "../i18n/i18n.constants";
-import LogoFesbalIcon from "../components/icons/LogoFesbalIcon";
-import AppLinkButton from "../components/atom/AppLinkButton";
 import AppBackButton from "../components/atom/AppBackButton";
+import AppLinkButton from "../components/atom/AppLinkButton";
+import LogoFesbalIcon from "../components/icons/LogoFesbalIcon";
+import {namespaces} from "../i18n/i18n.constants";
 
 const RegisterLegal = () => {
     const {t} = useTranslation(namespaces.pages.registerLegal);
@@ -22,7 +22,7 @@ const RegisterLegal = () => {
                     <p className="font-text">{t("description")}</p>
                 </div>
                 <div>
-                    <p className="font-small-link">{t("subtitle")}</p>
+                    <p className="font-label">{t("subtitle")}</p>
                     <a href="https://www.theagilemonkeys.com/" target="_blank">
                         <p className="underline text-primary-color font-small-link">{t("terms")}</p>
                     </a>

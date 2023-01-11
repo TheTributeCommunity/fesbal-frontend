@@ -1,12 +1,12 @@
 export const namespaces = {
     pages: {
-        editEmail: "pages.profile.editEmail",
-        editNewPassword: "pages.profile.editNewPassword",
-        editPrevPassword: "pages.profile.editPrevPassword",
+        loginPasswordRecovery: "pages.loginPasswordRecovery",
         loginScreen: "pages.loginScreen",
         notifications: "pages.notifications",
-        passwordRecovery: "pages.passwordRecovery",
         pickupPoint: "pages.pickupPoint",
+        profileEditEmail: "pages.profile.profileEditEmail",
+        profileEditNewPassword: "pages.profile.profileEditNewPassword",
+        profileEditPrevPassword: "pages.profile.profileEditPrevPassword",
         profileScreen: "pages.profileScreen",
         registerID: "pages.registerID",
         registerLegal: "pages.registerLegal",
