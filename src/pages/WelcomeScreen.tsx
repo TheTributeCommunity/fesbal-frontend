@@ -14,8 +14,8 @@ const WelcomeScreen = () => {
             </div>
             <div className="flex h-3/5 place-items-end self-center md:w-1/2 lg:w-1/3">
                 <div className="grid w-full grid-cols-2 gap-2 lg:gap-4">
-                    <AppLinkButton title={translate("register")} toGo="/register" bgColor="bg-secondary-color"/>
-                    <AppLinkButton title={translate("login")} toGo="/login"/>
+                    <AppLinkButton title={translate("register")} link="/register" bgColor="bg-secondary-color"/>
+                    <AppLinkButton title={translate("login")} link="/login"/>
                 </div>
             </div>
         </div>

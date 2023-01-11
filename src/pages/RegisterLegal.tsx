@@ -27,7 +27,7 @@ const RegisterLegal = () => {
                         <p className="underline text-primary-color font-small-link">{t("terms")}</p>
                     </a>
                 </div>
-                <AppLinkButton title={t("next")} toGo="/register/id"/>
+                <AppLinkButton title={t("next")} link="/register/id"/>
             </div>
         </div>
     );
