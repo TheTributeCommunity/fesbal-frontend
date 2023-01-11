@@ -1,6 +1,6 @@
-import {validateDNI, validateNIE} from "../helpers";
 import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {validateDNI, validateNIE} from "../helpers";
 
 const useRegisterIDForm = () => {
     const [selectedOption, setSelectedOption] = useState<string>("");

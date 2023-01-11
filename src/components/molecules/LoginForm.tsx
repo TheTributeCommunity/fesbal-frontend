@@ -1,10 +1,10 @@
-import {NavLink} from "react-router-dom";
-import useLoginForm from "../../hooks/useLoginForm";
+import {Link} from "react-router-dom";
 import AppNextButton from "../atom/AppNextButton";
-import useShowPassword from "../../hooks/useShowPassword";
 import EyeHidePasswordIcon from "../icons/EyeHidePasswordIcon";
-import {useTranslation} from "react-i18next";
+import useLoginForm from "../../hooks/useLoginForm";
+import useShowPassword from "../../hooks/useShowPassword";
 import {namespaces} from "../../i18n/i18n.constants";
+import {useTranslation} from "react-i18next";
 
 const LoginForm = () => {
     const {user, onChange, hasError, onSubmit} = useLoginForm(
@@ -19,23 +19,23 @@ const LoginForm = () => {
 
     return (
         <form noValidate onSubmit={onSubmit}
-              className="flex flex-col justify-between h-full mt-8 self-center md:w-1/2 lg:w-1/3">
+              className="mt-8 flex h-full flex-col justify-between self-center md:w-1/2 lg:w-1/3">
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {user.id.length > 0 &&
-                        <label htmlFor="id" className="text-primary-color">{translate("id")}</label>}
+                        <label htmlFor="id" className="text-primary-color font-label">{t("id")}</label>}
                     <input
                         type="text"
                         name="id"
                         value={user.id}
                         onChange={onChange}
                         placeholder={translate("id") as string}
-                        className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color`}
+                        className={`${hasError ? 'text-warning-color' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color font-input`}
                     />
                 </div>
                 <div className="flex flex-col gap-1.5">
                     {user.password.length > 0 &&
-                        <label htmlFor="password" className="text-primary-color">{translate("password")}</label>}
+                        <label htmlFor="password" className="text-primary-color font-label">{translate("password")}</label>}
                     <div className="relative">
                         <input
                             type={showPassword ? "text" : "password"}
@@ -43,22 +43,22 @@ const LoginForm = () => {
                             value={user.password}
                             onChange={onChange}
                             placeholder={translate("password") as string}
-                            className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color`}
+                            className={`${hasError ? 'text-warning-color' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color font-input`}
                         />
-                        <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
+                        <div className="absolute top-6 right-4 cursor-pointer" onClick={toggleShowPassword}>
                             <EyeHidePasswordIcon/>
                         </div>
                     </div>
                     {hasError &&
-                        <p className="text-red-500 text-sm">{translate("error")}</p>}
-                    <NavLink to="/password-recovery"
-                             className="text-secondary-color font-bold text-sm self-end underline">
+                        <p className="text-warning-color font-label">{translate("error")}</p>}
+                    <Link to="/login/password-recovery"
+                          className="self-end underline text-secondary-color font-small-link">
                         {translate("forgotPassword")}
-                    </NavLink>
+                    </Link>
                 </div>
             </div>
             <div className="flex flex-col gap-4">
-                <a href="#" className="text-secondary-color font-bold text-sm self-center underline text-center px-6">
+                <a href="#" className="self-center px-6 text-center underline text-secondary-color font-small-link">
                     {translate("credentials")}
                 </a>
                 <AppNextButton disabled={buttonDisabled} title={translate("next")}/>

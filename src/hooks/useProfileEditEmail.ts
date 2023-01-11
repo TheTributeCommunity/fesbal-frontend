@@ -1,14 +1,14 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import {useNavigate} from 'react-router-dom';
+import {useTranslation} from "react-i18next";
 import Swal from 'sweetalert2'
 import usersMock from "../mocks/users.mock";
-import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
 
-const useEditEmail = <T extends string>(initialState: T) => {
+const useProfileEditEmail = <T extends string>(initialState: T) => {
     const [email, setEmail] = useState<T>(initialState);
     const [hasError, setHasError] = useState<boolean>(false);
-    const {t: translate} = useTranslation(namespaces.pages.editEmail);
+    const {t: translate} = useTranslation(namespaces.pages.profileEditEmail);
 
 
     const navigate = useNavigate();
@@ -51,10 +51,10 @@ const useEditEmail = <T extends string>(initialState: T) => {
             customClass: {
                 popup: "rounded-md",
                 actions: "flex gap-2 w-full",
-                title: "text-2xl font-bold",
-                confirmButton: "bg-warning-color hover-warning-color text-white rounded-xl font-medium w-full" +
+                title: "font-big-title",
+                confirmButton: "bg-warning-color hover-warning-color text-white rounded-xl font-button w-full" +
                     " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-warning-color h-20",
-                cancelButton: "bg-primary-color hover-primary-color text-white rounded-xl font-medium w-full" +
+                cancelButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
                     " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-20",
             },
             width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
@@ -72,8 +72,8 @@ const useEditEmail = <T extends string>(initialState: T) => {
                     customClass: {
                         popup: "rounded-md",
                         actions: "w-full",
-                        title: "text-2xl font-bold",
-                        confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-medium w-full" +
+                        title: "text-big-title",
+                        confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
                             " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-20",
                     },
                     width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
@@ -89,4 +89,4 @@ const useEditEmail = <T extends string>(initialState: T) => {
         email
     }
 }
-export default useEditEmail;
+export default useProfileEditEmail;

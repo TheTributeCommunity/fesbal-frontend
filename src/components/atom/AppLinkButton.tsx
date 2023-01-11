@@ -6,7 +6,7 @@ const AppLinkButton: FC<ButtonProps> = ({bgColor = 'bg-primary-color', title, to
 
     return (
         <Link to={toGo as string}
-              className={`rounded-2xl flex items-center justify-center py-5 text-white font-bold ${bgColor} px-2`}>
+              className={`rounded-2xl flex items-center justify-center py-5 text-white font-button ${bgColor} px-2`}>
             <p>
                 {title}
             </p>
