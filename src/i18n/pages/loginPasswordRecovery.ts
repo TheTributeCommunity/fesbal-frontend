@@ -1,4 +1,4 @@
-export const passwordRecoveryEs = {
+export const loginPasswordRecoveryEs = {
     title: "Recuperar contraseña",
     description: "Introduce tu email, te enviaremos un enlace para recuperar tu contraseña",
     email: "Email",
@@ -13,7 +13,7 @@ export const passwordRecoveryEs = {
 
 }
 
-export const passwordRecoveryEn = {
+export const loginPasswordRecoveryEn = {
     title: "Recover password",
     description: "Enter your email, we will send you a link to recover your password",
     email: "Email",
