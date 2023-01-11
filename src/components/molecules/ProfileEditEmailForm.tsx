@@ -24,7 +24,7 @@ const ProfileEditEmailForm = () => {
                         className={`${hasError ? 'text-warning-color' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color font-input`}
                     />
                     {hasError &&
-                        <p className="text-warning-color font-label">{t('emailError')}</p>}
+                        <p className="text-warning-color font-label">{t('error')}</p>}
                 </div>
             </div>
             <AppNextButton disabled={buttonDisabled} title={t('next')}/>
