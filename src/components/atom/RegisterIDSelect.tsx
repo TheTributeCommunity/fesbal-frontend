@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
-import useUserIDSelect from "../../hooks/useUserIDSelect";
+import useRegisterIDSelect from "../../hooks/useRegisterIDSelect";
 import SelectProps from "../../types/SelectProps";
 import DropDownIcon from "../icons/DropDownIcon";
 
 
 const IdentificationSelect: FC<SelectProps> = ({options, value, onChange}) => {
-    const {onOptionClick, openDropdown, toggleDropdown, selectedOption} = useUserIDSelect({value, onChange});
+    const {onOptionClick, openDropdown, toggleDropdown, selectedOption} = useRegisterIDSelect({value, onChange});
     return (
         <div className="relative rounded-md text-primary-color bg-white">
             <div onClick={toggleDropdown} className="cursor-pointer">
