@@ -9,6 +9,7 @@ import EditPrevPassword from "./pages/EditPrevPassword";
 import ProfileScreen from "./pages/ProfileScreen";
 import EditNewPassword from "./pages/EditNewPassword";
 import RegistrationUserID from "./pages/RegistrationUserID";
+import WelcomeScreen from "./pages/WelcomeScreen";
 
 function App() {
     return (
@@ -24,7 +25,8 @@ function App() {
                 <Route path="/profile/edit-prev-password" element={<EditPrevPassword/>}/>
                 <Route path="/profile/edit-new-password" element={<EditNewPassword/>}/>
                 <Route path="/registration/user-id" element={<RegistrationUserID/>}/>
-                <Route path="*" element={<LoginScreen/>}/>
+                <Route path="/welcome" element={<WelcomeScreen/>}/>
+                <Route path="*" element={<WelcomeScreen/>}/>
             </Routes>
         </Router>
     );

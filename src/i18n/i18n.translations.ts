@@ -23,6 +23,7 @@ export const es = {
     [namespaces.pages.pickupPoint]: {title: "Punto de recogida", address: "Dirección"},
     [namespaces.pages.profileScreen]: profileScreenEs,
     [namespaces.pages.registrationUserID]: registrationUserIDEs,
+    [namespaces.pages.welcomeScreen]: {login: "Iniciar sesión", register: "Registrarse"},
 
 };
 
@@ -42,4 +43,5 @@ export const en = {
     [namespaces.pages.pickupPoint]: {title: "Pickup point", address: "Address"},
     [namespaces.pages.profileScreen]: profileScreenEn,
     [namespaces.pages.registrationUserID]: registrationUserIDEn,
+    [namespaces.pages.welcomeScreen]: {login: "Login", register: "Register"},
 };

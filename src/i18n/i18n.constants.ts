@@ -9,6 +9,7 @@ export const namespaces = {
         pickupPoint: "pages.pickupPoint",
         profileScreen: "pages.profileScreen",
         registrationUserID: "pages.registrationUserID",
+        welcomeScreen: "pages.welcomeScreen",
     },
     common: "common",
 };
