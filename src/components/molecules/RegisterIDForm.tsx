@@ -1,12 +1,12 @@
 import UserIDSelect from "../atom/RegisterIDSelect";
 import AppNextButton from "../atom/AppNextButton";
-import useUserIDForm from "../../hooks/useUserIDForm";
+import useRegisterIDForm from "../../hooks/useRegisterIDForm";
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../../i18n/i18n.constants";
 
 const RegisterIDForm = () => {
-    const {selectedOption, userID, onSubmit, validateUserID, onUserIDChange, onSelectedOptionChange} = useUserIDForm();
-    const {t} = useTranslation(namespaces.pages.registrationUserID);
+    const {selectedOption, userID, onSubmit, validateUserID, onUserIDChange, onSelectedOptionChange} = useRegisterIDForm();
+    const {t} = useTranslation(namespaces.pages.registerID);
 
     const selectOptions: string[] = ['DNI', 'NIE'];
 

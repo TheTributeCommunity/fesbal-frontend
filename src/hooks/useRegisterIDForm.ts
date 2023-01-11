@@ -2,7 +2,7 @@ import {validateDNI, validateNIE} from "../helpers";
 import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-const useUserIDForm = () => {
+const useRegisterIDForm = () => {
     const [selectedOption, setSelectedOption] = useState<string>("");
     const [userID, setUserID] = useState<string>('');
 
@@ -34,4 +34,4 @@ const useUserIDForm = () => {
     }
 }
 
-export default useUserIDForm;
+export default useRegisterIDForm;
