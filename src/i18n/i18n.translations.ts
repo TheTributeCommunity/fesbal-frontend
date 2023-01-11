@@ -5,7 +5,7 @@ import {editPrevPasswordEn, editPrevPasswordEs} from "./pages/editPrevPassword";
 import {loginScreenEn, loginScreenEs} from "./pages/loginScreen";
 import {passwordRecoveryEn, passwordRecoveryEs} from "./pages/passwordRecovery";
 import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
-import {registrationUserIDEn, registrationUserIDEs} from "./pages/registrationUserID";
+import {registerIDEn, registerIDEs} from "./pages/registerID";
 
 export const es = {
     [namespaces.common]: {
@@ -22,7 +22,7 @@ export const es = {
     [namespaces.pages.passwordRecovery]: passwordRecoveryEs,
     [namespaces.pages.pickupPoint]: {title: "Punto de recogida", address: "Dirección"},
     [namespaces.pages.profileScreen]: profileScreenEs,
-    [namespaces.pages.registrationUserID]: registrationUserIDEs,
+    [namespaces.pages.registerID]: registerIDEs,
     [namespaces.pages.welcomeScreen]: {login: "Iniciar sesión", register: "Registrarse"},
 
 };
@@ -42,6 +42,6 @@ export const en = {
     [namespaces.pages.passwordRecovery]: passwordRecoveryEn,
     [namespaces.pages.pickupPoint]: {title: "Pickup point", address: "Address"},
     [namespaces.pages.profileScreen]: profileScreenEn,
-    [namespaces.pages.registrationUserID]: registrationUserIDEn,
+    [namespaces.pages.registerID]: registerIDEn,
     [namespaces.pages.welcomeScreen]: {login: "Login", register: "Register"},
 };

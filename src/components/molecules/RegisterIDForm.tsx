@@ -1,10 +1,10 @@
-import UserIDSelect from "../atom/UserIDSelect";
+import UserIDSelect from "../atom/RegisterIDSelect";
 import AppNextButton from "../atom/AppNextButton";
 import useUserIDForm from "../../hooks/useUserIDForm";
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../../i18n/i18n.constants";
 
-const UserIDForm = () => {
+const RegisterIDForm = () => {
     const {selectedOption, userID, onSubmit, validateUserID, onUserIDChange, onSelectedOptionChange} = useUserIDForm();
     const {t} = useTranslation(namespaces.pages.registrationUserID);
 
@@ -31,4 +31,4 @@ const UserIDForm = () => {
     );
 }
 
-export default UserIDForm;
+export default RegisterIDForm;
