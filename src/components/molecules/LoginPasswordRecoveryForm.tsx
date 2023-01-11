@@ -27,7 +27,7 @@ const LoginPasswordRecoveryForm = () => {
                     />
                     {hasError &&
                         <p className="text-warning-color font-label">{translate("error")}</p>}
-                    <Link to="/password-recovery" className="self-end underline text-secondary-color font-small-link">
+                    <Link to="/login/password-recovery" className="self-end underline text-secondary-color font-small-link">
                         {translate("forgot")}
                     </Link>
                 </div>
