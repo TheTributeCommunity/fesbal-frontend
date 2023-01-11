@@ -8,7 +8,7 @@ export const namespaces = {
         passwordRecovery: "pages.passwordRecovery",
         pickupPoint: "pages.pickupPoint",
         profileScreen: "pages.profileScreen",
-        registrationUserID: "pages.registrationUserID",
+        registerID: "pages.registerID",
         welcomeScreen: "pages.welcomeScreen",
     },
     common: "common",

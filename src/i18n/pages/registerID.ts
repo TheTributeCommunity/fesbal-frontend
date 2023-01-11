@@ -1,4 +1,4 @@
-export const registrationUserIDEs = {
+export const registerIDEs = {
     title: "Documento de identidad",
     description: "Por favor, seleccione el tipo de documento de identidad y escriba el número del documento",
     type: "Tipo",
@@ -6,7 +6,7 @@ export const registrationUserIDEs = {
     next: "Continuar",
 }
 
-export const registrationUserIDEn = {
+export const registerIDEn = {
     title: "Identity document",
     description: "Please, select the type of identity document and write the document number",
     type: "Type",

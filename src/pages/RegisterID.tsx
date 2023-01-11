@@ -1,9 +1,9 @@
 import AppBackButton from "../components/atom/AppBackButton";
-import UserIDForm from "../components/molecules/UserIDForm";
+import RegisterIDForm from "../components/molecules/RegisterIDForm";
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
 
-const RegistrationUserID = () => {
+const RegisterID = () => {
     const {t: translate} = useTranslation(namespaces.pages.registrationUserID);
 
     return (
@@ -15,9 +15,9 @@ const RegistrationUserID = () => {
                     <p>{translate("description")}</p>
                 </div>
             </div>
-            <UserIDForm/>
+            <RegisterIDForm/>
         </div>
     );
 }
 
-export default RegistrationUserID;
+export default RegisterID;
