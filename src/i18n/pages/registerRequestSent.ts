@@ -1,5 +1,5 @@
-export const profileScreenEs = {
-    title: "Datos personales",
+export const registerRequestSentEs = {
+    title: 'Solicitud enviada',
     fullName: "Nombre y apellidos",
     id: "Documento de identidad",
     birthDate: "Fecha de nacimiento",
@@ -7,11 +7,11 @@ export const profileScreenEs = {
     phone: "Teléfono",
     password: "Contraseña",
     familyMembers: "Miembros de la unidad familiar",
-    noFamilyMembers: "No hay miembros de la unidad familiar",
-}
+    next: 'Cerrar aplicación'
+};
 
-export const profileScreenEn = {
-    title: "Personal data",
+export const registerRequestSentEn = {
+    title: 'Request sent',
     fullName: "Full name",
     id: "Identity document",
     birthDate: "Birth date",
@@ -19,5 +19,5 @@ export const profileScreenEn = {
     phone: "Phone",
     password: "Password",
     familyMembers: "Family members",
-    noFamilyMembers: "No family members",
+    next: 'Close application'
 }

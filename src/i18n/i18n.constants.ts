@@ -11,6 +11,7 @@ export const namespaces = {
         profileScreen: "pages.profileScreen",
         registerID: "pages.registerID",
         registerLegal: "pages.registerLegal",
+        registerRequestSent: "pages.registerRequestSent",
         welcomeScreen: "pages.welcomeScreen",
     },
     common: "common",

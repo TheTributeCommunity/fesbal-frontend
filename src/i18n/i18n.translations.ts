@@ -8,6 +8,8 @@ import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
 import {registerIDEn, registerIDEs} from "./pages/registerID";
 import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
 import {menuDeleteAccountEn, menuDeleteAccountEs} from "./pages/menuDeleteAccount";
+import registerRequestSent from "../pages/RegisterRequestSent";
+import {registerRequestSentEn, registerRequestSentEs} from "./pages/registerRequestSent";
 
 export const es = {
     [namespaces.common]: {
@@ -27,6 +29,7 @@ export const es = {
     [namespaces.pages.profileScreen]: profileScreenEs,
     [namespaces.pages.registerID]: registerIDEs,
     [namespaces.pages.registerLegal]: registerLegalEs,
+    [namespaces.pages.registerRequestSent]: registerRequestSentEs,
     [namespaces.pages.welcomeScreen]: {login: "Iniciar sesión", register: "Registrarse"},
 
 };
@@ -49,5 +52,6 @@ export const en = {
     [namespaces.pages.profileScreen]: profileScreenEn,
     [namespaces.pages.registerID]: registerIDEn,
     [namespaces.pages.registerLegal]: registerLegalEn,
+    [namespaces.pages.registerRequestSent]: registerRequestSentEn,
     [namespaces.pages.welcomeScreen]: {login: "Login", register: "Register"},
 };

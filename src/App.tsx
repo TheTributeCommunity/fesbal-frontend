@@ -11,6 +11,7 @@ import ProfileScreen from "./pages/ProfileScreen";
 import RegisterID from "./pages/RegisterID";
 import RegisterLegal from "./pages/RegisterLegal";
 import WelcomeScreen from "./pages/WelcomeScreen";
+import RegisterRequestSent from "./pages/RegisterRequestSent";
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/profile/edit-prev-password" element={<ProfileEditPrevPassword/>}/>
                 <Route path="/register" element={<RegisterLegal/>}/>
                 <Route path="/register/id" element={<RegisterID/>}/>
+                <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path="/welcome" element={<WelcomeScreen/>}/>
             </Routes>
         </Router>
