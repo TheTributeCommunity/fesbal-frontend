@@ -54,8 +54,8 @@ const RegisterRequestSent = () => {
             </div>
             <div
                 className="flex h-3/5 flex-col justify-between self-center whitespace-pre-line rounded-lg bg-white p-4 md:w-1/2 md:p-8 lg:w-1/3 w-full">
+                <RequestSentIcon/>
                 <div className="flex flex-col justify-center items-center">
-                    <RequestSentIcon/>
                     <h1 className="mb-5 font-big-title">{t("title")}</h1>
                     <ul className="flex flex-col gap-0.5">
                         {getPersonalData().map((item, index) => (
