@@ -7,6 +7,7 @@ import {profileEditPrevPasswordEn, profileEditPrevPasswordEs} from "./pages/prof
 import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
 import {registerIDEn, registerIDEs} from "./pages/registerID";
 import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
+import {menuDeleteAccountEn, menuDeleteAccountEs} from "./pages/menuDeleteAccount";
 
 export const es = {
     [namespaces.common]: {
@@ -17,6 +18,7 @@ export const es = {
     },
     [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEs,
     [namespaces.pages.loginScreen]: loginScreenEs,
+    [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEs,
     [namespaces.pages.notifications]: {title: "Notificaciones"},
     [namespaces.pages.pickupPoint]: {title: "Punto de recogida", address: "Dirección"},
     [namespaces.pages.profileEditEmail]: profileEditEmailEs,
@@ -38,6 +40,7 @@ export const en = {
     },
     [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEn,
     [namespaces.pages.loginScreen]: loginScreenEn,
+    [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEn,
     [namespaces.pages.notifications]: {title: "Notifications"},
     [namespaces.pages.pickupPoint]: {title: "Pickup point", address: "Address"},
     [namespaces.pages.profileEditEmail]: profileEditEmailEn,

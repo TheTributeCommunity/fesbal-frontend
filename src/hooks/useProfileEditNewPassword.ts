@@ -33,7 +33,9 @@ const useProfileEditNewPassword = () => {
             iconColor: '#EB5757',
             buttonsStyling: false,
             position: 'bottom',
+            reverseButtons: true,
             padding: '1rem',
+            focusCancel: true,
             customClass: {
                 popup: "rounded-md",
                 actions: "flex gap-2 w-full",
