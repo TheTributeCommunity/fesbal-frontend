@@ -20,7 +20,7 @@ const useRegisterIDForm = () => {
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateUserID()) {
-            navigate('/profile');
+            navigate('/register/referral');
         }
     }
 
