@@ -10,8 +10,9 @@ import ProfileEditPrevPassword from "./pages/ProfileEditPrevPassword";
 import ProfileScreen from "./pages/ProfileScreen";
 import RegisterID from "./pages/RegisterID";
 import RegisterLegal from "./pages/RegisterLegal";
-import WelcomeScreen from "./pages/WelcomeScreen";
+import RegisterReferral from "./pages/RegisterReferral";
 import RegisterRequestSent from "./pages/RegisterRequestSent";
+import WelcomeScreen from "./pages/WelcomeScreen";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/profile/edit-prev-password" element={<ProfileEditPrevPassword/>}/>
                 <Route path="/register" element={<RegisterLegal/>}/>
                 <Route path="/register/id" element={<RegisterID/>}/>
+                <Route path="/register/referral" element={<RegisterReferral/>}/>
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path="/welcome" element={<WelcomeScreen/>}/>
             </Routes>
