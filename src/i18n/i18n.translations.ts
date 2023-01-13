@@ -2,13 +2,15 @@ import {namespaces} from "./i18n.constants";
 import {loginPasswordRecoveryEn, loginPasswordRecoveryEs} from "./pages/loginPasswordRecovery";
 import {loginScreenEn, loginScreenEs} from "./pages/loginScreen";
 import {profileEditEmailEn, profileEditEmailEs} from "./pages/profileEditEmail";
+import registerReferral from "../pages/RegisterReferral";
+import registerRequestSent from "../pages/RegisterRequestSent";
+import {menuDeleteAccountEn, menuDeleteAccountEs} from "./pages/menuDeleteAccount";
 import {profileEditNewPasswordEn, profileEditNewPasswordEs} from "./pages/profileEditNewPassword";
 import {profileEditPrevPasswordEn, profileEditPrevPasswordEs} from "./pages/profileEditPrevPassword";
 import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
 import {registerIDEn, registerIDEs} from "./pages/registerID";
 import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
-import {menuDeleteAccountEn, menuDeleteAccountEs} from "./pages/menuDeleteAccount";
-import registerRequestSent from "../pages/RegisterRequestSent";
+import {registerReferralEn, registerReferralEs} from "./pages/registerReferral";
 import {registerRequestSentEn, registerRequestSentEs} from "./pages/registerRequestSent";
 
 export const es = {
@@ -29,6 +31,7 @@ export const es = {
     [namespaces.pages.profileScreen]: profileScreenEs,
     [namespaces.pages.registerID]: registerIDEs,
     [namespaces.pages.registerLegal]: registerLegalEs,
+    [namespaces.pages.registerReferral]: registerReferralEs,
     [namespaces.pages.registerRequestSent]: registerRequestSentEs,
     [namespaces.pages.welcomeScreen]: {login: "Iniciar sesión", register: "Registrarse"},
 
@@ -52,6 +55,7 @@ export const en = {
     [namespaces.pages.profileScreen]: profileScreenEn,
     [namespaces.pages.registerID]: registerIDEn,
     [namespaces.pages.registerLegal]: registerLegalEn,
+    [namespaces.pages.registerReferral]: registerReferralEn,
     [namespaces.pages.registerRequestSent]: registerRequestSentEn,
     [namespaces.pages.welcomeScreen]: {login: "Login", register: "Register"},
 };
