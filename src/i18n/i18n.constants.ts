@@ -3,6 +3,7 @@ export const namespaces = {
         loginPasswordRecovery: "pages.loginPasswordRecovery",
         loginScreen: "pages.loginScreen",
         menuDeleteAccount: "pages.menuDeleteAccount",
+        menuReferral: "pages.menuReferral",
         notifications: "pages.notifications",
         pickupPoint: "pages.pickupPoint",
         profileEditEmail: "pages.profile.profileEditEmail",
