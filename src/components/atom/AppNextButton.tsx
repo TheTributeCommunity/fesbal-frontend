@@ -23,7 +23,10 @@ const AppNextButton: FC<ButtonProps> = ({title, disabled = false, bgColor = "bg-
     );
     return (
         <button
-            className={btnClasses} disabled={disabled} onClick={onClick} type="button">
+            className={btnClasses} disabled={disabled} {...(onClick
+            ? {type: "button", onClick}
+            : {type: "submit"})}
+        >
             {title}
         </button>
     );
