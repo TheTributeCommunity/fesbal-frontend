@@ -3,7 +3,7 @@ import ButtonProps from "../../types/ButtonProps";
 import classNames from "classnames";
 
 
-const AppNextButton: FC<ButtonProps> = ({title, disabled = false, bgColor = "bg-primary-color"}) => {
+const AppNextButton: FC<ButtonProps> = ({title, disabled = false, bgColor = "bg-primary-color", onClick}) => {
     const btnClasses = classNames(
         'rounded-2xl',
         'flex',
@@ -23,7 +23,7 @@ const AppNextButton: FC<ButtonProps> = ({title, disabled = false, bgColor = "bg-
     );
     return (
         <button
-            className={btnClasses} disabled={disabled} type="submit">
+            className={btnClasses} disabled={disabled} onClick={onClick} type="button">
             {title}
         </button>
     );
