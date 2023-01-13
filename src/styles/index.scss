@@ -44,6 +44,10 @@
     border-color: $secondary-color;
   }
 
+  .border-warning-color {
+    border-color: $warning-color;
+  }
+
   .text-tertiary-color {
     color: $tertiary-color;
   }
@@ -96,7 +100,7 @@
     line-height: 28px;
   }
 
-  .font-medium {
+  .font-medium-title {
     font-family: $main-font;
     font-style: normal;
     font-weight: 500;

@@ -2,11 +2,19 @@ import {useTranslation} from "react-i18next";
 import AppNextButton from "../atom/AppNextButton";
 import CrossIcon from "../icons/CrossIcon";
 import UploadImageIcon from "../icons/UploadImageIcon";
-import useRegisterReferralForm from "../../hooks/useRegisterReferralForm";
+import useUploadReferral from "../../hooks/useUploadReferral";
 import {namespaces} from "../../i18n/i18n.constants";
 
 const RegisterReferralForm = () => {
-    const {file, setFile, inputRef, cameraRef, handleFileChange, handleClick, handleOnClick} = useRegisterReferralForm();
+    const {
+        file,
+        setFile,
+        inputRef,
+        cameraRef,
+        handleFileChange,
+        handleClick,
+        handleOnClick
+    } = useUploadReferral();
     const {t} = useTranslation(namespaces.pages.registerReferral);
 
     return (
@@ -42,7 +50,8 @@ const RegisterReferralForm = () => {
             </div>
             <div className="flex flex-col gap-4">
                 <a className="text-center underline font-small-link text-secondary-color">{t("link")}</a>
-                <AppNextButton title={t("next")} disabled={!file} onClick={handleOnClick}/>
+                <AppNextButton title={t("next")} disabled={!file}
+                               onClick={() => handleOnClick("/register/request-sent")}/>
             </div>
         </div>
     )
