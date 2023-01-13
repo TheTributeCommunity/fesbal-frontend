@@ -13,6 +13,8 @@ import RegisterLegal from "./pages/RegisterLegal";
 import RegisterReferral from "./pages/RegisterReferral";
 import RegisterRequestSent from "./pages/RegisterRequestSent";
 import WelcomeScreen from "./pages/WelcomeScreen";
+import MenuReferral from "./pages/MenuReferral";
+import MenuReferralUpload from "./pages/MenuReferralUpload";
 
 function App() {
     return (
@@ -21,6 +23,8 @@ function App() {
                 <Route path="*" element={<WelcomeScreen/>}/>
                 <Route path="/login" element={<LoginScreen/>}/>
                 <Route path="/login/password-recovery" element={<LoginPasswordRecovery/>}/>
+                <Route path="/referral" element={<MenuReferral/>}/>
+                <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
                 <Route path="/notifications" element={<NotificationsScreen/>}/>
                 <Route path="/notifications/:id" element={<NotificationDetails/>}/>
                 <Route path="/pickup-point" element={<PickupPoint/>}/>
