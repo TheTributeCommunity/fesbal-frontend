@@ -44,8 +44,16 @@
     border-color: $secondary-color;
   }
 
+  .text-tertiary-color {
+    color: $tertiary-color;
+  }
+
   .bg-tertiary-color {
     background-color: $tertiary-color;
+  }
+
+  .text-quarter-color {
+    color: $quarter-color;
   }
 
   .text-warning-color {
