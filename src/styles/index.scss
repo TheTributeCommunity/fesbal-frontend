@@ -57,7 +57,7 @@
   }
 
   .text-quarter-color {
-    color: $quarter-color;
+    color: $quaternary-color;
   }
 
   .text-warning-color {
@@ -82,6 +82,10 @@
 
   .focus-primary-color:focus {
     background-color: $focus-primary-color;
+  }
+
+  .bg-primary-color-light {
+    background-color: $primary-color-light;
   }
 
   .font-mega-title {
