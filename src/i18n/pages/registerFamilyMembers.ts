@@ -8,7 +8,7 @@ export const registerFamilyMembersEs = {
         title: 'Ningún familiar añadido',
         text: 'Si tienes familiares y no los añades, no contabilizarán para la asignación de alimentos.',
         confirmButtonText: 'Continuar',
-        cancelButtonText: 'Añadir familiar',
+        cancelButtonText: 'Cancelar',
     }
 }
 
@@ -22,6 +22,6 @@ export const registerFamilyMembersEn = {
         title: 'No family members added',
         text: 'If you have family members and you don’t add them, they won’t count towards food allocation.',
         confirmButtonText: 'Continue',
-        cancelButtonText: 'Add family member',
+        cancelButtonText: 'Cancel',
     }
 }
