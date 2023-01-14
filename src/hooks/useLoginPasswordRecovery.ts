@@ -31,12 +31,12 @@ const useLoginPasswordRecovery = <T extends string>(initialState: T) => {
             position: 'bottom',
             padding: '1rem',
             customClass: {
-                popup: "rounded-md",
-                title: "font-big-title",
+                popup: "rounded-2xl",
+                title: "font-big-title text-secondary-color",
                 actions: "w-full",
-                htmlContainer: "text-left font-text",
+                htmlContainer: "text-left font-text text-secondary-color",
                 confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
-                    " focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-20",
+                    " focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-16",
             },
             width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
         }).then(() => navigate('/login'));

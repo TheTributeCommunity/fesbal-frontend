@@ -42,13 +42,13 @@ const useProfileEditEmail = <T extends string>(initialState: T) => {
             reverseButtons: true,
             focusCancel: true,
             customClass: {
-                popup: "rounded-md",
+                popup: "rounded-2xl",
                 actions: "flex gap-2 w-full",
-                title: "font-big-title",
+                title: "font-big-title text-secondary-color",
                 confirmButton: "bg-warning-color hover-warning-color text-white rounded-xl font-button w-full" +
-                    " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-warning-color h-20",
+                    " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-warning-color h-16",
                 cancelButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
-                    " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-20",
+                    " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-16",
             },
             width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
 
@@ -63,11 +63,11 @@ const useProfileEditEmail = <T extends string>(initialState: T) => {
                     position: 'bottom',
                     padding: '1rem',
                     customClass: {
-                        popup: "rounded-md",
+                        popup: "rounded-2xl",
                         actions: "w-full",
-                        title: "text-big-title",
+                        title: "text-big-title text-secondary-color",
                         confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
-                            " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-20",
+                            " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-16",
                     },
                     width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
                 }).then(() => navigate('/profile'))
