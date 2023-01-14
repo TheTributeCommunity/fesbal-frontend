@@ -1,17 +1,27 @@
 @import "fonts";
 
-$primary-color: #0F95CE;
-$secondary-color: #002E5D;
-$tertiary-color: #F2FBFF;
-$quarter-color: #DBF4FF;
-$warning-color: #EB5757;
+$cerulean: #0F95CE;
+$midnight-blue: #002E5D;
+$alice-blue: #F2FBFF;
+$ghost-white: #F9FDFF;
+$cornflower-blue: #DBF4FF;
+$white: #FFFFFF;
+$burnt-sienna: #EB5757;
+$bg-linear: linear-gradient(169.42deg, #FFFFFF 10.03%, #E8F8FF 35.86%, #E8F8FF 68.88%, #FFFFFF 89.63%);
+$bg-linear-2: linear-gradient(180.09deg, #FFFFFF 10.61%, #E8F8FF 37.01%, #E8F8FF 70.75%, #FFFFFF 91.96%);
+
+$primary-color: $cerulean;
+$secondary-color: $midnight-blue;
+$tertiary-color: $alice-blue;
+$quarter-color: $cornflower-blue;
+$warning-color: $burnt-sienna;
 
 $hover-primary-color: #2D7DB5;
 $hover-warning-color: #D14A4A;
 $focus-primary-color: #3085d6;
 $focus-warning-color: #EB5757;
 
-$page-bg: linear-gradient(169.42deg, #ffffff 10.03%, #e8f8ff 35.86%, #e8f8ff 68.88%, #ffffff 89.63%);
+$page-bg: $bg-linear;
 $shadow-color: 0px 2px 4px rgba(0, 46, 93, 0.08);
 
 $main-font: 'RobotoFlex', sans-serif;
