@@ -11,6 +11,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUserGroup} from "@fortawesome/free-solid-svg-icons";
 import {namespaces} from "../i18n/i18n.constants";
 import {useTranslation} from "react-i18next";
+import FamilyMembersIcon from "../components/icons/FamilyMembersIcon";
 
 
 const ProfileScreen = () => {
@@ -67,7 +68,7 @@ const ProfileScreen = () => {
                     ))}
                 </ul>
                 <div className="flex flex-row items-center gap-2 pl-2 font-bold">
-                    <FontAwesomeIcon icon={faUserGroup} className="text-primary-color"/>
+                    <FamilyMembersIcon/>
                     <h2 className="font-mini-title">{t('familyMembers')}</h2>
                 </div>
                 <ul className="flex flex-col gap-2 rounded-md bg-white p-4 pl-2 font-input">
