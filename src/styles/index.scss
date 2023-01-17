@@ -155,4 +155,12 @@
   .app-button {
     @apply rounded-2xl flex items-center justify-center py-5 font-button text-white;
   }
+
+  .app-input {
+    @apply w-full rounded-md px-4 py-5 text-secondary-color font-input placeholder-primary-color;
+  }
+
+  .app-form {
+    @apply mt-8 flex h-full w-full flex-col justify-between gap-4 self-center md:w-1/2 lg:w-1/3;
+  }
 }

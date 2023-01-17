@@ -11,18 +11,17 @@ const RegisterIDForm = () => {
     const selectOptions: string[] = ['DNI', 'NIE'];
 
     return (
-        <form noValidate onSubmit={onSubmit}
-              className="mt-8 flex h-full flex-col justify-between gap-4 self-center md:w-1/2 lg:w-1/3">
+        <form noValidate onSubmit={onSubmit} className="app-form">
             <div className="flex flex-row gap-4">
                 <div className="flex flex-col gap-1.5 text-primary-color">
                     <label htmlFor="identityType"
-                           className={selectedOption ? "opacity-100 font-label" : "opacity-0"}>{translate("type")}</label>
+                           className={selectedOption ? "opacity-100" : "opacity-0"}>{translate("type")}</label>
                     <UserIDSelect options={selectOptions} value={selectedOption} onChange={onSelectedOptionChange}/>
                 </div>
                 <div className="flex flex-col gap-1.5 text-primary-color w-full">
-                    <label htmlFor="identityNumber" className={userID ? "opacity-100 font-label" : "opacity-0"}>{t("id")}</label>
+                    <label htmlFor="identityNumber" className={userID ? "opacity-100" : "opacity-0"}>{translate("id")}</label>
                     <input type="text" placeholder={translate("id") as string}
-                           className="w-full rounded-md px-4 py-5 text-secondary-color font-input placeholder-primary-color"
+                           className="app-input"
                            value={userID} onChange={(e) => onUserIDChange(e.target.value)}/>
                 </div>
             </div>
