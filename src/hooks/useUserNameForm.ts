@@ -1,5 +1,7 @@
 import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {isLettersOnly} from "../helpers/textUtils";
+
 
 const useUserNameForm = () => {
     const [userName, setUserName] = useState<string>('');
@@ -8,7 +10,9 @@ const useUserNameForm = () => {
 
     const navigate = useNavigate();
     const validateNameSurname = (): boolean => {
-        return userName.length >= MIN_LENGTH && userSurname.length >= MIN_LENGTH; 
+        const isValidLength = userName.length >= MIN_LENGTH && userSurname.length >= MIN_LENGTH; 
+        const isValidLetters = isLettersOnly(userName) && isLettersOnly(userSurname);
+        return isValidLength && isValidLetters;
     }
 
     const onNameChange = (id: string) => {

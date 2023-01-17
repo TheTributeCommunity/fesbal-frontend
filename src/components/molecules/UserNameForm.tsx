@@ -2,15 +2,11 @@ import AppNextButton from "../atom/AppNextButton";
 import useUserNameForm from "../../hooks/useUserNameForm";
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../../i18n/i18n.constants";
+import {isLettersOnly} from "../../helpers/textUtils";
 
 const UserNameForm = () => {
     const {userName, userSurname, onSubmit, validateNameSurname, onNameChange, onSurnameChange} = useUserNameForm();
     const {t: translation} = useTranslation(namespaces.pages.registrationName);
-
-    const isValidText = (text: string) => {
-        const unwantedText = text.match(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ~^´` ]+/ig) || [];
-        return unwantedText.length == 0;
-    }
 
     return (
         <form noValidate onSubmit={onSubmit}
@@ -22,7 +18,7 @@ const UserNameForm = () => {
                             className="text-secondary-color placeholder-primary-color rounded-md px-4 py-5 w-full"
                             value={userName} 
                             onChange={(e) => {
-                                if(!isValidText(e.target.value)) {
+                                if(!isLettersOnly(e.target.value)) {
                                     return false;
                                 }; 
                                 onNameChange(e.target.value); 
@@ -34,7 +30,7 @@ const UserNameForm = () => {
                             className="text-secondary-color placeholder-primary-color rounded-md px-4 py-5 w-full"
                             value={userSurname}
                             onChange={(e) => {
-                                if(!isValidText(e.target.value)) {
+                                if(!isLettersOnly(e.target.value)) {
                                     return false;
                                 }; 
                                 onSurnameChange(e.target.value); 
