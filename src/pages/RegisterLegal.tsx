@@ -10,7 +10,7 @@ const RegisterLegal = () => {
     return (
         <div className="app-page">
             <div className="app-page__header">
-                <AppBackButton goTo="/welcome"/>
+                <AppBackButton link="/welcome"/>
             </div>
             <div className="app-logo">
                 <LogoFesbalIcon/>

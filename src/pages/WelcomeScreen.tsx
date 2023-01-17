@@ -2,7 +2,6 @@ import {useTranslation} from "react-i18next";
 import AppLinkButton from "../components/atom/AppLinkButton";
 import LogoFesbalIcon from "../components/icons/LogoFesbalIcon";
 import {namespaces} from "../i18n/i18n.constants";
-import AppBackButton from "../components/atom/AppBackButton";
 
 const WelcomeScreen = () => {
     const {t: translate} = useTranslation(namespaces.pages.welcomeScreen);
