@@ -3,7 +3,7 @@ import UserNameForm from "../components/molecules/UserNameForm";
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
 
-const RegistrationUserID = () => {
+const RegistrationUserName = () => {
     const {t: translation} = useTranslation(namespaces.pages.registrationName);
 
     return (
@@ -20,4 +20,4 @@ const RegistrationUserID = () => {
     );
 }
 
-export default RegistrationUserID;
+export default RegistrationUserName;

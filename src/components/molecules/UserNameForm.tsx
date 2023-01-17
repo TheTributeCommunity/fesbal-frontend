@@ -3,13 +3,12 @@ import useUserNameForm from "../../hooks/useUserNameForm";
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../../i18n/i18n.constants";
 
-const UserIDForm = () => {
+const UserNameForm = () => {
     const {userName, userSurname, onSubmit, validateNameSurname, onNameChange, onSurnameChange} = useUserNameForm();
     const {t: translation} = useTranslation(namespaces.pages.registrationName);
 
     const isValidText = (text: string) => {
         const unwantedText = text.match(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ~^´` ]+/ig) || [];
-        console.log(unwantedText);
         return unwantedText.length == 0;
     }
 
@@ -47,4 +46,4 @@ const UserIDForm = () => {
     );
 }
 
-export default UserIDForm;
+export default UserNameForm;
