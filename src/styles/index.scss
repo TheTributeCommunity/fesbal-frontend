@@ -152,5 +152,7 @@
     line-height: 20px;
   }
 
-
+  .app-button {
+    @apply rounded-2xl flex items-center justify-center py-5 font-button text-white;
+  }
 }

@@ -7,8 +7,7 @@ interface AppLinkButtonProps extends ButtonProps {
 const AppLinkButton: FC<AppLinkButtonProps> = ({bgColor = 'bg-primary-color', title, link}) => {
 
     return (
-        <Link to={link as string}
-              className={`rounded-2xl flex items-center justify-center py-5 text-white font-button ${bgColor} px-2`}>
+        <Link to={link} className={`app-button ${bgColor}`}>
             <p>
                 {title}
             </p>
