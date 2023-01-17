@@ -4,7 +4,7 @@ import LogoFesbalIcon from "../components/icons/LogoFesbalIcon";
 import AppLinkButton from "../components/atom/AppLinkButton";
 
 const WelcomeScreen = () => {
-    const {t} = useTranslation(namespaces.pages.welcomeScreen);
+    const {t: translate} = useTranslation(namespaces.pages.welcomeScreen);
 
     return (
         <div className="h-screen flex flex-col page-bg p-8 justify-between">
@@ -12,8 +12,8 @@ const WelcomeScreen = () => {
                 <LogoFesbalIcon/>
             </div>
             <div className="md:w-1/2 lg:w-1/3 self-center grid grid-cols-2 gap-2 lg:gap-4">
-                <AppLinkButton title={t("register")} toGo="/register" bgColor="bg-secondary-color"/>
-                <AppLinkButton title={t("login")} toGo="/login"/>
+                <AppLinkButton title={translate("register")} toGo="/register" bgColor="bg-secondary-color"/>
+                <AppLinkButton title={translate("login")} toGo="/login"/>
             </div>
         </div>
     );

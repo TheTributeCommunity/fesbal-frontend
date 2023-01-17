@@ -9,7 +9,7 @@ const EditPrevPasswordForm = () => {
     const {password, onChange, hasError, onSubmit, passwordConfirm, onChangeConfirm} = useEditNewPassword()
     const {showPassword, toggleShowPassword} = useShowPassword();
     const {showPassword: showPassword2, toggleShowPassword: toggleShowPassword2} = useShowPassword();
-    const {t} = useTranslation(namespaces.pages.editNewPassword);
+    const {t: translate} = useTranslation(namespaces.pages.editNewPassword);
 
     const buttonDisabled = hasError || password.length === 0 || passwordConfirm.length === 0;
 
@@ -19,14 +19,14 @@ const EditPrevPasswordForm = () => {
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {password.length > 0 &&
-                        <label htmlFor="password" className="text-primary-color">{t("placeholder")}</label>}
+                        <label htmlFor="password" className="text-primary-color">{translate("placeholder")}</label>}
                     <div className="relative">
                         <input
                             type={showPassword ? "text" : "password"}
                             name="password"
                             value={password}
                             onChange={onChange}
-                            placeholder={t("placeholder") as string}
+                            placeholder={translate("placeholder") as string}
                             className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
@@ -34,19 +34,19 @@ const EditPrevPasswordForm = () => {
                         </div>
                     </div>
                     {hasError &&
-                        <p className="text-red-500 text-sm">{t("error")}</p>}
+                        <p className="text-red-500 text-sm">{translate("error")}</p>}
                 </div>
                 <div className="flex flex-col gap-1.5">
                     {passwordConfirm.length > 0 &&
                         <label htmlFor="password-confirm"
-                               className="text-primary-color">{t("placeholderConfirm")}</label>}
+                               className="text-primary-color">{translate("placeholderConfirm")}</label>}
                     <div className="relative">
                         <input
                             type={showPassword2 ? "text" : "password"}
                             name="password-confirm"
                             value={passwordConfirm}
                             onChange={onChangeConfirm}
-                            placeholder={t("placeholderConfirm") as string}
+                            placeholder={translate("placeholderConfirm") as string}
                             className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword2}>
@@ -54,10 +54,10 @@ const EditPrevPasswordForm = () => {
                         </div>
                     </div>
                     {hasError &&
-                        <p className="text-red-500 text-sm">{t("error")}</p>}
+                        <p className="text-red-500 text-sm">{translate("error")}</p>}
                 </div>
             </div>
-            <AppNextButton disabled={buttonDisabled} title={t("next")}/>
+            <AppNextButton disabled={buttonDisabled} title={translate("next")}/>
         </form>
     );
 }

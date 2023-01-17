@@ -13,7 +13,7 @@ const LoginForm = () => {
             password: ""
         });
     const {showPassword, toggleShowPassword} = useShowPassword();
-    const {t} = useTranslation(namespaces.pages.loginScreen);
+    const {t: translate} = useTranslation(namespaces.pages.loginScreen);
 
     const buttonDisabled = user.id.length !== 9 || user.password.length < 3 || hasError;
 
@@ -23,26 +23,26 @@ const LoginForm = () => {
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
                     {user.id.length > 0 &&
-                        <label htmlFor="id" className="text-primary-color">{t("id")}</label>}
+                        <label htmlFor="id" className="text-primary-color">{translate("id")}</label>}
                     <input
                         type="text"
                         name="id"
                         value={user.id}
                         onChange={onChange}
-                        placeholder={t("id") as string}
+                        placeholder={translate("id") as string}
                         className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color`}
                     />
                 </div>
                 <div className="flex flex-col gap-1.5">
                     {user.password.length > 0 &&
-                        <label htmlFor="password" className="text-primary-color">{t("password")}</label>}
+                        <label htmlFor="password" className="text-primary-color">{translate("password")}</label>}
                     <div className="relative">
                         <input
                             type={showPassword ? "text" : "password"}
                             name="password"
                             value={user.password}
                             onChange={onChange}
-                            placeholder={t("password") as string}
+                            placeholder={translate("password") as string}
                             className={`${hasError ? 'text-red-500' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color`}
                         />
                         <div className="absolute right-4 top-6 cursor-pointer" onClick={toggleShowPassword}>
@@ -50,18 +50,18 @@ const LoginForm = () => {
                         </div>
                     </div>
                     {hasError &&
-                        <p className="text-red-500 text-sm">{t("error")}</p>}
+                        <p className="text-red-500 text-sm">{translate("error")}</p>}
                     <NavLink to="/password-recovery"
                              className="text-secondary-color font-bold text-sm self-end underline">
-                        {t("forgotPassword")}
+                        {translate("forgotPassword")}
                     </NavLink>
                 </div>
             </div>
             <div className="flex flex-col gap-4">
                 <a href="#" className="text-secondary-color font-bold text-sm self-center underline text-center px-6">
-                    {t("credentials")}
+                    {translate("credentials")}
                 </a>
-                <AppNextButton disabled={buttonDisabled} title={t("next")}/>
+                <AppNextButton disabled={buttonDisabled} title={translate("next")}/>
             </div>
         </form>
     );
