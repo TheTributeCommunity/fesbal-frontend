@@ -11,24 +11,21 @@ const LoginPasswordRecoveryForm = () => {
     const buttonDisabled = email.length < 6 || hasError;
 
     return (
-        <form noValidate onSubmit={onSubmit}
-              className="mt-8 flex h-full w-full flex-col justify-between self-center md:w-1/2 lg:w-1/3">
+        <form noValidate onSubmit={onSubmit} className="app-form">
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
-                    {email.length > 0 &&
-                        <label htmlFor="email" className="text-primary-color font-label">{translate("email")}</label>}
+                    <label htmlFor="email" className={`app-label ${email ? '' : 'app-label--hidden'}`}>{translate("email")}</label>
                     <input
                         type="email"
                         name="email"
                         value={email}
                         onChange={onChange}
                         placeholder={translate("email") as string}
-                        className={`${hasError ? 'text-warning-color' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color font-input`}
+                        className={`app-input ${hasError ? 'app-input--error' : ''}`}
                     />
-                    {hasError &&
-                        <p className="text-warning-color font-label">{translate("error")}</p>}
-                    <Link to="/login/password-recovery" className="self-end underline text-secondary-color font-small-link">
-                        {translate("forgot")}
+                    {hasError && <p className="text-warning-color font-label">{translate("error")}</p>}
+                    <Link to="/login/password-recovery" className="self-end underline font-small-link">
+                        {t("forgot")}
                     </Link>
                 </div>
             </div>

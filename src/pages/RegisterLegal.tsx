@@ -8,15 +8,14 @@ const RegisterLegal = () => {
     const {t} = useTranslation(namespaces.pages.registerLegal);
 
     return (
-        <div className="flex h-screen flex-col justify-between p-8 page-bg text-secondary-color">
-            <div className="h-1/6 w-full self-center md:w-1/2 lg:w-1/3">
+        <div className="app-page">
+            <div className="app-page__header">
                 <AppBackButton goTo="/welcome"/>
             </div>
-            <div className="flex h-1/3 justify-center self-center md:w-1/2 lg:w-1/3">
+            <div className="app-logo">
                 <LogoFesbalIcon/>
             </div>
-            <div
-                className="flex h-3/5 flex-col justify-between self-center whitespace-pre-line rounded-lg bg-white p-4 md:w-1/2 md:p-8 lg:w-1/3">
+            <div className="app-register-legal__container">
                 <div>
                     <h1 className="mb-4 font-big-title">{t("title")}</h1>
                     <p className="font-text">{t("description")}</p>

@@ -15,11 +15,11 @@ const RegisterIDForm = () => {
             <div className="flex flex-row gap-4">
                 <div className="flex flex-col gap-1.5 text-primary-color">
                     <label htmlFor="identityType"
-                           className={selectedOption ? "opacity-100" : "opacity-0"}>{translate("type")}</label>
+                           className={`app-label ${selectedOption ? '' : "app-label--hidden"}`}>{translate("type")}</label>
                     <UserIDSelect options={selectOptions} value={selectedOption} onChange={onSelectedOptionChange}/>
                 </div>
                 <div className="flex flex-col gap-1.5 text-primary-color w-full">
-                    <label htmlFor="identityNumber" className={userID ? "opacity-100" : "opacity-0"}>{translate("id")}</label>
+                    <label htmlFor="identityNumber" className={`app-label ${userID ? '' : "app-label--hidden"}`}>{t("id")}</label>
                     <input type="text" placeholder={translate("id") as string}
                            className="app-input"
                            value={userID} onChange={(e) => onUserIDChange(e.target.value)}/>

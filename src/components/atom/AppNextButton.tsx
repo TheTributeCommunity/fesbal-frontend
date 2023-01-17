@@ -7,7 +7,7 @@ const AppNextButton: FC<ButtonProps> = ({title, disabled = false, bgColor = "bg-
     const btnClasses = classNames(
         'app-button',
         {
-            'disabled': disabled,
+            'app-button--disabled': disabled,
             [bgColor]: bgColor
         }
     );

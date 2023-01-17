@@ -12,12 +12,10 @@ const ProfileEditPrevPasswordForm = () => {
     const buttonDisabled = hasError || password.length === 0;
 
     return (
-        <form noValidate onSubmit={onSubmit}
-              className="mt-8 flex h-full w-full flex-col justify-between self-center md:w-1/2 lg:w-1/3">
+        <form noValidate onSubmit={onSubmit} className="app-form">
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
-                    {password.length > 0 &&
-                        <label htmlFor="password" className="text-primary-color font-label">{translate("placeholder")}</label>}
+                    <label htmlFor="password" className={`app-label ${password ? '' : 'app-label--hidden'}`}>{translate("placeholder")}</label>
                     <div className="relative">
                         <input
                             type={showPassword ? "text" : "password"}
@@ -25,14 +23,13 @@ const ProfileEditPrevPasswordForm = () => {
                             value={password}
                             onChange={onChange}
                             placeholder={translate("placeholder") as string}
-                            className={`${hasError ? 'text-warning-color' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color font-input`}
+                            className={`app-input ${hasError ? 'app-input--error' : ''}`}
                         />
-                        <div className="absolute top-6 right-4 cursor-pointer" onClick={toggleShowPassword}>
+                        <div className="app-eye-password" onClick={toggleShowPassword}>
                             <EyeHidePasswordIcon/>
                         </div>
                     </div>
-                    {hasError &&
-                        <p className="text-warning-color font-label">{translate("error")}</p>}
+                    {hasError && <p className="text-warning-color font-label">{translate("error")}</p>}
                 </div>
             </div>
             <AppNextButton disabled={buttonDisabled} title={translate("next")}/>

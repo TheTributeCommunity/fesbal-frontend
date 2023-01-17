@@ -7,8 +7,8 @@ const ProfileEditPrevPassword = () => {
     const {t} = useTranslation(namespaces.pages.profileEditPrevPassword);
 
     return (
-        <div className="flex h-screen flex-col justify-between p-8 page-bg text-secondary-color">
-            <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3">
+        <div className="app-page">
+            <div className="app-page__header">
                 <AppBackButton goTo="/profile"/>
                 <div>
                     <h1 className="mb-4 font-big-title">{t("title")}</h1>

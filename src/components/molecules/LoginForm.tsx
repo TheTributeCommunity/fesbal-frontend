@@ -18,24 +18,22 @@ const LoginForm = () => {
     const buttonDisabled = user.id.length !== 9 || user.password.length < 3 || hasError;
 
     return (
-        <form noValidate onSubmit={onSubmit}
-              className="mt-8 flex h-full flex-col justify-between self-center md:w-1/2 lg:w-1/3">
+        <form noValidate onSubmit={onSubmit} className="app-form">
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
-                    {user.id.length > 0 &&
-                        <label htmlFor="id" className="text-primary-color font-label">{t("id")}</label>}
+                    <label htmlFor="id" className={`app-label ${user.id ? '' : 'app-label--hidden'}`}>{t("id")}</label>
                     <input
                         type="text"
                         name="id"
                         value={user.id}
                         onChange={onChange}
                         placeholder={translate("id") as string}
-                        className={`${hasError ? 'text-warning-color' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color font-input`}
+                        className={`app-input ${hasError ? 'app-input--error' : ''}`}
                     />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                    {user.password.length > 0 &&
-                        <label htmlFor="password" className="text-primary-color font-label">{translate("password")}</label>}
+                    <label htmlFor="password"
+                           className={`app-label ${user.password ? '' : 'app-label--hidden'}`}>{t("password")}</label>
                     <div className="relative">
                         <input
                             type={showPassword ? "text" : "password"}
@@ -43,22 +41,21 @@ const LoginForm = () => {
                             value={user.password}
                             onChange={onChange}
                             placeholder={translate("password") as string}
-                            className={`${hasError ? 'text-warning-color' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color font-input`}
+                            className={`app-input ${hasError ? 'app-input--error' : ''}`}
                         />
-                        <div className="absolute top-6 right-4 cursor-pointer" onClick={toggleShowPassword}>
+                        <div className="app-eye-password" onClick={toggleShowPassword}>
                             <EyeHidePasswordIcon/>
                         </div>
                     </div>
-                    {hasError &&
-                        <p className="text-warning-color font-label">{translate("error")}</p>}
+                    {hasError && <p className="text-warning-color font-label">{translate("error")}</p>}
                     <Link to="/login/password-recovery"
-                          className="self-end underline text-secondary-color font-small-link">
+                          className="self-end underline font-small-link">
                         {translate("forgotPassword")}
                     </Link>
                 </div>
             </div>
             <div className="flex flex-col gap-4">
-                <a href="#" className="self-center px-6 text-center underline text-secondary-color font-small-link">
+                <a href="#" className="self-center px-6 text-center underline font-small-link">
                     {translate("credentials")}
                 </a>
                 <AppNextButton disabled={buttonDisabled} title={translate("next")}/>

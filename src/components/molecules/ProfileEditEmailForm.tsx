@@ -9,22 +9,19 @@ const ProfileEditEmailForm = () => {
     const {t: translate} = useTranslation(namespaces.pages.profileEditEmail);
 
     return (
-        <form noValidate onSubmit={onSubmit}
-              className="mt-8 flex h-full w-full flex-col justify-between self-center md:w-1/2 lg:w-1/3">
+        <form noValidate onSubmit={onSubmit} className="app-form">
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1.5">
-                    {email.length > 0 &&
-                        <label htmlFor="email" className="text-primary-color font-label">{translate('email')}</label>}
+                    <label htmlFor="email" className={`app-label ${email ? '' : "app-label--hidden"}`}>{translate("email")}</label>
                     <input
                         type="email"
                         name="email"
                         value={email}
                         onChange={onChange}
                         placeholder={translate('email') as string}
-                        className={`${hasError ? 'text-warning-color' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color font-input`}
+                        className={`app-input ${hasError ? 'app-input--error' : ''}`}
                     />
-                    {hasError &&
-                        <p className="text-warning-color font-label">{translate('error')}</p>}
+                    {hasError && <p className="text-warning-color font-label">{translate('error')}</p>}
                 </div>
             </div>
             <AppNextButton disabled={buttonDisabled} title={translate('next')}/>
