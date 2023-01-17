@@ -5,7 +5,7 @@ import {namespaces} from "../../i18n/i18n.constants";
 
 const UserIDForm = () => {
     const {userName, userSurname, onSubmit, validateNameSurname, onNameChange, onSurnameChange} = useUserNameForm();
-    const {t} = useTranslation(namespaces.pages.registrationName);
+    const {t: translation} = useTranslation(namespaces.pages.registrationName);
 
     const isValidText = (text: string) => {
         const unwantedText = text.match(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ~^´` ]+/ig) || [];
@@ -18,8 +18,8 @@ const UserIDForm = () => {
               className="flex flex-col gap-4 h-full mt-6 self-center w-full md:w-1/2 lg:w-1/3 justify-between">
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1.5 text-sm text-primary-color w-full">
-                    <label htmlFor="identityNumber" className={userName ? "opacity-100" : "opacity-0"}>{t("name")}</label>
-                    <input type="text" placeholder={t("name") as string}
+                    <label htmlFor="identityNumber" className={userName ? "opacity-100" : "opacity-0"}>{translation("name")}</label>
+                    <input type="text" placeholder={translation("name") as string}
                             className="text-secondary-color placeholder-primary-color rounded-md px-4 py-5 w-full"
                             value={userName} 
                             onChange={(e) => {
@@ -30,8 +30,8 @@ const UserIDForm = () => {
                             }}/>
                 </div>
                 <div className="flex flex-col gap-1.5 text-sm text-primary-color w-full">
-                    <label htmlFor="identityNumber" className={userSurname ? "opacity-100" : "opacity-0"}>{t("surname")}</label>
-                    <input type="text" placeholder={t("surname") as string}
+                    <label htmlFor="identityNumber" className={userSurname ? "opacity-100" : "opacity-0"}>{translation("surname")}</label>
+                    <input type="text" placeholder={translation("surname") as string}
                             className="text-secondary-color placeholder-primary-color rounded-md px-4 py-5 w-full"
                             value={userSurname}
                             onChange={(e) => {
@@ -42,7 +42,7 @@ const UserIDForm = () => {
                             }}/>
                 </div>
             </div>
-            <AppNextButton disabled={!validateNameSurname()} title={t("next")}/>
+            <AppNextButton disabled={!validateNameSurname()} title={translation("next")}/>
         </form>
     );
 }
