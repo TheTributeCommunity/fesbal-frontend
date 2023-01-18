@@ -15,12 +15,12 @@ const useUserNameForm = () => {
         return isValidLength && isValidLetters;
     }
 
-    const onNameChange = (id: string) => {
-        setUserName(id);
+    const onNameChange = (name: string) => {
+        setUserName(name);
     }
 
-    const onSurnameChange = (id: string) => {
-        setUserSurname(id);
+    const onSurnameChange = (surname: string) => {
+        setUserSurname(surname);
     }
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
