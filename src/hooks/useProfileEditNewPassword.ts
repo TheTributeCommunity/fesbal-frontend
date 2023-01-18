@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import Swal from 'sweetalert2'
 import {namespaces} from "../i18n/i18n.constants";
+import {widthSwalCalculation} from "../helpers";
 
 const useProfileEditNewPassword = () => {
     const [password, setPassword] = useState<string>('');
@@ -45,7 +46,7 @@ const useProfileEditNewPassword = () => {
                 cancelButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
                     " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-16",
             },
-            width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
+            width: widthSwalCalculation(parent.innerWidth),
 
         }).then((result) => {
             if (result.isConfirmed) {
@@ -64,7 +65,7 @@ const useProfileEditNewPassword = () => {
                         confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
                             " focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-16",
                     },
-                    width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
+                    width: widthSwalCalculation(parent.innerWidth),
                 }).then(() => navigate('/profile'));
             }
         })

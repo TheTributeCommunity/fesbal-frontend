@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
+import {widthSwalCalculation} from "../helpers";
 
 const useRegisterFamilyMembers = () => {
     const {t} = useTranslation(namespaces.pages.registerFamilyMembers);
@@ -40,7 +41,7 @@ const useRegisterFamilyMembers = () => {
                 cancelButton: "bg-warning-color hover-warning-color text-white rounded-2xl font-button w-2/5" +
                     " focus:outline-none focus:ring-1 focus:ring-offset-1 focus-warning-color h-16",
             },
-            width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
+            width: widthSwalCalculation(parent.innerWidth),
         }).then((result) => {
             if (result.isConfirmed) {
                 navigate("/register/referral");

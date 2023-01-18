@@ -2,6 +2,7 @@ import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
 import {namespaces} from "../i18n/i18n.constants";
+import {widthSwalCalculation} from "../helpers";
 
 const useMenuDeleteAccount = () => {
     const {t} = useTranslation(namespaces.pages.menuDeleteAccount);
@@ -31,7 +32,7 @@ const useMenuDeleteAccount = () => {
                 cancelButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
                     " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-16",
             },
-            width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
+            width: widthSwalCalculation(parent.innerWidth),
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
@@ -51,7 +52,7 @@ const useMenuDeleteAccount = () => {
                         confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
                             " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-16",
                     },
-                    width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
+                    width: widthSwalCalculation(parent.innerWidth),
                 }).then(() => navigate('/login'));
             }
         });

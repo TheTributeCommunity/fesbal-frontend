@@ -4,6 +4,7 @@ import {useTranslation} from "react-i18next";
 import Swal from 'sweetalert2'
 import usersMock from "../mocks/users.mock";
 import {namespaces} from "../i18n/i18n.constants";
+import {widthSwalCalculation} from "../helpers";
 
 const useProfileEditEmail = <T extends string>(initialState: T) => {
     const [email, setEmail] = useState<T>(initialState);
@@ -50,7 +51,7 @@ const useProfileEditEmail = <T extends string>(initialState: T) => {
                 cancelButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
                     " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-16",
             },
-            width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
+            width: widthSwalCalculation(parent.innerWidth),
 
         }).then((result) => {
             if (result.isConfirmed) {
@@ -69,7 +70,7 @@ const useProfileEditEmail = <T extends string>(initialState: T) => {
                         confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
                             " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-16",
                     },
-                    width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
+                    width: widthSwalCalculation(parent.innerWidth),
                 }).then(() => navigate('/profile'))
             }
         })
