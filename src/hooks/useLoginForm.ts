@@ -19,7 +19,7 @@ const useLoginForm = <T extends UserProps>(initialState: T) => {
         e.preventDefault();
         setHasError(!isFormValid(user));
         if (isFormValid(user)) {
-            navigate('/profile');
+            navigate('/recipient-home');
         }
     }
 

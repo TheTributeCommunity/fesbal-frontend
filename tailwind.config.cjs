@@ -5,7 +5,14 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'dark-blue': '#058CCC'
+      },
+      fontFamily: {
+        'roboto-flex': ['Roboto Flex', 'Arial']
+      },
+    },
   },
   plugins: [],
 }

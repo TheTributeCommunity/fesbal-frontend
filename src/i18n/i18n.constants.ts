@@ -4,6 +4,7 @@ export const namespaces = {
         editNewPassword: "pages.profile.editNewPassword",
         editPrevPassword: "pages.profile.editPrevPassword",
         loginScreen: "pages.loginScreen",
+        recipientLanding: "pages.recipientLanding",
         notifications: "pages.notifications",
         passwordRecovery: "pages.passwordRecovery",
         pickupPoint: "pages.pickupPoint",
