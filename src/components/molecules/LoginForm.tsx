@@ -1,10 +1,10 @@
 import {Link} from "react-router-dom";
 import AppNextButton from "../atom/AppNextButton";
-import EyeHidePasswordIcon from "../icons/EyeHidePasswordIcon";
 import useLoginForm from "../../hooks/useLoginForm";
 import useShowPassword from "../../hooks/useShowPassword";
 import {namespaces} from "../../i18n/i18n.constants";
 import {useTranslation} from "react-i18next";
+import AppFormInput from "../atom/AppFormInput";
 
 const LoginForm = () => {
     const {user, onChange, hasError, onSubmit} = useLoginForm(
@@ -20,34 +20,26 @@ const LoginForm = () => {
     return (
         <form noValidate onSubmit={onSubmit} className="app-form">
             <div className="flex flex-col gap-8">
-                <div className="flex flex-col gap-1.5">
-                    <label htmlFor="id" className={`app-label ${user.id ? '' : 'app-label--hidden'}`}>{t("id")}</label>
-                    <input
-                        type="text"
-                        name="id"
-                        value={user.id}
-                        onChange={onChange}
-                        placeholder={translate("id") as string}
-                        className={`app-input ${hasError ? 'app-input--error' : ''}`}
+                <AppFormInput
+                    label={translate("id")}
+                    name="id"
+                    value={user.id}
+                    onChange={onChange}
+                    placeholder={translate("id")}
+                    hasError={hasError}
+                />
+                <div className="flex flex-col gap-2">
+                    <AppFormInput label={t("password")}
+                                  type={showPassword ? "text" : "password"}
+                                  name="password"
+                                  value={user.password}
+                                  onChange={onChange}
+                                  placeholder={translate("password")}
+                                  hasError={hasError}
+                                  showPassword={showPassword}
+                                  toggleShowPassword={toggleShowPassword}
+                                  error={t("error") as string}
                     />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                    <label htmlFor="password"
-                           className={`app-label ${user.password ? '' : 'app-label--hidden'}`}>{t("password")}</label>
-                    <div className="relative">
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            value={user.password}
-                            onChange={onChange}
-                            placeholder={translate("password") as string}
-                            className={`app-input ${hasError ? 'app-input--error' : ''}`}
-                        />
-                        <div className="app-eye-password" onClick={toggleShowPassword}>
-                            <EyeHidePasswordIcon/>
-                        </div>
-                    </div>
-                    {hasError && <p className="text-warning-color font-label">{translate("error")}</p>}
                     <Link to="/login/password-recovery"
                           className="self-end underline font-small-link">
                         {translate("forgotPassword")}

@@ -50,15 +50,15 @@ const ProfileScreen = () => {
     };
 
     return (
-        <div className="app-page">
+        <div className="app-page h-screen">
             <AppPageBurgerHeader title={translate('title')} link="/login"/>
-            <div className="app-page__container mb-16 gap-6">
+            <div className="app-page__container gap-4">
                 <ul>
                     {getPersonalData().map((personalData, index) => (
                         <ProfilePersonalDataItem key={index} personalData={personalData} index={index}/>
                     ))}
                 </ul>
-                <div className="flex flex-row items-center gap-2 pl-2 font-bold mt-4">
+                <div className="flex flex-row items-center gap-2 pl-2 font-bold mt-8">
                     <FamilyMembersIcon/>
                     <h2 className="font-mini-title">{translate('familyMembers')}</h2>
                 </div>

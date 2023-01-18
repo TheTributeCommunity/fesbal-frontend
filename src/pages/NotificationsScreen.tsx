@@ -18,7 +18,7 @@ const NotificationsScreen = () => {
     return (
         <div className="app-page">
             <AppPageBurgerHeader title={translate("title")} link="/login"/>
-                <ul className="app-page__container gap-4 mb-16">
+                <ul className="app-page__container gap-4 mb-2">
                     {notifications.map((notification, index) => (
                         <NotificationItem key={index} {...notification}/>
                     ))}

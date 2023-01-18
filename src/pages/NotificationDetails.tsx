@@ -13,7 +13,7 @@ const NotificationDetails = () => {
     return (
         <div className="app-page h-screen">
             <AppPageBurgerHeader title={translate("title")} link="/notifications"/>
-            <div className="app-page__container mb-16 mt-8">
+            <div className="app-page__container">
                 <p className="text-primary-color font-label">{date}</p>
                 <h2 className="font-mini-title">{title}</h2>
                 <p className="whitespace-pre-line font-text">{message}</p>
