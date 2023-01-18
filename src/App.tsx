@@ -9,6 +9,7 @@ import EditPrevPassword from "./pages/EditPrevPassword";
 import ProfileScreen from "./pages/ProfileScreen";
 import EditNewPassword from "./pages/EditNewPassword";
 import RegistrationUserID from "./pages/RegistrationUserID";
+import RegistrationBirthDate from "./pages/RegistrationBirthDate";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/profile/edit-prev-password" element={<EditPrevPassword/>}/>
                 <Route path="/profile/edit-new-password" element={<EditNewPassword/>}/>
                 <Route path="/registration/user-id" element={<RegistrationUserID/>}/>
+                <Route path="/registration/birthdate" element={<RegistrationBirthDate/>}/>
                 <Route path="*" element={<LoginScreen/>}/>
             </Routes>
         </Router>
