@@ -1,6 +1,6 @@
 {
     "arrowParens": "always",
-    "bracketSpacing": true,
+    "bracketSpacing": false,
     "endOfLine": "lf",
     "htmlWhitespaceSensitivity": "css",
     "insertPragma": false,
@@ -18,6 +18,5 @@
     "trailingComma": "es5",
     "useTabs": false,
     "vueIndentScriptAndStyle": false,
-    "filepath": "/Users/samueldominguez/devl/fesbal-frontend/src/App.tsx",
     "parser": "typescript"
 }

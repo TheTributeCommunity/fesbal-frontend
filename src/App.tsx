@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import LoginScreen from "./pages/LoginScreen";
 import PasswordRecovery from "./pages/PasswordRecovery";
 import PickupPoint from "./pages/PickupPoint";

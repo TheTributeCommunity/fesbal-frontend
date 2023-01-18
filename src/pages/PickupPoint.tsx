@@ -1,8 +1,8 @@
 import AppBackButton from "../components/atom/AppBackButton";
 import AppBurgerMenuButton from "../components/atom/AppBurgerMenuButton";
 import AppCopyClipboardButton from "../components/atom/AppCopyClipboardButton";
-import { useTranslation } from "react-i18next";
-import { namespaces } from "../i18n/i18n.constants";
+import {useTranslation} from "react-i18next";
+import {namespaces} from "../i18n/i18n.constants";
 import BottomNavBar from "../components/molecules/BottomNavBar";
 
 const pickup = {
@@ -10,7 +10,7 @@ const pickup = {
     address: "Calle de los Jazmines 835100 San Bartolomé de Tirajana, Las Palmas",
 };
 const PickupPoint = () => {
-    const { t } = useTranslation(namespaces.pages.pickupPoint);
+    const {t} = useTranslation(namespaces.pages.pickupPoint);
 
     return (
         <div className="h-screen flex flex-col page-bg text-secondary-color p-8 justify-between">

@@ -4,14 +4,14 @@ import PersonalDataItem from "../components/atom/PersonalDataItem";
 import usersMock from "../mocks/users.mock";
 import users from "../mocks/users.mock";
 import PersonalDataItemProps from "../types/PersonalDataItemProps";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
-import { useTranslation } from "react-i18next";
-import { namespaces } from "../i18n/i18n.constants";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUserGroup} from "@fortawesome/free-solid-svg-icons";
+import {useTranslation} from "react-i18next";
+import {namespaces} from "../i18n/i18n.constants";
 import BottomNavBar from "../components/molecules/BottomNavBar";
 
 const ProfileScreen = () => {
-    const { t } = useTranslation(namespaces.pages.profileScreen);
+    const {t} = useTranslation(namespaces.pages.profileScreen);
     const user = usersMock[0];
     const getFamilyMembers = (id: string) => {
         const user = users.find((user) => user.id === id);

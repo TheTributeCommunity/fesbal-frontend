@@ -1,15 +1,15 @@
 import AppBackButton from "../components/atom/AppBackButton";
 import AppBurgerMenuButton from "../components/atom/AppBurgerMenuButton";
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import useNotification from "../hooks/useNotification";
-import { useTranslation } from "react-i18next";
-import { namespaces } from "../i18n/i18n.constants";
+import {useTranslation} from "react-i18next";
+import {namespaces} from "../i18n/i18n.constants";
 import BottomNavBar from "../components/molecules/BottomNavBar";
 
 const NotificationDetails = () => {
-    const { id } = useParams();
-    const { title, message, date } = useNotification(id as string);
-    const { t } = useTranslation(namespaces.pages.notifications);
+    const {id} = useParams();
+    const {title, message, date} = useNotification(id as string);
+    const {t} = useTranslation(namespaces.pages.notifications);
 
     return (
         <div className="h-screen flex flex-col page-bg text-secondary-color p-8 justify-between">

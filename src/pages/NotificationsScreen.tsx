@@ -2,8 +2,8 @@ import AppBackButton from "../components/atom/AppBackButton";
 import AppBurgerMenuButton from "../components/atom/AppBurgerMenuButton";
 import NotificationItem from "../components/atom/NotificationItem";
 import NotificationsMock from "../mocks/notifications.mock";
-import { useTranslation } from "react-i18next";
-import { namespaces } from "../i18n/i18n.constants";
+import {useTranslation} from "react-i18next";
+import {namespaces} from "../i18n/i18n.constants";
 import BottomNavBar from "../components/molecules/BottomNavBar";
 
 const notifications = NotificationsMock.sort((a, b) => {
@@ -11,7 +11,7 @@ const notifications = NotificationsMock.sort((a, b) => {
 });
 
 const NotificationsScreen = () => {
-    const { t } = useTranslation(namespaces.pages.notifications);
+    const {t} = useTranslation(namespaces.pages.notifications);
 
     return (
         <div className="h-screen flex flex-col page-bg text-secondary-color p-8 justify-between">
