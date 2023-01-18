@@ -6,7 +6,6 @@ import classNames from "classnames";
 
 const menuReferralCard: FC<ReferralSheetProps> = ({fullname, uploadDate, familyMembers, expiredDate, status}) => {
     const {t} = useTranslation(namespaces.pages.menuReferral);
-    // "border border-primary-color rounded-2xl px-3 py-1 font-label text-primary-color">
     const statusClasses = classNames(
         'border',
         'rounded-2xl',
