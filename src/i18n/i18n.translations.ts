@@ -1,11 +1,12 @@
 import {namespaces} from "./i18n.constants";
-import {editEmailEn, editEmailEs} from "./pages/editEmail";
-import {editNewPasswordEn, editNewPasswordEs} from "./pages/editNewPassword";
-import {editPrevPasswordEn, editPrevPasswordEs} from "./pages/editPrevPassword";
+import {loginPasswordRecoveryEn, loginPasswordRecoveryEs} from "./pages/loginPasswordRecovery";
 import {loginScreenEn, loginScreenEs} from "./pages/loginScreen";
-import {passwordRecoveryEn, passwordRecoveryEs} from "./pages/passwordRecovery";
+import {profileEditEmailEn, profileEditEmailEs} from "./pages/profileEditEmail";
+import {profileEditNewPasswordEn, profileEditNewPasswordEs} from "./pages/profileEditNewPassword";
+import {profileEditPrevPasswordEn, profileEditPrevPasswordEs} from "./pages/profileEditPrevPassword";
 import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
-import {registrationUserIDEn, registrationUserIDEs} from "./pages/registrationUserID";
+import {registerIDEn, registerIDEs} from "./pages/registerID";
+import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
 
 export const es = {
     [namespaces.common]: {
@@ -14,15 +15,16 @@ export const es = {
             cancel: "Cancelar",
         },
     },
-    [namespaces.pages.editEmail]: editEmailEs,
-    [namespaces.pages.editNewPassword]: editNewPasswordEs,
-    [namespaces.pages.editPrevPassword]: editPrevPasswordEs,
+    [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEs,
     [namespaces.pages.loginScreen]: loginScreenEs,
     [namespaces.pages.notifications]: {title: "Notificaciones"},
-    [namespaces.pages.passwordRecovery]: passwordRecoveryEs,
     [namespaces.pages.pickupPoint]: {title: "Punto de recogida", address: "Dirección"},
+    [namespaces.pages.profileEditEmail]: profileEditEmailEs,
+    [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEs,
+    [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEs,
     [namespaces.pages.profileScreen]: profileScreenEs,
-    [namespaces.pages.registrationUserID]: registrationUserIDEs,
+    [namespaces.pages.registerID]: registerIDEs,
+    [namespaces.pages.registerLegal]: registerLegalEs,
     [namespaces.pages.welcomeScreen]: {login: "Iniciar sesión", register: "Registrarse"},
 
 };
@@ -34,14 +36,15 @@ export const en = {
             cancel: "Cancel",
         },
     },
-    [namespaces.pages.editEmail]: editEmailEn,
-    [namespaces.pages.editNewPassword]: editNewPasswordEn,
-    [namespaces.pages.editPrevPassword]: editPrevPasswordEn,
+    [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEn,
     [namespaces.pages.loginScreen]: loginScreenEn,
     [namespaces.pages.notifications]: {title: "Notifications"},
-    [namespaces.pages.passwordRecovery]: passwordRecoveryEn,
     [namespaces.pages.pickupPoint]: {title: "Pickup point", address: "Address"},
+    [namespaces.pages.profileEditEmail]: profileEditEmailEn,
+    [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEn,
+    [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEn,
     [namespaces.pages.profileScreen]: profileScreenEn,
-    [namespaces.pages.registrationUserID]: registrationUserIDEn,
+    [namespaces.pages.registerID]: registerIDEn,
+    [namespaces.pages.registerLegal]: registerLegalEn,
     [namespaces.pages.welcomeScreen]: {login: "Login", register: "Register"},
 };

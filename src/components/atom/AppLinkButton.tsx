@@ -1,12 +1,13 @@
 import ButtonProps from "../../types/ButtonProps";
 import {FC} from "react";
 import {Link} from "react-router-dom";
-
-const AppLinkButton: FC<ButtonProps> = ({bgColor = 'bg-primary-color', title, toGo}) => {
+interface AppLinkButtonProps extends ButtonProps {
+    link: string
+}
+const AppLinkButton: FC<AppLinkButtonProps> = ({bgColor = 'bg-primary-color', title, link}) => {
 
     return (
-        <Link to={toGo as string}
-              className={`rounded-2xl flex items-center justify-center py-5 text-white font-bold ${bgColor} px-2`}>
+        <Link to={link} className={`app-button ${bgColor}`}>
             <p>
                 {title}
             </p>

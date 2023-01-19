@@ -2,7 +2,7 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import usersMock from "../mocks/users.mock";
 
-const useEditPrevPassword = () => {
+const useProfileEditPrevPassword = () => {
     const [password, setPassword] = useState<string>('');
     const [hasError, setHasError] = useState<boolean>(false);
 
@@ -26,4 +26,4 @@ const useEditPrevPassword = () => {
         password,
     }
 }
-export default useEditPrevPassword;
+export default useProfileEditPrevPassword;

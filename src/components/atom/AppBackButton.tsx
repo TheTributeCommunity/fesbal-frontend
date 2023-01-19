@@ -2,9 +2,9 @@ import {Link} from "react-router-dom";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 
 
-const AppBackButton = ({goTo}: { goTo: string }) => {
+const AppBackButton = ({link}: { link: string }) => {
     return (
-        <Link to={goTo} className="bg-white h-12 w-12 rounded-full flex items-center justify-center app-shadow">
+        <Link to={link} className="app-icon-button">
             <LeftArrowIcon/>
         </Link>
     );

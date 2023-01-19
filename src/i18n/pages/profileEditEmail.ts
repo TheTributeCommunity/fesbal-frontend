@@ -1,4 +1,4 @@
-export const editEmailEs = {
+export const profileEditEmailEs = {
     title: "Editar email",
     description: "Introduce tu nuevo email",
     next: "Confirmar email",
@@ -15,7 +15,7 @@ export const editEmailEs = {
     }
 }
 
-export const editEmailEn = {
+export const profileEditEmailEn = {
     title: "Edit email",
     description: "Enter your new email",
     next: "Confirm email",

@@ -1,12 +1,11 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCopy} from "@fortawesome/free-regular-svg-icons";
+import CopyClipboardIcon from "../icons/CopyClipboardIcon";
 
 const AppCopyClipboardButton = ({text}: { text: string }) => {
     return (
-        <div className="flex flex-row gap-4">
-            <p>{text}</p>
+        <div className="flex flex-row justify-between">
+            <p className="font-input">{text}</p>
             <button onClick={() => navigator.clipboard.writeText(text)}>
-                <FontAwesomeIcon icon={faCopy}/>
+                <CopyClipboardIcon/>
             </button>
         </div>
     );
