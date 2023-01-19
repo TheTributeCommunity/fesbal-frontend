@@ -10,7 +10,7 @@ const usePasswordRecovery = <T extends string>(initialState: T) => {
     const [hasError, setHasError] = useState<boolean>(false);
 
     const navigate = useNavigate();
-    const {t} = useTranslation(namespaces.pages.passwordRecovery);
+    const {t: translate} = useTranslation(namespaces.pages.passwordRecovery);
     const isFormValid = (email: string): boolean => {
         return usersMock.some((user) => user.email === email);
     }
@@ -22,11 +22,11 @@ const usePasswordRecovery = <T extends string>(initialState: T) => {
         e.preventDefault();
         setHasError(!isFormValid(email));
         if (isFormValid(email)) Swal.fire({
-            title: t("sweetAlert.title") as string,
-            text: t("sweetAlert.description") as string,
+            title: translate("sweetAlert.title") as string,
+            text: translate("sweetAlert.description") as string,
             icon: 'success',
             iconColor: '#0F95CE',
-            confirmButtonText: t("sweetAlert.confirm") as string,
+            confirmButtonText: translate("sweetAlert.confirm") as string,
             buttonsStyling: false,
             position: 'bottom',
             padding: '1rem',

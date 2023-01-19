@@ -6,7 +6,7 @@ import {namespaces} from "../../i18n/i18n.constants";
 
 const UserIDForm = () => {
     const {selectedOption, userID, onSubmit, validateUserID, onUserIDChange, onSelectedOptionChange} = useUserIDForm();
-    const {t} = useTranslation(namespaces.pages.registrationUserID);
+    const {t: translate} = useTranslation(namespaces.pages.registrationUserID);
 
     const selectOptions: string[] = ['DNI', 'NIE'];
 
@@ -16,17 +16,17 @@ const UserIDForm = () => {
             <div className="flex flex-row gap-4">
                 <div className="flex flex-col gap-1.5 text-sm text-primary-color">
                     <label htmlFor="identityType"
-                           className={selectedOption ? "opacity-100" : "opacity-0"}>{t("type")}</label>
+                           className={selectedOption ? "opacity-100" : "opacity-0"}>{translate("type")}</label>
                     <UserIDSelect options={selectOptions} value={selectedOption} onChange={onSelectedOptionChange}/>
                 </div>
                 <div className="flex flex-col gap-1.5 text-sm text-primary-color w-full">
-                    <label htmlFor="identityNumber" className={userID ? "opacity-100" : "opacity-0"}>{t("id")}</label>
-                    <input type="text" placeholder={t("id") as string}
+                    <label htmlFor="identityNumber" className={userID ? "opacity-100" : "opacity-0"}>{translate("id")}</label>
+                    <input type="text" placeholder={translate("id") as string}
                            className="text-secondary-color placeholder-primary-color rounded-md px-4 py-5 w-full"
                            value={userID} onChange={(e) => onUserIDChange(e.target.value)}/>
                 </div>
             </div>
-            <AppNextButton disabled={!validateUserID()} title={t("next")}/>
+            <AppNextButton disabled={!validateUserID()} title={translate("next")}/>
         </form>
     );
 }

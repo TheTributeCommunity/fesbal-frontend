@@ -8,7 +8,7 @@ const useEditNewPassword = () => {
     const [password, setPassword] = useState<string>('');
     const [passwordConfirm, setPasswordConfirm] = useState<string>('');
     const [hasError, setHasError] = useState<boolean>(false);
-    const {t} = useTranslation(namespaces.pages.editNewPassword);
+    const {t: translate} = useTranslation(namespaces.pages.editNewPassword);
 
     const navigate = useNavigate();
 
@@ -26,9 +26,9 @@ const useEditNewPassword = () => {
         setHasError(!arePasswordsEqual);
         if (arePasswordsEqual) Swal.fire({
             showCancelButton: true,
-            title: t('sweetAlert.title') as string,
-            confirmButtonText: t('sweetAlert.confirmButtonText') as string,
-            cancelButtonText: t('sweetAlert.cancelButtonText') as string,
+            title: translate('sweetAlert.title') as string,
+            confirmButtonText: translate('sweetAlert.confirmButtonText') as string,
+            cancelButtonText: translate('sweetAlert.cancelButtonText') as string,
             icon: 'warning',
             iconColor: '#EB5757',
             buttonsStyling: false,
@@ -48,8 +48,8 @@ const useEditNewPassword = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: t('sweetAlertSuccess.title') as string,
-                    confirmButtonText: t('sweetAlertSuccess.confirmButtonText') as string,
+                    title: translate('sweetAlertSuccess.title') as string,
+                    confirmButtonText: translate('sweetAlertSuccess.confirmButtonText') as string,
                     icon: 'success',
                     iconColor: '#3085d6',
                     buttonsStyling: false,

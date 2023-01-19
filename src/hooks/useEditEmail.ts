@@ -8,7 +8,7 @@ import {namespaces} from "../i18n/i18n.constants";
 const useEditEmail = <T extends string>(initialState: T) => {
     const [email, setEmail] = useState<T>(initialState);
     const [hasError, setHasError] = useState<boolean>(false);
-    const {t} = useTranslation(namespaces.pages.editEmail);
+    const {t: translate} = useTranslation(namespaces.pages.editEmail);
 
 
     const navigate = useNavigate();
@@ -27,13 +27,13 @@ const useEditEmail = <T extends string>(initialState: T) => {
         setHasError(false);
     }
     const sweetAlert = {
-        title: t("sweetAlert.title"),
-        confirmButtonText: t("sweetAlert.confirmButtonText"),
-        cancelButtonText: t("sweetAlert.cancelButtonText"),
+        title: translate("sweetAlert.title"),
+        confirmButtonText: translate("sweetAlert.confirmButtonText"),
+        cancelButtonText: translate("sweetAlert.cancelButtonText"),
     }
     const sweetAlertSuccess = {
-        title: t("sweetAlertSuccess.title"),
-        confirmButtonText: t("sweetAlertSuccess.confirmButtonText"),
+        title: translate("sweetAlertSuccess.title"),
+        confirmButtonText: translate("sweetAlertSuccess.confirmButtonText"),
     }
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

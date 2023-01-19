@@ -1,6 +1,8 @@
 interface ButtonProps {
-    disabled: boolean;
     title: string;
+    disabled?: boolean;
+    bgColor?: string;
+    toGo?: string;
 }
 
 export default ButtonProps;

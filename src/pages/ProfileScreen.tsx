@@ -14,7 +14,7 @@ import {namespaces} from "../i18n/i18n.constants";
 
 
 const ProfileScreen = () => {
-    const {t} = useTranslation(namespaces.pages.profileScreen);
+    const {t: translate} = useTranslation(namespaces.pages.profileScreen);
     const user = usersMock[0];
     const getFamilyMembers = (id: string) => {
         const user = users.find(user => user.id === id);
@@ -23,29 +23,29 @@ const ProfileScreen = () => {
     const getPersonalData = (): PersonalDataItemProps[] => {
         return [
             {
-                title: t('fullName'),
+                title: translate('fullName'),
                 value: user.fullName,
             },
             {
-                title: t('id'),
+                title: translate('id'),
                 value: user.id
             },
             {
-                title: t('birthDate'),
+                title: translate('birthDate'),
                 value: user.birthDate,
             },
             {
-                title: t('email'),
+                title: translate('email'),
                 value: user.email,
                 hasEditButton: true,
                 goTo: `/profile/edit-email`,
             },
             {
-                title: t('phone'),
+                title: translate('phone'),
                 value: user.phone,
             },
             {
-                title: t('password'),
+                title: translate('password'),
                 value: "********",
                 hasEditButton: true,
                 goTo: `/profile/edit-prev-password`,
@@ -58,7 +58,7 @@ const ProfileScreen = () => {
             <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3">
                 <div className="flex flex-row justify-between items-center text-primary-color text-base font-bold">
                     <AppBackButton goTo="/login"/>
-                    <h1>{t('title')}</h1>
+                    <h1>{translate('title')}</h1>
                     <AppBurgerMenuButton/>
                 </div>
                 <ul>
@@ -68,12 +68,12 @@ const ProfileScreen = () => {
                 </ul>
                 <div className="flex flex-row gap-2 items-center font-bold pl-2">
                     <FontAwesomeIcon icon={faUserGroup} className="text-primary-color"/>
-                    <h2>{t('familyMembers')}</h2>
+                    <h2>{translate('familyMembers')}</h2>
                 </div>
                 <ul className="flex flex-col gap-2 pl-2 bg-white rounded-md p-4">
                     {getFamilyMembers(user.id) ? getFamilyMembers(user.id)?.map((familyMember, index) => (
                         <li key={index}>{familyMember.FullName}</li>
-                    )) : <li>{t('noFamilyMembers')}</li>}
+                    )) : <li>{translate('noFamilyMembers')}</li>}
                 </ul>
             </div>
             <nav
