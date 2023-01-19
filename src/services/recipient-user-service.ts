@@ -3,7 +3,7 @@ import { gql } from '@apollo/client'
 import { RecipientUser } from '../models/user'
 
 export class RecipientUserService {
-  static async getAllRecipientUsers(): Promise<RecipientUser[]> {
+  static async getAll(): Promise<RecipientUser[]> {
     const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
       query: GET_ALL_RECIPIENTS_USERS,
       variables: {},
@@ -11,7 +11,7 @@ export class RecipientUserService {
     return result.data.ListRecipientUserReadModels.items
   }
 
-  static async getUserRecipientUser(id: string): Promise<RecipientUser> {
+  static async getById(id: string): Promise<RecipientUser> {
     const result = await BoosterClient.query<{ RecipientUserReadModel: RecipientUser }>({
       query: GET_RECIPIENT_USER,
       variables: { id },
@@ -19,7 +19,7 @@ export class RecipientUserService {
     return result.data.RecipientUserReadModel
   }
 
-  static async createRecipientUser(newUser: Partial<RecipientUser>): Promise<boolean> {
+  static async create(newUser: Partial<RecipientUser>): Promise<boolean> {
     const result = await BoosterClient.mutate<{ CreateRecipientUser: boolean }>({
       mutation: CREATE_RECIPIENT_USER,
       variables: { newUser },
@@ -30,7 +30,7 @@ export class RecipientUserService {
     return result.data?.CreateRecipientUser
   }
 
-  static async updateRecipientUser(recipientUserId: string, email: string): Promise<boolean> {
+  static async updateEmail(recipientUserId: string, email: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ UpdateRecipientUserEmail: boolean }>({
       mutation: UPDATE_RECIPIENT_USER,
       variables: { updatedUser: { email, recipientUserId } },
@@ -41,7 +41,7 @@ export class RecipientUserService {
     return result.data?.UpdateRecipientUserEmail
   }
 
-  static async deleteUser(recipientUserId: string): Promise<boolean> {
+  static async delete(recipientUserId: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ DeleteRecipientUser: boolean }>({
       mutation: DELETE_RECIPIENT_USER,
       variables: { userToDelete: { recipientUserId } },
@@ -66,9 +66,8 @@ const GET_ALL_RECIPIENTS_USERS = gql`
         phone
         phoneVerified
         email
-        referralSheet
+        referralSheetUrl
         role
-        deleted
       }
     }
   }
@@ -86,7 +85,7 @@ const GET_RECIPIENT_USER = gql`
       phone
       phoneVerified
       email
-      referralSheet
+      referralSheetUrl
       role
       deleted          
     }
