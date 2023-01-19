@@ -44,8 +44,20 @@
     border-color: $secondary-color;
   }
 
+  .border-warning-color {
+    border-color: $warning-color;
+  }
+
+  .text-tertiary-color {
+    color: $tertiary-color;
+  }
+
   .bg-tertiary-color {
     background-color: $tertiary-color;
+  }
+
+  .text-quarter-color {
+    color: $quaternary-color;
   }
 
   .text-warning-color {
@@ -72,6 +84,10 @@
     background-color: $focus-primary-color;
   }
 
+  .bg-primary-color-light {
+    background-color: $primary-color-light;
+  }
+
   .font-mega-title {
     font-family: $main-font;
     font-style: normal;
@@ -88,7 +104,7 @@
     line-height: 28px;
   }
 
-  .font-medium {
+  .font-medium-title {
     font-family: $main-font;
     font-style: normal;
     font-weight: 500;
