@@ -32,13 +32,24 @@ export class RecipientUserService {
 
   static async updateEmail(recipientUserId: string, email: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ UpdateRecipientUserEmail: boolean }>({
-      mutation: UPDATE_RECIPIENT_USER,
+      mutation: UPDATE_RECIPIENT_USER_EMAIL,
       variables: { updatedUser: { email, recipientUserId } },
     })
     if (!result.data?.UpdateRecipientUserEmail) {
-      throw new Error('Error updating the USER')
+      throw new Error('Error updating the USER email')
     }
     return result.data?.UpdateRecipientUserEmail
+  }
+
+  static async updateReferralSheetUrl(recipientUserId: string, referralSheetUrl: string): Promise<boolean> {
+    const result = await BoosterClient.mutate<{ UpdateRecipientUserReferralSheetUrl: boolean }>({
+      mutation: UPDATE_RECIPIENT_USER_REFERRAL_SHEET_URL,
+      variables: { updatedUser: { referralSheetUrl, recipientUserId } },
+    })
+    if (!result.data?.UpdateRecipientUserReferralSheetUrl) {
+      throw new Error('Error updating the USER referralSheetUrl')
+    }
+    return result.data?.UpdateRecipientUserReferralSheetUrl
   }
 
   static async delete(recipientUserId: string): Promise<boolean> {
@@ -97,9 +108,15 @@ const CREATE_RECIPIENT_USER = gql`
   }
 `
 
-const UPDATE_RECIPIENT_USER = gql`
+const UPDATE_RECIPIENT_USER_EMAIL = gql`
   mutation ($updatedUser: UpdateRecipientUserEmailInput!) {
     UpdateRecipientUserEmail(input: $updatedUser)
+  }
+`
+
+const UPDATE_RECIPIENT_USER_REFERRAL_SHEET_URL = gql`
+  mutation ($updatedUser: UpdateRecipientUserReferralSheetUrlInput!) {
+    UpdateRecipientUserReferralSheetUrl(input: $updatedUser)
   }
 `
 
