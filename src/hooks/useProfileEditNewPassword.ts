@@ -1,14 +1,14 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import Swal from 'sweetalert2'
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import Swal from 'sweetalert2'
 import {namespaces} from "../i18n/i18n.constants";
 
-const useEditNewPassword = () => {
+const useProfileEditNewPassword = () => {
     const [password, setPassword] = useState<string>('');
     const [passwordConfirm, setPasswordConfirm] = useState<string>('');
     const [hasError, setHasError] = useState<boolean>(false);
-    const {t} = useTranslation(namespaces.pages.editNewPassword);
+    const {t: translate} = useTranslation(namespaces.pages.profileEditNewPassword);
 
     const navigate = useNavigate();
 
@@ -26,9 +26,9 @@ const useEditNewPassword = () => {
         setHasError(!arePasswordsEqual);
         if (arePasswordsEqual) Swal.fire({
             showCancelButton: true,
-            title: t('sweetAlert.title') as string,
-            confirmButtonText: t('sweetAlert.confirmButtonText') as string,
-            cancelButtonText: t('sweetAlert.cancelButtonText') as string,
+            title: translate('sweetAlert.title') as string,
+            confirmButtonText: translate('sweetAlert.confirmButtonText') as string,
+            cancelButtonText: translate('sweetAlert.cancelButtonText') as string,
             icon: 'warning',
             iconColor: '#EB5757',
             buttonsStyling: false,
@@ -37,10 +37,10 @@ const useEditNewPassword = () => {
             customClass: {
                 popup: "rounded-md",
                 actions: "flex gap-2 w-full",
-                title: "text-2xl font-bold",
-                confirmButton: "bg-warning-color hover-warning-color text-white rounded-xl font-medium w-full" +
+                title: "font-big-title",
+                confirmButton: "bg-warning-color hover-warning-color text-white rounded-xl font-button w-full" +
                     " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-warning-color h-20",
-                cancelButton: "bg-primary-color hover-primary-color text-white rounded-xl font-medium w-full" +
+                cancelButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
                     " lg:w-2/5 focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-20",
             },
             width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
@@ -48,8 +48,8 @@ const useEditNewPassword = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: t('sweetAlertSuccess.title') as string,
-                    confirmButtonText: t('sweetAlertSuccess.confirmButtonText') as string,
+                    title: translate('sweetAlertSuccess.title') as string,
+                    confirmButtonText: translate('sweetAlertSuccess.confirmButtonText') as string,
                     icon: 'success',
                     iconColor: '#3085d6',
                     buttonsStyling: false,
@@ -58,8 +58,8 @@ const useEditNewPassword = () => {
                     customClass: {
                         popup: "rounded-md",
                         actions: "w-full",
-                        title: "text-2xl font-bold",
-                        confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-medium w-full" +
+                        title: "font-big-title",
+                        confirmButton: "bg-primary-color hover-primary-color text-white rounded-xl font-button w-full" +
                             " focus:outline-none focus:ring-1 focus:ring-offset-1 focus-primary-color h-20",
                     },
                     width: parent.innerWidth < 768 ? '95%' : parent.innerWidth < 1024 ? '48%' : '35%',
@@ -77,4 +77,4 @@ const useEditNewPassword = () => {
         passwordConfirm
     }
 }
-export default useEditNewPassword;
+export default useProfileEditNewPassword;

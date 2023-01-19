@@ -1,4 +1,4 @@
-export const editNewPasswordEs = {
+export const profileEditNewPasswordEs = {
     title: "Editar contraseña",
     description: "Introduce tu nueva contraseña",
     next: "Confirmar contraseña",
@@ -16,7 +16,7 @@ export const editNewPasswordEs = {
     }
 }
 
-export const editNewPasswordEn = {
+export const profileEditNewPasswordEn = {
     title: "Edit password",
     description: "Enter your new password",
     next: "Confirm password",

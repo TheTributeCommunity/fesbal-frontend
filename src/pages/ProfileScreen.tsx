@@ -1,17 +1,15 @@
-import AppBackButton from "../components/atom/AppBackButton";
-import AppBurgerMenuButton from "../components/atom/AppBurgerMenuButton";
-import PersonalDataItem from "../components/atom/PersonalDataItem";
-import usersMock from "../mocks/users.mock";
-import users from "../mocks/users.mock";
 import PersonalDataItemProps from "../types/PersonalDataItemProps";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUserGroup} from "@fortawesome/free-solid-svg-icons";
-import {useTranslation} from "react-i18next";
+import ProfilePersonalDataItem from "../components/atom/ProfilePersonalDataItem";
+import users from "../mocks/users.mock";
+import usersMock from "../mocks/users.mock";
 import {namespaces} from "../i18n/i18n.constants";
+import {useTranslation} from "react-i18next";
+import FamilyMembersIcon from "../components/icons/FamilyMembersIcon";
 import BottomNavBar from "../components/molecules/BottomNavBar";
+import AppPageBurgerHeader from "../components/molecules/AppPageBurgerHeader";
 
 const ProfileScreen = () => {
-    const {t} = useTranslation(namespaces.pages.profileScreen);
+    const {t: translate} = useTranslation(namespaces.pages.profileScreen);
     const user = usersMock[0];
     const getFamilyMembers = (id: string) => {
         const user = users.find((user) => user.id === id);
@@ -20,29 +18,29 @@ const ProfileScreen = () => {
     const getPersonalData = (): PersonalDataItemProps[] => {
         return [
             {
-                title: t("fullName"),
+                title: translate('fullName'),
                 value: user.fullName,
             },
             {
-                title: t("id"),
-                value: user.id,
+                title: translate('id'),
+                value: user.id
             },
             {
-                title: t("birthDate"),
+                title: translate('birthDate'),
                 value: user.birthDate,
             },
             {
-                title: t("email"),
+                title: translate('email'),
                 value: user.email,
                 hasEditButton: true,
                 goTo: `/profile/edit-email`,
             },
             {
-                title: t("phone"),
+                title: translate('phone'),
                 value: user.phone,
             },
             {
-                title: t("password"),
+                title: translate('password'),
                 value: "********",
                 hasEditButton: true,
                 goTo: `/profile/edit-prev-password`,
@@ -51,30 +49,22 @@ const ProfileScreen = () => {
     };
 
     return (
-        <div className="h-screen flex flex-col page-bg text-secondary-color p-8 justify-between">
-            <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3">
-                <div className="flex flex-row justify-between items-center text-primary-color text-base font-bold">
-                    <AppBackButton goTo="/login" />
-                    <h1>{t("title")}</h1>
-                    <AppBurgerMenuButton />
-                </div>
+        <div className="app-page h-screen">
+            <AppPageBurgerHeader title={translate('title')} link="/login"/>
+            <div className="app-page__container gap-4">
                 <ul>
                     {getPersonalData().map((personalData, index) => (
-                        <PersonalDataItem key={index} personalData={personalData} index={index} />
+                        <ProfilePersonalDataItem key={index} personalData={personalData} index={index}/>
                     ))}
                 </ul>
-                <div className="flex flex-row gap-2 items-center font-bold pl-2">
-                    <FontAwesomeIcon icon={faUserGroup} className="text-primary-color" />
-                    <h2>{t("familyMembers")}</h2>
+                <div className="flex flex-row items-center gap-2 pl-2 font-bold mt-8">
+                    <FamilyMembersIcon/>
+                    <h2 className="font-mini-title">{translate('familyMembers')}</h2>
                 </div>
-                <ul className="flex flex-col gap-2 pl-2 bg-white rounded-md p-4">
-                    {getFamilyMembers(user.id) ? (
-                        getFamilyMembers(user.id)?.map((familyMember, index) => (
-                            <li key={index}>{familyMember.FullName}</li>
-                        ))
-                    ) : (
-                        <li>{t("noFamilyMembers")}</li>
-                    )}
+                <ul className="flex flex-col gap-2 rounded-md bg-white p-8 pl-2 font-input">
+                    {getFamilyMembers(user.id) ? getFamilyMembers(user.id)?.map((familyMember, index) => (
+                        <li key={index}>{familyMember.FullName}</li>
+                    )) : <li>{translate('noFamilyMembers')}</li>}
                 </ul>
             </div>
             <BottomNavBar />

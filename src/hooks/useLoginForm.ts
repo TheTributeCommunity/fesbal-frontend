@@ -1,7 +1,7 @@
 import {ChangeEvent, FormEvent, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import UserProps from "../types/UserProps";
 import usersMock from "../mocks/users.mock";
-import {useNavigate} from "react-router-dom";
 
 const useLoginForm = <T extends UserProps>(initialState: T) => {
     const [user, setUser] = useState<T>(initialState);
