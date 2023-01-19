@@ -19,7 +19,7 @@ const RegisterIDForm = () => {
                     <UserIDSelect options={selectOptions} value={selectedOption} onChange={onSelectedOptionChange}/>
                 </div>
                 <div className="flex flex-col gap-1.5 text-primary-color w-full">
-                    <label htmlFor="identityNumber" className={`app-label ${userID ? '' : "app-label--hidden"}`}>{t("id")}</label>
+                    <label htmlFor="identityNumber" className={`app-label ${userID ? '' : "app-label--hidden"}`}>{translate("id")}</label>
                     <input type="text" placeholder={translate("id") as string}
                            className="app-input"
                            value={userID} onChange={(e) => onUserIDChange(e.target.value)}/>

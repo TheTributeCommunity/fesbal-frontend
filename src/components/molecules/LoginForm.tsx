@@ -29,16 +29,15 @@ const LoginForm = () => {
                     hasError={hasError}
                 />
                 <div className="flex flex-col gap-2">
-                    <AppFormInput label={t("password")}
+                    <AppFormInput label={translate("password")}
                                   type={showPassword ? "text" : "password"}
                                   name="password"
                                   value={user.password}
                                   onChange={onChange}
                                   placeholder={translate("password")}
                                   hasError={hasError}
-                                  showPassword={showPassword}
                                   toggleShowPassword={toggleShowPassword}
-                                  error={t("error") as string}
+                                  error={translate("error") as string}
                     />
                     <Link to="/login/password-recovery"
                           className="self-end underline font-small-link">
