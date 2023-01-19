@@ -55,7 +55,7 @@ const ProfileScreen = () => {
 
     return (
         <div className="flex h-screen flex-col justify-between p-8 page-bg text-secondary-color">
-            <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3">
+            <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3 w-full">
                 <div className="flex flex-row items-center justify-between">
                     <AppBackButton goTo="/login"/>
                     <h1 className="text-primary-color font-mini-title">{t('title')}</h1>
