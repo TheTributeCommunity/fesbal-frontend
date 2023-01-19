@@ -1,7 +1,7 @@
 import {useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 
-const useRegisterReferralForm = () => {
+const useUploadReferral = () => {
     const [file, setFile] = useState<File | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const cameraRef = useRef<HTMLInputElement>(null);
@@ -28,11 +28,11 @@ const useRegisterReferralForm = () => {
         }
     };
 
-    const handleOnClick = () => {
-        navigate("/register/request-sent");
+    const handleOnClick = (href: string) => {
+        navigate(href);
     }
 
     return {file, setFile, inputRef, cameraRef, handleFileChange, handleClick, handleOnClick};
 }
 
-export default useRegisterReferralForm;
+export default useUploadReferral;
