@@ -10,6 +10,7 @@ export const namespaces = {
         profileEditNewPassword: "pages.profile.profileEditNewPassword",
         profileEditPrevPassword: "pages.profile.profileEditPrevPassword",
         profileScreen: "pages.profileScreen",
+        registerFamilyMembers: "pages.registerFamilyMembers",
         registerID: "pages.registerID",
         registerLegal: "pages.registerLegal",
         registerReferral: "pages.registerReferral",
