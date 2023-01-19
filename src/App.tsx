@@ -14,7 +14,6 @@ import WelcomeScreen from "./pages/WelcomeScreen";
 import EditNewPassword from "./pages/EditNewPassword";
 import RegistrationUserID from "./pages/RegistrationUserID";
 import RegistrationName from "./pages/RegistrationName";
-
 import RegisterEmailPage from './pages/RegisterEmailPage';
 
 function App() {
@@ -37,6 +36,7 @@ function App() {
                 <Route path="/profile/edit-new-password" element={<EditNewPassword/>}/>
                 <Route path="/registration/user-id" element={<RegistrationUserID/>}/>
                 <Route path="/registration/name" element={<RegistrationName/>}/>
+                <Route path="/registration/email" element={<RegisterEmailPage/>}/>
                 <Route path="*" element={<LoginScreen/>}/>
             </Routes>
         </Router>
