@@ -1,6 +1,6 @@
 import { BoosterClient } from './booster-service'
 import { gql } from '@apollo/client'
-import { RecipientUser } from '../models/user'
+import { RecipientUser } from '../models/recipient-user'
 
 export class RecipientUserService {
   static async getAll(): Promise<RecipientUser[]> {
@@ -77,6 +77,7 @@ const GET_ALL_RECIPIENTS_USERS = gql`
         phone
         phoneVerified
         email
+        relativesIds
         referralSheetUrl
         role
       }
@@ -96,6 +97,7 @@ const GET_RECIPIENT_USER = gql`
       phone
       phoneVerified
       email
+      relativesIds
       referralSheetUrl
       role
       deleted          
