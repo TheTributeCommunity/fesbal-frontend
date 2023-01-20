@@ -4,10 +4,10 @@ import {namespaces} from "../i18n/i18n.constants";
 import PageHeader from "../components/molecules/AppPageHeader";
 
 const ProfileEditNewPassword = () => {
-    const {t} = useTranslation(namespaces.pages.profileEditNewPassword);
+    const {t: translate} = useTranslation(namespaces.pages.profileEditNewPassword);
     return (
         <div className="app-page h-screen">
-            <PageHeader link="/profile/edit-prev-password" title={t("title")} description={t("description") as string}/>
+            <PageHeader link="/profile/edit-prev-password" title={translate("title")} description={translate("description") as string}/>
             <EditNewPasswordForm/>
         </div>
     );

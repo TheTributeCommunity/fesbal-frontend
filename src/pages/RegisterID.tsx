@@ -1,6 +1,6 @@
 import {useTranslation} from "react-i18next";
-import RegisterIDForm from "../components/molecules/RegisterIDForm";
 import {namespaces} from "../i18n/i18n.constants";
+import RegisterIDForm from "../components/molecules/RegisterIDForm";
 import PageHeader from "../components/molecules/AppPageHeader";
 
 const RegisterID = () => {

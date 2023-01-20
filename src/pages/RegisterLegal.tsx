@@ -5,7 +5,7 @@ import LogoFesbalIcon from "../components/icons/LogoFesbalIcon";
 import {namespaces} from "../i18n/i18n.constants";
 
 const RegisterLegal = () => {
-    const {t} = useTranslation(namespaces.pages.registerLegal);
+    const {t: translate} = useTranslation(namespaces.pages.registerLegal);
 
     return (
         <div className="app-page">
@@ -15,18 +15,18 @@ const RegisterLegal = () => {
             <div className="app-logo">
                 <LogoFesbalIcon/>
             </div>
-            <div className="app-register-legal__container">
+            <div className="app-register-legal__container p-8">
                 <div>
-                    <h1 className="mb-4 font-big-title">{t("title")}</h1>
-                    <p className="font-text">{t("description")}</p>
+                    <h1 className="mb-4 font-big-title">{translate("title")}</h1>
+                    <p className="font-text">{translate("description")}</p>
                 </div>
                 <div>
-                    <p className="font-label">{t("subtitle")}</p>
+                    <p className="font-label">{translate("subtitle")}</p>
                     <a href="https://www.theagilemonkeys.com/" target="_blank">
-                        <p className="underline text-primary-color font-small-link">{t("terms")}</p>
+                        <p className="underline text-primary-color font-small-link">{translate("terms")}</p>
                     </a>
                 </div>
-                <AppLinkButton title={t("next")} link="/register/id"/>
+                <AppLinkButton title={translate("next")} link="/register/name"/>
             </div>
         </div>
     );

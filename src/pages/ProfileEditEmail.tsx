@@ -5,10 +5,10 @@ import PageHeader from "../components/molecules/AppPageHeader";
 
 
 const ProfileEditEmail = () => {
-    const {t} = useTranslation(namespaces.pages.profileEditEmail);
+    const {t: translate} = useTranslation(namespaces.pages.profileEditEmail);
     return (
         <div className="app-page h-screen">
-            <PageHeader link="/profile" title={t('title')} description={t('description') as string}/>
+            <PageHeader link="/profile" title={translate('title')} description={translate('description') as string}/>
             <ProfileEditEmailForm/>
         </div>
     );
