@@ -13,6 +13,7 @@ export const namespaces = {
         registerFamilyMembers: "pages.registerFamilyMembers",
         registerID: "pages.registerID",
         registerLegal: "pages.registerLegal",
+        registerName: "pages.registerName",
         registerReferral: "pages.registerReferral",
         registerRequestSent: "pages.registerRequestSent",
         welcomeScreen: "pages.welcomeScreen",

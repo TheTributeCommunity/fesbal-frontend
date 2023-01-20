@@ -8,7 +8,8 @@ const useProfileEditNewPassword = () => {
     const [password, setPassword] = useState<string>('');
     const [passwordConfirm, setPasswordConfirm] = useState<string>('');
     const [hasError, setHasError] = useState<boolean>(false);
-    const {t} = useTranslation(namespaces.pages.profileEditNewPassword);
+
+    const {t: translate} = useTranslation(namespaces.pages.profileEditNewPassword);
 
     const navigate = useNavigate();
 
@@ -27,15 +28,15 @@ const useProfileEditNewPassword = () => {
         if (arePasswordsEqual) {
             AppPopupAlert({
                 icon: 'warning',
-                title: t("sweetAlert.title") as string,
-                confirmButtonText: t("sweetAlert.confirmButtonText") as string,
-                cancelButtonText: t("sweetAlert.cancelButtonText") as string,
+                title: translate("sweetAlert.title") as string,
+                confirmButtonText: translate("sweetAlert.confirmButtonText") as string,
+                cancelButtonText: translate("sweetAlert.cancelButtonText") as string,
             }).fire().then((result) => {
                 if (result.isConfirmed) {
                     AppPopupAlert({
                         icon: 'success',
-                        title: t("sweetAlertSuccess.title") as string,
-                        confirmButtonText: t("sweetAlertSuccess.confirmButtonText") as string,
+                        title: translate("sweetAlertSuccess.title") as string,
+                        confirmButtonText: translate("sweetAlertSuccess.confirmButtonText") as string,
                     }).fire().then(() => navigate('/profile'));
                 }
             });

@@ -8,7 +8,7 @@ import MenuReferralCard from "../components/atom/MenuReferralCard";
 import {useNavigate} from "react-router-dom";
 
 const MenuReferral = () => {
-    const {t} = useTranslation(namespaces.pages.menuReferral);
+    const {t: translate} = useTranslation(namespaces.pages.menuReferral);
     const navigate = useNavigate();
     const referrals = ReferralsMock.sort((a, b) => b.uploadDate.getTime() - a.uploadDate.getTime());
     const goToUpload = () => navigate("/referral/upload");
@@ -17,8 +17,8 @@ const MenuReferral = () => {
         <div className="flex min-h-screen flex-col justify-between p-8 gap-8 page-bg text-secondary-color ">
             <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3 w-full">
                 <div className="flex flex-row items-center justify-between">
-                    <AppBackButton goTo="/login"/>
-                    <h1 className="text-primary-color font-mini-title">{t('title')}</h1>
+                    <AppBackButton link="/login"/>
+                    <h1 className="text-primary-color font-mini-title">{translate('title')}</h1>
                     <AppBurgerMenuButton/>
                 </div>
                 {referrals.map((referral, index) => (
@@ -33,7 +33,7 @@ const MenuReferral = () => {
                 ))}
             </div>
             <div className="flex flex-col self-center md:w-1/2 lg:w-1/3 w-full">
-                <AppNextButton title={t('next')} onClick={goToUpload}/>
+                <AppNextButton title={translate('next')} onClick={goToUpload}/>
             </div>
         </div>
     );

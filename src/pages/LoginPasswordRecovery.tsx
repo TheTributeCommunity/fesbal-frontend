@@ -1,20 +1,14 @@
-import {useTranslation} from "react-i18next";
-import AppBackButton from "../components/atom/AppBackButton";
-import LoginPasswordRecoveryForm from "../components/molecules/LoginPasswordRecoveryForm";
 import {namespaces} from "../i18n/i18n.constants";
+import LoginPasswordRecoveryForm from "../components/molecules/LoginPasswordRecoveryForm";
+import AppPageHeader from "../components/molecules/AppPageHeader";
+import {useTranslation} from "react-i18next";
 
-export const LoginPasswordRecovery = () => {
-    const {t} = useTranslation(namespaces.pages.loginPasswordRecovery);
+const LoginPasswordRecovery = () => {
+    const {t: translate} = useTranslation(namespaces.pages.loginPasswordRecovery);
 
     return (
-        <div className="flex h-screen flex-col justify-between p-8 page-bg text-secondary-color">
-            <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3">
-                <AppBackButton goTo="/login"/>
-                <div>
-                    <h1 className="mb-4 text-1xl font-big-title">{t("title")}</h1>
-                    <p className="font-text">{t("description")}</p>
-                </div>
-            </div>
+        <div className="app-page h-screen">
+            <AppPageHeader link="/login" title={translate("title")} description={translate("description") as string}/>
             <LoginPasswordRecoveryForm/>
         </div>
     );

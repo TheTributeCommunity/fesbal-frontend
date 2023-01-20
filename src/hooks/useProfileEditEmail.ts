@@ -8,8 +8,7 @@ import AppPopupAlert from "../components/atom/AppPopupAlert";
 const useProfileEditEmail = <T extends string>(initialState: T) => {
     const [email, setEmail] = useState<T>(initialState);
     const [hasError, setHasError] = useState<boolean>(false);
-    const {t} = useTranslation(namespaces.pages.profileEditEmail);
-
+    const {t: translate} = useTranslation(namespaces.pages.profileEditEmail);
 
     const navigate = useNavigate();
     const isAnEmail = (email: string): boolean => {
@@ -23,7 +22,7 @@ const useProfileEditEmail = <T extends string>(initialState: T) => {
         return isAnEmail(email) && !emailAlreadyExists(email);
     }
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(email => e.target.value as T);
+            setEmail(e.target.value as T);
         setHasError(false);
     }
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -32,15 +31,15 @@ const useProfileEditEmail = <T extends string>(initialState: T) => {
         if (validateEmail(email)) {
             AppPopupAlert({
                 icon: 'warning',
-                title: t("sweetAlert.title") as string,
-                confirmButtonText: t("sweetAlert.confirmButtonText") as string,
-                cancelButtonText: t("sweetAlert.cancelButtonText") as string,
+                title: translate("sweetAlert.title") as string,
+                confirmButtonText: translate("sweetAlert.confirmButtonText") as string,
+                cancelButtonText: translate("sweetAlert.cancelButtonText") as string,
             }).fire().then((result) => {
                 if (result.isConfirmed) {
                     AppPopupAlert({
                         icon: 'success',
-                        title: t("sweetAlertSuccess.title") as string,
-                        confirmButtonText: t("sweetAlertSuccess.confirmButtonText") as string,
+                        title: translate("sweetAlertSuccess.title") as string,
+                        confirmButtonText: translate("sweetAlertSuccess.confirmButtonText") as string,
                     }).fire().then(() => navigate('/profile'))
                 }
             })

@@ -10,7 +10,7 @@ const useLoginPasswordRecovery = <T extends string>(initialState: T) => {
     const [hasError, setHasError] = useState<boolean>(false);
 
     const navigate = useNavigate();
-    const {t} = useTranslation(namespaces.pages.loginPasswordRecovery);
+    const {t: translate} = useTranslation(namespaces.pages.loginPasswordRecovery);
     const isFormValid = (email: string): boolean => {
         return usersMock.some((user) => user.email === email);
     }
@@ -24,9 +24,9 @@ const useLoginPasswordRecovery = <T extends string>(initialState: T) => {
         if (isFormValid(email)) {
             AppPopupAlert({
                 icon: 'success',
-                title: t("sweetAlert.title") as string,
-                text: t("sweetAlert.description") as string,
-                confirmButtonText: t("sweetAlert.confirm") as string,
+                title: translate("sweetAlert.title") as string,
+                text: translate("sweetAlert.description") as string,
+                confirmButtonText: translate("sweetAlert.confirm") as string,
             }).fire().then(() => navigate('/login'));
         }
     }

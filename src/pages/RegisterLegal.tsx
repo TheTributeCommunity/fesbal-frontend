@@ -5,29 +5,28 @@ import LogoFesbalIcon from "../components/icons/LogoFesbalIcon";
 import {namespaces} from "../i18n/i18n.constants";
 
 const RegisterLegal = () => {
-    const {t} = useTranslation(namespaces.pages.registerLegal);
+    const {t: translate} = useTranslation(namespaces.pages.registerLegal);
 
     return (
-        <div className="flex h-screen flex-col justify-between p-8 page-bg text-secondary-color">
-            <div className="h-1/6 w-full self-center md:w-1/2 lg:w-1/3">
-                <AppBackButton goTo="/welcome"/>
+        <div className="app-page">
+            <div className="app-page__header">
+                <AppBackButton link="/welcome"/>
             </div>
-            <div className="flex h-1/3 justify-center self-center md:w-1/2 lg:w-1/3">
+            <div className="app-logo">
                 <LogoFesbalIcon/>
             </div>
-            <div
-                className="flex h-3/5 flex-col justify-between self-center whitespace-pre-line rounded-lg bg-white p-4 md:w-1/2 md:p-8 lg:w-1/3">
+            <div className="app-register-legal__container">
                 <div>
-                    <h1 className="mb-4 font-big-title">{t("title")}</h1>
-                    <p className="font-text">{t("description")}</p>
+                    <h1 className="mb-4 font-big-title">{translate("title")}</h1>
+                    <p className="font-text">{translate("description")}</p>
                 </div>
                 <div>
-                    <p className="font-label">{t("subtitle")}</p>
+                    <p className="font-label">{translate("subtitle")}</p>
                     <a href="https://www.theagilemonkeys.com/" target="_blank">
-                        <p className="underline text-primary-color font-small-link">{t("terms")}</p>
+                        <p className="underline text-primary-color font-small-link">{translate("terms")}</p>
                     </a>
                 </div>
-                <AppLinkButton title={t("next")} link="/register/id"/>
+                <AppLinkButton title={translate("next")} link="/register/id"/>
             </div>
         </div>
     );

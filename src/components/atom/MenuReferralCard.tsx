@@ -5,7 +5,7 @@ import ReferralSheetProps from "../../types/ReferralSheetProps";
 import classNames from "classnames";
 
 const menuReferralCard: FC<ReferralSheetProps> = ({fullname, uploadDate, familyMembers, expiredDate, status}) => {
-    const {t} = useTranslation(namespaces.pages.menuReferral);
+    const {t: translate} = useTranslation(namespaces.pages.menuReferral);
     const statusClasses = classNames(
         'border',
         'rounded-2xl',
@@ -23,12 +23,12 @@ const menuReferralCard: FC<ReferralSheetProps> = ({fullname, uploadDate, familyM
             <li>
                 <div className="flex flex-row justify-between items-center">
                     <p className="font-label text-primary-color">
-                        {t('date')} {uploadDate.toLocaleDateString()}
+                        {translate('date')} {uploadDate.toLocaleDateString()}
                     </p>
                     <p>
                         <span
                             className={statusClasses}>
-                            {t(status)}
+                            {translate(status)}
                         </span>
                     </p>
                 </div>
@@ -36,7 +36,7 @@ const menuReferralCard: FC<ReferralSheetProps> = ({fullname, uploadDate, familyM
             </li>
             <li className="flex flex-col gap-2">
                 <p className="font-label text-primary-color w-3/4">
-                    {t('familyMembers')}
+                    {translate('familyMembers')}
                 </p>
                 <h2 className="font-input">
                     {familyMembers}
@@ -44,7 +44,7 @@ const menuReferralCard: FC<ReferralSheetProps> = ({fullname, uploadDate, familyM
             </li>
             <li className="flex flex-col gap-2">
                 <p className="font-label text-primary-color w-3/4">
-                    {t('expiringDate')}
+                    {translate('expiringDate')}
                 </p>
                 <h2 className="font-input">
                     {expiredDate.toLocaleDateString()}
@@ -52,7 +52,7 @@ const menuReferralCard: FC<ReferralSheetProps> = ({fullname, uploadDate, familyM
             </li>
             <li>
                 <a href="#" className="font-label text-primary-color underline" download="example.pdf">
-                    {t('download')}
+                    {translate('download')}
                 </a>
             </li>
         </ul>

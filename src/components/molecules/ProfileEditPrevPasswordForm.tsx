@@ -1,41 +1,29 @@
 import {useTranslation} from "react-i18next";
 import AppNextButton from "../atom/AppNextButton";
-import EyeHidePasswordIcon from "../icons/EyeHidePasswordIcon";
 import useProfileEditPrevPassword from "../../hooks/useProfileEditPrevPassword";
 import useShowPassword from "../../hooks/useShowPassword";
 import {namespaces} from "../../i18n/i18n.constants";
+import AppFormInput from "../atom/AppFormInput";
 
 const ProfileEditPrevPasswordForm = () => {
     const {password, onChange, hasError, onSubmit} = useProfileEditPrevPassword();
     const {showPassword, toggleShowPassword} = useShowPassword();
-    const {t} = useTranslation(namespaces.pages.profileEditPrevPassword);
+    const {t: translate} = useTranslation(namespaces.pages.profileEditPrevPassword);
     const buttonDisabled = hasError || password.length === 0;
 
     return (
-        <form noValidate onSubmit={onSubmit}
-              className="mt-8 flex h-full w-full flex-col justify-between self-center md:w-1/2 lg:w-1/3">
-            <div className="flex flex-col gap-8">
-                <div className="flex flex-col gap-1.5">
-                    {password.length > 0 &&
-                        <label htmlFor="password" className="text-primary-color font-label">{t("placeholder")}</label>}
-                    <div className="relative">
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            value={password}
-                            onChange={onChange}
-                            placeholder={t("placeholder") as string}
-                            className={`${hasError ? 'text-warning-color' : ''} rounded-md w-full px-4 py-5 placeholder-primary-color font-input`}
-                        />
-                        <div className="absolute top-6 right-4 cursor-pointer" onClick={toggleShowPassword}>
-                            <EyeHidePasswordIcon/>
-                        </div>
-                    </div>
-                    {hasError &&
-                        <p className="text-warning-color font-label">{t("error")}</p>}
-                </div>
-            </div>
-            <AppNextButton disabled={buttonDisabled} title={t("next")}/>
+        <form noValidate onSubmit={onSubmit} className="app-form">
+            <AppFormInput label={translate("placeholder")}
+                          type={showPassword ? "text" : "password"}
+                          name="password"
+                          value={password}
+                          onChange={onChange}
+                          placeholder={translate("placeholder")}
+                          hasError={hasError}
+                          error={translate("error") as string}
+                          toggleShowPassword={toggleShowPassword}
+            />
+            <AppNextButton disabled={buttonDisabled} title={translate("next")}/>
         </form>
     );
 }
