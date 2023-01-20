@@ -19,6 +19,17 @@ export class RecipientUserService {
     return result.data.RecipientUserReadModel
   }
 
+  static async getReferralSheetUploadUrl(id: string): Promise<string> {
+    const result = await BoosterClient.mutate<{ GetRecipientUserReferralSheetUploadUrl: string }>({
+      mutation: GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL,
+      variables: { id },
+    })
+    if (!result.data?.GetRecipientUserReferralSheetUploadUrl) {
+      throw new Error('Error getting the URL to upload the referral sheet')
+    }
+    return result.data.GetRecipientUserReferralSheetUploadUrl
+  }
+
   static async create(newUser: Partial<RecipientUser>): Promise<boolean> {
     const result = await BoosterClient.mutate<{ CreateRecipientUser: boolean }>({
       mutation: CREATE_RECIPIENT_USER,
@@ -33,7 +44,7 @@ export class RecipientUserService {
   static async updateEmail(recipientUserId: string, email: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ UpdateRecipientUserEmail: boolean }>({
       mutation: UPDATE_RECIPIENT_USER_EMAIL,
-      variables: { updatedUser: { email, recipientUserId } },
+      variables: { updatedUser: { recipientUserId, email } },
     })
     if (!result.data?.UpdateRecipientUserEmail) {
       throw new Error('Error updating the USER email')
@@ -44,7 +55,7 @@ export class RecipientUserService {
   static async updateReferralSheetUrl(recipientUserId: string, referralSheetUrl: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ UpdateRecipientUserReferralSheetUrl: boolean }>({
       mutation: UPDATE_RECIPIENT_USER_REFERRAL_SHEET_URL,
-      variables: { updatedUser: { referralSheetUrl, recipientUserId } },
+      variables: { updatedUser: { recipientUserId, referralSheetUrl } },
     })
     if (!result.data?.UpdateRecipientUserReferralSheetUrl) {
       throw new Error('Error updating the USER referralSheetUrl')
@@ -102,6 +113,11 @@ const GET_RECIPIENT_USER = gql`
       role
       deleted          
     }
+  }
+`
+const GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL = gql`
+  mutation ($id: GetRecipientUserReferralSheetUploadUrl!) {
+    GetRecipientUserReferralSheetUploadUrl(input: $id)
   }
 `
 const CREATE_RECIPIENT_USER = gql`
