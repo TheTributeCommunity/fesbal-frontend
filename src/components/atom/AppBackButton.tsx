@@ -1,11 +1,13 @@
-import RightArrowIcon from '../icons/RightArrowIcon';
+import {Link} from "react-router-dom";
+import LeftArrowIcon from "../icons/LeftArrowIcon";
 
-const AppBackButton = () => {
-  return (
-    <button className="bg-white h-12 w-12 rounded-full flex justify-center items-center app-shadow">
-      <RightArrowIcon />
-    </button>
-  );
+
+const AppBackButton = ({link}: { link: string }) => {
+    return (
+        <Link to={link} className="app-icon-button">
+            <LeftArrowIcon/>
+        </Link>
+    );
 };
 
 export default AppBackButton;
