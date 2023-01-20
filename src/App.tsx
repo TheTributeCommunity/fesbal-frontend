@@ -17,6 +17,7 @@ import RegisterReferral from "./pages/RegisterReferral";
 import RegisterRequestSent from "./pages/RegisterRequestSent";
 import RegisterName from "./pages/RegisterName";
 import WelcomeScreen from "./pages/WelcomeScreen";
+import PickupHistoryPage from './pages/PickupHistoryPage';
 
 function App() {
     return (
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/register/referral" element={<RegisterReferral/>}/>
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path="/welcome" element={<WelcomeScreen/>}/>
+                <Route path="/pickup-historic" element={<PickupHistoryPage/>}/>
             </Routes>
         </Router>
     );
