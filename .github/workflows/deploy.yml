@@ -1,10 +1,8 @@
 name: Deploy UI to cloud provider
 on:
   push:
-    branches: ["main"]
-    paths:
-      - "./**"
-  workflow_dispatch:
+    branches: 
+      - 'main'
 jobs:
   run:
     runs-on: ubuntu-latest
