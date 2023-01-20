@@ -1,21 +1,16 @@
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
-import AppBackButton from "../components/atom/AppBackButton";
-import MenuReferralUploadForm from "../components/molecules/MenuReferralUploadForm";
+import AppReferralForm from "../components/molecules/AppReferralForm";
+import AppPageHeader from "../components/molecules/AppPageHeader";
 
 const MenuReferralUpload = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerReferral);
 
     return (
-        <div className="flex h-screen flex-col justify-between p-8 page-bg text-secondary-color">
-            <div className="flex flex-col gap-8 self-center md:w-1/2 lg:w-1/3">
-                <AppBackButton link="/referral"/>
-                <div>
-                    <h1 className="mb-4 font-big-title">{translate("title")}</h1>
-                    <p className="font-text">{translate("description")}</p>
-                </div>
-            </div>
-            <MenuReferralUploadForm/>
+        <div className="app-page h-screen">
+            <AppPageHeader title={translate("title")} link="/referral"
+                           description={translate("description") as string}/>
+            <AppReferralForm link="/referral"/>
         </div>
     );
 };

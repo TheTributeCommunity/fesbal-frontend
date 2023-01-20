@@ -1,4 +1,4 @@
-import {FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {isLettersOnly} from "../helpers/textUtils";
 
@@ -15,18 +15,18 @@ const useRegisterNameForm = () => {
         return isValidLength && isValidLetters;
     }
 
-    const onNameChange = (name: string) => {
-        setUserName(name);
+    const onNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setUserName(e.target.value);
     }
 
-    const onSurnameChange = (surname: string) => {
-        setUserSurname(surname);
+    const onSurnameChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setUserSurname(e.target.value);
     }
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateNameSurname()) {
-            navigate('/profile');
+            navigate('/register/id');
         }
     }
 

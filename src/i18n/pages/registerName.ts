@@ -1,14 +1,14 @@
 export const registerNameEs = {
     title: "Nombre y Apellidos",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacus purus, hendrerit eu libero sit amet.",
+    description: "Por favor, introduce tu nombre y apellidos",
     name: "Nombre",
-    surname: "Apelido",
+    surname: "Apellidos",
     next: "Continuar",
 }
 
 export const registerNameEn = {
     title: "Name and Surname",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacus purus, hendrerit eu libero sit amet.",
+    description: "Please, introduce your name and surname",
     name: "Name",
     surname: "Surname",
     next: "Continue",

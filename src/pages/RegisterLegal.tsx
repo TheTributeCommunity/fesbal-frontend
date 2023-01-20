@@ -15,7 +15,7 @@ const RegisterLegal = () => {
             <div className="app-logo">
                 <LogoFesbalIcon/>
             </div>
-            <div className="app-register-legal__container">
+            <div className="app-register-legal__container p-8">
                 <div>
                     <h1 className="mb-4 font-big-title">{translate("title")}</h1>
                     <p className="font-text">{translate("description")}</p>
@@ -26,7 +26,7 @@ const RegisterLegal = () => {
                         <p className="underline text-primary-color font-small-link">{translate("terms")}</p>
                     </a>
                 </div>
-                <AppLinkButton title={translate("next")} link="/register/id"/>
+                <AppLinkButton title={translate("next")} link="/register/name"/>
             </div>
         </div>
     );

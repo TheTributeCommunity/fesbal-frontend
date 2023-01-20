@@ -29,6 +29,7 @@ const useUploadReferral = () => {
     };
 
     const handleOnClick = (href: string) => {
+        console.log(href);
         navigate(href);
     }
 

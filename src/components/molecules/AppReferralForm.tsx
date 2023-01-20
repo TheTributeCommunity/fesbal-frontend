@@ -19,7 +19,7 @@ export default ({link, showSublink}: ReferralFormProps) => {
     const {t: translate} = useTranslation(namespaces.pages.registerReferral);
 
     return (
-        <div className="mt-8 flex h-full w-full flex-col justify-between gap-4 self-center md:w-1/2 lg:w-1/3">
+        <div className="app-form">
             <div className="flex flex-col gap-4 rounded-lg bg-white p-4">
                 <div className="flex flex-col gap-1.5 text-primary-color">
                     {!file && <ReferralNoFileUploaded
@@ -36,7 +36,7 @@ export default ({link, showSublink}: ReferralFormProps) => {
             </div>
             <div className="flex flex-col gap-4">
                 {showSublink &&
-                    <a className="text-center underline font-small-link text-secondary-color">{translate("link")}</a>}
+                    <a className="text-center underline font-small-link">{translate("link")}</a>}
                 <AppNextButton title={translate("next")} disabled={!file} onClick={() => handleOnClick(link)}/>
             </div>
         </div>

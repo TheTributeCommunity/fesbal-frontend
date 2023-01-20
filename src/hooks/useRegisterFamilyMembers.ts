@@ -4,8 +4,8 @@ import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
 import AppPopupAlert from "../components/atom/AppPopupAlert";
 
-const useRegisterFamilyMembers = () => {
-    const {t} = useTranslation(namespaces.pages.registerFamilyMembers);
+const   useRegisterFamilyMembers = () => {
+    const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers);
     const [familyMembers, setFamilyMembers] = React.useState([]);
 
     const navigate = useNavigate();
@@ -20,10 +20,10 @@ const useRegisterFamilyMembers = () => {
     const handleWithoutFamilyMembers = () => {
         AppPopupAlert({
             icon: 'warning',
-            title: t("sweetAlert.title") as string,
-            text: t("sweetAlert.text") as string,
-            confirmButtonText: t("sweetAlert.confirmButtonText") as string,
-            cancelButtonText: t("sweetAlert.cancelButtonText") as string,
+            title: translate("sweetAlert.title") as string,
+            text: translate("sweetAlert.text") as string,
+            confirmButtonText: translate("sweetAlert.confirmButtonText") as string,
+            cancelButtonText: translate("sweetAlert.cancelButtonText") as string,
         }).fire().then((result) => {
             if (result.isConfirmed) {
                 navigate("/register/referral");

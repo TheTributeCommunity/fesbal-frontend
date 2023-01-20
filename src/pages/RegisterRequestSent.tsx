@@ -47,15 +47,13 @@ const RegisterRequestSent = () => {
     };
 
     return (
-        <div className="flex h-screen flex-col justify-between p-8 bg-primary-color text-secondary-color">
-            <div className="h-1/6"></div>
-            <div className="flex h-1/3 justify-center self-center md:w-1/2 lg:w-1/3">
+        <div className="flex h-screen items-center justify-center p-8 bg-primary-color text-secondary-color">
+            <div className="app-logo">
                 <LogoFesbalWhiteIcon/>
             </div>
-            <div
-                className="flex h-3/5 flex-col justify-between self-center whitespace-pre-line rounded-lg bg-white p-4 md:w-1/2 md:p-8 lg:w-1/3 w-full">
+            <div className="mt-8 flex w-full flex-col gap-4 self-end rounded-xl bg-white p-8 md:w-1/2 lg:w-1/3">
                 <RequestSentIcon/>
-                <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col items-center justify-center">
                     <h1 className="mb-5 font-big-title">{translate("title")}</h1>
                     <ul className="flex flex-col gap-0.5">
                         {getPersonalData().map((item, index) => (
