@@ -1,14 +1,13 @@
-import {namespaces} from "./i18n.constants";
-import {loginPasswordRecoveryEn, loginPasswordRecoveryEs} from "./pages/loginPasswordRecovery";
-import {loginScreenEn, loginScreenEs} from "./pages/loginScreen";
-import {profileEditEmailEn, profileEditEmailEs} from "./pages/profileEditEmail";
-import {profileEditNewPasswordEn, profileEditNewPasswordEs} from "./pages/profileEditNewPassword";
-import {profileEditPrevPasswordEn, profileEditPrevPasswordEs} from "./pages/profileEditPrevPassword";
-import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
+import { namespaces } from "./i18n.constants";
+import { loginPasswordRecoveryEn, loginPasswordRecoveryEs } from "./pages/loginPasswordRecovery";
+import { loginScreenEn, loginScreenEs } from "./pages/loginScreen";
+import { profileEditEmailEn, profileEditEmailEs } from "./pages/profileEditEmail";
+import { profileEditNewPasswordEn, profileEditNewPasswordEs } from "./pages/profileEditNewPassword";
+import { profileEditPrevPasswordEn, profileEditPrevPasswordEs } from "./pages/profileEditPrevPassword";
+import { profileScreenEn, profileScreenEs } from "./pages/profileScreen";
 import { recipientLandingEs, recipientLandingEn } from "./pages/recipientLanding";
-import {registrationUserIDEn, registrationUserIDEs} from "./pages/registrationUserID";
-import {registerIDEn, registerIDEs} from "./pages/registerID";
-import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
+import { registerIDEn, registerIDEs } from "./pages/registerID";
+import { registerLegalEn, registerLegalEs } from "./pages/registerLegal";
 
 export const es = {
     [namespaces.common]: {
@@ -20,15 +19,15 @@ export const es = {
     [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEs,
     [namespaces.pages.loginScreen]: loginScreenEs,
     [namespaces.pages.recipientLanding]: recipientLandingEs,
-    [namespaces.pages.notifications]: {title: "Notificaciones"},
-    [namespaces.pages.pickupPoint]: {title: "Punto de recogida", address: "Dirección"},
+    [namespaces.pages.notifications]: { title: "Notificaciones" },
+    [namespaces.pages.pickupPoint]: { title: "Punto de recogida", address: "Dirección" },
     [namespaces.pages.profileEditEmail]: profileEditEmailEs,
     [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEs,
     [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEs,
     [namespaces.pages.profileScreen]: profileScreenEs,
     [namespaces.pages.registerID]: registerIDEs,
     [namespaces.pages.registerLegal]: registerLegalEs,
-    [namespaces.pages.welcomeScreen]: {login: "Iniciar sesión", register: "Registrarse"},
+    [namespaces.pages.welcomeScreen]: { login: "Iniciar sesión", register: "Registrarse" },
 
 };
 
@@ -42,13 +41,13 @@ export const en = {
     [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEn,
     [namespaces.pages.loginScreen]: loginScreenEn,
     [namespaces.pages.recipientLanding]: recipientLandingEn,
-    [namespaces.pages.notifications]: {title: "Notifications"},
-    [namespaces.pages.pickupPoint]: {title: "Pickup point", address: "Address"},
+    [namespaces.pages.notifications]: { title: "Notifications" },
+    [namespaces.pages.pickupPoint]: { title: "Pickup point", address: "Address" },
     [namespaces.pages.profileEditEmail]: profileEditEmailEn,
     [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEn,
     [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEn,
     [namespaces.pages.profileScreen]: profileScreenEn,
     [namespaces.pages.registerID]: registerIDEn,
     [namespaces.pages.registerLegal]: registerLegalEn,
-    [namespaces.pages.welcomeScreen]: {login: "Login", register: "Register"},
+    [namespaces.pages.welcomeScreen]: { login: "Login", register: "Register" },
 };
