@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
+import { Auth, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getEnvVar } from "../helpers/envVars";
+import userProps from "../types/UserProps";
 
 export class AuthService {
     private static apiKey?: string
@@ -9,6 +11,7 @@ export class AuthService {
     private static storageBucket?: string
     private static messagingSenderId?: string
     private static appId?: string
+    private static auth: Auth
 
     public static initialize(): void {
         AuthService.apiKey = getEnvVar('FIREBASE_API_KEY')
@@ -28,5 +31,14 @@ export class AuthService {
             messagingSenderId: AuthService.messagingSenderId,
             appId: AuthService.appId,
         })
+
+        AuthService.auth = getAuth();
+    }
+
+    public static signIn(user: userProps) {
+        if(!user.email){
+            throw new Error("Please, provide a valid email")
+        }
+        return signInWithEmailAndPassword(AuthService.auth, user.email, user.password)
     }
 }
