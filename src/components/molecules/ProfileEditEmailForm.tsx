@@ -10,15 +10,15 @@ const ProfileEditEmailForm = () => {
     const {t: translate} = useTranslation(namespaces.pages.profileEditEmail);
 
     return (
-        <form noValidate onSubmit={onSubmit} className="app-form">
+        <form noValidate onSubmit={onSubmit} className="flex w-full flex-col justify-between gap-4 self-center">
             <AppFormInput name="email"
-                          value={email}
-                          onChange={onChange}
-                          hasError={hasError}
-                          placeholder={translate('email')}
-                          type="email"
-                          label={translate('email')}
-                          error={translate('error') as string}
+                        value={email}
+                        onChange={onChange}
+                        hasError={hasError}
+                        placeholder={translate('email')}
+                        type="email"
+                        label={translate('email')}
+                        error={translate('error') as string}
             />
             <AppNextButton disabled={buttonDisabled} title={translate('next')}/>
         </form>

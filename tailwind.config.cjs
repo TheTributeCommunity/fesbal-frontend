@@ -7,11 +7,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'dark-blue': '#058CCC'
+        'primary-color': '#0F95CE',
+        'secondary-color': '#002E5D',
+        'warning-color': '#EB5757',
+        'hover-primary-color': '#2D7DB5',
+        'hover-warning-color': '#D14A4A',
+        'focus-primary-color': '#3085d6',
+        'focus-warning-color': '#EB5757',
+        'dark-blue': '#058CCC',
       },
       fontFamily: {
         'roboto-flex': ['Roboto Flex', 'Arial']
       },
+      backgroundImage: { 'page': 'linear-gradient(169.42deg, #ffffff 10.03%, #e8f8ff 35.86%, #e8f8ff 68.88%, #ffffff 89.63%)' }
     },
   },
   plugins: [],

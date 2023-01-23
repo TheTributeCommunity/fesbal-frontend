@@ -1,10 +1,12 @@
-import AppBackButton from "../atom/AppBackButton";
-import PageHeaderProps from "../../types/PageHeaderProps";
+interface PageHeaderProps {
+    title?: string | null;
+    description?: string | null;
+}
 
-export default ({link, title, description}: PageHeaderProps) => {
+
+const AppPageHeader = ({title, description}: PageHeaderProps) => {
     return (
-        <div className="app-page__header">
-            <AppBackButton link={link}/>
+        <div className="flex w-full flex-col gap-8 self-center">
             <div>
                 <h1 className="mb-4 font-big-title">{title}</h1>
                 <p className="font-text">{description}</p>
@@ -13,3 +15,4 @@ export default ({link, title, description}: PageHeaderProps) => {
     );
 };
 
+export default AppPageHeader;

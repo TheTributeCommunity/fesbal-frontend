@@ -8,8 +8,6 @@ import ProfileEditEmail from "./pages/ProfileEditEmail";
 import ProfileEditNewPassword from "./pages/ProfileEditNewPassword";
 import ProfileEditPrevPassword from "./pages/ProfileEditPrevPassword";
 import ProfileScreen from "./pages/ProfileScreen";
-import EditNewPassword from "./pages/EditNewPassword";
-import RegistrationUserID from "./pages/RegistrationUserID";
 import RecipientLandingScreen from "./pages/RecipientLandingScreen";
 import RegisterID from "./pages/RegisterID";
 import RegisterLegal from "./pages/RegisterLegal";

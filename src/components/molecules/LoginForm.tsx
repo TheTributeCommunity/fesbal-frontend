@@ -18,7 +18,7 @@ const LoginForm = () => {
     const buttonDisabled = user.id.length !== 9 || user.password.length < 3 || hasError;
 
     return (
-        <form noValidate onSubmit={onSubmit} className="app-form">
+        <form noValidate onSubmit={onSubmit} className="mt-8 flex w-full flex-col justify-between gap-4 self-center">
             <div className="flex flex-col gap-8">
                 <AppFormInput
                     label={translate("id")}

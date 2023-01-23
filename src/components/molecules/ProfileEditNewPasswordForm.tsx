@@ -1,6 +1,5 @@
 import {useTranslation} from "react-i18next";
 import AppNextButton from "../atom/AppNextButton";
-import EyeHidePasswordIcon from "../icons/EyeHidePasswordIcon";
 import useProfileEditNewPassword from "../../hooks/useProfileEditNewPassword";
 import useShowPassword from "../../hooks/useShowPassword";
 import {namespaces} from "../../i18n/i18n.constants";
@@ -16,7 +15,7 @@ const EditPrevPasswordForm = () => {
 
     return (
         <form noValidate onSubmit={onSubmit}
-              className="app-form">
+              className="mt-8 flex w-full flex-col justify-between gap-4 self-center">
             <div className="flex flex-col gap-8">
                 <AppFormInput label={translate("placeholder")}
                               type={showPassword ? "text" : "password"}
