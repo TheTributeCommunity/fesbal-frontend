@@ -1,7 +1,9 @@
 import UserProps from "../types/UserProps";
+import { v4 as uuidv4 } from 'uuid';
 
 const users: UserProps[] = [
     {
+        recipientUserId: uuidv4(),
         id: "12345678A",
         password: "password1",
         email: "test1@gmail.com",
@@ -23,6 +25,7 @@ const users: UserProps[] = [
 
     },
     {
+        recipientUserId: uuidv4(),
         id: "12345678B",
         password: "password2",
         email: "test2@gmail.com",
@@ -41,6 +44,7 @@ const users: UserProps[] = [
         ]
     },
     {
+        recipientUserId: uuidv4(),
         id: "X2345678X",
         password: "password3",
         email: "test3@gmail.com",
@@ -59,6 +63,7 @@ const users: UserProps[] = [
         ]
     },
     {
+        recipientUserId: uuidv4(),
         id: "Z2345678Z",
         password: "password4",
         email: "test4@gmail.com",
@@ -73,6 +78,7 @@ const users: UserProps[] = [
         ]
     },
     {
+        recipientUserId: uuidv4(),
         id: "12345678L",
         password: "password5",
         email: "test5@gmail.com",
