@@ -12,7 +12,7 @@ const LoginPasswordRecoveryForm = () => {
     const buttonDisabled = email.length < 6 || hasError;
 
     return (
-        <form noValidate onSubmit={onSubmit} className="app-form">
+        <form noValidate onSubmit={onSubmit} className="mt-8 flex h-full w-full flex-col justify-between gap-4 self-center">
             <div className="flex flex-col">
                 <AppFormInput label={translate("email")}
                               name="email" value={email}
