@@ -1,6 +1,13 @@
-# Burger Menu for Recipients
+# Fesbal Frontend
 
-## Description  
+This is a React application for the FESBAL NGO to manage their donations.
+
+## Components
+
+In this section you can find descriptions on the components that have been developed, including some details on their business logic
+
+### Burger Menu
+
 In the landing page recipients have a burger menu in the top right corner. Once a user clicks on it a menu appears from right to left. In this menu users can find following links:
 
 *  Perfil
@@ -12,7 +19,6 @@ In the landing page recipients have a burger menu in the top right corner. Once 
 *  Eliminar cuenta
 *  Log out
 
-## Definition of Done 
 By clicking on the "X" icon in the top right corner the menu disappear from left to right showing the landing page again.
 
 ## Design wireframes
