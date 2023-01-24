@@ -26,12 +26,12 @@ export type Props =   {
  */
 const Menu = ({callback} : Props) => {
   return (
-    <div className='Menu'>
-      <div className='Title'>
+    <div className='menu'>
+      <div className='title'>
         FESBAL
       </div>
-      <button id='XButton' onClick={() => callback()}><img src={cross}/></button>
-      <div className='MainMenu'>
+      <button className='x-button' onClick={() => callback()}><img src={cross}/></button>
+      <div className='main-menu'>
         <MenuLink img={profile} link="#" linkName="Perfil"/>
         <MenuLink img={notification} link="#" linkName="Notificaciones"/>
         <MenuLink img={clock} link="#" linkName="Histórico de recogidas"/>
@@ -40,7 +40,7 @@ const Menu = ({callback} : Props) => {
         <MenuLink img={help} link="#" linkName="Ayuda"/>
         <MenuLink img={delete_account} link="#" linkName="Eliminar cuenta"/>
       </div>
-      <div id='LogOut'>
+      <div className='log-out'>
         <MenuLink img={turn_off} link="#" linkName="Log out"/>
       </div>
     </div>

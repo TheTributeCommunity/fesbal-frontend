@@ -13,9 +13,9 @@ export type Props =   {
  */
 const MenuLink = ({img, link, linkName} : Props) => {
     return (
-      <div className='link_container'>
+      <div className='link-container'>
         <img src={img}></img>&emsp;
-        <a className='link_text' href={link}>{linkName}</a>
+        <a className='link-text' href={link}>{linkName}</a>
       </div>
     )
 }
