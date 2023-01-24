@@ -11,9 +11,6 @@ import Cross from './SVG_images/Cross';
 
 import '../../styles/components/Menu.scss';
 
-/**
- * TODO: Add Props to menu (vector of MenuLinkProps and Button callback)  
-*/ 
 export type Props =   {
   callback : Function;
 }
