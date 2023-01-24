@@ -1,9 +1,9 @@
 .menu {
-  position: absolute;
-  width: 398px;
-  height: 896px;
-  left: 16px;
-  top: 0px;
+  position: fixed;
+  height: 100%;
+  width: 96.2%;
+  left: 3.8%;
+  top: 0%;
 
   /* White */
   background: #ffffff;
@@ -11,17 +11,15 @@
 }
 
 .title {
-  width: 97px;
-  height: 28px;
+  width: 24.37%;
 
   font-family: "Arial";
   font-style: normal;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 150%;
 
-  padding-top: 43px;
-  padding-bottom: 26px;
+  padding-top: 8.8%;
+  padding-bottom: 6%;
 
   margin-left: auto;
   margin-right: auto;
@@ -38,38 +36,33 @@
       gap: 1rem;
     }
   }
-  width: 398px;
-  height: 720px;
-  left: 16px;
-  top: 97px;
+  height: 80.35%;
   background: #f2fbff;
 }
 
-.log-out * {
-  /* App - input */
-  font-family: "Roboto Flex";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+.log-out {
+  position: relative;
+  top: 3%;
+}
 
+.log-out * {
   /* Burnt Sienna */
   color: #eb5757 !important;
   /* !important nota a good practice,
-   * couldn`t find other way around */
+    * couldn`t find other way around */
 }
 
 .x-button {
-  position: absolute;
-  right: 32px;
-  top: 32px;
-  height: 48px;
-  width: 48px;
+  position: fixed;
+  right: 8%;
+  top: 2%;
+  height: 5.4%;
+  width: 11.7%;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0px;
+  padding: 0%;
   background: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 46, 93, 0.08);
 }
