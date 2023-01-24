@@ -9,7 +9,7 @@ const RegisterEmail = () => {
 
     return (
         // TODO check where this should go to
-        <AppWrapper /*link="/login"*/ title={translate("headerTitle")}>
+        <AppWrapper link="/register" title={translate("headerTitle")}>
             <PageHeader title={translate("title")} description={translate("description") as string} />
             <RegisterEmailForm />
         </AppWrapper>
