@@ -1,7 +1,7 @@
 import '../styles/components/MenuLink.scss';
 
 export type Props =   {
-  img : string;
+  svgFile : JSX.Element;
   link: string;
   linkName: string
 }
@@ -11,10 +11,10 @@ export type Props =   {
  * @param {Props} param0 {Image to show, Link to follow, Text to show} 
  * @returns HTML container
  */
-const MenuLink = ({img, link, linkName} : Props) => {
+const MenuLink = ({svgFile, link, linkName} : Props) => {
     return (
       <div className='link-container'>
-        <img src={img}></img>&emsp;
+        {svgFile}&emsp;
         <a className='link-text' href={link}>{linkName}</a>
       </div>
     )
