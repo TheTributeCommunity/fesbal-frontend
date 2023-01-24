@@ -1,13 +1,13 @@
 import MenuLink from './MenuLink';
-import Profile from './SVG_images/Profile';
-import Notification from './SVG_images/Notification';
-import Clock from './SVG_images/Clock';
-import VectorImg from './SVG_images/Vector';
-import Document from './SVG_images/Paper';
-import Help from './SVG_images/Help';
-import DeleteAccount from './SVG_images/DeleteAccount';
-import TurnOff from './SVG_images/TurnOff';
-import Cross from './SVG_images/Cross';
+import Profile from '../SVG_images/Profile';
+import Notification from '../SVG_images/Notification';
+import Clock from '../SVG_images/Clock';
+import VectorImg from '../SVG_images/Vector';
+import Document from '../SVG_images/Paper';
+import Help from '../SVG_images/Help';
+import DeleteAccount from '../SVG_images/DeleteAccount';
+import TurnOff from '../SVG_images/TurnOff';
+import Cross from '../SVG_images/Cross';
 
 import '../styles/components/Menu.scss';
 
