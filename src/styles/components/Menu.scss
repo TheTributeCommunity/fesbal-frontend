@@ -1,63 +1,65 @@
-.Menu{
+.menu {
   position: absolute;
   width: 398px;
   height: 896px;
   left: 16px;
   top: 0px;
-  
+
   /* White */
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: -4px 2px 8px rgba(0, 46, 93, 0.08);
 }
 
-.Title {
+.title {
   width: 97px;
   height: 28px;
 
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  
+
   padding-top: 43px;
   padding-bottom: 26px;
 
   margin-left: auto;
   margin-right: auto;
 
-  color: #058CCC;
+  color: #058ccc;
 }
 
-.MainMenu {
+.main-menu {
   // TODO: Fix if list is long, make it scroll
   @media (min-width: 600px) {
     .wrapper {
-        display: grid;
-        grid-template-columns: 250px 1fr;
-        gap: 1rem;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 1rem;
     }
   }
   width: 398px;
   height: 720px;
   left: 16px;
   top: 97px;
-  background: #F2FBFF;
+  background: #f2fbff;
 }
 
-#LogOut * {
+.log-out * {
   /* App - input */
-font-family: 'Roboto Flex';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
+  font-family: "Roboto Flex";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
 
-/* Burnt Sienna */
-color: #EB5757;
+  /* Burnt Sienna */
+  color: #eb5757 !important;
+  /* !important nota a good practice,
+   * couldn`t find other way around */
 }
 
-#XButton {
+.x-button {
   position: absolute;
   right: 32px;
   top: 32px;
@@ -68,6 +70,6 @@ color: #EB5757;
   align-items: center;
   justify-content: center;
   padding: 0px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 46, 93, 0.08);
 }
