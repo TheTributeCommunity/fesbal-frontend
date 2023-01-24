@@ -48,20 +48,7 @@ function App() {
             </Routes>
         </Router>
     );
-=======
-import { useState } from 'react';
-=======
->>>>>>> 9797a56 (Update: App.tsx, deleted unnecesary variables)
-import './App.scss';
-import Menu from './components/Menu';
+    }
 
-function App() {
-  return (
-    <div className="App">
-      <Menu callback={() => {console.log("Button clicked")}}/>
-    </div>
-  );
->>>>>>> 7c8844f (Modificado App.tsx para prueba de MenuLink)
-}
 
 export default App;
