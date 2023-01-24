@@ -1,13 +1,13 @@
 import MenuLink from './MenuLink';
-import profile from '../assets/profile.svg';
-import notification from '../assets/notification.svg';
-import clock from '../assets/clock.svg';
-import vectorImg from '../assets/vector.svg';
-import document from '../assets/paper.svg';
-import help from '../assets/help.svg';
-import delete_account from '../assets/delete_account.svg';
-import turn_off from '../assets/turn_off.svg';
-import cross from '../assets/cross.svg';
+import Profile from './SVG_images/Profile';
+import Notification from './SVG_images/Notification';
+import Clock from './SVG_images/Clock';
+import VectorImg from './SVG_images/Vector';
+import Document from './SVG_images/Paper';
+import Help from './SVG_images/Help';
+import DeleteAccount from './SVG_images/DeleteAccount';
+import TurnOff from './SVG_images/TurnOff';
+import Cross from './SVG_images/Cross';
 
 import '../styles/components/Menu.scss';
 
@@ -30,18 +30,18 @@ const Menu = ({callback} : Props) => {
       <div className='title'>
         FESBAL
       </div>
-      <button className='x-button' onClick={() => callback()}><img src={cross}/></button>
+      <button className='x-button' onClick={() => callback()}>{Cross()}</button>
       <div className='main-menu'>
-        <MenuLink img={profile} link="#" linkName="Perfil"/>
-        <MenuLink img={notification} link="#" linkName="Notificaciones"/>
-        <MenuLink img={clock} link="#" linkName="Histórico de recogidas"/>
-        <MenuLink img={vectorImg} link="#" linkName="Punto de recogida"/>
-        <MenuLink img={document} link="#" linkName="Hoja de derivación"/>
-        <MenuLink img={help} link="#" linkName="Ayuda"/>
-        <MenuLink img={delete_account} link="#" linkName="Eliminar cuenta"/>
+        <MenuLink svgFile={Profile()} link="#" linkName="Perfil"/>
+        <MenuLink svgFile={Notification()} link="#" linkName="Notificaciones"/>
+        <MenuLink svgFile={Clock()} link="#" linkName="Histórico de recogidas"/>
+        <MenuLink svgFile={VectorImg()} link="#" linkName="Punto de recogida"/>
+        <MenuLink svgFile={Document()} link="#" linkName="Hoja de derivación"/>
+        <MenuLink svgFile={Help()} link="#" linkName="Ayuda"/>
+        <MenuLink svgFile={DeleteAccount()} link="#" linkName="Eliminar cuenta"/>
       </div>
       <div className='log-out'>
-        <MenuLink img={turn_off} link="#" linkName="Log out"/>
+        <MenuLink svgFile={TurnOff()} link="#" linkName="Log out"/>
       </div>
     </div>
   )
