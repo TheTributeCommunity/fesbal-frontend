@@ -8,7 +8,7 @@ const RegisterEmail = () => {
 
     return (
         <div className="app-page h-screen">
-            <PageHeader link="/login" title={translate("title")} description={translate("description") as string}/>
+            <PageHeader link="/register/id" title={translate("title")} description={translate("description") as string}/>
             <RegisterEmailForm/>
         </div>
     );
