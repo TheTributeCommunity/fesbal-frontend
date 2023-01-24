@@ -13,7 +13,7 @@ const RegisterFamilyMembers = () => {
 
     return (
         <div className="app-page h-screen">
-            <AppPageHeader link="/register/id" title={translate("title")}
+            <AppPageHeader link="/register/email" title={translate("title")}
                            description={translate("description") as string}/>
             <div className="app-page__container">
                 <Link to="/register/id"

@@ -5,18 +5,21 @@ import usersMock from "../mocks/users.mock";
 
 const useRegisterEmail = () => {
     const [userEmail, setUserEmail] = useState<string>('');
+    const [hasError, setHasError] = useState<boolean>(false);
     const navigate = useNavigate();
 
     const onUserEmailChange = (email: string) => {
         setUserEmail(email);
+        setHasError(false);
     }
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // TODO - Change usersMock by local storage user and change updateRecipientUser by updateRecipientUserEmail()
+        // TODO - Change usersMock by real user and change updateRecipientUser by updateRecipientUserEmail()
         if (validateUserEmail() && usersMock[0].recipientUserId) {
             RecipientUserService.updateRecipientUser(usersMock[0].recipientUserId, userEmail)
-                .then(()=> navigate('/register/family-members'));
+                .then(()=> navigate('/register/family-members'))
+                .catch(()=> setHasError(true));
         }
     }
 
@@ -28,6 +31,7 @@ const useRegisterEmail = () => {
 
     return {
         userEmail: userEmail,
+        hasError,
         onUserEmailChange: onUserEmailChange,
         onSubmit,
         validateUserEmail: validateUserEmail
