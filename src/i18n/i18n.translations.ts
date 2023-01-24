@@ -11,6 +11,7 @@ import {registerFamilyMembersEn, registerFamilyMembersEs} from "./pages/register
 import {registerIDEn, registerIDEs} from "./pages/registerID";
 import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
 import {registerNameEn, registerNameEs} from "./pages/registerName";
+import {registerEmailEn, registerEmailEs} from "./pages/registerEmail";
 import {registerReferralEn, registerReferralEs} from "./pages/registerReferral";
 import {registerRequestSentEn, registerRequestSentEs} from "./pages/registerRequestSent";
 
@@ -35,6 +36,7 @@ export const es = {
     [namespaces.pages.registerID]: registerIDEs,
     [namespaces.pages.registerLegal]: registerLegalEs,
     [namespaces.pages.registerName]: registerNameEs,
+    [namespaces.pages.registerEmail]: registerEmailEs,
     [namespaces.pages.registerReferral]: registerReferralEs,
     [namespaces.pages.registerRequestSent]: registerRequestSentEs,
     [namespaces.pages.welcomeScreen]: {login: "Iniciar sesión", register: "Registrarse"},
@@ -61,6 +63,7 @@ export const en = {
     [namespaces.pages.registerID]: registerIDEn,
     [namespaces.pages.registerLegal]: registerLegalEn,
     [namespaces.pages.registerName]: registerNameEn,
+    [namespaces.pages.registerEmail]: registerEmailEn,
     [namespaces.pages.registerReferral]: registerReferralEn,
     [namespaces.pages.registerRequestSent]: registerRequestSentEn,
     [namespaces.pages.welcomeScreen]: {login: "Login", register: "Register"},

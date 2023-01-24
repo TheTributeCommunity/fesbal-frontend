@@ -14,6 +14,7 @@ export const namespaces = {
         registerID: "pages.registerID",
         registerLegal: "pages.registerLegal",
         registerName: "pages.registerName",
+        registerEmail: "pages.registerEmail",
         registerReferral: "pages.registerReferral",
         registerRequestSent: "pages.registerRequestSent",
         welcomeScreen: "pages.welcomeScreen",
