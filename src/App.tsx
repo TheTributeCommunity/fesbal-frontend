@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import LoginPasswordRecovery from "./pages/LoginPasswordRecovery";
 import LoginScreen from "./pages/LoginScreen";
@@ -48,7 +46,6 @@ function App() {
             </Routes>
         </Router>
     );
-    }
-
+}
 
 export default App;

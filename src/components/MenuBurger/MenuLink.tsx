@@ -1,4 +1,4 @@
-import '../styles/components/MenuLink.scss';
+import '../../styles/components/MenuLink.scss';
 
 export type Props =   {
   svgFile : JSX.Element;
