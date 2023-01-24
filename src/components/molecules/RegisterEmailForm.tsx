@@ -11,7 +11,7 @@ const RegisterEmailForm = () => {
         <form noValidate onSubmit={onSubmit} className="app-form">
             <div className="flex flex-row gap-4">
                 <div className="flex flex-col gap-1.5 text-primary-color w-full">
-                    <label htmlFor="identityNumber" className={`app-label ${userEmail ? '' : "app-label--hidden"}`}>{translate("email")}</label>
+                    <label htmlFor="email" className={`app-label ${userEmail ? '' : "app-label--hidden"}`}>{translate("email")}</label>
                     <input type="text" placeholder={translate("email") as string}
                            className="app-input"
                            value={userEmail} onChange={(e) => onUserEmailChange(e.target.value)}/>
