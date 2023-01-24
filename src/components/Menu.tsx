@@ -9,7 +9,7 @@ import delete_account from '../assets/delete_account.svg';
 import turn_off from '../assets/turn_off.svg';
 import cross from '../assets/cross.svg';
 
-import './Menu.scss'
+import '../styles/components/Menu.scss';
 
 /**
  * TODO: Add Props to menu (vector of MenuLinkProps and Button callback)  

@@ -1,4 +1,4 @@
-import './MenuLink.scss';
+import '../styles/components/MenuLink.scss';
 
 export type Props =   {
   img : string;
