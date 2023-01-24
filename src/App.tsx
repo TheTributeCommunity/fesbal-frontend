@@ -18,6 +18,7 @@ import RegisterRequestSent from "./pages/RegisterRequestSent";
 import RegisterName from "./pages/RegisterName";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import PickupHistoryPage from './pages/PickupHistoryPage';
+import RegisterEmail from "./pages/RegisterEmail";
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
                 <Route path="/register" element={<RegisterLegal/>}/>
+                <Route path="/register/email" element={<RegisterEmail/>}/>
                 <Route path="/register/family-members" element={<RegisterFamilyMembers/>}/>
                 <Route path="/register/id" element={<RegisterID/>}/>
                 <Route path="/register/name" element={<RegisterName/>}/>

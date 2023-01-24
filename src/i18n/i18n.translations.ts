@@ -13,6 +13,7 @@ import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
 import {registerNameEn, registerNameEs} from "./pages/registerName";
 import {registerReferralEn, registerReferralEs} from "./pages/registerReferral";
 import {registerRequestSentEn, registerRequestSentEs} from "./pages/registerRequestSent";
+import {registerEmailEn, registerEmailEs} from "./pages/registerEmail";
 
 export const es = {
     [namespaces.common]: {
@@ -31,6 +32,7 @@ export const es = {
     [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEs,
     [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEs,
     [namespaces.pages.profileScreen]: profileScreenEs,
+    [namespaces.pages.registerEmail]: registerEmailEs,
     [namespaces.pages.registerFamilyMembers]: registerFamilyMembersEs,
     [namespaces.pages.registerID]: registerIDEs,
     [namespaces.pages.registerLegal]: registerLegalEs,
@@ -57,6 +59,7 @@ export const en = {
     [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEn,
     [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEn,
     [namespaces.pages.profileScreen]: profileScreenEn,
+    [namespaces.pages.registerEmail]: registerEmailEn,
     [namespaces.pages.registerFamilyMembers]: registerFamilyMembersEn,
     [namespaces.pages.registerID]: registerIDEn,
     [namespaces.pages.registerLegal]: registerLegalEn,
