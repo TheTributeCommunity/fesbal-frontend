@@ -9,7 +9,7 @@ const RegisterNameForm = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerName);
 
     return (
-        <form noValidate onSubmit={onSubmit} className="app-form">
+        <form noValidate onSubmit={onSubmit} className="mt-4 flex w-full flex-col justify-between gap-4 self-center">
             <div className="flex flex-col gap-4">
                 <AppFormInput name="name"
                               label={translate("name")}
