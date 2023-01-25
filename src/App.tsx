@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './App.scss';
 import reactLogo from './assets/react.svg';
 
+import NewFamilyMember from "./pages/NewFamilyMember";
+
 function App() {
   const [count, setCount] = useState(0);
   
