@@ -8,7 +8,7 @@ const RegisterEmail = () => {
     const { t: translate } = useTranslation(namespaces.pages.registerEmail);
 
     return (
-        // TODO check where this should go to
+        // TODO change back link to the Phone Number Registration page
         <AppWrapper link="/register" title={translate("headerTitle")}>
             <PageHeader title={translate("title")} description={translate("description") as string} />
             <RegisterEmailForm />
