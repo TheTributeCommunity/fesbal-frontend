@@ -17,6 +17,8 @@ const RegisterEmailForm = () => {
                               value={userEmail}
                               onChange={onEmailChange}
                               placeholder={translate("email")}
+                              hasError={!validateEmail() && userEmail !== ""}
+                              error={validateEmail() ? "" : translate("errorEmail") + ""}
                 />
             </div>
             <AppNextButton disabled={!validateEmail()} title={translate("next")}/>
