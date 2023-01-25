@@ -13,6 +13,7 @@ import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
 import {registerNameEn, registerNameEs} from "./pages/registerName";
 import {registerReferralEn, registerReferralEs} from "./pages/registerReferral";
 import {registerRequestSentEn, registerRequestSentEs} from "./pages/registerRequestSent";
+import {validatePhoneEn, validatePhoneEs} from "./pages/validatePhone";
 
 export const es = {
     [namespaces.common]: {
@@ -37,6 +38,7 @@ export const es = {
     [namespaces.pages.registerName]: registerNameEs,
     [namespaces.pages.registerReferral]: registerReferralEs,
     [namespaces.pages.registerRequestSent]: registerRequestSentEs,
+    [namespaces.pages.validatePhone]: validatePhoneEs,
     [namespaces.pages.welcomeScreen]: {login: "Iniciar sesión", register: "Registrarse"},
 };
 
@@ -63,5 +65,6 @@ export const en = {
     [namespaces.pages.registerName]: registerNameEn,
     [namespaces.pages.registerReferral]: registerReferralEn,
     [namespaces.pages.registerRequestSent]: registerRequestSentEn,
+    [namespaces.pages.validatePhone]: validatePhoneEn,
     [namespaces.pages.welcomeScreen]: {login: "Login", register: "Register"},
 };

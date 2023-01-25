@@ -16,6 +16,7 @@ export const namespaces = {
         registerName: "pages.registerName",
         registerReferral: "pages.registerReferral",
         registerRequestSent: "pages.registerRequestSent",
+        validatePhone: "pages.validatePhone",
         welcomeScreen: "pages.welcomeScreen",
     },
     common: "common",
