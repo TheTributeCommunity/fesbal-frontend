@@ -1,7 +1,8 @@
 import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {AuthService} from "../services/auth-service";
 
-const useRegisterPhoneForm = () => {
+const useRegisterPhoneForm = (submitButtonId: string) => {
     const [userPhone, setUserPhone] = useState<string>('');
 
     const navigate = useNavigate();
@@ -9,10 +10,11 @@ const useRegisterPhoneForm = () => {
     const onUserPhoneChange = (phone: string) => {
         setUserPhone(phone);
     }
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateUserPhone()) {
-            navigate('/register/family-members');
+            const response = await AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
+            console.log(response)
         }
     }
     const validateUserPhone = (): boolean => {

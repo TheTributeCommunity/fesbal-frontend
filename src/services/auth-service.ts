@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { Auth, getAuth, signInWithEmailAndPassword, RecaptchaVerifier } from "firebase/auth";
+import { Auth, getAuth, signInWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import { getEnvVar } from "../helpers/envVars";
 import userProps from "../types/UserProps";
 
@@ -12,6 +12,7 @@ export class AuthService {
     private static messagingSenderId?: string
     private static appId?: string
     private static auth: Auth
+    private static SPAIN_PHONE_PREFIX = "+34"
 
     public static initialize(): void {
         AuthService.apiKey = getEnvVar('FIREBASE_API_KEY')
@@ -39,6 +40,22 @@ export class AuthService {
         AuthService.auth = getAuth();
 
         AuthService.auth.useDeviceLanguage();
+    }
+
+    public static signInWithPhoneNumber(submitButtonId: string, phoneWithoutPrefix: string) {
+        const recaptchaVerifier = AuthService.setUpRecaptcha(submitButtonId);
+        const phone = `${AuthService.SPAIN_PHONE_PREFIX} ${phoneWithoutPrefix}`;
+
+        return signInWithPhoneNumber(AuthService.auth, phone, recaptchaVerifier)
+    }
+
+    private static setUpRecaptcha(submitButtonId: string) {
+        const INVISIBLE_RECAPTCHA_CONFIG = {'size': 'invisible'};
+        const recaptchaVerifier = new RecaptchaVerifier(submitButtonId,INVISIBLE_RECAPTCHA_CONFIG, AuthService.auth);
+
+        recaptchaVerifier.render();
+
+        return recaptchaVerifier;
     }
 
     public static signIn(user: userProps) {
