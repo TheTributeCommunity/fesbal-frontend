@@ -24,7 +24,7 @@ const useRegisterEmailForm = () => {
             return false;
         }
 
-        if(validationInput === null){
+        if (validationInput === null) {
             validationInput = createValidationInput();
         }
 
