@@ -2,21 +2,20 @@
   position: fixed;
   height: 100%;
   width: 96.2%;
-  left: 3.8%;
   top: 0%;
-
+  right: -100%;
   /* White */
   background: #ffffff;
   box-shadow: -4px 2px 8px rgba(0, 46, 93, 0.08);
 }
 
 .menu.close {
-  transform: translate(100%, 0);
+  transform: translate(0%, 0);
   transition: all 0.4s ease-in;
 }
 
 .menu.open {
-  transform: translate(0, 0);
+  transform: translate(-100%, 0);
   transition: all 0.4s ease-in;
 }
 
@@ -62,9 +61,9 @@
 }
 
 .x-button {
-  position: fixed;
-  right: 8%;
-  top: 2%;
+  position: absolute;
+  right: 10%;
+  top: 3%;
   height: 5.4%;
   width: 11.7%;
   border-radius: 50%;
