@@ -1,3 +1,5 @@
+import FamilyMember from "./FamilyMember";
+
 interface UserProps {
     id: string;
     password: string;
@@ -8,8 +10,4 @@ interface UserProps {
     familyMembers?: FamilyMember[];
 }
 
-interface FamilyMember {
-    FullName: string;
-    id: string;
-}
 export default UserProps;
