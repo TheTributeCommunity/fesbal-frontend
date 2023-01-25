@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { Auth, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Auth, getAuth, signInWithEmailAndPassword, RecaptchaVerifier } from "firebase/auth";
 import { getEnvVar } from "../helpers/envVars";
 import userProps from "../types/UserProps";
 
@@ -32,7 +32,13 @@ export class AuthService {
             appId: AuthService.appId,
         })
 
+        this.setUpAuth();
+    }
+
+    private static setUpAuth() {
         AuthService.auth = getAuth();
+
+        AuthService.auth.useDeviceLanguage();
     }
 
     public static signIn(user: userProps) {
