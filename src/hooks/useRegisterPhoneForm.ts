@@ -13,8 +13,8 @@ const useRegisterPhoneForm = (submitButtonId: string) => {
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateUserPhone()) {
-            const response = await AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
-            console.log(response)
+            AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
+                .then(()=> navigate('register/family-members'))
         }
     }
     const validateUserPhone = (): boolean => {
