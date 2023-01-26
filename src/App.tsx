@@ -16,6 +16,7 @@ import RegisterLegal from "./pages/RegisterLegal";
 import RegisterReferral from "./pages/RegisterReferral";
 import RegisterRequestSent from "./pages/RegisterRequestSent";
 import RegisterName from "./pages/RegisterName";
+import ValidatePhone from "./pages/ValidatePhone";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import PickupHistoryPage from './pages/PickupHistoryPage';
 
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/register/name" element={<RegisterName/>}/>
                 <Route path="/register/referral" element={<RegisterReferral/>}/>
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
+                <Route path="/register/validate-phone" element={<ValidatePhone/>}/>
                 <Route path="/welcome" element={<WelcomeScreen/>}/>
                 <Route path="/pickup-historic" element={<PickupHistoryPage/>}/>
             </Routes>
