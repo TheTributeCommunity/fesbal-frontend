@@ -7,15 +7,11 @@ import {useTranslation} from "react-i18next";
 import AppFormInput from "../atom/AppFormInput";
 
 const LoginForm = () => {
-    const {user, onChange, hasError, onSubmit} = useLoginForm(
-        {
-            email: "",
-            password: ""
-        });
+    const {userEmail, userPassword, onChangeUserEmail, onChangeUserPassword, hasError, onSubmit} = useLoginForm();
     const {showPassword, toggleShowPassword} = useShowPassword();
     const {t: translate} = useTranslation(namespaces.pages.loginScreen);
 
-    const buttonDisabled = user.email.length < 6  || user.password.length < 3 || hasError;
+    const buttonDisabled = userEmail.length < 6  || userPassword.length < 3 || hasError;
 
     return (
         <form noValidate onSubmit={onSubmit} className="mt-8 flex w-full flex-col justify-between gap-4 self-center">
@@ -23,8 +19,8 @@ const LoginForm = () => {
                 <AppFormInput
                     label={translate("email")}
                     name="email"
-                    value={user.email}
-                    onChange={onChange}
+                    value={userEmail}
+                    onChange={(e) => onChangeUserEmail(e.target.value)}
                     placeholder={translate("email")}
                     hasError={hasError}
                 />
@@ -32,8 +28,8 @@ const LoginForm = () => {
                     <AppFormInput label={translate("password")}
                                   type={showPassword ? "text" : "password"}
                                   name="password"
-                                  value={user.password}
-                                  onChange={onChange}
+                                  value={userPassword}
+                                  onChange={(e) => onChangeUserPassword(e.target.value)}
                                   placeholder={translate("password")}
                                   hasError={hasError}
                                   toggleShowPassword={toggleShowPassword}
