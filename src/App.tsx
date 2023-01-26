@@ -11,7 +11,6 @@ import ProfileEditNewPassword from "./pages/ProfileEditNewPassword";
 import ProfileEditPrevPassword from "./pages/ProfileEditPrevPassword";
 import ProfileScreen from "./pages/ProfileScreen";
 import RegisterFamilyMembers from "./pages/RegisterFamilyMembers";
-import RegisterID from "./pages/RegisterID";
 import RegisterLegal from "./pages/RegisterLegal";
 import RegisterReferral from "./pages/RegisterReferral";
 import RegisterRequestSent from "./pages/RegisterRequestSent";
@@ -19,6 +18,7 @@ import RegisterName from "./pages/RegisterName";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import PickupHistoryPage from './pages/PickupHistoryPage';
 import AddFamilyMember from "./pages/AddFamilyMember";
+import RegisterUser from "./pages/RegisterUser";
 
 function App() {
     return (
@@ -36,11 +36,10 @@ function App() {
                 <Route path="/profile/edit-prev-password" element={<ProfileEditPrevPassword/>}/>
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
-                <Route path="/register" element={<RegisterLegal/>}/>
+                <Route path="/registerLegal" element={<RegisterLegal/>}/>
+                <Route path="/register" element={<RegisterUser/>}/>
                 <Route path="/register/family-members" element={<RegisterFamilyMembers/>}/>
                 <Route path="/register/family-members/add" element={<AddFamilyMember/>}/>
-                <Route path="/register/id" element={<RegisterID/>}/>
-                <Route path="/register/name" element={<RegisterName/>}/>
                 <Route path="/register/referral" element={<RegisterReferral/>}/>
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path="/welcome" element={<WelcomeScreen/>}/>

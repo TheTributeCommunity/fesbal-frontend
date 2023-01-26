@@ -9,9 +9,8 @@ import { profileEditNewPasswordEn, profileEditNewPasswordEs } from "./pages/prof
 import { profileEditPrevPasswordEn, profileEditPrevPasswordEs } from "./pages/profileEditPrevPassword";
 import { profileScreenEn, profileScreenEs } from "./pages/profileScreen";
 import { registerFamilyMembersEn, registerFamilyMembersEs } from "./pages/registerFamilyMembers";
-import { registerIDEn, registerIDEs } from "./pages/registerID";
+import { registerUserEn, registerUserEs } from "./pages/registerUser";
 import { registerLegalEn, registerLegalEs } from "./pages/registerLegal";
-import { registerNameEn, registerNameEs } from "./pages/registerName";
 import { registerReferralEn, registerReferralEs } from "./pages/registerReferral";
 import { registerRequestSentEn, registerRequestSentEs } from "./pages/registerRequestSent";
 
@@ -33,9 +32,8 @@ export const es = {
     [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEs,
     [namespaces.pages.profileScreen]: profileScreenEs,
     [namespaces.pages.registerFamilyMembers]: registerFamilyMembersEs,
-    [namespaces.pages.registerID]: registerIDEs,
+    [namespaces.pages.registerUser]: registerUserEs,
     [namespaces.pages.registerLegal]: registerLegalEs,
-    [namespaces.pages.registerName]: registerNameEs,
     [namespaces.pages.registerReferral]: registerReferralEs,
     [namespaces.pages.registerRequestSent]: registerRequestSentEs,
     [namespaces.pages.welcomeScreen]: { login: "Iniciar sesión", register: "Registrarse" },
@@ -60,9 +58,8 @@ export const en = {
     [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEn,
     [namespaces.pages.profileScreen]: profileScreenEn,
     [namespaces.pages.registerFamilyMembers]: registerFamilyMembersEn,
-    [namespaces.pages.registerID]: registerIDEn,
+    [namespaces.pages.registerUser]: registerUserEn,
     [namespaces.pages.registerLegal]: registerLegalEn,
-    [namespaces.pages.registerName]: registerNameEn,
     [namespaces.pages.registerReferral]: registerReferralEn,
     [namespaces.pages.registerRequestSent]: registerRequestSentEn,
     [namespaces.pages.welcomeScreen]: { login: "Login", register: "Register" },
