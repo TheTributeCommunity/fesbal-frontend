@@ -1,8 +1,8 @@
 import { initializeApp } from 'firebase/app';
-import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
+import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier, onAuthStateChanged, User } from "firebase/auth";
 import { getEnvVar } from "../helpers/envVars";
 import userProps from "../types/UserProps";
-import firebase from "firebase/compat";
+import {AuthUser} from "../models/AuthUser";
 
 export class AuthService {
     private static apiKey?: string
@@ -15,6 +15,11 @@ export class AuthService {
     private static auth: Auth
     private static SPAIN_PHONE_PREFIX = "+34"
     private static confirmationResult: ConfirmationResult
+    private static currentUser: AuthUser | null
+
+    public static getCurrentUser() {
+        return AuthService.currentUser;
+    }
 
     public static initialize(): void {
         AuthService.apiKey = getEnvVar('FIREBASE_API_KEY')
@@ -42,6 +47,19 @@ export class AuthService {
         AuthService.auth = getAuth();
 
         AuthService.auth.useDeviceLanguage();
+
+        onAuthStateChanged(AuthService.auth, (user) => {
+            AuthService.currentUser = user ? this.firebaseUserToAuthUser(user) : null;
+        });
+    }
+
+    private static firebaseUserToAuthUser(user: User) {
+        return {
+            phone: user.phoneNumber,
+            email: user.email ,
+            emailVerified: user.emailVerified,
+            getToken(): Promise<string> | undefined { return AuthService.auth.currentUser?.getIdToken()}
+        }
     }
 
     public static signInWithPhoneNumber(submitButtonId: string, phoneWithoutPrefix: string) {
