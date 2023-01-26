@@ -42,7 +42,7 @@ const useUploadReferral = () => {
             .split("/")[2]
             .split("?")[0];
     }
-
+   
     const handleClick = (ref: React.RefObject<HTMLInputElement>) => {
         if (ref.current) {
             ref.current.click();

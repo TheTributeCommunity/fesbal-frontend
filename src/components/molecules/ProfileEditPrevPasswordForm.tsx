@@ -12,7 +12,7 @@ const ProfileEditPrevPasswordForm = () => {
     const buttonDisabled = hasError || password.length === 0;
 
     return (
-        <form noValidate onSubmit={onSubmit} className="app-form">
+        <form noValidate onSubmit={onSubmit} className="mt-8 flex w-full flex-col justify-between gap-4 self-center">
             <AppFormInput label={translate("placeholder")}
                           type={showPassword ? "text" : "password"}
                           name="password"
