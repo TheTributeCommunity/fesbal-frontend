@@ -18,6 +18,9 @@ export const namespaces = {
         registerRequestSent: "pages.registerRequestSent",
         welcomeScreen: "pages.welcomeScreen",
     },
+    components: {
+        burgerMenu: "components.burgerMenu",
+    },
     common: "common",
 };
 

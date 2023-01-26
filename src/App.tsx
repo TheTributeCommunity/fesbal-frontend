@@ -42,7 +42,7 @@ function App() {
                 <Route path="/register/referral" element={<RegisterReferral/>}/>
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path="/welcome" element={<WelcomeScreen/>}/>
-                <Route path="/pickup-historic" element={<PickupHistoryPage/>}/>
+                <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
             </Routes>
         </Router>
     );
