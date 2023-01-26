@@ -8,6 +8,8 @@ const users: UserProps[] = [
         fullName: "Test User 1",
         birthDate: "01/01/2000",
         phone: "666666666",
+        derivationLimit: new Date(2023, 11, 28),
+        nextPickup: new Date(2023, 7, 23),
         familyMembers: [
             {
                 FullName: "Test User 2",
@@ -29,6 +31,8 @@ const users: UserProps[] = [
         fullName: "Test User 2",
         birthDate: "01/01/2000",
         phone: "666666666",
+        derivationLimit: new Date(2023, 11, 28),
+        nextPickup: new Date(2023, 7, 23),
         familyMembers: [
             {
                 FullName: "Test User 1",
@@ -47,6 +51,8 @@ const users: UserProps[] = [
         fullName: "Test User 3",
         birthDate: "01/01/2000",
         phone: "666666666",
+        derivationLimit: new Date(2023, 11, 28),
+        nextPickup: new Date(2023, 7, 23),
         familyMembers: [
             {
                 FullName: "Test User 1",
@@ -65,6 +71,8 @@ const users: UserProps[] = [
         fullName: "Test User 4",
         birthDate: "01/01/2000",
         phone: "666666666",
+        derivationLimit: new Date(2023, 11, 28),
+        nextPickup: new Date(2023, 7, 23),
         familyMembers: [
             {
                 FullName: "Test User 5",
@@ -79,6 +87,8 @@ const users: UserProps[] = [
         fullName: "Test User 5",
         birthDate: "01/01/2000",
         phone: "666666666",
+        derivationLimit: new Date(2023, 11, 28),
+        nextPickup: new Date(2023, 7, 23),
         familyMembers: [
             {
                 FullName: "Test User 4",

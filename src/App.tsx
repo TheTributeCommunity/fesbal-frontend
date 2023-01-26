@@ -18,6 +18,7 @@ import RegisterRequestSent from "./pages/RegisterRequestSent";
 import RegisterName from "./pages/RegisterName";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import PickupHistoryPage from './pages/PickupHistoryPage';
+import RecipientLandingScreen from "./pages/RecipientLandingScreen";
 
 function App() {
     return (
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/profile/edit-email" element={<ProfileEditEmail/>}/>
                 <Route path="/profile/edit-new-password" element={<ProfileEditNewPassword/>}/>
                 <Route path="/profile/edit-prev-password" element={<ProfileEditPrevPassword/>}/>
+                <Route path="/recipient-home" element={<RecipientLandingScreen/>}/>
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
                 <Route path="/register" element={<RegisterLegal/>}/>

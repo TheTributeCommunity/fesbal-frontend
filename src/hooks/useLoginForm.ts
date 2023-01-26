@@ -1,7 +1,7 @@
-import {ChangeEvent, FormEvent, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import UserProps from "../types/UserProps";
-import {AuthService} from "../services/auth-service";
+import { AuthService } from "../services/auth-service";
 
 const useLoginForm = () => {
     const [userEmail, setUserEmail] = useState<string>('');
@@ -20,7 +20,7 @@ const useLoginForm = () => {
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         AuthService.signIn(userEmail, userPassword)
-            .then(() => navigate('/profile'))
+            .then(() => navigate('/recipient-home'))
             .catch(() => setHasError(true))
     }
 
