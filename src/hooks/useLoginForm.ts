@@ -1,7 +1,7 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import UserProps from "../types/UserProps";
-import usersMock from "../mocks/users.mock";
+import {AuthService} from "../services/auth-service";
 
 const useLoginForm = <T extends UserProps>(initialState: T) => {
     const [user, setUser] = useState<T>(initialState);
@@ -12,15 +12,9 @@ const useLoginForm = <T extends UserProps>(initialState: T) => {
         setUser({...user, [e.target.name]: e.target.value});
         setHasError(false);
     }
-    const isFormValid = (user: UserProps): boolean => {
-        return usersMock.some((u: UserProps) => u.id === user.id && u.password === user.password);
-    }
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setHasError(!isFormValid(user));
-        if (isFormValid(user)) {
-            navigate('/profile');
-        }
+        AuthService.signIn(user).then(() => navigate('/profile')).catch(() => setHasError(true))
     }
 
     return {

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import AppBackButton from '../components/atom/AppBackButton';
 import AppBurgerMenuButton from '../components/atom/AppBurgerMenuButton';
 import HistoryCard from '../components/atom/HistoryCard';
+import AppWrapper from '../components/molecules/AppWrapper';
 import PickupService from '../services/PickupService';
 import { Pickup } from '../types/Pickup';
 
@@ -14,12 +15,7 @@ const PickupHistoryPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col page-bg mb-16">
-      <div className="flex flex-row justify-between items-center p-8 text-[#0F95CE] text-base font-bold">
-        <AppBackButton link=""/>
-        <h1>Historial de recogidas</h1>
-        <AppBurgerMenuButton />
-      </div>
+    <AppWrapper title="Historial de recogidas" link="/login" showBurger>
       <div className="mb-6">
         <h2 className="text-[#002E5D] text-xs px-8 mb-1">Última recogida</h2>
         {!lastPickup ? (
@@ -34,7 +30,7 @@ const PickupHistoryPage = () => {
           <HistoryCard title={pickup.title} isoDate={pickup.date} description={pickup.description} />
         ))}
       </div>
-    </div>
+    </AppWrapper>
   );
 };
 

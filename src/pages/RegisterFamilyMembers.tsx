@@ -6,29 +6,28 @@ import AppNextButton from "../components/atom/AppNextButton";
 import PlusAddIcon from "../components/icons/PlusAddIcon";
 import useRegisterFamilyMembers from "../hooks/useRegisterFamilyMembers";
 import AppPageHeader from "../components/molecules/AppPageHeader";
+import AppWrapper from "../components/molecules/AppWrapper";
 
 const RegisterFamilyMembers = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers);
     const {handleNextWithFamilyMembers, handleWithoutFamilyMembers, disableNext} = useRegisterFamilyMembers();
 
     return (
-        <div className="app-page h-screen">
-            <AppPageHeader link="/register/id" title={translate("title")}
+        <AppWrapper  link="/register/id" title={translate("title")}>
+            <AppPageHeader
                            description={translate("description") as string}/>
-            <div className="app-page__container">
+            <div className="flex flex-col gap-8">
                 <Link to="/register/id"
                       className="flex gap-2 bg-primary-color-light p-3.5 rounded-lg justify-center border border-white">
                     <PlusAddIcon/>
                     <p className="font-button text-primary-color">{translate("addMember")}</p>
                 </Link>
-            </div>
-            <div className="app-page__header">
                 <p className="cursor-pointer text-center underline font-big-link"
                    onClick={handleWithoutFamilyMembers}>{translate("nextWithoutMembers")}</p>
                 <AppNextButton title={translate("nextWithMembers")} disabled={disableNext}
                                onClick={handleNextWithFamilyMembers}/>
             </div>
-        </div>
+        </AppWrapper>
     );
 };
 

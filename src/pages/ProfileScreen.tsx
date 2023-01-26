@@ -5,8 +5,7 @@ import usersMock from "../mocks/users.mock";
 import {namespaces} from "../i18n/i18n.constants";
 import {useTranslation} from "react-i18next";
 import FamilyMembersIcon from "../components/icons/FamilyMembersIcon";
-import AppBottomNav from "../components/molecules/AppBottomNav";
-import AppPageBurgerHeader from "../components/molecules/AppPageBurgerHeader";
+import AppWrapper from "../components/molecules/AppWrapper";
 
 
 const ProfileScreen = () => {
@@ -50,9 +49,8 @@ const ProfileScreen = () => {
     };
 
     return (
-        <div className="app-page h-screen">
-            <AppPageBurgerHeader title={translate('title')} link="/login"/>
-            <div className="app-page__container gap-4">
+        <AppWrapper link="/login" title={translate('title')} showBurger>
+            <div className="flex h-full w-full flex-col self-center mt-8 gap-4">
                 <ul>
                     {getPersonalData().map((personalData, index) => (
                         <ProfilePersonalDataItem key={index} personalData={personalData} index={index}/>
@@ -68,8 +66,7 @@ const ProfileScreen = () => {
                     )) : <li>{translate('noFamilyMembers')}</li>}
                 </ul>
             </div>
-            <AppBottomNav/>
-        </div>
+        </AppWrapper>
     );
 }
 
