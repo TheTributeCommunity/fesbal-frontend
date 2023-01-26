@@ -7,8 +7,7 @@ export const AppDigitsValidator = ({
                     onChange,
                     hasError,
                     error,
-                    resendCodeText,
-                }: DigitsValidatorProps) => {
+                    }: DigitsValidatorProps) => {
     
     const digitsRef = useRef<HTMLInputElement[]>([]);
 
@@ -70,7 +69,7 @@ export const AppDigitsValidator = ({
     };
 
     return (
-        <div className="flex flex-col gap-1.5 mb-2 mt-4">
+        <div className="flex flex-col gap-1.5 mt-4">
             <label className={`app-label`}>
                 {label}
             </label>
@@ -79,9 +78,6 @@ export const AppDigitsValidator = ({
             </div>
             {hasError && (
                 <p className="text-warning-color font-label">{error}</p>
-            )}
-            {resendCodeText && (
-                <p className="mt-4 text-right text-secondary-color text-sm underline cursor-pointer font-semibold">{resendCodeText}</p>
             )}
         </div>
     );

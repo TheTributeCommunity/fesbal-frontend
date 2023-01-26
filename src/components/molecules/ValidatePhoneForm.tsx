@@ -13,8 +13,11 @@ const ValidatePhoneForm = () => {
             <div className="flex flex-col gap-4">
                 <AppDigitsValidator label={translate("Código de validación")} 
                                     digitsCount={CODE_LENGTH} onChange={onValidationCodeChange} 
-                                    value={validationCode} resendCodeText={translate('resendCode')} />
+                                    value={validationCode} />
             </div>
+            {translate('resendCode') && (
+                <p className="mt-4 mb-2 text-right text-secondary-color text-sm underline cursor-pointer font-semibold">{translate('resendCode')}</p>
+            )}
             <AppNextButton disabled={!checkValidationCodeLength()} title={translate("next")}/>
         </form>
     );

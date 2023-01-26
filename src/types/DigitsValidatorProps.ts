@@ -3,7 +3,6 @@ export default interface DigitsValidatorProps {
     digitsCount: number;
     value: string;
     onChange: (event: string) => void;
-    resendCodeText?: string | null;
     hasError?: boolean;
     error?: string;
 }
