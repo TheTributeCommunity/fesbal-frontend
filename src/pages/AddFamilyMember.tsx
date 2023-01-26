@@ -67,7 +67,7 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
                         </div>
                     </div>
                 </div>
-                <AppNextButton disabled={!validForm} title={translate("addMember")}/>
+                <AppNextButton disabled={!validForm()} title={translate("addMember")}/>
             </form>
         </AppWrapper>
     )
