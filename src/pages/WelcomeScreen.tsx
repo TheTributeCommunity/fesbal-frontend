@@ -9,7 +9,7 @@ const WelcomeScreen = () => {
 
     return (
         <AppWrapper>
-            <div className="flex flex-col items-center gap-8">
+            <div className="w-full flex flex-col items-center gap-8">
                 <LogoFesbalIcon/>
                 <div className="grid w-full grid-cols-2 gap-4 self-center rounded-xl px-6 py-4">
                     <AppLinkButton title={translate("register")} link="/register" bgColor="bg-secondary-color"/>

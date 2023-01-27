@@ -1,6 +1,8 @@
+import FamilyMember from "./FamilyMember";
+
 interface UserProps {
     recipientUserId?: string;
-    id?: string;
+    id: string;
     password: string;
     email?: string;
     fullName?: string;
@@ -9,8 +11,4 @@ interface UserProps {
     familyMembers?: FamilyMember[];
 }
 
-interface FamilyMember {
-    FullName: string;
-    id: string;
-}
 export default UserProps;

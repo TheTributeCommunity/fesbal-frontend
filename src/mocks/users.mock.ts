@@ -12,14 +12,14 @@ const users: UserProps[] = [
         phone: "666666666",
         familyMembers: [
             {
-                FullName: "Test User 2",
+                fullName: "Test User 2",
                 id: "12345678B",
-
+                birthDate: "01/01/2001"
             },
             {
-                FullName: "Test User 3",
+                fullName: "Test User 3",
                 id: "X2345678X",
-
+                birthDate: "01/01/2000"
             }
         ]
 
@@ -34,12 +34,14 @@ const users: UserProps[] = [
         phone: "666666666",
         familyMembers: [
             {
-                FullName: "Test User 1",
+                fullName: "Test User 1",
                 id: "12345678A",
+                birthDate: "01/01/2000"
             },
             {
-                FullName: "Test User 3",
+                fullName: "Test User 3",
                 id: "X2345678X",
+                birthDate: "01/01/2000"
             },
         ]
     },
@@ -53,12 +55,14 @@ const users: UserProps[] = [
         phone: "666666666",
         familyMembers: [
             {
-                FullName: "Test User 1",
+                fullName: "Test User 1",
                 id: "12345678A",
+                birthDate: "01/01/2000"
             },
             {
-                FullName: "Test User 2",
+                fullName: "Test User 2",
                 id: "12345678B",
+                birthDate: "01/01/2000"
             }
         ]
     },
@@ -72,8 +76,9 @@ const users: UserProps[] = [
         phone: "666666666",
         familyMembers: [
             {
-                FullName: "Test User 5",
+                fullName: "Test User 5",
                 id: "Z2345678Z",
+                birthDate: "01/01/2000"
             }
         ]
     },
@@ -87,8 +92,9 @@ const users: UserProps[] = [
         phone: "666666666",
         familyMembers: [
             {
-                FullName: "Test User 4",
+                fullName: "Test User 4",
                 id: "Z2345678Z",
+                birthDate: "01/01/2000"
             }
         ]
     }
