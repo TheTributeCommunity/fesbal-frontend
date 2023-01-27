@@ -19,7 +19,7 @@ export default ({link, showSublink}: ReferralFormProps) => {
     const {t: translate} = useTranslation(namespaces.pages.registerReferral);
 
     return (
-        <div className="mt-8 flex w-full flex-col justify-between gap-4 self-center">
+        <div className="flex w-full flex-col justify-between gap-4">
             <div className="flex flex-col gap-4 rounded-lg bg-white p-4">
                 <div className="flex flex-col gap-1.5 text-primary-color">
                     {!file && <ReferralNoFileUploaded

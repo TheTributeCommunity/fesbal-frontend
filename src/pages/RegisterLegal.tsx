@@ -10,7 +10,7 @@ const RegisterLegal = () => {
     return (
         <>
         <AppWrapper link="/welcome">
-            <div className="flex w-full flex-col self-center items-center mt-4 gap-4">
+            <div className="flex w-full flex-col items-center mt-8 gap-4">
                 <LogoFesbalIcon />
             </div>
             </AppWrapper>

@@ -18,6 +18,9 @@ export const namespaces = {
         registerRequestSent: "pages.registerRequestSent",
         welcomeScreen: "pages.welcomeScreen",
     },
+    atoms: {
+        appCalendar: "atoms.appCalendar",
+    },
     common: "common",
 };
 

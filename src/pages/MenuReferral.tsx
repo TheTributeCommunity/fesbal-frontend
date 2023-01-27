@@ -14,7 +14,7 @@ const MenuReferral = () => {
 
     return (
         <AppWrapper title={translate("title")} link="/login">
-            <div className="app-page__container gap-4">
+            <div className="w-full flex flex-col gap-4">
                 {referrals.map((referral, index) => (
                     <MenuReferralCard
                         key={index}
@@ -25,10 +25,9 @@ const MenuReferral = () => {
                         status={referral.status}
                     />
                 ))}
-            </div>
-            <div className="app-page__container">
                 <AppNextButton title={translate('next')} onClick={goToUpload}/>
             </div>
+            
         </AppWrapper>
     );
 }

@@ -18,7 +18,7 @@ export default ({
             <label htmlFor={name} className={`app-label ${value ? "" : "app-label--hidden"}`}>
                 {label}
             </label>
-            <div className="relative">
+            <div>
                 <input
                     type={type}
                     name={name}
