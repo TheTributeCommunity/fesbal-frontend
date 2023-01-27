@@ -224,8 +224,12 @@
     @apply absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 transform;
   }
 
-  .app-logo-splash {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-10;
+  .app-logo-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform mt-4;
+  }
+
+  .app-logo-center.splash {
+    @apply opacity-10;
   }
 
   .app-register-legal__container{
