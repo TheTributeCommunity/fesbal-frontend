@@ -1,5 +1,8 @@
 import {useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import {RegistrationRequestService} from "../services/registration-request-service";
+import { v4 as uuidv4 } from 'uuid';
+import usersMock from "../mocks/users.mock";
 
 const useUploadReferral = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -29,8 +32,13 @@ const useUploadReferral = () => {
     };
 
     const handleOnClick = (href: string) => {
-        console.log(href);
-        navigate(href);
+        if(usersMock[0].recipientUserId) {
+            RegistrationRequestService.create({
+                registrationRequestId: uuidv4(),
+                recipientUserId: usersMock[0].recipientUserId
+            })
+                .then(() => navigate(href));
+        }
     }
 
     return {file, setFile, inputRef, cameraRef, handleFileChange, handleClick, handleOnClick};
