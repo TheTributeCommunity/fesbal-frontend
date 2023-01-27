@@ -11,7 +11,7 @@ const NotificationDetails = () => {
 
     return (
         <AppWrapper title={translate("title")} link="/notifications" showBurger>
-            <div className="flex w-full flex-col self-center justify-start gap-4 mb-2">
+            <div className="flex w-full flex-col justify-start gap-4 mb-2">
                 <p className="text-primary-color font-label">{date}</p>
                 <h2 className="font-mini-title">{title}</h2>
                 <p className="whitespace-pre-line font-text">{message}</p>

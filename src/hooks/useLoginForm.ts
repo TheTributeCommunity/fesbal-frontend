@@ -1,31 +1,34 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import UserProps from "../types/UserProps";
-import usersMock from "../mocks/users.mock";
+import {AuthService} from "../services/auth-service";
 
-const useLoginForm = <T extends UserProps>(initialState: T) => {
-    const [user, setUser] = useState<T>(initialState);
+const useLoginForm = () => {
+    const [userEmail, setUserEmail] = useState<string>('');
+    const [userPassword, setUserPassword] = useState<string>('');
     const [hasError, setHasError] = useState<boolean>(false);
 
     const navigate = useNavigate();
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setUser({...user, [e.target.name]: e.target.value});
+    const onChangeUserEmail = (email: string) => {
+        setUserEmail(email);
         setHasError(false);
     }
-    const isFormValid = (user: UserProps): boolean => {
-        return usersMock.some((u: UserProps) => u.id === user.id && u.password === user.password);
+    const onChangeUserPassword = (password: string) => {
+        setUserPassword(password);
+        setHasError(false);
     }
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setHasError(!isFormValid(user));
-        if (isFormValid(user)) {
-            navigate('/profile');
-        }
+        AuthService.signIn(userEmail, userPassword)
+            .then(() => navigate('/profile'))
+            .catch(() => setHasError(true))
     }
 
     return {
-        onChange,
-        user,
+        userEmail,
+        userPassword,
+        onChangeUserEmail,
+        onChangeUserPassword,
         hasError,
         onSubmit,
     }

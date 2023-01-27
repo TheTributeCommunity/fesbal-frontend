@@ -1,6 +1,6 @@
-import {ChangeEvent, FormEvent, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {isLettersOnly} from "../helpers/textUtils";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { isLettersOnly } from "../helpers/textUtils";
 
 
 const useRegisterNameForm = () => {

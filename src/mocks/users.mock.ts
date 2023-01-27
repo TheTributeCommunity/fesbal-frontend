@@ -1,7 +1,9 @@
 import UserProps from "../types/UserProps";
+import { v4 as uuidv4 } from 'uuid';
 
 const users: UserProps[] = [
     {
+        recipientUserId: uuidv4(),
         id: "12345678A",
         password: "password1",
         email: "test1@gmail.com",
@@ -10,19 +12,20 @@ const users: UserProps[] = [
         phone: "666666666",
         familyMembers: [
             {
-                FullName: "Test User 2",
+                fullName: "Test User 2",
                 id: "12345678B",
-
+                birthDate: "01/01/2001"
             },
             {
-                FullName: "Test User 3",
+                fullName: "Test User 3",
                 id: "X2345678X",
-
+                birthDate: "01/01/2000"
             }
         ]
 
     },
     {
+        recipientUserId: uuidv4(),
         id: "12345678B",
         password: "password2",
         email: "test2@gmail.com",
@@ -31,16 +34,19 @@ const users: UserProps[] = [
         phone: "666666666",
         familyMembers: [
             {
-                FullName: "Test User 1",
+                fullName: "Test User 1",
                 id: "12345678A",
+                birthDate: "01/01/2000"
             },
             {
-                FullName: "Test User 3",
+                fullName: "Test User 3",
                 id: "X2345678X",
+                birthDate: "01/01/2000"
             },
         ]
     },
     {
+        recipientUserId: uuidv4(),
         id: "X2345678X",
         password: "password3",
         email: "test3@gmail.com",
@@ -49,16 +55,19 @@ const users: UserProps[] = [
         phone: "666666666",
         familyMembers: [
             {
-                FullName: "Test User 1",
+                fullName: "Test User 1",
                 id: "12345678A",
+                birthDate: "01/01/2000"
             },
             {
-                FullName: "Test User 2",
+                fullName: "Test User 2",
                 id: "12345678B",
+                birthDate: "01/01/2000"
             }
         ]
     },
     {
+        recipientUserId: uuidv4(),
         id: "Z2345678Z",
         password: "password4",
         email: "test4@gmail.com",
@@ -67,12 +76,14 @@ const users: UserProps[] = [
         phone: "666666666",
         familyMembers: [
             {
-                FullName: "Test User 5",
+                fullName: "Test User 5",
                 id: "Z2345678Z",
+                birthDate: "01/01/2000"
             }
         ]
     },
     {
+        recipientUserId: uuidv4(),
         id: "12345678L",
         password: "password5",
         email: "test5@gmail.com",
@@ -81,8 +92,9 @@ const users: UserProps[] = [
         phone: "666666666",
         familyMembers: [
             {
-                FullName: "Test User 4",
+                fullName: "Test User 4",
                 id: "Z2345678Z",
+                birthDate: "01/01/2000"
             }
         ]
     }
