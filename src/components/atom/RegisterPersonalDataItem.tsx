@@ -2,8 +2,8 @@ import PersonalDataItemProps from "../../types/PersonalDataItemProps";
 
 const RegisterPersonalDataItem = (personalData: PersonalDataItemProps, index: number) => {
     return (
-        <li key={index} className="flex gap-2 items-center">
-            <p className="font-mini-title">{personalData.title}:</p>
+        <li key={index} className={`col-span-${personalData.span} py-1`}>
+            <p className="font-label text-primary-color">{personalData.title}</p>
             <p className="font-text">{personalData.value}</p>
         </li>
     );
