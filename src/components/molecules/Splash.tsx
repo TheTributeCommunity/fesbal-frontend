@@ -14,17 +14,18 @@ const Splash = () => {
             <SplashCard
                 title={translate("recipient.title")}
                 description={translate("recipient.description")}
-                login={translate("recipient.login")}
-                link={"/register/name"}
+                loginText={translate("recipient.login")}
+                loginLink={"/login"}
                 backgroundColor={""}
                 textColor={"text-secondary-color"}
                 buttonBackGroundColor={"bg-primary-color"}
+                hasRegisterLink={true}
             />
              <SplashCard
                 title={translate("entity.title")}
                 description={translate("entity.description")}
-                login={translate("entity.login")}
-                link={"/register/name"}
+                loginText={translate("entity.login")}
+                loginLink={"/"}
                 backgroundColor={"bg-[#0F95CE]"}
                 textColor={"text-white"}
                 buttonBackGroundColor={"bg-secondary-color"}
