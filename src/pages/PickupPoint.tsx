@@ -12,7 +12,7 @@ const PickupPoint = () => {
 
     return (
         <AppWrapper title={translate("title")} link="/login" showBurger>
-            <div className="flex w-full flex-col self-center justify-start">
+            <div className="flex w-full flex-col justify-start">
                 <h1 className="my-4 font-big-title">{pickup.neighbourhood}</h1>
                 <p className="text-primary-color font-label">{translate("address")}</p>
                 <AppCopyClipboardButton text={pickup.address}/>
