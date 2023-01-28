@@ -12,12 +12,16 @@ export const namespaces = {
         profileScreen: "pages.profileScreen",
         registerFamilyMembers: "pages.registerFamilyMembers",
         registerID: "pages.registerID",
+        registerPhone: "pages.registerPhone",
         registerLegal: "pages.registerLegal",
         registerName: "pages.registerName",
         registerReferral: "pages.registerReferral",
         registerRequestSent: "pages.registerRequestSent",
         validatePhone: "pages.validatePhone",
         welcomeScreen: "pages.welcomeScreen",
+    },
+    atoms: {
+        appCalendar: "atoms.appCalendar",
     },
     common: "common",
 };
