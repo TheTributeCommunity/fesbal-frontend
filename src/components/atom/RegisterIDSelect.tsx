@@ -6,9 +6,8 @@ import useRegisterIDSelect from "../../hooks/useRegisterIDSelect";
 import {namespaces} from "../../i18n/i18n.constants";
 
 
-const IdentificationSelect: FC<SelectProps> = ({options, value, onChange}) => {
+const IdentificationSelect: FC<SelectProps> = ({options, value, onChange, placeholder}) => {
     const {onOptionClick, openDropdown, toggleDropdown, selectedOption} = useRegisterIDSelect({value, onChange});
-    const {t: translate} = useTranslation(namespaces.pages.registerID);
 
     return (
         <div className="relative rounded-md bg-white text-primary-color">
@@ -16,7 +15,7 @@ const IdentificationSelect: FC<SelectProps> = ({options, value, onChange}) => {
                 <div className="flex flex-row items-center justify-between gap-2 px-4 py-5">
                     {selectedOption
                         ? <span className="text-secondary-color font-input">{selectedOption}</span>
-                        : <span className="text-primary-color font-input">{translate('type')}</span>}
+                        : <span className="text-primary-color font-input">{placeholder ?? ''}</span>}
                     <DropDownIcon/>
                 </div>
             </div>

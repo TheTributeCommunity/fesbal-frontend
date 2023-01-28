@@ -10,19 +10,13 @@ import UserIDSelect from "../components/atom/RegisterIDSelect";
 import classNames from "classnames";
 import useRegisterBirthDate from "../hooks/useRegisterBirthDate";
 import AppCalendar from "../components/atom/AppCalendar";
-import FamilyMember from "../types/FamilyMember";
-import { useEffect } from "react";
 
-interface AddFamilyMemberProps {
-    member?: FamilyMember
-}
-
-const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
+const RegisterUser = (): JSX.Element => {
     const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange} = useRegisterNameForm();
     const {familyMembers, setFamilyMembers} = useRegisterFamilyMembers();
     const {selectedOption, userID, validateUserID, onUserIDChange, onSelectedOptionChange} = useRegisterIDForm();
     const {selectedDate, setDate, isValidBirthDate, getFormattedBirthDate} = useRegisterBirthDate()
-    const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers);
+    const {t: translate} = useTranslation(namespaces.pages.registerUser);
 
     const selectOptions: string[] = ['DNI', 'NIE'];
 
@@ -31,7 +25,7 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
     }
 
     return (
-        <AppWrapper link="/register/family-members" title={translate("addMember")}>
+        <AppWrapper link="/welcome" title={translate("title")}>
             <form noValidate onSubmit={undefined} className="flex w-full flex-col gap-4">
                 <div className="flex flex-col gap-4">
                     <AppFormInput name="name"
@@ -67,10 +61,10 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
                         </div>
                     </div>
                 </div>
-                <AppNextButton disabled={!validForm()} title={translate("addMember")}/>
+                <AppNextButton disabled={!validForm()} title={translate("submit")}/>
             </form>
         </AppWrapper>
     )
 }
 
-export default AddFamilyMember;
+export default RegisterUser;
