@@ -18,7 +18,7 @@ const useRegisterPhoneForm = (submitButtonId: string) => {
             const user = {...usersMock[0], phone: userPhone};
 
             AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
-                .then(() => RecipientUserService.createRecipientUser(user))
+                .then(() => RecipientUserService.create(user))
                 .then(()=> navigate('register/family-members'))
         }
     }
