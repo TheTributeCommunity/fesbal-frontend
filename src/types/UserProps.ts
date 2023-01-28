@@ -1,6 +1,7 @@
 import FamilyMember from "./FamilyMember";
 
 interface UserProps {
+    recipientUserId?: string;
     id: string;
     password: string;
     email?: string;

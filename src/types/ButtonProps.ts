@@ -3,6 +3,7 @@ interface ButtonProps {
     disabled?: boolean;
     bgColor?: string;
     onClick?: () => void;
+    id?: string;
 }
 
 export default ButtonProps;

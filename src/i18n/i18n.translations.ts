@@ -13,6 +13,9 @@ import { registerUserEn, registerUserEs } from "./pages/registerUser";
 import { registerLegalEn, registerLegalEs } from "./pages/registerLegal";
 import { registerReferralEn, registerReferralEs } from "./pages/registerReferral";
 import { registerRequestSentEn, registerRequestSentEs } from "./pages/registerRequestSent";
+import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
+import {welcomeScreenEn, welcomeScreenEs} from "./pages/welcomeScreen";
+import {validatePhoneEn, validatePhoneEs} from "./pages/validatePhone";
 
 export const es = {
     [namespaces.common]: {
@@ -33,10 +36,12 @@ export const es = {
     [namespaces.pages.profileScreen]: profileScreenEs,
     [namespaces.pages.registerFamilyMembers]: registerFamilyMembersEs,
     [namespaces.pages.registerUser]: registerUserEs,
+    [namespaces.pages.registerPhone]: registerPhoneEs,
     [namespaces.pages.registerLegal]: registerLegalEs,
     [namespaces.pages.registerReferral]: registerReferralEs,
     [namespaces.pages.registerRequestSent]: registerRequestSentEs,
-    [namespaces.pages.welcomeScreen]: { login: "Iniciar sesión", register: "Registrarse" },
+    [namespaces.pages.validatePhone]: validatePhoneEs,
+    [namespaces.pages.welcomeScreen]: welcomeScreenEs,
     [namespaces.atoms.appCalendar]: appCalendarEs,
 };
 
@@ -59,9 +64,11 @@ export const en = {
     [namespaces.pages.profileScreen]: profileScreenEn,
     [namespaces.pages.registerFamilyMembers]: registerFamilyMembersEn,
     [namespaces.pages.registerUser]: registerUserEn,
+    [namespaces.pages.registerPhone]: registerPhoneEn,
     [namespaces.pages.registerLegal]: registerLegalEn,
     [namespaces.pages.registerReferral]: registerReferralEn,
     [namespaces.pages.registerRequestSent]: registerRequestSentEn,
-    [namespaces.pages.welcomeScreen]: { login: "Login", register: "Register" },
+    [namespaces.pages.validatePhone]: validatePhoneEn,
+    [namespaces.pages.welcomeScreen]: welcomeScreenEn,
     [namespaces.atoms.appCalendar]: appCalendarEn,
 };

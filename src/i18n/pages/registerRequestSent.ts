@@ -3,10 +3,10 @@ export const registerRequestSentEs = {
     fullName: "Nombre y apellidos",
     id: "Documento de identidad",
     birthDate: "Fecha de nacimiento",
-    email: "Correo electrónico",
+    email: "Email",
     phone: "Teléfono",
     password: "Contraseña",
-    familyMembers: "Miembros de la unidad familiar",
+    familyMembers: "Miembros unidad familiar",
     next: 'Cerrar aplicación'
 };
 
