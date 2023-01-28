@@ -15,6 +15,7 @@ import { registerNameEn, registerNameEs } from "./pages/registerName";
 import { registerReferralEn, registerReferralEs } from "./pages/registerReferral";
 import { registerRequestSentEn, registerRequestSentEs } from "./pages/registerRequestSent";
 import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
+import {welcomeScreenEn, welcomeScreenEs} from "./pages/welcomeScreen";
 
 export const es = {
     [namespaces.common]: {
@@ -40,7 +41,7 @@ export const es = {
     [namespaces.pages.registerName]: registerNameEs,
     [namespaces.pages.registerReferral]: registerReferralEs,
     [namespaces.pages.registerRequestSent]: registerRequestSentEs,
-    [namespaces.pages.welcomeScreen]: { login: "Iniciar sesión", register: "Registrarse" },
+    [namespaces.pages.welcomeScreen]: welcomeScreenEs,
     [namespaces.atoms.appCalendar]: appCalendarEs,
 };
 
@@ -68,6 +69,6 @@ export const en = {
     [namespaces.pages.registerName]: registerNameEn,
     [namespaces.pages.registerReferral]: registerReferralEn,
     [namespaces.pages.registerRequestSent]: registerRequestSentEn,
-    [namespaces.pages.welcomeScreen]: { login: "Login", register: "Register" },
+    [namespaces.pages.welcomeScreen]: welcomeScreenEn,
     [namespaces.atoms.appCalendar]: appCalendarEn,
 };
