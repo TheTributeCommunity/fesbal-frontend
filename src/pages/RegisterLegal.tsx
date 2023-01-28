@@ -26,7 +26,7 @@ const RegisterLegal = () => {
                             <p className="underline text-primary-color font-small-link">{translate("terms")}</p>
                         </a>
                     </div>
-                    <AppLinkButton title={translate("next")} link="/register/id"/>
+                    <AppLinkButton title={translate("next")} link="/register"/>
                 </div>
             </div>
         </>

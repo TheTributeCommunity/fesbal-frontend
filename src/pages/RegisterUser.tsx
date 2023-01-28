@@ -10,23 +10,34 @@ import UserIDSelect from "../components/atom/RegisterIDSelect";
 import classNames from "classnames";
 import useRegisterBirthDate from "../hooks/useRegisterBirthDate";
 import AppCalendar from "../components/atom/AppCalendar";
+import {FormEvent} from "react";
+import usersMock from "../mocks/users.mock";
+import {AuthService} from "../services/auth-service";
+import {RecipientUserService} from "../services/recipient-user-service";
+import {useNavigate} from "react-router-dom";
 
 const RegisterUser = (): JSX.Element => {
     const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange} = useRegisterNameForm();
-    const {familyMembers, setFamilyMembers} = useRegisterFamilyMembers();
     const {selectedOption, userID, validateUserID, onUserIDChange, onSelectedOptionChange} = useRegisterIDForm();
-    const {selectedDate, setDate, isValidBirthDate, getFormattedBirthDate} = useRegisterBirthDate()
+    const {selectedDate, setDate, isValidBirthDate} = useRegisterBirthDate()
     const {t: translate} = useTranslation(namespaces.pages.registerUser);
 
     const selectOptions: string[] = ['DNI', 'NIE'];
+    const navigate = useNavigate();
 
     const validForm = (): boolean => {
         return validateNameSurname() && validateUserID() && isValidBirthDate()
     }
+    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (validForm()) {
+            navigate('/register/phone')
+        }
+    }
 
     return (
         <AppWrapper link="/welcome" title={translate("title")}>
-            <form noValidate onSubmit={undefined} className="flex w-full flex-col gap-4">
+            <form noValidate onSubmit={onSubmit} className="flex w-full flex-col gap-4">
                 <div className="flex flex-col gap-4">
                     <AppFormInput name="name"
                                 label={translate("inputName")}

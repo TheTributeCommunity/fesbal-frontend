@@ -26,7 +26,7 @@ const useRegisterNameForm = () => {
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateNameSurname()) {
-            navigate('/register/id');
+            navigate('/register/phone');
         }
     }
 

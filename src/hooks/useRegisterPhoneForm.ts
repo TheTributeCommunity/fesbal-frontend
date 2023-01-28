@@ -19,7 +19,7 @@ const useRegisterPhoneForm = (submitButtonId: string) => {
 
             AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
                 .then(() => RecipientUserService.create(user))
-                .then(()=> navigate('register/family-members'))
+                .then(()=> navigate('register/validate-phone'))
         }
     }
     const validateUserPhone = (): boolean => {

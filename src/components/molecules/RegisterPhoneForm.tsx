@@ -9,7 +9,7 @@ const RegisterPhoneForm = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerPhone);
 
     return (
-        <form noValidate onSubmit={onSubmit} className="app-form">
+        <form noValidate onSubmit={onSubmit} className="mt-8 flex w-full flex-col justify-between gap-4 self-center">
             <div className="flex flex-row gap-4">
                 <div className="flex flex-col gap-1.5 text-primary-color w-full">
                     <label htmlFor="phone" className={`app-label ${userPhone ? '' : "app-label--hidden"}`}>{translate("phone")}</label>

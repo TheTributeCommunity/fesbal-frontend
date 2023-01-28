@@ -9,8 +9,10 @@ const RegisterReferral = () => {
 
     return (
         <AppWrapper title={translate("title")} link="/register/family-members">
-            <AppPageHeader description={translate("description") as string}/>
-            <AppReferralForm link="/register/request-sent" showSublink/>
+            <div className="flex h-full w-full flex-col self-center text-secondary-color">
+                <AppPageHeader description={translate("description") as string}/>
+                <AppReferralForm link="/register/request-sent" showSublink/>
+            </div>
         </AppWrapper>
     );
 }

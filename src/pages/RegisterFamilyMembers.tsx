@@ -10,11 +10,10 @@ import FamilyMemberCard from "../components/atom/FamilyMemberCard";
 
 const RegisterFamilyMembers = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers);
-    const {user, familyMembers,
-        setFamilyMembers, handleNextWithFamilyMembers, handleWithoutFamilyMembers, disableNext} = useRegisterFamilyMembers();
+    const {user, familyMembers, handleNextWithFamilyMembers, handleWithoutFamilyMembers, disableNext} = useRegisterFamilyMembers();
 
     return (
-        <AppWrapper  link="/register/id" title={translate("title")}>
+        <AppWrapper  link="/register/phone" title={translate("title")}>
             <div className="flex flex-col gap-4 w-full">
                 <AppPageHeader
                             title={translate("pageHeading")} description={translate("description") as string}/>

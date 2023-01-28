@@ -38,7 +38,7 @@ function App() {
                 <Route path="/profile/edit-prev-password" element={<ProfileEditPrevPassword/>}/>
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
-                <Route path="/registerLegal" element={<RegisterLegal/>}/>
+                <Route path="/register/legal" element={<RegisterLegal/>}/>
                 <Route path="/register" element={<RegisterUser/>}/>
                 <Route path="/register/phone" element={<RegisterPhone/>}/>
                 <Route path="/register/family-members" element={<RegisterFamilyMembers/>}/>
