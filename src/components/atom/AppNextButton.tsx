@@ -5,9 +5,9 @@ import classNames from "classnames";
 
 const AppNextButton: FC<ButtonProps> = ({title, disabled = false, bgColor = "bg-primary-color", onClick, id}) => {
     const btnClasses = classNames(
-        'app-button',
+        'flex items-center justify-center rounded-2xl py-5 text-center text-white font-button w-full',
         {
-            'app-button--disabled': disabled,
+            'cursor-not-allowed border bg-white opacity-50 text-primary-color border-primary-color': disabled,
             [bgColor]: bgColor
         }
     );

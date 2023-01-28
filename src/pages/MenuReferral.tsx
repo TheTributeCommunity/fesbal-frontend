@@ -4,7 +4,7 @@ import AppNextButton from "../components/atom/AppNextButton";
 import ReferralsMock from "../mocks/referrals.mock";
 import MenuReferralCard from "../components/atom/MenuReferralCard";
 import {useNavigate} from "react-router-dom";
-import AppPageBurgerHeader from "../components/molecules/AppPageBurgerHeader";
+import AppWrapper from "../components/molecules/AppWrapper";
 
 const MenuReferral = () => {
     const {t: translate} = useTranslation(namespaces.pages.menuReferral);
@@ -13,9 +13,8 @@ const MenuReferral = () => {
     const goToUpload = () => navigate("/referral/upload");
 
     return (
-        <div className="app-page">
-            <AppPageBurgerHeader title={translate("title")} link="/login"/>
-            <div className="app-page__container gap-4">
+        <AppWrapper title={translate("title")} link="/login">
+            <div className="w-full flex flex-col gap-4">
                 {referrals.map((referral, index) => (
                     <MenuReferralCard
                         key={index}
@@ -26,11 +25,10 @@ const MenuReferral = () => {
                         status={referral.status}
                     />
                 ))}
+                <AppNextButton title={translate('next')} onClick={goToUpload}/>
             </div>
-            <div className="app-page__container">
-            <AppNextButton title={translate('next')} onClick={goToUpload}/>
-            </div>
-        </div>
+            
+        </AppWrapper>
     );
 }
 

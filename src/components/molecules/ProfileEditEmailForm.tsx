@@ -10,7 +10,7 @@ const ProfileEditEmailForm = () => {
     const {t: translate} = useTranslation(namespaces.pages.profileEditEmail);
 
     return (
-        <form noValidate onSubmit={onSubmit} className="app-form">
+        <form noValidate onSubmit={onSubmit} className="flex w-full flex-col justify-between gap-4 self-center">
             <AppFormInput name="email"
                           value={email}
                           onChange={onChange}

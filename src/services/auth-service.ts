@@ -83,10 +83,7 @@ export class AuthService {
         return AuthService.confirmationResult.confirm(code)
     }
 
-    public static signIn(user: userProps) {
-        if(!user.email){
-            throw new Error("Please, provide a valid email")
-        }
-        return signInWithEmailAndPassword(AuthService.auth, user.email, user.password)
+    public static signIn(email: string , password: string) {
+        return signInWithEmailAndPassword(AuthService.auth, email, password)
     }
 }

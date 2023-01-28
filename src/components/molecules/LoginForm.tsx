@@ -8,9 +8,9 @@ const LoginForm = () => {
     const NEXT_BUTTON_ID = "continue-button-id";
     const {userPhone, onUserPhoneChange, validateUserPhone, hasError, onSubmit} = useLoginForm(NEXT_BUTTON_ID);
     const {t: translate} = useTranslation(namespaces.pages.loginScreen);
-
+        
     return (
-        <form noValidate onSubmit={onSubmit} className="app-form">
+        <form noValidate onSubmit={onSubmit} className="mt-8 flex w-full flex-col justify-between gap-4 self-center">
             <div className="flex flex-col gap-8">
                 <AppFormInput
                     label={translate("phone")}

@@ -1,18 +1,19 @@
-import {namespaces} from "./i18n.constants";
-import {loginPasswordRecoveryEn, loginPasswordRecoveryEs} from "./pages/loginPasswordRecovery";
-import {loginScreenEn, loginScreenEs} from "./pages/loginScreen";
-import {menuDeleteAccountEn, menuDeleteAccountEs} from "./pages/menuDeleteAccount";
-import {menuReferralEn, menuReferralEs} from "./pages/menuReferral";
-import {profileEditEmailEn, profileEditEmailEs} from "./pages/profileEditEmail";
-import {profileEditNewPasswordEn, profileEditNewPasswordEs} from "./pages/profileEditNewPassword";
-import {profileEditPrevPasswordEn, profileEditPrevPasswordEs} from "./pages/profileEditPrevPassword";
-import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
-import {registerFamilyMembersEn, registerFamilyMembersEs} from "./pages/registerFamilyMembers";
-import {registerIDEn, registerIDEs} from "./pages/registerID";
-import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
-import {registerNameEn, registerNameEs} from "./pages/registerName";
-import {registerReferralEn, registerReferralEs} from "./pages/registerReferral";
-import {registerRequestSentEn, registerRequestSentEs} from "./pages/registerRequestSent";
+import { appCalendarEs, appCalendarEn } from "./atoms/appCalendar";
+import { namespaces } from "./i18n.constants";
+import { loginPasswordRecoveryEn, loginPasswordRecoveryEs } from "./pages/loginPasswordRecovery";
+import { loginScreenEn, loginScreenEs } from "./pages/loginScreen";
+import { menuDeleteAccountEn, menuDeleteAccountEs } from "./pages/menuDeleteAccount";
+import { menuReferralEn, menuReferralEs } from "./pages/menuReferral";
+import { profileEditEmailEn, profileEditEmailEs } from "./pages/profileEditEmail";
+import { profileEditNewPasswordEn, profileEditNewPasswordEs } from "./pages/profileEditNewPassword";
+import { profileEditPrevPasswordEn, profileEditPrevPasswordEs } from "./pages/profileEditPrevPassword";
+import { profileScreenEn, profileScreenEs } from "./pages/profileScreen";
+import { registerFamilyMembersEn, registerFamilyMembersEs } from "./pages/registerFamilyMembers";
+import { registerIDEn, registerIDEs } from "./pages/registerID";
+import { registerLegalEn, registerLegalEs } from "./pages/registerLegal";
+import { registerNameEn, registerNameEs } from "./pages/registerName";
+import { registerReferralEn, registerReferralEs } from "./pages/registerReferral";
+import { registerRequestSentEn, registerRequestSentEs } from "./pages/registerRequestSent";
 import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
 
 export const es = {
@@ -26,8 +27,8 @@ export const es = {
     [namespaces.pages.loginScreen]: loginScreenEs,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEs,
     [namespaces.pages.menuReferral]: menuReferralEs,
-    [namespaces.pages.notifications]: {title: "Notificaciones"},
-    [namespaces.pages.pickupPoint]: {title: "Punto de recogida", address: "Dirección"},
+    [namespaces.pages.notifications]: { title: "Notificaciones" },
+    [namespaces.pages.pickupPoint]: { title: "Punto de recogida", address: "Dirección" },
     [namespaces.pages.profileEditEmail]: profileEditEmailEs,
     [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEs,
     [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEs,
@@ -39,7 +40,8 @@ export const es = {
     [namespaces.pages.registerName]: registerNameEs,
     [namespaces.pages.registerReferral]: registerReferralEs,
     [namespaces.pages.registerRequestSent]: registerRequestSentEs,
-    [namespaces.pages.welcomeScreen]: {login: "Iniciar sesión", register: "Registrarse"},
+    [namespaces.pages.welcomeScreen]: { login: "Iniciar sesión", register: "Registrarse" },
+    [namespaces.atoms.appCalendar]: appCalendarEs,
 };
 
 export const en = {
@@ -53,8 +55,8 @@ export const en = {
     [namespaces.pages.loginScreen]: loginScreenEn,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEn,
     [namespaces.pages.menuReferral]: menuReferralEn,
-    [namespaces.pages.notifications]: {title: "Notifications"},
-    [namespaces.pages.pickupPoint]: {title: "Pickup point", address: "Address"},
+    [namespaces.pages.notifications]: { title: "Notifications" },
+    [namespaces.pages.pickupPoint]: { title: "Pickup point", address: "Address" },
     [namespaces.pages.profileEditEmail]: profileEditEmailEn,
     [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEn,
     [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEn,
@@ -66,5 +68,6 @@ export const en = {
     [namespaces.pages.registerName]: registerNameEn,
     [namespaces.pages.registerReferral]: registerReferralEn,
     [namespaces.pages.registerRequestSent]: registerRequestSentEn,
-    [namespaces.pages.welcomeScreen]: {login: "Login", register: "Register"},
+    [namespaces.pages.welcomeScreen]: { login: "Login", register: "Register" },
+    [namespaces.atoms.appCalendar]: appCalendarEn,
 };

@@ -19,6 +19,7 @@ import RegisterName from "./pages/RegisterName";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import PickupHistoryPage from './pages/PickupHistoryPage';
 import RegisterPhone from "./pages/RegisterPhone";
+import AddFamilyMember from "./pages/AddFamilyMember";
 
 function App() {
     return (
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/register" element={<RegisterLegal/>}/>
                 <Route path="/register/phone" element={<RegisterPhone/>}/>
                 <Route path="/register/family-members" element={<RegisterFamilyMembers/>}/>
+                <Route path="/register/family-members/add" element={<AddFamilyMember/>}/>
                 <Route path="/register/id" element={<RegisterID/>}/>
                 <Route path="/register/name" element={<RegisterName/>}/>
                 <Route path="/register/referral" element={<RegisterReferral/>}/>
