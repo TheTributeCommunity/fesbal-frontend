@@ -23,7 +23,9 @@ const useUploadReferral = () => {
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.item(0);
         if (file && isValidFile(file)) {
-            uploadReferralSheet(usersMock[0].recipientUserId, file).then(() => setFile(file))
+            if(usersMock[0].recipientUserId) { // TODO - Replace but real Recipient User
+                uploadReferralSheet(usersMock[0].recipientUserId, file).then(() => setFile(file))
+            }
         }
     };
 
