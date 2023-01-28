@@ -16,6 +16,7 @@ import { registerReferralEn, registerReferralEs } from "./pages/registerReferral
 import { registerRequestSentEn, registerRequestSentEs } from "./pages/registerRequestSent";
 import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
 import {welcomeScreenEn, welcomeScreenEs} from "./pages/welcomeScreen";
+import {validatePhoneEn, validatePhoneEs} from "./pages/validatePhone";
 
 export const es = {
     [namespaces.common]: {
@@ -41,6 +42,7 @@ export const es = {
     [namespaces.pages.registerName]: registerNameEs,
     [namespaces.pages.registerReferral]: registerReferralEs,
     [namespaces.pages.registerRequestSent]: registerRequestSentEs,
+    [namespaces.pages.validatePhone]: validatePhoneEs,
     [namespaces.pages.welcomeScreen]: welcomeScreenEs,
     [namespaces.atoms.appCalendar]: appCalendarEs,
 };
@@ -69,6 +71,7 @@ export const en = {
     [namespaces.pages.registerName]: registerNameEn,
     [namespaces.pages.registerReferral]: registerReferralEn,
     [namespaces.pages.registerRequestSent]: registerRequestSentEn,
+    [namespaces.pages.validatePhone]: validatePhoneEn,
     [namespaces.pages.welcomeScreen]: welcomeScreenEn,
     [namespaces.atoms.appCalendar]: appCalendarEn,
 };

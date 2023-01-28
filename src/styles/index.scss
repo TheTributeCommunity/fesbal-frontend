@@ -206,6 +206,16 @@
     &--error {
       @apply text-warning-color;
     }
+
+    &--digits {
+      @apply text-center font-semibold text-2xl px-1 py-4;
+      -moz-appearence: textfield; // Firefox
+    }  
+
+    &--digits::-webkit-outer-spin-button, &--digits::-webkit-inner-spin-button {
+      -webkit-appearance: none; // Chrome, Safari, Edge - https://stackoverflow.com/a/4298216
+      margin: 0;
+    }
   }
 
   .app-label {
