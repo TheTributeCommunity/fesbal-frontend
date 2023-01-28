@@ -9,6 +9,8 @@ interface UserProps {
     birthDate?: string;
     phone?: string;
     familyMembers?: FamilyMember[];
+    nextPickup?: Date,
+    derivationLimit?: Date
 }
 
 export default UserProps;

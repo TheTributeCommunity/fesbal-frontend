@@ -10,7 +10,7 @@ export const namespaces = {
         profileEditNewPassword: "pages.profile.profileEditNewPassword",
         profileEditPrevPassword: "pages.profile.profileEditPrevPassword",
         profileScreen: "pages.profileScreen",
-        registerFamilyMembers: "pages.registerFamilyMember
+        registerFamilyMembers: "pages.registerFamilyMember",
         registerPhone: "pages.registerPhone",
         registerLegal: "pages.registerLegal",
         registerUser: "pages.registerUser",
@@ -18,6 +18,7 @@ export const namespaces = {
         registerRequestSent: "pages.registerRequestSent",
         validatePhone: "pages.validatePhone",
         welcomeScreen: "pages.welcomeScreen",
+        recipientLanding: "pages.recipientLanding",
     },
     atoms: {
         appCalendar: "atoms.appCalendar",
