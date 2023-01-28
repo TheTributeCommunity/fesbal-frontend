@@ -15,6 +15,8 @@ import usersMock from "../mocks/users.mock";
 import {AuthService} from "../services/auth-service";
 import {RecipientUserService} from "../services/recipient-user-service";
 import {useNavigate} from "react-router-dom";
+import {UserGuestService} from "../services/user-guest-service";
+import {randomUUID} from "crypto";
 
 const RegisterUser = (): JSX.Element => {
     const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange} = useRegisterNameForm();
@@ -31,6 +33,9 @@ const RegisterUser = (): JSX.Element => {
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validForm()) {
+            const userGuest = UserGuestService.create(userName, userSurname, selectedDate, selectedOption, userID);
+
+            UserGuestService.save(userGuest);
             navigate('/register/phone')
         }
     }

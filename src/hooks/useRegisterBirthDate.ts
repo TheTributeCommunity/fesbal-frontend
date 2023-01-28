@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useRegisterBirthDate = () => {
-    const [selectedDate, setSelectedDate] = useState<Date>();
+    const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
     const isValidBirthDate = () => selectedDate ? selectedDate < new Date() : false
 
