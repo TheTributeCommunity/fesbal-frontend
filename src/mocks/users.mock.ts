@@ -82,7 +82,7 @@ const users: UserProps[] = [
         ]
     },
     {
-        recipientUserId: "5ac1a155-0809-4904-9255-b5660da83771",
+        recipientUserId: "5ac1a155-0809-4904-9255-b5660da83771"
         id: "12345678L",
         password: "password5",
         email: "test5@gmail.com",
