@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier, onAuthStateChanged, User } from "firebase/auth";
 import { getEnvVar } from "../helpers/envVars";
-import userProps from "../types/UserProps";
 import {AuthUser} from "../models/AuthUser";
 
 export class AuthService {
