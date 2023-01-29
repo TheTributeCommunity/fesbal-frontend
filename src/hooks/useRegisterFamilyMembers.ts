@@ -7,6 +7,7 @@ import {RecipientUser} from "../models/recipient-user";
 import {AuthService} from "../services/auth-service";
 import {RecipientUserService} from "../services/recipient-user-service";
 import {Relative} from "../models/relative";
+import {AppRoute} from "../enums/app-route";
 
 const useRegisterFamilyMembers = () => {
     const { t: translate } = useTranslation(namespaces.pages.registerFamilyMembers);
@@ -27,7 +28,7 @@ const useRegisterFamilyMembers = () => {
     const disableNext = familyMembers.length === 0;
     const handleNextWithFamilyMembers = () => {
         if (!disableNext) {
-            navigate("/register/referral");
+            navigate(AppRoute.REGISTER_REFERRAL_SHEET);
         }
     };
 
@@ -40,7 +41,7 @@ const useRegisterFamilyMembers = () => {
             cancelButtonText: translate("sweetAlert.cancelButtonText") as string,
         }).fire().then((result) => {
             if (result.isConfirmed) {
-                navigate("/register/referral");
+                navigate(AppRoute.REGISTER_REFERRAL_SHEET);
             }
         })
     };
