@@ -7,13 +7,14 @@ import useRegisterFamilyMembers from "../hooks/useRegisterFamilyMembers";
 import AppPageHeader from "../components/molecules/AppPageHeader";
 import AppWrapper from "../components/molecules/AppWrapper";
 import FamilyMemberCard from "../components/atom/FamilyMemberCard";
+import {AppRoute} from "../enums/app-route";
 
 const RegisterFamilyMembers = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers);
     const {user, familyMembers, handleNextWithFamilyMembers, handleWithoutFamilyMembers, disableNext} = useRegisterFamilyMembers();
 
     return (
-        <AppWrapper  link="/register/phone" title={translate("title")}>
+        <AppWrapper  link={AppRoute.REGISTER_PHONE} title={translate("title")}>
             <div className="flex flex-col gap-4 w-full">
                 <AppPageHeader
                             title={translate("pageHeading")} description={translate("description") as string}/>

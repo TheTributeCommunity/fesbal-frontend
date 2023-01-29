@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { isLettersOnly } from "../helpers/textUtils";
+import {AppRoute} from "../enums/app-route";
 
 
 const useRegisterNameForm = () => {
@@ -26,7 +27,7 @@ const useRegisterNameForm = () => {
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateNameSurname()) {
-            navigate('/register/phone');
+            navigate(AppRoute.REGISTER_PHONE);
         }
     }
 

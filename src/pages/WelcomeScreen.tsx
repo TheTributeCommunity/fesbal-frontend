@@ -1,12 +1,13 @@
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
 import LogoFesbalWhiteIcon from "../components/icons/LogoFesbalWhiteIcon";
+import {AppRoute} from "../enums/app-route";
 
 const WelcomeScreen = () => {
     const {t: translate} = useTranslation(namespaces.pages.welcomeScreen);
 
     return (
-        <a href="/welcome">
+        <a href={AppRoute.WELCOME}>
             <div className="bg-[#0F95CE] h-screen flex flex-col justify-end">
                 <div className="app-logo-center">
                     <LogoFesbalWhiteIcon/>
