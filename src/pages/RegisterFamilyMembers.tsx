@@ -26,7 +26,7 @@ const RegisterFamilyMembers = () => {
                         <FamilyMemberCard person={familyMember} allowEdit={true} />
                     </div>)}
                 <div className="flex flex-col gap-8">
-                    <Link to="/register/family-members/add"
+                    <Link to={AppRoute.REGISTER_FAMILY_MEMBERS}
                         className="flex gap-2 bg-primary-color-light p-3.5 rounded-lg justify-center border border-white">
                         <PlusAddIcon/>
                         <p className="font-button text-primary-color">{translate("addMember")}</p>

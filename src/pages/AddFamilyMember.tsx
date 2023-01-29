@@ -11,7 +11,7 @@ import classNames from "classnames";
 import useRegisterBirthDate from "../hooks/useRegisterBirthDate";
 import AppCalendar from "../components/atom/AppCalendar";
 import FamilyMember from "../types/FamilyMember";
-import { useEffect } from "react";
+import {AppRoute} from "../enums/app-route";
 
 interface AddFamilyMemberProps {
     member?: FamilyMember
@@ -19,7 +19,6 @@ interface AddFamilyMemberProps {
 
 const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
     const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange} = useRegisterNameForm();
-    const {familyMembers, setFamilyMembers} = useRegisterFamilyMembers();
     const {selectedOption, userID, validateUserID, onUserIDChange, onSelectedOptionChange} = useRegisterIDForm();
     const {selectedDate, setDate, isValidBirthDate, getFormattedBirthDate} = useRegisterBirthDate()
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers);
@@ -31,7 +30,7 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
     }
 
     return (
-        <AppWrapper link="/register/family-members" title={translate("addMember")}>
+        <AppWrapper link={AppRoute.REGISTER_FAMILY_MEMBERS} title={translate("addMember")}>
             <form noValidate onSubmit={undefined} className="flex w-full flex-col gap-4">
                 <div className="flex flex-col gap-4">
                     <AppFormInput name="name"
