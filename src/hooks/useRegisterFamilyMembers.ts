@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { namespaces } from "../i18n/i18n.constants";
 import AppPopupAlert from "../components/atom/AppPopupAlert";
 import {RecipientUser} from "../models/recipient-user";
-import {AuthService} from "../services/auth-service";
 import {RecipientUserService} from "../services/recipient-user-service";
 import {Relative} from "../models/relative";
 import {AppRoute} from "../enums/app-route";
@@ -15,12 +14,10 @@ const useRegisterFamilyMembers = () => {
     const [user, setUser] = useState<RecipientUser>();
 
     useEffect(() => {
-        if(AuthService.currentUser?.phone) {
-            RecipientUserService.getByPhone(AuthService.currentUser.phone).then((recipientUser) => {
-                setUser(recipientUser)
-                recipientUser.relatives && setFamilyMembers(recipientUser.relatives)
-            })
-        }
+        RecipientUserService.getAuth().then((recipientUser) => {
+            setUser(recipientUser)
+            recipientUser.relatives && setFamilyMembers(recipientUser.relatives)
+        })
     }, [])
 
     const navigate = useNavigate();
@@ -45,7 +42,6 @@ const useRegisterFamilyMembers = () => {
             }
         })
     };
-
 
     return {
         user,

@@ -1,9 +1,10 @@
 import { BoosterClient } from './booster-service'
 import { gql } from '@apollo/client'
 import { RecipientUser } from '../models/recipient-user'
+import {AuthService} from "./auth-service";
 
 export class RecipientUserService {
-  static async getAll(): Promise<RecipientUser[]> {
+  public static async getAll(): Promise<RecipientUser[]> {
     const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
       query: GET_ALL_RECIPIENTS_USERS,
       variables: {},
@@ -11,7 +12,14 @@ export class RecipientUserService {
     return result.data.ListRecipientUserReadModels.items
   }
 
-  static async getByPhone(phone: string): Promise<RecipientUser> {
+  public static async getAuth(): Promise<RecipientUser> {
+    if(!AuthService.currentUser || !AuthService.currentUser.phone) {
+        throw new Error("Authenticated user not found")
+    }
+    return RecipientUserService.getByPhone(AuthService.currentUser.phone)
+  }
+
+  private static async getByPhone(phone: string): Promise<RecipientUser> {
     const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
       query: GET_RECIPIENT_USER_BY_PHONE,
       variables: { phone },
@@ -20,7 +28,7 @@ export class RecipientUserService {
     return result.data.ListRecipientUserReadModels.items[0]
   }
 
-  static async getReferralSheetUploadUrl(recipientUserId: string): Promise<string> {
+  public static async getReferralSheetUploadUrl(recipientUserId: string): Promise<string> {
     const result = await BoosterClient.mutate<{ GetRecipientUserReferralSheetUploadUrl: string }>({
       mutation: GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL,
       variables: { id: { recipientUserId } },
@@ -31,7 +39,7 @@ export class RecipientUserService {
     return result.data.GetRecipientUserReferralSheetUploadUrl
   }
 
-  static async create(newRecipientUser: Partial<RecipientUser>): Promise<boolean> {
+  public static async create(newRecipientUser: Partial<RecipientUser>): Promise<boolean> {
     const result = await BoosterClient.mutate<{ CreateRecipientUser: boolean }>({
       mutation: CREATE_RECIPIENT_USER,
       variables: this.recipientUserToCommandVariables(newRecipientUser),
@@ -42,7 +50,7 @@ export class RecipientUserService {
     return result.data?.CreateRecipientUser
   }
 
-  static async updateEmail(recipientUserId: string, email: string): Promise<boolean> {
+  public static async updateEmail(recipientUserId: string, email: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ UpdateRecipientUserEmail: boolean }>({
       mutation: UPDATE_RECIPIENT_USER_EMAIL,
       variables: { updatedUser: { recipientUserId, email } },
@@ -53,7 +61,7 @@ export class RecipientUserService {
     return result.data?.UpdateRecipientUserEmail
   }
 
-  static async updateReferralSheetUrl(recipientUserId: string, referralSheetUrl: string): Promise<boolean> {
+  public static async updateReferralSheetUrl(recipientUserId: string, referralSheetUrl: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ UpdateRecipientUserReferralSheetUrl: boolean }>({
       mutation: UPDATE_RECIPIENT_USER_REFERRAL_SHEET_URL,
       variables: { updatedUser: { recipientUserId, referralSheetUrl } },
@@ -64,7 +72,7 @@ export class RecipientUserService {
     return result.data?.UpdateRecipientUserReferralSheetUrl
   }
 
-  static async delete(recipientUserId: string): Promise<boolean> {
+  public static async delete(recipientUserId: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ DeleteRecipientUser: boolean }>({
       mutation: DELETE_RECIPIENT_USER,
       variables: { userToDelete: { recipientUserId } },
@@ -129,8 +137,12 @@ const GET_RECIPIENT_USER_BY_PHONE = gql`
         email
         relativesIds
         relatives{
-        firstName
-        lastName
+          id
+          firstName
+          lastName
+          dateOfBirth
+          typeOfIdentityDocument
+          identityDocumentNumber
         }
         referralSheetUrl
         role
