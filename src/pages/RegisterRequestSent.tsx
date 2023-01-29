@@ -3,55 +3,25 @@ import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
 import LogoFesbalWhiteIcon from "../components/icons/LogoFesbalWhiteIcon";
 import RequestSentIcon from "../components/icons/RequestSentIcon";
-import UsersMock from "../mocks/users.mock";
-import users from "../mocks/users.mock";
-import PersonalDataItemProps from "../types/PersonalDataItemProps";
-import RegisterPersonalDataItem from "../components/atom/RegisterPersonalDataItem";
 import {AppRoute} from "../enums/app-route";
+import {RecipientUserService} from "../services/recipient-user-service";
+import {RecipientUser} from "../models/recipient-user";
+import {useEffect, useState} from "react";
 
 const RegisterRequestSent = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerRequestSent);
-    const user = UsersMock[0];
-    const getFamilyMembers = (id: string) => {
-        const user = users.find(user => user.id === id);
-        return user?.familyMembers;
-    }
-    const getPersonalData = (): PersonalDataItemProps[] => {
-        return [
-            {
-                title: translate('fullName'),
-                value: user.fullName,
-                span: 2
-            },
-            {
-                title: translate('id'),
-                value: user.id,
-                span: 1
-            },
-            {
-                title: translate('birthDate'),
-                value: user.birthDate,
-                span: 1
-            },
-            {
-                title: translate('email'),
-                value: user.email,
-                hasEditButton: true,
-                goTo: `/profile/edit-email`,
-                span: 1
-            },
-            {
-                title: translate('phone'),
-                value: user.phone,
-                span: 1
-            },
-            {
-                title: 'Miembros unidad familiar',
-                value: getFamilyMembers(user.id)?.length.toString() || '0',
-                span: 2
+    const [recipientUser, setRecipientUser] = useState<RecipientUser>({id: '', firstName: '', lastName: '', dateOfBirth: '', phone: '', typeOfIdentityDocument:'', identityDocumentNumber: ''});
+    const [relativesCount, setRelativesCount] = useState<string>('0')
+
+    useEffect(() => {
+        RecipientUserService.getAuth().then((recipientUser) => {
+            setRecipientUser(recipientUser)
+
+            if(recipientUser.relativesIds){
+                setRelativesCount(recipientUser.relativesIds.length.toString())
             }
-        ];
-    };
+        })
+    }, [])
 
     return (
         <div className="h-screen flex flex-col justify-end bg-primary-color px-4 pb-4">
@@ -63,9 +33,30 @@ const RegisterRequestSent = () => {
                 <div className="flex flex-col">
                     <h1 className="mb-4 font-big-title">{translate("title")}</h1>
                     <ul className="grid grid-cols-2 gap-3 pb-2 text-left justify-between">
-                        {getPersonalData().map((item, index) => (
-                            <RegisterPersonalDataItem title={item.title} value={item.value} span={item.span} key={index}/>
-                        ))}
+                        <li className="col-span-2 py-1">
+                            <p className="font-label text-primary-color">{translate('fullName')}</p>
+                            <p className="font-text">{recipientUser.firstName}</p>
+                        </li>
+                        <li className="col-span-1 py-1">
+                            <p className="font-label text-primary-color">{translate('id')}</p>
+                            <p className="font-text">{recipientUser.typeOfIdentityDocument}</p>
+                        </li>
+                        <li className="col-span-1 py-1">
+                            <p className="font-label text-primary-color">{translate('birthDate')}</p>
+                            <p className="font-text">{recipientUser.dateOfBirth}</p>
+                        </li>
+                        <li className="col-span-1 py-1">
+                            <p className="font-label text-primary-color">{translate('email')}</p>
+                            <p className="font-text">{recipientUser.email}</p>
+                        </li>
+                        <li className="col-span-1 py-1">
+                            <p className="font-label text-primary-color">{translate('phone')}</p>
+                            <p className="font-text">{recipientUser.phone}</p>
+                        </li>
+                        <li className="col-span-2 py-1">
+                            <p className="font-label text-primary-color">{translate('familyMembers')}</p>
+                            <p className="font-text">{relativesCount}</p>
+                        </li>
                     </ul>
                 </div>
                 <AppLinkButton title={translate("next")} link={AppRoute.WELCOME}/>
