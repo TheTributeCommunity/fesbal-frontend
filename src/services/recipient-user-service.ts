@@ -30,10 +30,10 @@ export class RecipientUserService {
     return result.data.GetRecipientUserReferralSheetUploadUrl
   }
 
-  static async create(newUser: Partial<RecipientUser>): Promise<boolean> {
+  static async create(newRecipientUser: Partial<RecipientUser>): Promise<boolean> {
     const result = await BoosterClient.mutate<{ CreateRecipientUser: boolean }>({
       mutation: CREATE_RECIPIENT_USER,
-      variables: { newUser },
+      variables: this.recipientUserToCommandVariables(newRecipientUser),
     })
     if (!result.data?.CreateRecipientUser) {
       throw new Error('Error creating the USER')
@@ -72,6 +72,21 @@ export class RecipientUserService {
       throw new Error('Error deleting the USER')
     }
     return result.data?.DeleteRecipientUser
+  }
+
+  private static recipientUserToCommandVariables(recipientUser: Partial<RecipientUser>) {
+    return {
+      recipientUser:
+          {
+            recipientUserId: recipientUser.id,
+            firstName: recipientUser.firstName,
+            lastName: recipientUser.lastName,
+            dateOfBirth: recipientUser.dateOfBirth,
+            typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
+            identityDocumentNumber: recipientUser.identityDocumentNumber,
+            phone: recipientUser.phone,
+          }
+    }
   }
 }
 
@@ -121,8 +136,8 @@ const GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL = gql`
   }
 `
 const CREATE_RECIPIENT_USER = gql`
-  mutation ($newUser: CreateRecipientUserInput!) {
-    CreateRecipientUser(input: $newUser)
+  mutation ($recipientUser: CreateRecipientUserInput!) {
+    CreateRecipientUser(input: $recipientUser)
   }
 `
 
