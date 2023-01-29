@@ -4,51 +4,36 @@ import { getEnvVar } from "../helpers/envVars";
 import {AuthUser} from "../models/AuthUser";
 
 export class AuthService {
-    private static apiKey?: string
-    private static authDomain?: string
-    private static databaseURL?: string
-    static projectId?: string
-    private static storageBucket?: string
-    private static messagingSenderId?: string
-    private static appId?: string
     private static auth: Auth
     private static SPAIN_PHONE_PREFIX = "+34"
     private static confirmationResult: ConfirmationResult
     private static currentUser: AuthUser | null
 
     public static getCurrentUser() {
-        return AuthService.currentUser;
+        return this.currentUser;
     }
 
     public static initialize(): void {
-        AuthService.apiKey = getEnvVar('FIREBASE_API_KEY')
-        AuthService.authDomain = getEnvVar('FIREBASE_AUTH_DOMAIN')
-        AuthService.databaseURL = getEnvVar('FIREBASE_DATABASE_URL')
-        AuthService.projectId = getEnvVar('FIREBASE_PROJECT_ID')
-        AuthService.storageBucket = getEnvVar('FIREBASE_STORAGE_BUCKET')
-        AuthService.messagingSenderId = getEnvVar('FIREBASE_MESSAGING_SENDER_ID')
-        AuthService.appId = getEnvVar('FIREBASE_APP_ID')
-
         initializeApp({
-            apiKey: AuthService.apiKey,
-            authDomain: AuthService.authDomain,
-            databaseURL: AuthService.databaseURL,
-            projectId: AuthService.projectId,
-            storageBucket: AuthService.storageBucket,
-            messagingSenderId: AuthService.messagingSenderId,
-            appId: AuthService.appId,
+            apiKey: getEnvVar('FIREBASE_API_KEY'),
+            authDomain: getEnvVar('FIREBASE_AUTH_DOMAIN'),
+            databaseURL: getEnvVar('FIREBASE_DATABASE_URL'),
+            projectId: getEnvVar('FIREBASE_PROJECT_ID'),
+            storageBucket: getEnvVar('FIREBASE_STORAGE_BUCKET'),
+            messagingSenderId: getEnvVar('FIREBASE_MESSAGING_SENDER_ID'),
+            appId: getEnvVar('FIREBASE_APP_ID'),
         })
 
         this.setUpAuth();
     }
 
     private static setUpAuth() {
-        AuthService.auth = getAuth();
+        this.auth = getAuth();
 
-        AuthService.auth.useDeviceLanguage();
+        this.auth.useDeviceLanguage();
 
-        onAuthStateChanged(AuthService.auth, (user) => {
-            AuthService.currentUser = user ? this.firebaseUserToAuthUser(user) : null;
+        onAuthStateChanged(this.auth, (user) => {
+            this.currentUser = user ? this.firebaseUserToAuthUser(user) : null;
         });
     }
 
@@ -62,16 +47,16 @@ export class AuthService {
     }
 
     public static signInWithPhoneNumber(submitButtonId: string, phoneWithoutPrefix: string) {
-        const recaptchaVerifier = AuthService.setUpRecaptcha(submitButtonId);
-        const phone = `${AuthService.SPAIN_PHONE_PREFIX} ${phoneWithoutPrefix}`;
+        const recaptchaVerifier = this.setUpRecaptcha(submitButtonId);
+        const phone = `${this.SPAIN_PHONE_PREFIX} ${phoneWithoutPrefix}`;
 
-        return signInWithPhoneNumber(AuthService.auth, phone, recaptchaVerifier)
-            .then((confirmationResult) => {AuthService.confirmationResult = confirmationResult})
+        return signInWithPhoneNumber(this.auth, phone, recaptchaVerifier)
+            .then((confirmationResult) => {this.confirmationResult = confirmationResult})
     }
 
     private static setUpRecaptcha(submitButtonId: string) {
         const INVISIBLE_RECAPTCHA_CONFIG = {'size': 'invisible'};
-        const recaptchaVerifier = new RecaptchaVerifier(submitButtonId,INVISIBLE_RECAPTCHA_CONFIG, AuthService.auth);
+        const recaptchaVerifier = new RecaptchaVerifier(submitButtonId,INVISIBLE_RECAPTCHA_CONFIG, this.auth);
 
         recaptchaVerifier.render();
 
@@ -79,10 +64,14 @@ export class AuthService {
     }
 
     public static confirmPhoneCode(code: string) {
-        return AuthService.confirmationResult.confirm(code)
+        return this.confirmationResult.confirm(code).then(() => this.saveToken())
     }
 
     public static signIn(email: string , password: string) {
-        return signInWithEmailAndPassword(AuthService.auth, email, password)
+        return signInWithEmailAndPassword(this.auth, email, password)
+    }
+
+    private static saveToken() {
+        this.currentUser?.getToken()?.then((token) => localStorage.setItem("token", token))
     }
 }
