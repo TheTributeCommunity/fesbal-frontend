@@ -40,11 +40,9 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
             const userGuest = UserGuestService.create(userName, userSurname, selectedDate, selectedOption, userID);
 
             RecipientUserService.getAuth()
-                .then((recipientUser) => RelativeService.create({
-                    ...userGuest,
-                    recipientUserId: recipientUser.id
-                }))
-                .then(() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS))
+                .then((recipientUser) =>
+                    RelativeService.create({...userGuest,recipientUserId: recipientUser.id})
+                ).then(() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS))
         }
     }
 
