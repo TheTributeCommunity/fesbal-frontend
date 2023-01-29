@@ -5,4 +5,6 @@ export interface UserGuest {
     dateOfBirth: string
     typeOfIdentityDocument: string
     identityDocumentNumber: string
+
+    phone?: string
 }

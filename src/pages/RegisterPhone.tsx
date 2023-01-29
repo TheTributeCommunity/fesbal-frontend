@@ -3,12 +3,13 @@ import {namespaces} from "../i18n/i18n.constants";
 import PageHeader from "../components/molecules/AppPageHeader";
 import RegisterPhoneForm from "../components/molecules/RegisterPhoneForm";
 import AppWrapper from "../components/molecules/AppWrapper";
+import {AppRoute} from "../enums/app-route";
 
 const RegisterPhone = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerPhone);
 
     return (
-        <AppWrapper link="/register" title={translate("title")}>
+        <AppWrapper link={AppRoute.REGISTER} title={translate("title")}>
             <div className="flex h-full w-full flex-col self-center text-secondary-color">
                 <PageHeader title={translate("titleSecondary")} description={translate("description") as string}/>
                 <RegisterPhoneForm/>

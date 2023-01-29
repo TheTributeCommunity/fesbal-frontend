@@ -1,8 +1,8 @@
 import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {AuthService} from "../services/auth-service";
-import {RecipientUserService} from "../services/recipient-user-service";
-import usersMock from "../mocks/users.mock";
+import {UserGuestService} from "../services/user-guest-service";
+import {AppRoute} from "../enums/app-route";
 
 const useRegisterPhoneForm = (submitButtonId: string) => {
     const [userPhone, setUserPhone] = useState<string>('');
@@ -15,11 +15,10 @@ const useRegisterPhoneForm = (submitButtonId: string) => {
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateUserPhone()) {
-            const user = {...usersMock[0], phone: userPhone};
+            UserGuestService.setPhone(userPhone)
 
             AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
-                .then(() => RecipientUserService.create(user))
-                .then(()=> navigate('register/validate-phone'))
+                .then(() => navigate(AppRoute.REGISTER_VALIDATE_PHONE))
         }
     }
     const validateUserPhone = (): boolean => {
