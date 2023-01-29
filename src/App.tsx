@@ -45,7 +45,7 @@ function App() {
                 <Route path={AppRoute.REGISTER_FAMILY_MEMBERS} element={<RegisterFamilyMembers/>}/>
                 <Route path={AppRoute.REGISTER_FAMILY_MEMBERS_ADD} element={<AddFamilyMember/>}/>
                 <Route path={AppRoute.REGISTER_REFERRAL_SHEET} element={<RegisterReferral/>}/>
-                <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
+                <Route path={AppRoute.REGISTER_REQUEST_SENT} element={<RegisterRequestSent/>}/>
                 <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                 <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
                 <Route path="/pickup-historic" element={<PickupHistoryPage/>}/>

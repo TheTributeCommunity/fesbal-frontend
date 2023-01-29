@@ -1,7 +1,6 @@
 import {useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {RecipientUserService} from "../services/recipient-user-service";
-import usersMock from "../mocks/users.mock";
 import axios from "axios";
 import {RegistrationRequestService} from "../services/registration-request-service";
 import { v4 as uuidv4 } from 'uuid';
@@ -23,9 +22,9 @@ const useUploadReferral = () => {
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.item(0);
         if (file && isValidFile(file)) {
-            if(usersMock[0].recipientUserId) { // TODO - Replace but real Recipient User
-                uploadReferralSheet(usersMock[0].recipientUserId, file).then(() => setFile(file))
-            }
+            RecipientUserService.getAuth()
+                .then((recipientUser) => uploadReferralSheet(recipientUser.id, file))
+                .then(() => setFile(file))
         }
     };
 
@@ -54,13 +53,10 @@ const useUploadReferral = () => {
     };
 
     const handleOnClick = (href: string) => {
-        if(usersMock[0].recipientUserId) {
-            RegistrationRequestService.create({
-                registrationRequestId: uuidv4(),
-                recipientUserId: usersMock[0].recipientUserId
-            })
-                .then(() => navigate(href));
-        }
+        RecipientUserService.getAuth()
+            .then((recipientUser) =>
+                RegistrationRequestService.create({registrationRequestId: uuidv4(), recipientUserId: recipientUser.id})
+            ).then(() => navigate(href));
     }
 
     return {file, setFile, inputRef, cameraRef, handleFileChange, handleClick, handleOnClick};
