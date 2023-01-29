@@ -7,18 +7,21 @@ import {RecipientUser} from "../models/recipient-user";
 import {RecipientUserService} from "../services/recipient-user-service";
 import {Relative} from "../models/relative";
 import {AppRoute} from "../enums/app-route";
+import {onAuthStateChanged} from "firebase/auth";
+import {AuthService} from "../services/auth-service";
 
 const useRegisterFamilyMembers = () => {
     const { t: translate } = useTranslation(namespaces.pages.registerFamilyMembers);
     const [familyMembers, setFamilyMembers] = useState<Relative[]>([]);
     const [user, setUser] = useState<RecipientUser>();
 
-    useEffect(() => {
+    // TODO - Replace by a context AuthContext
+    onAuthStateChanged(AuthService.auth, (user) => {
         RecipientUserService.getAuth().then((recipientUser) => {
             setUser(recipientUser)
             recipientUser.relatives && setFamilyMembers(recipientUser.relatives)
         })
-    }, [])
+    });
 
     const navigate = useNavigate();
 

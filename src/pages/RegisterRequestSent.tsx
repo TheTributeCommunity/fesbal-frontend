@@ -6,22 +6,25 @@ import RequestSentIcon from "../components/icons/RequestSentIcon";
 import {AppRoute} from "../enums/app-route";
 import {RecipientUserService} from "../services/recipient-user-service";
 import {RecipientUser} from "../models/recipient-user";
-import {useEffect, useState} from "react";
+import { useState} from "react";
+import {AuthService} from "../services/auth-service";
+import {onAuthStateChanged} from "firebase/auth";
 
 const RegisterRequestSent = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerRequestSent);
     const [recipientUser, setRecipientUser] = useState<RecipientUser>({id: '', firstName: '', lastName: '', dateOfBirth: '', phone: '', typeOfIdentityDocument:'', identityDocumentNumber: ''});
     const [relativesCount, setRelativesCount] = useState<string>('0')
 
-    useEffect(() => {
+    // TODO - Replace by a context AuthContext
+    onAuthStateChanged(AuthService.auth, (user) => {
         RecipientUserService.getAuth().then((recipientUser) => {
             setRecipientUser(recipientUser)
 
-            if(recipientUser.relativesIds){
+            if (recipientUser.relativesIds) {
                 setRelativesCount(recipientUser.relativesIds.length.toString())
             }
-        })
-    }, [])
+        });
+    });
 
     return (
         <div className="h-screen flex flex-col justify-end bg-primary-color px-4 pb-4">

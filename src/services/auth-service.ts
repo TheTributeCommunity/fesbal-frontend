@@ -3,8 +3,9 @@ import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWi
 import { getEnvVar } from "../helpers/envVars";
 import {AuthUser} from "../models/auth-user";
 
+// TODO - Replace by a context
 export class AuthService {
-    private static auth: Auth
+    public static auth: Auth
     public static SPAIN_PHONE_PREFIX = "+34"
     private static confirmationResult: ConfirmationResult
     public static currentUser: AuthUser | null
