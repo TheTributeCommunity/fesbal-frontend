@@ -11,12 +11,13 @@ export class RecipientUserService {
     return result.data.ListRecipientUserReadModels.items
   }
 
-  static async getById(id: string): Promise<RecipientUser> {
-    const result = await BoosterClient.query<{ RecipientUserReadModel: RecipientUser }>({
-      query: GET_RECIPIENT_USER,
-      variables: { id },
+  static async getByPhone(phone: string): Promise<RecipientUser> {
+    const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
+      query: GET_RECIPIENT_USER_BY_PHONE,
+      variables: { phone },
     })
-    return result.data.RecipientUserReadModel
+
+    return result.data.ListRecipientUserReadModels.items[0]
   }
 
   static async getReferralSheetUploadUrl(recipientUserId: string): Promise<string> {
@@ -111,22 +112,29 @@ const GET_ALL_RECIPIENTS_USERS = gql`
   }
 `
 
-const GET_RECIPIENT_USER = gql`
-  query RecipientUserReadModel ($id: ID!) {
-    RecipientUserReadModel (id: $id) {
-      id
-      firstName
-      lastName
-      dateOfBirth
-      typeOfIdentityDocument
-      identityDocumentNumber
-      phone
-      phoneVerified
-      email
-      relativesIds
-      referralSheetUrl
-      role
-      deleted          
+const GET_RECIPIENT_USER_BY_PHONE = gql`
+  query ListRecipientUserReadModels ($phone: String!) {
+    ListRecipientUserReadModels(
+      filter: { phone: {eq: $phone } }
+      sortBy: {}
+  )  {
+      items {
+        id
+        firstName
+        lastName
+        dateOfBirth
+        typeOfIdentityDocument
+        identityDocumentNumber
+        phone
+        email
+        relativesIds
+        relatives{
+        firstName
+        lastName
+        }
+        referralSheetUrl
+        role
+      }
     }
   }
 `
