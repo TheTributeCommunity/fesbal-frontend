@@ -24,6 +24,7 @@ import RegisterPhone from "./pages/RegisterPhone";
 import AddFamilyMember from "./pages/AddFamilyMember";
 import RegisterUser from "./pages/RegisterUser";
 import {AppRoute} from "./enums/app-route";
+import LoginValidatePhone from "./pages/LoginValidatePhone";
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                 <Route path="*" element={<WelcomeScreen/>}/>
                 <Route path="/login" element={<LoginScreen/>}/>
                 <Route path="/login/password-recovery" element={<LoginPasswordRecovery/>}/>
+                <Route path={AppRoute.LOGIN_VALIDATE_PHONE} element={<LoginValidatePhone/>}/>
                 <Route path="/notifications" element={<NotificationsScreen/>}/>
                 <Route path="/notifications/:id" element={<NotificationDetails/>}/>
                 <Route path="/pickup-point" element={<PickupPoint/>}/>
