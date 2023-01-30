@@ -1,7 +1,7 @@
 import React from "react";
-import useAppDigitsValidator from "../../hooks/useAppDigitsValidator";
+import useAppDigitsInput from "../../hooks/useAppDigitsInput";
 import DigitsValidatorProps from "../../types/DigitsValidatorProps";
-export const AppDigitsValidator = ({
+export const AppDigitsInput = ({
                     label,
                     digitsCount,
                     value,
@@ -10,7 +10,7 @@ export const AppDigitsValidator = ({
                     error,
                     }: DigitsValidatorProps) => {
                         
-    const { digitsRef, onDigitsChange } = useAppDigitsValidator(onChange);
+    const { digitsRef, onDigitsChange } = useAppDigitsInput(onChange);
 
 
     const generateDigitsInputs = () => {

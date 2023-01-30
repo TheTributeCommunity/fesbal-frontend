@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useRef, useState } from "react";
 
-const useAppDigitsValidator = (onChange: (value: string) => void) => {
+const useAppDigitsInput = (onChange: (value: string) => void) => {
     const digitsRef = useRef<HTMLInputElement[]>([]);
     const [value, setValue] = useState<string>("");
 
@@ -58,4 +58,4 @@ const useAppDigitsValidator = (onChange: (value: string) => void) => {
     };
 };
 
-export default useAppDigitsValidator;
+export default useAppDigitsInput;
