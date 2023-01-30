@@ -17,7 +17,7 @@ import { registerRequestSentEn, registerRequestSentEs } from "./pages/registerRe
 import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
 import {welcomeScreenEn, welcomeScreenEs} from "./pages/welcomeScreen";
 import {validatePhoneEn, validatePhoneEs} from "./pages/validatePhone";
-import {recipientLandingEn, recipientLandingEs} from "./pages/recipientLanding";
+import { recipientLandingEs, recipientLandingEn } from "./pages/recipientLanding";
 
 export const es = {
     [namespaces.common]: {

@@ -8,6 +8,8 @@ interface UserProps {
     fullName?: string;
     birthDate?: string;
     phone?: string;
+    derivationLimit?: Date;
+    nextPickup?: Date;
     familyMembers?: FamilyMember[];
     nextPickup?: Date,
     derivationLimit?: Date

@@ -2,6 +2,7 @@ export const namespaces = {
     pages: {
         loginPasswordRecovery: "pages.loginPasswordRecovery",
         loginScreen: "pages.loginScreen",
+        recipientLanding: "pages.recipientLanding",
         menuDeleteAccount: "pages.menuDeleteAccount",
         menuReferral: "pages.menuReferral",
         notifications: "pages.notifications",
@@ -18,7 +19,6 @@ export const namespaces = {
         registerRequestSent: "pages.registerRequestSent",
         validatePhone: "pages.validatePhone",
         welcomeScreen: "pages.welcomeScreen",
-        recipientLanding: "pages.recipientLanding",
     },
     atoms: {
         appCalendar: "atoms.appCalendar",
