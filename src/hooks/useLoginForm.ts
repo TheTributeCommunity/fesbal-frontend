@@ -1,34 +1,35 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import UserProps from "../types/UserProps";
-import { AuthService } from "../services/auth-service";
+import { FormEvent, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {AuthService} from "../services/auth-service";
 
-const useLoginForm = () => {
-    const [userEmail, setUserEmail] = useState<string>('');
-    const [userPassword, setUserPassword] = useState<string>('');
+const useLoginForm = (submitButtonId: string) => {
+    const [userPhone, setUserPhone] = useState<string>('');
     const [hasError, setHasError] = useState<boolean>(false);
 
     const navigate = useNavigate();
-    const onChangeUserEmail = (email: string) => {
-        setUserEmail(email);
-        setHasError(false);
-    }
-    const onChangeUserPassword = (password: string) => {
-        setUserPassword(password);
+
+    const onUserPhoneChange = (phone: string) => {
+        setUserPhone(phone);
         setHasError(false);
     }
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        AuthService.signIn(userEmail, userPassword)
-            .then(() => navigate('/recipient-home'))
-            .catch(() => setHasError(true))
+
+        if (validateUserPhone()) {
+            AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
+                .then(() => navigate('/recipient-home'))
+                .catch(() => setHasError(true))
+        }
+    }
+    const validateUserPhone = (): boolean => {
+        const PHONE_REGEX = new RegExp(/^\d{9}(,\d{9})*$/);
+        return PHONE_REGEX.test(userPhone);
     }
 
     return {
-        userEmail,
-        userPassword,
-        onChangeUserEmail,
-        onChangeUserPassword,
+        userPhone,
+        onUserPhoneChange,
+        validateUserPhone,
         hasError,
         onSubmit,
     }

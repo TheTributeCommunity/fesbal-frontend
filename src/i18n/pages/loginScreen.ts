@@ -1,21 +1,15 @@
 export const loginScreenEs = {
     title: "Iniciar sesión",
-    description: "Para poder continuar es necesario que inicies sesión",
-    id: "Documento de identidad",
-    password: "Contraseña",
-    forgotPassword: "¿Olvidaste tu contraseña?",
-    next: "Iniciar sesión",
-    error: "El Documento de identidad y/o la contraseña no coinciden. Inténtalo de nuevo.",
-    credentials: "¿Has realizado una solicitud de registro y aún no has recibido tus credenciales?",
+    description: "Por favor, introduce tu número de teléfono para poder iniciar sesión.",
+    phone: "Número de teléfono",
+    next: "Continuar",
+    error: "El número de télefono no es válido. Por favor, introduzca un número de teléfono sin el prefijo e inténtelo de nuevo.",
 }
 
 export const loginScreenEn = {
     title: "Login",
-    description: "To continue, you need to login",
-    id: "Identity document",
-    password: "Password",
-    forgotPassword: "Forgot your password?",
-    next: "Login",
-    error: "The identity document and/or password do not match. Try again.",
-    credentials: "Have you made a registration request and have not yet received your credentials?",
+    description: "Please, introduce your phone number to sign in.",
+    phone: "Phone number",
+    next: "Continue",
+    error: "The phone number introduced is not valid. Please, introduce you phone number without the prefix and try again.",
 }

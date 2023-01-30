@@ -11,14 +11,17 @@ import ProfileEditNewPassword from "./pages/ProfileEditNewPassword";
 import ProfileEditPrevPassword from "./pages/ProfileEditPrevPassword";
 import ProfileScreen from "./pages/ProfileScreen";
 import RegisterFamilyMembers from "./pages/RegisterFamilyMembers";
-import RegisterID from "./pages/RegisterID";
 import RegisterLegal from "./pages/RegisterLegal";
 import RegisterReferral from "./pages/RegisterReferral";
 import RegisterRequestSent from "./pages/RegisterRequestSent";
-import RegisterName from "./pages/RegisterName";
+import ValidatePhone from "./pages/ValidatePhone";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import PickupHistoryPage from './pages/PickupHistoryPage';
 import RecipientLandingScreen from "./pages/RecipientLandingScreen";
+import SplashScreen from "./pages/SplashScreen";
+import RegisterPhone from "./pages/RegisterPhone";
+import AddFamilyMember from "./pages/AddFamilyMember";
+import RegisterUser from "./pages/RegisterUser";
 
 function App() {
     return (
@@ -37,13 +40,15 @@ function App() {
                 <Route path="/recipient-home" element={<RecipientLandingScreen/>}/>
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
-                <Route path="/register" element={<RegisterLegal/>}/>
+                <Route path="/registerLegal" element={<RegisterLegal/>}/>
+                <Route path="/register" element={<RegisterUser/>}/>
+                <Route path="/register/phone" element={<RegisterPhone/>}/>
                 <Route path="/register/family-members" element={<RegisterFamilyMembers/>}/>
-                <Route path="/register/id" element={<RegisterID/>}/>
-                <Route path="/register/name" element={<RegisterName/>}/>
+                <Route path="/register/family-members/add" element={<AddFamilyMember/>}/>
                 <Route path="/register/referral" element={<RegisterReferral/>}/>
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
-                <Route path="/welcome" element={<WelcomeScreen/>}/>
+                <Route path="/register/validate-phone" element={<ValidatePhone/>}/>
+                <Route path="/welcome" element={<SplashScreen/>}/>
                 <Route path="/pickup-historic" element={<PickupHistoryPage/>}/>
             </Routes>
         </Router>

@@ -5,5 +5,5 @@ export const recipientLandingEs = {
 
 export const recipientLandingEn = {
     nextDelivery: 'Next delivery',
-    derivationLimit: 'End of service',
+    derivationLimit: 'End of referral',
 }
