@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import UnsuccessIcon from "../components/icons/UnsuccessIcon";
 import {AppRoute} from "../enums/app-route";
 
-const RegistrationUserName = () => {
+const ValidatePhone = () => {
     const { t: translate } = useTranslation(namespaces.pages.validatePhone);
     const [showSuccessDialog, setShowSuccessDialog] = useState(false);
     const [showFailureDialog, setShowFailureDialog] = useState(false);
@@ -59,4 +59,4 @@ const RegistrationUserName = () => {
     );
 };
 
-export default RegistrationUserName;
+export default ValidatePhone;
