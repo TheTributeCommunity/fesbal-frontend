@@ -21,7 +21,7 @@ const useLoginValidatePhoneForm = () => {
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (checkValidationCodeLength()) {
-            /* Phone validation from registration step
+            /* TODO Phone validation from registration step
             AuthService.confirmPhoneCode(validationCode)
                 .then(() => RecipientUserService.create(UserGuestService.get()))
                 .then(() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS))
