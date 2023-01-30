@@ -1,43 +1,39 @@
 import PersonalDataItemProps from "../types/PersonalDataItemProps";
 import ProfilePersonalDataItem from "../components/atom/ProfilePersonalDataItem";
-import users from "../mocks/users.mock";
-import usersMock from "../mocks/users.mock";
 import {namespaces} from "../i18n/i18n.constants";
 import {useTranslation} from "react-i18next";
 import FamilyMembersIcon from "../components/icons/FamilyMembersIcon";
 import AppWrapper from "../components/molecules/AppWrapper";
+import FamilyMemberCard from "../components/atom/FamilyMemberCard";
+import useRegisterFamilyMembers from "../hooks/useRegisterFamilyMembers";
 
 
 const ProfileScreen = () => {
     const {t: translate} = useTranslation(namespaces.pages.profileScreen);
-    const user = usersMock[0];
-    const getFamilyMembers = (id: string) => {
-        const user = users.find(user => user.id === id);
-        return user?.familyMembers;
-    }
+    const {user, familyMembers} = useRegisterFamilyMembers();
     const getPersonalData = (): PersonalDataItemProps[] => {
         return [
             {
                 title: translate('fullName'),
-                value: user.fullName,
+                value: user?.firstName,
             },
             {
                 title: translate('id'),
-                value: user.id
+                value: user?.id
             },
             {
                 title: translate('birthDate'),
-                value: user.birthDate,
+                value: user?.dateOfBirth,
             },
             {
                 title: translate('email'),
-                value: user.email,
+                value: user?.email,
                 hasEditButton: true,
                 goTo: `/profile/edit-email`,
             },
             {
                 title: translate('phone'),
-                value: user.phone,
+                value: user?.phone,
             },
             {
                 title: translate('password'),
@@ -50,7 +46,7 @@ const ProfileScreen = () => {
 
     return (
         <AppWrapper link="/login" title={translate('title')} showBurger>
-            <div className="flex h-full w-full flex-col self-center mt-8 gap-4">
+            <div className="flex w-full flex-col gap-4 mb-2">
                 <ul>
                     {getPersonalData().map((personalData, index) => (
                         <ProfilePersonalDataItem key={index} personalData={personalData} index={index}/>
@@ -60,11 +56,11 @@ const ProfileScreen = () => {
                     <FamilyMembersIcon/>
                     <h2 className="font-mini-title">{translate('familyMembers')}</h2>
                 </div>
-                <ul className="flex flex-col gap-2 rounded-md bg-white p-8 pl-2 font-input">
-                    {getFamilyMembers(user.id) ? getFamilyMembers(user.id)?.map((familyMember, index) => (
-                        <li key={index}>{familyMember.FullName}</li>
-                    )) : <li>{translate('noFamilyMembers')}</li>}
-                </ul>
+                {familyMembers.map((familyMember, index) => 
+                    <div className="flex flex-col gap-4 pb-2">
+                        <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('familyMember', {ns: 'pages.registerFamilyMembers'})} {index+1}</span>
+                        <FamilyMemberCard person={familyMember} />
+                    </div>)}
             </div>
         </AppWrapper>
     );

@@ -1,22 +1,22 @@
 import {useTranslation} from "react-i18next";
-import AppLinkButton from "../components/atom/AppLinkButton";
-import LogoFesbalIcon from "../components/icons/LogoFesbalIcon";
 import {namespaces} from "../i18n/i18n.constants";
-import AppWrapper from "../components/molecules/AppWrapper";
+import LogoFesbalWhiteIcon from "../components/icons/LogoFesbalWhiteIcon";
+import {AppRoute} from "../enums/app-route";
 
 const WelcomeScreen = () => {
     const {t: translate} = useTranslation(namespaces.pages.welcomeScreen);
 
     return (
-        <AppWrapper>
-            <div className="flex flex-col items-center gap-8">
-                <LogoFesbalIcon/>
-                <div className="grid w-full grid-cols-2 gap-4 self-center rounded-xl px-6 py-4">
-                    <AppLinkButton title={translate("register")} link="/register" bgColor="bg-secondary-color"/>
-                    <AppLinkButton title={translate("login")} link="/login"/>
+        <a href={AppRoute.WELCOME}>
+            <div className="bg-[#0F95CE] h-screen flex flex-col justify-end">
+                <div className="app-logo-center">
+                    <LogoFesbalWhiteIcon/>
+                </div>
+                <div className="mx-auto w-full md:w-1/2 lg:w-1/3 px-8 pb-10 text-center">
+                    <span className="font-roboto-flex font-bold text-base leading-6 text-white">#NingúnHogarSinAlimentos</span>
                 </div>
             </div>
-        </AppWrapper>
+        </a>
     );
 };
 

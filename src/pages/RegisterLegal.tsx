@@ -3,14 +3,15 @@ import AppLinkButton from "../components/atom/AppLinkButton";
 import LogoFesbalIcon from "../components/icons/LogoFesbalIcon";
 import {namespaces} from "../i18n/i18n.constants";
 import AppWrapper from "../components/molecules/AppWrapper";
+import {AppRoute} from "../enums/app-route";
 
 const RegisterLegal = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerLegal);
 
     return (
         <>
-        <AppWrapper link="/welcome">
-            <div className="flex w-full flex-col self-center items-center mt-4 gap-4">
+        <AppWrapper link={AppRoute.WELCOME}>
+            <div className="flex w-full flex-col items-center mt-8 gap-4">
                 <LogoFesbalIcon />
             </div>
             </AppWrapper>
@@ -26,7 +27,7 @@ const RegisterLegal = () => {
                             <p className="underline text-primary-color font-small-link">{translate("terms")}</p>
                         </a>
                     </div>
-                    <AppLinkButton title={translate("next")} link="/register/id"/>
+                    <AppLinkButton title={translate("next")} link="/register"/>
                 </div>
             </div>
         </>

@@ -9,9 +9,11 @@ const MenuReferralUpload = () => {
 
     return (
         <AppWrapper title={translate("title")} link="/referral">
-            <AppPageHeader 
-                           description={translate("description") as string}/>
-            <AppReferralForm link="/referral"/>
+            <div className="flex flex-col gap-4">
+                <AppPageHeader 
+                            description={translate("description") as string}/>
+                <AppReferralForm link="/referral"/>
+            </div>
         </AppWrapper>
     );
 };
