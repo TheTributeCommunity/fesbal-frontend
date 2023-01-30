@@ -17,6 +17,7 @@ import RegisterRequestSent from "./pages/RegisterRequestSent";
 import ValidatePhone from "./pages/ValidatePhone";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import PickupHistoryPage from './pages/PickupHistoryPage';
+import RecipientLandingScreen from "./pages/RecipientLandingScreen";
 import SplashScreen from "./pages/SplashScreen";
 import RegisterPhone from "./pages/RegisterPhone";
 import AddFamilyMember from "./pages/AddFamilyMember";
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/profile/edit-email" element={<ProfileEditEmail/>}/>
                 <Route path="/profile/edit-new-password" element={<ProfileEditNewPassword/>}/>
                 <Route path="/profile/edit-prev-password" element={<ProfileEditPrevPassword/>}/>
+                <Route path="/recipient-home" element={<RecipientLandingScreen/>}/>
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
                 <Route path="/register/legal" element={<RegisterLegal/>}/>

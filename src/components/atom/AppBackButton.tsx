@@ -4,7 +4,7 @@ import LeftArrowIcon from "../icons/LeftArrowIcon";
 
 const AppBackButton = ({link}: { link: string }) => {
     return (
-        <Link to={link} className="app-icon-button">
+        <Link to={link} className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md">
             <LeftArrowIcon/>
         </Link>
     );

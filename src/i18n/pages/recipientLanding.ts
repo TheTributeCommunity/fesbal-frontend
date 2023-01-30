@@ -1,15 +1,9 @@
 export const recipientLandingEs = {
-    title: "Nombre y Apellidos",
-    description: "Por favor, introduce tu nombre y apellidos",
-    name: "Nombre",
-    surname: "Apellidos",
-    next: "Continuar",
+    nextDelivery: 'Próxima recogida',
+    derivationLimit: 'Límite de la derivación',
 }
 
 export const recipientLandingEn = {
-    title: "Name and Surname",
-    description: "Please, introduce your name and surname",
-    name: "Name",
-    surname: "Surname",
-    next: "Continue",
+    nextDelivery: 'Next delivery',
+    derivationLimit: 'End of referral',
 }

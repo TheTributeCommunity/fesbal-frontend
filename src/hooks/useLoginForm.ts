@@ -17,7 +17,7 @@ const useLoginForm = (submitButtonId: string) => {
 
         if (validateUserPhone()) {
             AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
-                .then(() => navigate('/profile'))
+                .then(() => navigate('/recipient-home'))
                 .catch(() => setHasError(true))
         }
     }

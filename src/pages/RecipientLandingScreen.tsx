@@ -9,7 +9,7 @@ const RecipientLandingScreen = (): JSX.Element => {
     const user = usersMock[0];
     return (
         <AppWrapper title="FESBAL" titleClassName="text-2xl leading-7 font-bold font-sans self-center text-dark-blue" showBurger>
-            <div className="flex flex-col gap-8 justify-start items-center self-center w-full pt-6">
+            <div className="flex flex-col gap-8 justify-start items-center w-full ">
                 <div className="py-12">
                     <LogoFesbalIcon />
                 </div>

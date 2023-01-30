@@ -19,7 +19,10 @@ module.exports = {
       fontFamily: {
         'roboto-flex': ['Roboto Flex', 'Arial']
       },
-      backgroundImage: { 'page': 'linear-gradient(169.42deg, #ffffff 10.03%, #e8f8ff 35.86%, #e8f8ff 68.88%, #ffffff 89.63%)' }
+      backgroundImage: { 'page': 'linear-gradient(169.42deg, #ffffff 10.03%, #e8f8ff 35.86%, #e8f8ff 68.88%, #ffffff 89.63%)' },
+      backgroundColor: {
+        'mask-opaque': 'rgba(0, 0, 0, 0.2)',
+      }
     },
   },
   plugins: [],
