@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import AppFormInput from "../components/atom/AppFormInput";
 import AppNextButton from "../components/atom/AppNextButton";
 import AppWrapper from "../components/molecules/AppWrapper";
-import useRegisterFamilyMembers from "../hooks/useRegisterFamilyMembers";
 import useRegisterIDForm from "../hooks/useRegisterIDForm";
 import useRegisterNameForm from "../hooks/useRegisterNameForm";
 import { namespaces } from "../i18n/i18n.constants";
@@ -12,6 +11,11 @@ import useRegisterBirthDate from "../hooks/useRegisterBirthDate";
 import AppCalendar from "../components/atom/AppCalendar";
 import FamilyMember from "../types/FamilyMember";
 import {AppRoute} from "../enums/app-route";
+import {FormEvent} from "react";
+import {UserGuestService} from "../services/user-guest-service";
+import {useNavigate} from "react-router-dom";
+import {RecipientUserService} from "../services/recipient-user-service";
+import {RelativeService} from "../services/relative-service";
 
 interface AddFamilyMemberProps {
     member?: FamilyMember
@@ -20,18 +24,31 @@ interface AddFamilyMemberProps {
 const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
     const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange} = useRegisterNameForm();
     const {selectedOption, userID, validateUserID, onUserIDChange, onSelectedOptionChange} = useRegisterIDForm();
-    const {selectedDate, setDate, isValidBirthDate, getFormattedBirthDate} = useRegisterBirthDate()
+    const {selectedDate, setDate, isValidBirthDate} = useRegisterBirthDate()
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers);
 
     const selectOptions: string[] = ['DNI', 'NIE'];
+    const navigate = useNavigate();
 
     const validForm = (): boolean => {
         return validateNameSurname() && validateUserID() && isValidBirthDate()
     }
 
+    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (validForm()) {
+            const userGuest = UserGuestService.create(userName, userSurname, selectedDate, selectedOption, userID);
+
+            RecipientUserService.getAuth()
+                .then((recipientUser) =>
+                    RelativeService.create({...userGuest,recipientUserId: recipientUser.id})
+                ).then(() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS))
+        }
+    }
+
     return (
         <AppWrapper link={AppRoute.REGISTER_FAMILY_MEMBERS} title={translate("addMember")}>
-            <form noValidate onSubmit={undefined} className="flex w-full flex-col gap-4">
+            <form noValidate onSubmit={onSubmit} className="flex w-full flex-col gap-4">
                 <div className="flex flex-col gap-4">
                     <AppFormInput name="name"
                                 label={translate("inputName")}

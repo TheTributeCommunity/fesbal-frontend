@@ -15,7 +15,7 @@ const useRegisterPhoneForm = (submitButtonId: string) => {
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateUserPhone()) {
-            UserGuestService.setPhone(userPhone)
+            UserGuestService.setPhone(AuthService.addPhonePrefix(userPhone) )
 
             AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
                 .then(() => navigate(AppRoute.REGISTER_VALIDATE_PHONE))

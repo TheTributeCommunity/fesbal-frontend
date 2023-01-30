@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 import { Relative } from "../models/relative";
 
 export class RelativeService {
-    static async getAllByRecipientUserId(recipientUserId: string): Promise<Relative[]> {
+    public static async getAllByRecipientUserId(recipientUserId: string): Promise<Relative[]> {
         const result = await BoosterClient.query<{ ListRelativeReadModels: { items: Relative[] } }>({
             query: GET_ALL_RELATIVES_BY_RECIPIENT_USER,
             variables: { recipientUserId },
@@ -11,7 +11,7 @@ export class RelativeService {
         return result.data.ListRelativeReadModels.items
     }
 
-    static async getById(id: string): Promise<Relative> {
+    public static async getById(id: string): Promise<Relative> {
         const result = await BoosterClient.query<{ RelativeReadModel: Relative }>({
             query: GET_RELATIVE,
             variables: { id },
@@ -19,15 +19,30 @@ export class RelativeService {
         return result.data.RelativeReadModel
     }
 
-    static async create(newRelative: Relative): Promise<boolean> {
+    public static async create(newRelative: Relative): Promise<boolean> {
         const result = await BoosterClient.mutate<{ CreateRelative: boolean }>({
             mutation: CREATE_RELATIVE,
-            variables: { newRelative },
+            variables: this.relativeToCommandVariables(newRelative),
         })
         if (!result.data?.CreateRelative) {
             throw new Error('Error creating the RELATIVE')
         }
         return result.data?.CreateRelative
+    }
+
+    private static relativeToCommandVariables(relative: Partial<Relative>) {
+        return {
+            relative:
+                {
+                    relativeId: relative.id,
+                    recipientUserId: relative.recipientUserId,
+                    firstName: relative.firstName,
+                    lastName: relative.lastName,
+                    dateOfBirth: relative.dateOfBirth,
+                    typeOfIdentityDocument: relative.typeOfIdentityDocument,
+                    identityDocumentNumber: relative.identityDocumentNumber,
+                }
+        }
     }
 }
 
@@ -64,7 +79,7 @@ const GET_RELATIVE = gql`
   }
 `
 const CREATE_RELATIVE = gql`
-  mutation ($newRelative: CreateRelativeInput!) {
-    CreateRelative(input: $newRelative)
+  mutation ($relative: CreateRelativeInput!) {
+    CreateRelative(input: $relative)
   }
 `

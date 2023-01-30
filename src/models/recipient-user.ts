@@ -1,3 +1,5 @@
+import {Relative} from "./relative";
+
 export interface RecipientUser {
   id: string
   firstName: string
@@ -8,6 +10,7 @@ export interface RecipientUser {
   phone: string
   email?: string
   relativesIds?: string[]
+  relatives?: Relative[]
   referralSheetUrl?: string
   role?: string
 }

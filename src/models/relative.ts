@@ -1,5 +1,5 @@
 export interface Relative {
-    relativeId: string
+    id: string
     recipientUserId: string
     firstName: string
     lastName: string

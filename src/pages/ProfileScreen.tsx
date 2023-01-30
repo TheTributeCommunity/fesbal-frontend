@@ -1,7 +1,5 @@
 import PersonalDataItemProps from "../types/PersonalDataItemProps";
 import ProfilePersonalDataItem from "../components/atom/ProfilePersonalDataItem";
-import users from "../mocks/users.mock";
-import usersMock from "../mocks/users.mock";
 import {namespaces} from "../i18n/i18n.constants";
 import {useTranslation} from "react-i18next";
 import FamilyMembersIcon from "../components/icons/FamilyMembersIcon";
@@ -12,13 +10,12 @@ import useRegisterFamilyMembers from "../hooks/useRegisterFamilyMembers";
 
 const ProfileScreen = () => {
     const {t: translate} = useTranslation(namespaces.pages.profileScreen);
-    const {user, familyMembers,
-        setFamilyMembers, handleNextWithFamilyMembers, handleWithoutFamilyMembers, disableNext} = useRegisterFamilyMembers();
+    const {user, familyMembers} = useRegisterFamilyMembers();
     const getPersonalData = (): PersonalDataItemProps[] => {
         return [
             {
                 title: translate('fullName'),
-                value: user?.fullName,
+                value: user?.firstName,
             },
             {
                 title: translate('id'),
@@ -26,7 +23,7 @@ const ProfileScreen = () => {
             },
             {
                 title: translate('birthDate'),
-                value: user?.birthDate,
+                value: user?.dateOfBirth,
             },
             {
                 title: translate('email'),

@@ -1,17 +1,13 @@
 import { initializeApp } from 'firebase/app';
 import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier, onAuthStateChanged, User } from "firebase/auth";
 import { getEnvVar } from "../helpers/envVars";
-import {AuthUser} from "../models/AuthUser";
+import {AuthUser} from "../models/auth-user";
 
 export class AuthService {
     private static auth: Auth
-    private static SPAIN_PHONE_PREFIX = "+34"
+    public static SPAIN_PHONE_PREFIX = "+34"
     private static confirmationResult: ConfirmationResult
-    private static currentUser: AuthUser | null
-
-    public static getCurrentUser() {
-        return this.currentUser;
-    }
+    public static currentUser: AuthUser | null
 
     public static initialize(): void {
         initializeApp({
@@ -48,7 +44,7 @@ export class AuthService {
 
     public static signInWithPhoneNumber(submitButtonId: string, phoneWithoutPrefix: string) {
         const recaptchaVerifier = this.setUpRecaptcha(submitButtonId);
-        const phone = `${this.SPAIN_PHONE_PREFIX} ${phoneWithoutPrefix}`;
+        const phone = this.addPhonePrefix(phoneWithoutPrefix);
 
         return signInWithPhoneNumber(this.auth, phone, recaptchaVerifier)
             .then((confirmationResult) => {this.confirmationResult = confirmationResult})
@@ -73,5 +69,9 @@ export class AuthService {
 
     private static saveToken() {
         this.currentUser?.getToken()?.then((token) => localStorage.setItem("token", token))
+    }
+
+    public static addPhonePrefix(phone: string) {
+        return `${this.SPAIN_PHONE_PREFIX}${phone}`
     }
 }

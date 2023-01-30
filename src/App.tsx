@@ -42,11 +42,11 @@ function App() {
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
                 <Route path="/register/legal" element={<RegisterLegal/>}/>
-                <Route path="/register" element={<RegisterUser/>}/>
+                <Route path={AppRoute.REGISTER} element={<RegisterUser/>}/>
                 <Route path={AppRoute.REGISTER_PHONE} element={<RegisterPhone/>}/>
                 <Route path={AppRoute.REGISTER_FAMILY_MEMBERS} element={<RegisterFamilyMembers/>}/>
-                <Route path="/register/family-members/add" element={<AddFamilyMember/>}/>
-                <Route path="/register/referral" element={<RegisterReferral/>}/>
+                <Route path={AppRoute.REGISTER_FAMILY_MEMBERS_ADD} element={<AddFamilyMember/>}/>
+                <Route path={AppRoute.REGISTER_REFERRAL_SHEET} element={<RegisterReferral/>}/>
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                 <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
