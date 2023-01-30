@@ -5,7 +5,7 @@ import {namespaces} from "../i18n/i18n.constants";
 import usersMock from "../mocks/users.mock";
 
 const RecipientLandingScreen = (): JSX.Element => {
-    const {t} = useTranslation(namespaces.pages.recipientLanding);
+    const {t: translate} = useTranslation(namespaces.pages.recipientLanding);
     const user = usersMock[0];
     return (
         <AppWrapper title="FESBAL" titleClassName="text-2xl leading-7 font-bold font-sans self-center text-dark-blue" showBurger>
@@ -19,13 +19,13 @@ const RecipientLandingScreen = (): JSX.Element => {
                         <span className="text-dark-blue text-2xl leading-7 font-medium">{user.id}</span>
                     </div>
                     <div className="flex flex-col gap-3 items-center">
-                        <span className="text-dark-blue text-base font-light">{t("nextDelivery")}</span>
+                        <span className="text-dark-blue text-base font-light">{translate("nextDelivery")}</span>
                         <span className="text-base leading-5 font-normal">
                             {user.nextPickup?.toLocaleDateString()}
                         </span>
                     </div>
                     <div className="flex flex-col gap-3 items-center">
-                        <span className="text-dark-blue text-base font-light">{t("derivationLimit")}</span>
+                        <span className="text-dark-blue text-base font-light">{translate("derivationLimit")}</span>
                         <span className="text-base leading-5 font-normal">
                             {user.derivationLimit?.toLocaleDateString()}
                         </span>
