@@ -11,8 +11,6 @@ interface UserProps {
     derivationLimit?: Date;
     nextPickup?: Date;
     familyMembers?: FamilyMember[];
-    nextPickup?: Date,
-    derivationLimit?: Date
 }
 
 export default UserProps;
