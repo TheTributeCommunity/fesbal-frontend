@@ -6,4 +6,5 @@ export enum AppRoute {
     REGISTER_FAMILY_MEMBERS = '/register/family-members',
     REGISTER_FAMILY_MEMBERS_ADD = '/register/family-members/add',
     REGISTER_REFERRAL_SHEET = '/register/referral',
+    REGISTER_REQUEST_SENT = '/register/request-sent',
 }

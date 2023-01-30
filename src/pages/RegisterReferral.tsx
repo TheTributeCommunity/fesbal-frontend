@@ -12,7 +12,7 @@ const RegisterReferral = () => {
         <AppWrapper title={translate("title")} link={AppRoute.REGISTER_FAMILY_MEMBERS}>
             <div className="flex h-full w-full flex-col self-center text-secondary-color">
                 <AppPageHeader description={translate("description") as string}/>
-                <AppReferralForm link="/register/request-sent" showSublink/>
+                <AppReferralForm link={AppRoute.REGISTER_REQUEST_SENT} showSublink/>
             </div>
         </AppWrapper>
     );

@@ -3,8 +3,9 @@ import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWi
 import { getEnvVar } from "../helpers/envVars";
 import {AuthUser} from "../models/auth-user";
 
+// TODO - Replace by a context
 export class AuthService {
-    private static auth: Auth
+    public static auth: Auth
     public static SPAIN_PHONE_PREFIX = "+34"
     private static confirmationResult: ConfirmationResult
     public static currentUser: AuthUser | null
@@ -59,7 +60,7 @@ export class AuthService {
         return recaptchaVerifier;
     }
 
-    public static confirmPhoneCode(code: string) {
+    public static async confirmPhoneCode(code: string) {
         return this.confirmationResult.confirm(code).then(() => this.saveToken())
     }
 
@@ -67,8 +68,8 @@ export class AuthService {
         return signInWithEmailAndPassword(this.auth, email, password)
     }
 
-    private static saveToken() {
-        this.currentUser?.getToken()?.then((token) => localStorage.setItem("token", token))
+    private static async saveToken() {
+        return this.currentUser?.getToken()?.then((token) => localStorage.setItem("token", token))
     }
 
     public static addPhonePrefix(phone: string) {
