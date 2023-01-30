@@ -2,7 +2,7 @@ import AppNextButton from "../atom/AppNextButton";
 import useValidatePhoneForm from "../../hooks/useValidatePhoneForm";
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../../i18n/i18n.constants";
-import { AppDigitsValidator } from "../atom/AppDigitsValidator";
+import { AppDigitsValidator } from "../atom/AppDigitsInput";
 
 const ValidatePhoneForm = () => {
     const {validationCode, CODE_LENGTH, checkValidationCodeLength, onValidationCodeChange, onSubmit} = useValidatePhoneForm();
