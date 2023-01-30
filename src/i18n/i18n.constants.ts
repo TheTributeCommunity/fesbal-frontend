@@ -23,6 +23,9 @@ export const namespaces = {
     atoms: {
         appCalendar: "atoms.appCalendar",
     },
+    components: {
+        burgerMenu: "components.burgerMenu",
+    },
     common: "common",
 };
 

@@ -1,3 +1,4 @@
+import { burgerMenuEn, burgerMenuEs } from "./components/burgerMenu";
 import { appCalendarEs, appCalendarEn } from "./atoms/appCalendar";
 import { namespaces } from "./i18n.constants";
 import { loginPasswordRecoveryEn, loginPasswordRecoveryEs } from "./pages/loginPasswordRecovery";
@@ -41,6 +42,7 @@ export const es = {
     [namespaces.pages.registerLegal]: registerLegalEs,
     [namespaces.pages.registerReferral]: registerReferralEs,
     [namespaces.pages.registerRequestSent]: registerRequestSentEs,
+    [namespaces.components.burgerMenu]: burgerMenuEs,
     [namespaces.pages.validatePhone]: validatePhoneEs,
     [namespaces.pages.welcomeScreen]: welcomeScreenEs,
     [namespaces.atoms.appCalendar]: appCalendarEs,
@@ -70,6 +72,7 @@ export const en = {
     [namespaces.pages.registerLegal]: registerLegalEn,
     [namespaces.pages.registerReferral]: registerReferralEn,
     [namespaces.pages.registerRequestSent]: registerRequestSentEn,
+    [namespaces.components.burgerMenu]: burgerMenuEn,
     [namespaces.pages.validatePhone]: validatePhoneEn,
     [namespaces.pages.welcomeScreen]: welcomeScreenEn,
     [namespaces.atoms.appCalendar]: appCalendarEn,

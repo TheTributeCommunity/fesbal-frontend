@@ -47,7 +47,7 @@ function App() {
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path="/register/validate-phone" element={<ValidatePhone/>}/>
                 <Route path="/welcome" element={<SplashScreen/>}/>
-                <Route path="/pickup-historic" element={<PickupHistoryPage/>}/>
+                <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
             </Routes>
         </Router>
     );
