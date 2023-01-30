@@ -1,9 +1,10 @@
 import { BoosterClient } from './booster-service'
 import { gql } from '@apollo/client'
 import { RecipientUser } from '../models/recipient-user'
+import {AuthService} from "./auth-service";
 
 export class RecipientUserService {
-  static async getAll(): Promise<RecipientUser[]> {
+  public static async getAll(): Promise<RecipientUser[]> {
     const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
       query: GET_ALL_RECIPIENTS_USERS,
       variables: {},
@@ -11,18 +12,26 @@ export class RecipientUserService {
     return result.data.ListRecipientUserReadModels.items
   }
 
-  static async getById(id: string): Promise<RecipientUser> {
-    const result = await BoosterClient.query<{ RecipientUserReadModel: RecipientUser }>({
-      query: GET_RECIPIENT_USER,
-      variables: { id },
-    })
-    return result.data.RecipientUserReadModel
+  public static async getAuth(): Promise<RecipientUser> {
+    if(!AuthService.currentUser || !AuthService.currentUser.phone) {
+        throw new Error("Authenticated user not found")
+    }
+    return RecipientUserService.getByPhone(AuthService.currentUser.phone)
   }
 
-  static async getReferralSheetUploadUrl(id: string): Promise<string> {
+  private static async getByPhone(phone: string): Promise<RecipientUser> {
+    const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
+      query: GET_RECIPIENT_USER_BY_PHONE,
+      variables: { phone },
+    })
+
+    return result.data.ListRecipientUserReadModels.items[0]
+  }
+
+  public static async getReferralSheetUploadUrl(recipientUserId: string): Promise<string> {
     const result = await BoosterClient.mutate<{ GetRecipientUserReferralSheetUploadUrl: string }>({
       mutation: GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL,
-      variables: { id },
+      variables: { id: { recipientUserId } },
     })
     if (!result.data?.GetRecipientUserReferralSheetUploadUrl) {
       throw new Error('Error getting the URL to upload the referral sheet')
@@ -30,10 +39,10 @@ export class RecipientUserService {
     return result.data.GetRecipientUserReferralSheetUploadUrl
   }
 
-  static async create(newUser: Partial<RecipientUser>): Promise<boolean> {
+  public static async create(newRecipientUser: Partial<RecipientUser>): Promise<boolean> {
     const result = await BoosterClient.mutate<{ CreateRecipientUser: boolean }>({
       mutation: CREATE_RECIPIENT_USER,
-      variables: { newUser },
+      variables: this.recipientUserToCommandVariables(newRecipientUser),
     })
     if (!result.data?.CreateRecipientUser) {
       throw new Error('Error creating the USER')
@@ -41,7 +50,7 @@ export class RecipientUserService {
     return result.data?.CreateRecipientUser
   }
 
-  static async updateEmail(recipientUserId: string, email: string): Promise<boolean> {
+  public static async updateEmail(recipientUserId: string, email: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ UpdateRecipientUserEmail: boolean }>({
       mutation: UPDATE_RECIPIENT_USER_EMAIL,
       variables: { updatedUser: { recipientUserId, email } },
@@ -52,7 +61,7 @@ export class RecipientUserService {
     return result.data?.UpdateRecipientUserEmail
   }
 
-  static async updateReferralSheetUrl(recipientUserId: string, referralSheetUrl: string): Promise<boolean> {
+  public static async updateReferralSheetUrl(recipientUserId: string, referralSheetUrl: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ UpdateRecipientUserReferralSheetUrl: boolean }>({
       mutation: UPDATE_RECIPIENT_USER_REFERRAL_SHEET_URL,
       variables: { updatedUser: { recipientUserId, referralSheetUrl } },
@@ -63,7 +72,7 @@ export class RecipientUserService {
     return result.data?.UpdateRecipientUserReferralSheetUrl
   }
 
-  static async delete(recipientUserId: string): Promise<boolean> {
+  public static async delete(recipientUserId: string): Promise<boolean> {
     const result = await BoosterClient.mutate<{ DeleteRecipientUser: boolean }>({
       mutation: DELETE_RECIPIENT_USER,
       variables: { userToDelete: { recipientUserId } },
@@ -72,6 +81,21 @@ export class RecipientUserService {
       throw new Error('Error deleting the USER')
     }
     return result.data?.DeleteRecipientUser
+  }
+
+  private static recipientUserToCommandVariables(recipientUser: Partial<RecipientUser>) {
+    return {
+      recipientUser:
+          {
+            recipientUserId: recipientUser.id,
+            firstName: recipientUser.firstName,
+            lastName: recipientUser.lastName,
+            dateOfBirth: recipientUser.dateOfBirth,
+            typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
+            identityDocumentNumber: recipientUser.identityDocumentNumber,
+            phone: recipientUser.phone,
+          }
+    }
   }
 }
 
@@ -96,33 +120,44 @@ const GET_ALL_RECIPIENTS_USERS = gql`
   }
 `
 
-const GET_RECIPIENT_USER = gql`
-  query RecipientUserReadModel ($id: ID!) {
-    RecipientUserReadModel (id: $id) {
-      id
-      firstName
-      lastName
-      dateOfBirth
-      typeOfIdentityDocument
-      identityDocumentNumber
-      phone
-      phoneVerified
-      email
-      relativesIds
-      referralSheetUrl
-      role
-      deleted          
+const GET_RECIPIENT_USER_BY_PHONE = gql`
+  query ListRecipientUserReadModels ($phone: String!) {
+    ListRecipientUserReadModels(
+      filter: { phone: {eq: $phone } }
+      sortBy: {}
+  )  {
+      items {
+        id
+        firstName
+        lastName
+        dateOfBirth
+        typeOfIdentityDocument
+        identityDocumentNumber
+        phone
+        email
+        relativesIds
+        relatives{
+          id
+          firstName
+          lastName
+          dateOfBirth
+          typeOfIdentityDocument
+          identityDocumentNumber
+        }
+        referralSheetUrl
+        role
+      }
     }
   }
 `
 const GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL = gql`
-  mutation ($id: GetRecipientUserReferralSheetUploadUrl!) {
+  mutation ($id: GetRecipientUserReferralSheetUploadUrlInput!) {
     GetRecipientUserReferralSheetUploadUrl(input: $id)
   }
 `
 const CREATE_RECIPIENT_USER = gql`
-  mutation ($newUser: CreateRecipientUserInput!) {
-    CreateRecipientUser(input: $newUser)
+  mutation ($recipientUser: CreateRecipientUserInput!) {
+    CreateRecipientUser(input: $recipientUser)
   }
 `
 

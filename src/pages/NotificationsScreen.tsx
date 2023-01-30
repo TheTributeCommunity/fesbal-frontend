@@ -13,7 +13,7 @@ const NotificationsScreen = () => {
 
     return (
         <AppWrapper link="/login" title={translate("title")} showBurger>
-                <ul className="flex w-full flex-col self-center justify-start gap-4 mb-2">
+                <ul className="flex w-full flex-col justify-start gap-4 mb-2">
                 {notifications.map((notification, index) => (
                     <NotificationItem key={index} {...notification}/>
                 ))}

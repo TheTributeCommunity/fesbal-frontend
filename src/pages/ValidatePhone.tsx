@@ -8,6 +8,7 @@ import AppMessageDialog from "../components/molecules/AppMessageDialog";
 import SuccessIcon from "../components/icons/SuccessIcon";
 import { useNavigate } from "react-router-dom";
 import UnsuccessIcon from "../components/icons/UnsuccessIcon";
+import {AppRoute} from "../enums/app-route";
 
 const RegistrationUserName = () => {
     const { t: translate } = useTranslation(namespaces.pages.validatePhone);
@@ -26,7 +27,7 @@ const RegistrationUserName = () => {
     };
 
     return (
-        <AppWrapper link="/register" title={translate("headerTitle")}>
+        <AppWrapper link={AppRoute.REGISTER_PHONE} title={translate("headerTitle")}>
             <AppPageHeader
                 title={translate("title")}
                 description={translate("description") as string}

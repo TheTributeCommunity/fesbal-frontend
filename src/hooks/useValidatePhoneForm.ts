@@ -1,5 +1,9 @@
 import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {AuthService} from "../services/auth-service";
+import {RecipientUserService} from "../services/recipient-user-service";
+import {UserGuestService} from "../services/user-guest-service";
+import {AppRoute} from "../enums/app-route";
 
 const useValidatePhoneForm = () => {
     const [validationCode, setValidationCode] = useState<string>('');
@@ -8,7 +12,6 @@ const useValidatePhoneForm = () => {
     const navigate = useNavigate();
     const checkValidationCodeLength = (): boolean => {
         return validationCode.length === CODE_LENGTH;
-        // TODO send to the backend to check validity
     }
 
     const onValidationCodeChange = (code: string) => {
@@ -18,7 +21,9 @@ const useValidatePhoneForm = () => {
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (checkValidationCodeLength()) {
-            //  TODO send to the backend to check validity
+            AuthService.confirmPhoneCode(validationCode)
+                .then(() => RecipientUserService.create(UserGuestService.get()))
+                .then(() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS))
         }
     }
 

@@ -11,14 +11,18 @@ import ProfileEditNewPassword from "./pages/ProfileEditNewPassword";
 import ProfileEditPrevPassword from "./pages/ProfileEditPrevPassword";
 import ProfileScreen from "./pages/ProfileScreen";
 import RegisterFamilyMembers from "./pages/RegisterFamilyMembers";
-import RegisterID from "./pages/RegisterID";
 import RegisterLegal from "./pages/RegisterLegal";
 import RegisterReferral from "./pages/RegisterReferral";
 import RegisterRequestSent from "./pages/RegisterRequestSent";
-import RegisterName from "./pages/RegisterName";
 import ValidatePhone from "./pages/ValidatePhone";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import PickupHistoryPage from './pages/PickupHistoryPage';
+import RecipientLandingScreen from "./pages/RecipientLandingScreen";
+import SplashScreen from "./pages/SplashScreen";
+import RegisterPhone from "./pages/RegisterPhone";
+import AddFamilyMember from "./pages/AddFamilyMember";
+import RegisterUser from "./pages/RegisterUser";
+import {AppRoute} from "./enums/app-route";
 
 function App() {
     return (
@@ -34,16 +38,18 @@ function App() {
                 <Route path="/profile/edit-email" element={<ProfileEditEmail/>}/>
                 <Route path="/profile/edit-new-password" element={<ProfileEditNewPassword/>}/>
                 <Route path="/profile/edit-prev-password" element={<ProfileEditPrevPassword/>}/>
+                <Route path="/recipient-home" element={<RecipientLandingScreen/>}/>
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
-                <Route path="/register" element={<RegisterLegal/>}/>
-                <Route path="/register/family-members" element={<RegisterFamilyMembers/>}/>
-                <Route path="/register/id" element={<RegisterID/>}/>
-                <Route path="/register/name" element={<RegisterName/>}/>
-                <Route path="/register/referral" element={<RegisterReferral/>}/>
+                <Route path="/register/legal" element={<RegisterLegal/>}/>
+                <Route path={AppRoute.REGISTER} element={<RegisterUser/>}/>
+                <Route path={AppRoute.REGISTER_PHONE} element={<RegisterPhone/>}/>
+                <Route path={AppRoute.REGISTER_FAMILY_MEMBERS} element={<RegisterFamilyMembers/>}/>
+                <Route path={AppRoute.REGISTER_FAMILY_MEMBERS_ADD} element={<AddFamilyMember/>}/>
+                <Route path={AppRoute.REGISTER_REFERRAL_SHEET} element={<RegisterReferral/>}/>
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
-                <Route path="/register/validate-phone" element={<ValidatePhone/>}/>
-                <Route path="/welcome" element={<WelcomeScreen/>}/>
+                <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
+                <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
                 <Route path="/pickup-historic" element={<PickupHistoryPage/>}/>
             </Routes>
         </Router>

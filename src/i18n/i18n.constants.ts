@@ -2,6 +2,7 @@ export const namespaces = {
     pages: {
         loginPasswordRecovery: "pages.loginPasswordRecovery",
         loginScreen: "pages.loginScreen",
+        recipientLanding: "pages.recipientLanding",
         menuDeleteAccount: "pages.menuDeleteAccount",
         menuReferral: "pages.menuReferral",
         notifications: "pages.notifications",
@@ -10,14 +11,20 @@ export const namespaces = {
         profileEditNewPassword: "pages.profile.profileEditNewPassword",
         profileEditPrevPassword: "pages.profile.profileEditPrevPassword",
         profileScreen: "pages.profileScreen",
-        registerFamilyMembers: "pages.registerFamilyMembers",
-        registerID: "pages.registerID",
+        registerFamilyMembers: "pages.registerFamilyMember",
+        registerPhone: "pages.registerPhone",
         registerLegal: "pages.registerLegal",
-        registerName: "pages.registerName",
+        registerUser: "pages.registerUser",
         registerReferral: "pages.registerReferral",
         registerRequestSent: "pages.registerRequestSent",
         validatePhone: "pages.validatePhone",
         welcomeScreen: "pages.welcomeScreen",
+    },
+    atoms: {
+        appCalendar: "atoms.appCalendar",
+    },
+    components: {
+        burgerMenu: "components.burgerMenu",
     },
     common: "common",
 };
