@@ -1,21 +1,62 @@
 import ValidatePhoneForm from "../components/molecules/ValidatePhoneForm";
-import {useTranslation} from "react-i18next";
-import {namespaces} from "../i18n/i18n.constants";
+import { useTranslation } from "react-i18next";
+import { namespaces } from "../i18n/i18n.constants";
+import { useState } from "react";
 import AppPageHeader from "../components/molecules/AppPageHeader";
 import AppWrapper from "../components/molecules/AppWrapper";
+import AppMessageDialog from "../components/molecules/AppMessageDialog";
+import SuccessIcon from "../components/icons/SuccessIcon";
+import { useNavigate } from "react-router-dom";
+import UnsuccessIcon from "../components/icons/UnsuccessIcon";
 import {AppRoute} from "../enums/app-route";
 
 const RegistrationUserName = () => {
-    const {t: translate} = useTranslation(namespaces.pages.validatePhone);
+    const { t: translate } = useTranslation(namespaces.pages.validatePhone);
+    const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+    const [showFailureDialog, setShowFailureDialog] = useState(false);
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (success: boolean) => {
+        // TODO it's just an example for calling the dialogs for now
+        if (success) {
+            setShowSuccessDialog(true);
+        } else {
+            setShowFailureDialog(true);
+        }
+    };
 
     return (
-       <AppWrapper link={AppRoute.REGISTER_PHONE} title={translate("headerTitle")}>
-           <div className="flex h-full w-full flex-col self-center text-secondary-color">
-                <AppPageHeader title={translate("title")} description={translate("description") as string}/>
-                <ValidatePhoneForm/>
-           </div>
+        <AppWrapper link={AppRoute.REGISTER_PHONE} title={translate("headerTitle")}>
+            <AppPageHeader
+                title={translate("title")}
+                description={translate("description") as string}
+            />
+            <ValidatePhoneForm onSubmit={handleSubmit} />
+            {showSuccessDialog && (
+                <AppMessageDialog
+                    icon={<SuccessIcon />}
+                    description={translate("successfulValidationMessage")}
+                    title={translate("successfulValidationTitle")}
+                    buttonText={translate("next")}
+                    buttonOnClick={() => {
+                        setShowSuccessDialog(false);
+                        navigate("/register/email");
+                    }}
+                />
+            )}
+            {showFailureDialog && (
+                <AppMessageDialog
+                    icon={<UnsuccessIcon />}
+                    description={translate("unsuccessfulValidationMessage")}
+                    title={translate("unsuccessfulValidationTitle")}
+                    buttonText={translate("tryAgainButton")}
+                    buttonBgColor="bg-warning-color"
+                    buttonOnClick={() => setShowFailureDialog(false)}
+                />
+            )}
         </AppWrapper>
     );
-}
+};
 
 export default RegistrationUserName;

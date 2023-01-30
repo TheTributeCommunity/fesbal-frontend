@@ -8,9 +8,9 @@ export const validatePhoneEs = {
     successfulValidationTitle: "Validación correcta",
     successfulValidationMessage: "¡Enhorabuena!, tu número teléfono ha sido validado. Por favor, haz click en continuar para añadir tu email.",
 
-    wrongCodeTitle: "Código incorrecto",
-    wrongCodeMessage: "El código de validación introducido no corresponde con el que le hemos enviado. Por favor vuelva a intentarlo.",
-    wrongCodeButton: "Reintentar validación",
+    unsuccessfulValidationTitle: "Código incorrecto",
+    unsuccessfulValidationMessage: "El código de validación introducido no corresponde con el que le hemos enviado. Por favor vuelva a intentarlo.",
+    tryAgainButton: "Reintentar validación",
 
     next: "Continuar",
 }
@@ -25,9 +25,9 @@ export const validatePhoneEn = {
     successfulValidationTitle: "Successful validation",
     successfulValidationMessage: "Congratulations! Your phone number has been validated. Please click on continue to add your email.",
 
-    wrongCodeTitle: "Wrong code",
-    wrongCodeMessage: "The validation code entered does not match the one we sent you. Please try again.",
-    wrongCodeButton: "Retry validation",
+    unsuccessfulValidationTitle: "Wrong code",
+    unsuccessfulValidationMessage: "The validation code entered does not match the one we sent you. Please try again.",
+    tryAgainButton: "Retry validation",
     
     next: "Continue",
 }

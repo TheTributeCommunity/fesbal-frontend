@@ -29,7 +29,7 @@ const AppWrapper = ({link, title, titleClassName = '', showBurger = false, child
                         {showBurger && <AppBurgerMenuButton />}
                     </div>
                 </div>
-                <div className="flex w-full h-full overflow-y-auto pt-16 mx-auto">
+                <div className="flex flex-col gap-1 w-full h-full overflow-y-auto pt-16 mx-auto">
                     {children}
                 </div>
             </div>
