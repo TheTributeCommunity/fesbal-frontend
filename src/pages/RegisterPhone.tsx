@@ -1,18 +1,18 @@
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
-import RegisterIDForm from "../components/molecules/RegisterIDForm";
 import PageHeader from "../components/molecules/AppPageHeader";
+import RegisterPhoneForm from "../components/molecules/RegisterPhoneForm";
 import AppWrapper from "../components/molecules/AppWrapper";
 
-const RegisterID = () => {
-    const {t: translate} = useTranslation(namespaces.pages.registerID);
+const RegisterPhone = () => {
+    const {t: translate} = useTranslation(namespaces.pages.registerPhone);
 
     return (
-        <AppWrapper  link="/login" title={translate("title")}>
+        <AppWrapper  link="/register/name" title={translate("title")}>
             <PageHeader description={translate("description") as string}/>
-            <RegisterIDForm/>
+            <RegisterPhoneForm/>
         </AppWrapper>
     );
 }
 
-export default RegisterID;
+export default RegisterPhone;

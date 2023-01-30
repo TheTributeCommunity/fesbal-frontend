@@ -19,10 +19,10 @@ export class RecipientUserService {
     return result.data.RecipientUserReadModel
   }
 
-  static async getReferralSheetUploadUrl(id: string): Promise<string> {
+  static async getReferralSheetUploadUrl(recipientUserId: string): Promise<string> {
     const result = await BoosterClient.mutate<{ GetRecipientUserReferralSheetUploadUrl: string }>({
       mutation: GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL,
-      variables: { id },
+      variables: { id: { recipientUserId } },
     })
     if (!result.data?.GetRecipientUserReferralSheetUploadUrl) {
       throw new Error('Error getting the URL to upload the referral sheet')
@@ -116,7 +116,7 @@ const GET_RECIPIENT_USER = gql`
   }
 `
 const GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL = gql`
-  mutation ($id: GetRecipientUserReferralSheetUploadUrl!) {
+  mutation ($id: GetRecipientUserReferralSheetUploadUrlInput!) {
     GetRecipientUserReferralSheetUploadUrl(input: $id)
   }
 `

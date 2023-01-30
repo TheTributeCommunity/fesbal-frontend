@@ -1,4 +1,7 @@
+import FamilyMember from "./FamilyMember";
+
 interface UserProps {
+    recipientUserId?: string;
     id: string;
     password: string;
     email?: string;
@@ -6,10 +9,8 @@ interface UserProps {
     birthDate?: string;
     phone?: string;
     familyMembers?: FamilyMember[];
+    nextPickup?: Date,
+    derivationLimit?: Date
 }
 
-interface FamilyMember {
-    FullName: string;
-    id: string;
-}
 export default UserProps;
