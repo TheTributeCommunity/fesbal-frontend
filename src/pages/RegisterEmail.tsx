@@ -10,8 +10,10 @@ const RegisterEmail = () => {
     return (
         // TODO change back link to the Phone Number Registration page
         <AppWrapper link="/register" title={translate("headerTitle")}>
-            <PageHeader title={translate("title")} description={translate("description") as string} />
-            <RegisterEmailForm />
+            <div className="flex flex-col">
+                <PageHeader title={translate("title")} description={translate("description") as string} />
+                <RegisterEmailForm />
+            </div>
         </AppWrapper>
     );
 };
