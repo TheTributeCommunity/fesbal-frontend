@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import AppFormInput from "../components/atom/AppFormInput";
 import AppNextButton from "../components/atom/AppNextButton";
 import AppWrapper from "../components/molecules/AppWrapper";
-import useRegisterFamilyMembers from "../hooks/useRegisterFamilyMembers";
 import useRegisterIDForm from "../hooks/useRegisterIDForm";
 import useRegisterNameForm from "../hooks/useRegisterNameForm";
 import { namespaces } from "../i18n/i18n.constants";
@@ -10,23 +9,36 @@ import UserIDSelect from "../components/atom/RegisterIDSelect";
 import classNames from "classnames";
 import useRegisterBirthDate from "../hooks/useRegisterBirthDate";
 import AppCalendar from "../components/atom/AppCalendar";
+import {FormEvent} from "react";
+import {useNavigate} from "react-router-dom";
+import {UserGuestService} from "../services/user-guest-service";
+import {AppRoute} from "../enums/app-route";
 
 const RegisterUser = (): JSX.Element => {
     const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange} = useRegisterNameForm();
-    const {familyMembers, setFamilyMembers} = useRegisterFamilyMembers();
     const {selectedOption, userID, validateUserID, onUserIDChange, onSelectedOptionChange} = useRegisterIDForm();
-    const {selectedDate, setDate, isValidBirthDate, getFormattedBirthDate} = useRegisterBirthDate()
+    const {selectedDate, setDate, isValidBirthDate} = useRegisterBirthDate()
     const {t: translate} = useTranslation(namespaces.pages.registerUser);
 
     const selectOptions: string[] = ['DNI', 'NIE'];
+    const navigate = useNavigate();
 
     const validForm = (): boolean => {
         return validateNameSurname() && validateUserID() && isValidBirthDate()
     }
+    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (validForm()) {
+            const userGuest = UserGuestService.create(userName, userSurname, selectedDate, selectedOption, userID);
+
+            UserGuestService.save(userGuest);
+            navigate(AppRoute.REGISTER_PHONE)
+        }
+    }
 
     return (
-        <AppWrapper link="/welcome" title={translate("title")}>
-            <form noValidate onSubmit={undefined} className="flex w-full flex-col gap-4">
+        <AppWrapper link={AppRoute.WELCOME} title={translate("title")}>
+            <form noValidate onSubmit={onSubmit} className="flex w-full flex-col gap-4">
                 <div className="flex flex-col gap-4">
                     <AppFormInput name="name"
                                 label={translate("inputName")}

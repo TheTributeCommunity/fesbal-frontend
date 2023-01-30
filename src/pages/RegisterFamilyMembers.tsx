@@ -7,14 +7,14 @@ import useRegisterFamilyMembers from "../hooks/useRegisterFamilyMembers";
 import AppPageHeader from "../components/molecules/AppPageHeader";
 import AppWrapper from "../components/molecules/AppWrapper";
 import FamilyMemberCard from "../components/atom/FamilyMemberCard";
+import {AppRoute} from "../enums/app-route";
 
 const RegisterFamilyMembers = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers);
-    const {user, familyMembers,
-        setFamilyMembers, handleNextWithFamilyMembers, handleWithoutFamilyMembers, disableNext} = useRegisterFamilyMembers();
+    const {user, familyMembers, handleNextWithFamilyMembers, handleWithoutFamilyMembers, disableNext} = useRegisterFamilyMembers();
 
     return (
-        <AppWrapper  link="/register/id" title={translate("title")}>
+        <AppWrapper  link={AppRoute.REGISTER_PHONE} title={translate("title")}>
             <div className="flex flex-col gap-4 w-full">
                 <AppPageHeader
                             title={translate("pageHeading")} description={translate("description") as string}/>
@@ -26,7 +26,7 @@ const RegisterFamilyMembers = () => {
                         <FamilyMemberCard person={familyMember} allowEdit={true} />
                     </div>)}
                 <div className="flex flex-col gap-8">
-                    <Link to="/register/family-members/add"
+                    <Link to={AppRoute.REGISTER_FAMILY_MEMBERS}
                         className="flex gap-2 bg-primary-color-light p-3.5 rounded-lg justify-center border border-white">
                         <PlusAddIcon/>
                         <p className="font-button text-primary-color">{translate("addMember")}</p>

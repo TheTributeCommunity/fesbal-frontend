@@ -22,6 +22,7 @@ import SplashScreen from "./pages/SplashScreen";
 import RegisterPhone from "./pages/RegisterPhone";
 import AddFamilyMember from "./pages/AddFamilyMember";
 import RegisterUser from "./pages/RegisterUser";
+import {AppRoute} from "./enums/app-route";
 
 function App() {
     return (
@@ -40,16 +41,16 @@ function App() {
                 <Route path="/recipient-home" element={<RecipientLandingScreen/>}/>
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
-                <Route path="/registerLegal" element={<RegisterLegal/>}/>
+                <Route path="/register/legal" element={<RegisterLegal/>}/>
                 <Route path="/register" element={<RegisterUser/>}/>
-                <Route path="/register/phone" element={<RegisterPhone/>}/>
-                <Route path="/register/family-members" element={<RegisterFamilyMembers/>}/>
+                <Route path={AppRoute.REGISTER_PHONE} element={<RegisterPhone/>}/>
+                <Route path={AppRoute.REGISTER_FAMILY_MEMBERS} element={<RegisterFamilyMembers/>}/>
                 <Route path="/register/family-members/add" element={<AddFamilyMember/>}/>
                 <Route path="/register/referral" element={<RegisterReferral/>}/>
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
-                <Route path="/register/validate-phone" element={<ValidatePhone/>}/>
-                <Route path="/welcome" element={<SplashScreen/>}/>
-                <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
+                <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
+                <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
+                <Route path="/pickup-historic" element={<PickupHistoryPage/>}/>
             </Routes>
         </Router>
     );

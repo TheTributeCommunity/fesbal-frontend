@@ -1,6 +1,7 @@
 import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {validateDNI, validateNIE} from "../helpers";
+import {AppRoute} from "../enums/app-route";
 
 const useRegisterIDForm = () => {
     const [selectedOption, setSelectedOption] = useState<string>("");
@@ -20,7 +21,7 @@ const useRegisterIDForm = () => {
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateUserID()) {
-            navigate('/register/phone');
+            navigate(AppRoute.REGISTER_PHONE);
         }
     }
 

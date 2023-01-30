@@ -7,6 +7,7 @@ import UsersMock from "../mocks/users.mock";
 import users from "../mocks/users.mock";
 import PersonalDataItemProps from "../types/PersonalDataItemProps";
 import RegisterPersonalDataItem from "../components/atom/RegisterPersonalDataItem";
+import {AppRoute} from "../enums/app-route";
 
 const RegisterRequestSent = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerRequestSent);
@@ -67,7 +68,7 @@ const RegisterRequestSent = () => {
                         ))}
                     </ul>
                 </div>
-                <AppLinkButton title={translate("next")} link="/welcome"/>
+                <AppLinkButton title={translate("next")} link={AppRoute.WELCOME}/>
             </div>
         </div>
     );

@@ -22,7 +22,7 @@ const SplashCard = ({title, description, loginText, loginLink, backgroundColor, 
                         : <AppLinkButton bgColor={buttonBackGroundColor} title={loginText} link={loginLink}/>
                     }
                     {hasRegisterLink &&
-                        <Link to="/register"
+                        <Link to="/register/legal"
                                className="self-end underline font-small-link">{translate("registerLink")}
                         </Link>
                     }
