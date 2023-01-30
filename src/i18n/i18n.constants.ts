@@ -19,7 +19,6 @@ export const namespaces = {
         registerRequestSent: "pages.registerRequestSent",
         validatePhone: "pages.validatePhone",
         welcomeScreen: "pages.welcomeScreen",
-        recipientLanding: "pages.recipientLanding",
     },
     atoms: {
         appCalendar: "atoms.appCalendar",
