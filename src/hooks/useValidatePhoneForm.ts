@@ -19,7 +19,6 @@ const useValidatePhoneForm = () => {
         e.preventDefault();
         if (checkValidationCodeLength()) {
             //  TODO send to the backend to check validity
-            navigate('/register/email');
         }
     }
 
