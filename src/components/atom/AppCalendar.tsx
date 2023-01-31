@@ -8,7 +8,7 @@ import { current } from "@reduxjs/toolkit";
 
 interface AppCalendarProps {
     id?: string
-    placeholder?: string,
+    placeholder?: string | null,
     selectedDate?: Date,
     setDate: (date: string) => void
     yearRange?: string
@@ -34,7 +34,7 @@ const AppCalendar = ({id = 'datePicker', placeholder = 'Fecha de nacimiento', se
 
     return (
         <Calendar dateFormat="dd/mm/yy" id="datePicker" value={selectedDate} onChange={handleSetDate}
-        className="w-full rounded-md text-secondary-color font-roboto-flex text-base font-normal placeholder-primary-color"
+        className="w-full rounded-md text-secondary-color font-roboto-flex text-base font-normal placeholder-primary-color app-calendar"
         panelClassName="bg-white p-4 shadow-md rounded-xl text-secondary-color font-roboto-flex text-base font-normal"
         inputClassName="w-full rounded-md px-4 py-5 text-secondary-color font-roboto-flex text-base font-normal placeholder-primary-color"
         monthNavigator yearNavigator yearRange={yearRange ? yearRange : _yearRange}
@@ -44,7 +44,7 @@ const AppCalendar = ({id = 'datePicker', placeholder = 'Fecha de nacimiento', se
         yearNavigatorTemplate={(options) => {
             return (<Dropdown className="px-5 my-4 shadow-md rounded-xl text-secondary-color font-roboto-flex text-lg font-normal" panelClassName="border-2 border-solid border-primary-color bg-white shadow-md rounded-xl text-secondary-color font-roboto-flex text-lg font-normal" value={options.value} options={years} onChange={handleNavigatorChange(options)}/>)
         }}
-        placeholder={`📅  ${placeholder}`}
+        placeholder={`${placeholder}`}
         />
     )
 }
