@@ -46,7 +46,7 @@ const AppMessageDialog: FC<AppMessageDialogProps> = ({
                             
                             </div>
                             <div className="flex gap-4">
-                                { secondaryButtonText &&
+                                {secondaryButtonText &&
                                     (<div className="flex-1">
                                         <AppNextButton title={secondaryButtonText} onClick={secondaryButtonOnClick} bgColor={secondaryButtonBgColor}/>
                                     </div>)
