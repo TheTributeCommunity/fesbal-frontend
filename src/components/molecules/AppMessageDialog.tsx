@@ -32,7 +32,7 @@ const AppMessageDialog: FC<AppMessageDialogProps> = ({
 }) => {
     return (
         <>
-            { visible &&
+            {visible &&
                 (<div className="absolute top-0 left-0 bg-secondary-color bg-opacity-40 z-50 w-full h-full">
                     <div className="absolute bottom-6 left-0 right-0 px-4 ">
                         <div className="w-full md:w-1/2 lg:w-1/3 p-6 pt-10 text-center text-secondary-color font-roboto-flex bg-white rounded-2xl mx-auto">
