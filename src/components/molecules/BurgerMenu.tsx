@@ -59,7 +59,7 @@ const BurgerMenu = ({visible, onHide}: BurgerMenuProps): JSX.Element => {
                     <MenuItem icon={<ClockIcon />} title={translate('history', '')} onClick={() => {navigate('/pickup-history')}} />
                     <MenuItem icon={<PickupIcon />} title={translate('pickup', '')} onClick={() => {navigate('/pickup-point')}} />
                     <MenuItem icon={<DocumentIcon />} title={translate('sheet', '')} onClick={() => {navigate('/referral')}} />
-                    <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {}} />
+                    <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.location.replace('https://www.fesbal.org.es/faqs')}} />
                     <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => {}} />
                 </div>
                 <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={() => navigate('/login')}>

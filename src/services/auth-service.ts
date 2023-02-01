@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier, onAuthStateChanged, User } from "firebase/auth";
 import { getEnvVar } from "../helpers/envVars";
-import {AuthUser} from "../models/auth-user";
+import { AuthUser } from "../models/auth-user";
 
 export class AuthService {
     private static auth: Auth
@@ -36,9 +36,9 @@ export class AuthService {
     private static firebaseUserToAuthUser(user: User) {
         return {
             phone: user.phoneNumber,
-            email: user.email ,
+            email: user.email,
             emailVerified: user.emailVerified,
-            getToken(): Promise<string> | undefined { return AuthService.auth.currentUser?.getIdToken()}
+            getToken(): Promise<string> | undefined { return AuthService.auth.currentUser?.getIdToken() }
         }
     }
 
@@ -47,12 +47,12 @@ export class AuthService {
         const phone = this.addPhonePrefix(phoneWithoutPrefix);
 
         return signInWithPhoneNumber(this.auth, phone, recaptchaVerifier)
-            .then((confirmationResult) => {this.confirmationResult = confirmationResult})
+            .then((confirmationResult) => { this.confirmationResult = confirmationResult })
     }
 
     private static setUpRecaptcha(submitButtonId: string) {
-        const INVISIBLE_RECAPTCHA_CONFIG = {'size': 'invisible'};
-        const recaptchaVerifier = new RecaptchaVerifier(submitButtonId,INVISIBLE_RECAPTCHA_CONFIG, this.auth);
+        const INVISIBLE_RECAPTCHA_CONFIG = { 'size': 'invisible' };
+        const recaptchaVerifier = new RecaptchaVerifier(submitButtonId, INVISIBLE_RECAPTCHA_CONFIG, this.auth);
 
         recaptchaVerifier.render();
 
@@ -60,10 +60,13 @@ export class AuthService {
     }
 
     public static confirmPhoneCode(code: string) {
-        return this.confirmationResult.confirm(code).then(() => this.saveToken())
+        return this.confirmationResult.confirm(code).then((user) => {
+            this.saveToken()
+            return user
+        })
     }
 
-    public static signIn(email: string , password: string) {
+    public static signIn(email: string, password: string) {
         return signInWithEmailAndPassword(this.auth, email, password)
     }
 

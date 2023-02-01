@@ -9,7 +9,7 @@ const RegisterReferral = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerReferral);
 
     return (
-        <AppWrapper title={translate("title")} link={AppRoute.REGISTER_FAMILY_MEMBERS}>
+        <AppWrapper title={translate("title")} link={AppRoute.REGISTER_FAMILY_MEMBERS} showBurger>
             <div className="flex h-full w-full flex-col self-center text-secondary-color">
                 <AppPageHeader description={translate("description") as string}/>
                 <AppReferralForm link="/register/request-sent" showSublink/>

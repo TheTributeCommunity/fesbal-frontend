@@ -17,11 +17,8 @@ const ValidatePhoneForm = ({onSubmit: parentOnSubmit}: ValidatePhoneFormProps) =
         // TODO implement resend code
     };
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        // TODO implement submission and pass it to parent element
-        onSubmit(e);
-
-        parentOnSubmit(validationCode==="123456");
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        parentOnSubmit(await onSubmit(e));
     };
 
     return (

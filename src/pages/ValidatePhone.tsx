@@ -18,7 +18,6 @@ const ValidatePhone = () => {
     const navigate = useNavigate();
 
     const handleSubmit = (success: boolean) => {
-        // TODO it's just an example for calling the dialogs for now
         if (success) {
             setShowSuccessDialog(true);
         } else {
@@ -41,7 +40,7 @@ const ValidatePhone = () => {
                     buttonText={translate("next")}
                     buttonOnClick={() => {
                         setShowSuccessDialog(false);
-                        navigate("/register/email");
+                        navigate(AppRoute.REGISTER_EMAIL)
                     }}
                 />
             )}

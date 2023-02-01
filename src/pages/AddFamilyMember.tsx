@@ -34,15 +34,20 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
         return validateNameSurname() && validateUserID() && isValidBirthDate()
     }
 
-    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validForm()) {
             const userGuest = UserGuestService.create(userName, userSurname, selectedDate, selectedOption, userID);
+            console.log('user guest', userGuest)
 
             RecipientUserService.getAuth()
                 .then((recipientUser) =>
                     RelativeService.create({...userGuest,recipientUserId: recipientUser.id})
-                ).then(() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS))
+                )
+                .then(() => new Promise(r => setTimeout(r, 1000)))
+                .then(() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS))
+                .catch((e) => console.log(e))
+            
         }
     }
 

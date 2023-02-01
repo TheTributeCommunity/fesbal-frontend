@@ -18,10 +18,9 @@ const LoginValidatePhoneForm = ({onSubmit: parentOnSubmit}: LoginValidatePhonePr
     };
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        // TODO implement submission and pass it to parent element
-        onSubmit(e);
-
-        parentOnSubmit(validationCode==="123456");
+        onSubmit(e).then((result) => {
+            parentOnSubmit(result)
+        })
     };
 
     return (

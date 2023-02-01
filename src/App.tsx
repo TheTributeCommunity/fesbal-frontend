@@ -41,7 +41,7 @@ function App() {
                 <Route path="/profile/edit-email" element={<ProfileEditEmail/>}/>
                 <Route path="/profile/edit-new-password" element={<ProfileEditNewPassword/>}/>
                 <Route path="/profile/edit-prev-password" element={<ProfileEditPrevPassword/>}/>
-                <Route path="/recipient-home" element={<RecipientLandingScreen/>}/>
+                <Route path={AppRoute.RECIPIENT_HOME} element={<RecipientLandingScreen/>}/>
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
                 <Route path="/register/legal" element={<RegisterLegal/>}/>
@@ -54,7 +54,7 @@ function App() {
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                 <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
-                <Route path="/pickup-historic" element={<PickupHistoryPage/>}/>
+                <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
             </Routes>
         </Router>
     );

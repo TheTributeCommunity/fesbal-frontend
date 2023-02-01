@@ -12,7 +12,7 @@ export const namespaces = {
         profileEditNewPassword: "pages.profile.profileEditNewPassword",
         profileEditPrevPassword: "pages.profile.profileEditPrevPassword",
         profileScreen: "pages.profileScreen",
-        registerFamilyMembers: "pages.registerFamilyMember",
+        registerFamilyMembers: "pages.registerFamilyMembers",
         registerPhone: "pages.registerPhone",
         registerLegal: "pages.registerLegal",
         registerEmail: "pages.registerEmail",

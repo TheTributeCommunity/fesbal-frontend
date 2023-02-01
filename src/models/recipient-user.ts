@@ -1,4 +1,10 @@
-import {Relative} from "./relative";
+import { Relative } from "./relative";
+
+export enum RecipientUserRole {
+  UserRegistered = 'UserRegistered',
+  UserPending = 'UserPending',
+  UserAccepted = 'UserAccepted'
+}
 
 export interface RecipientUser {
   id: string

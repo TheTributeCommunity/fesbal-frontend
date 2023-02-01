@@ -1,7 +1,7 @@
 import { BoosterClient } from './booster-service'
 import { gql } from '@apollo/client'
 import { RecipientUser } from '../models/recipient-user'
-import {AuthService} from "./auth-service";
+import { AuthService } from "./auth-service";
 
 export class RecipientUserService {
   public static async getAll(): Promise<RecipientUser[]> {
@@ -13,8 +13,8 @@ export class RecipientUserService {
   }
 
   public static async getAuth(): Promise<RecipientUser> {
-    if(!AuthService.currentUser || !AuthService.currentUser.phone) {
-        throw new Error("Authenticated user not found")
+    if (!AuthService.currentUser || !AuthService.currentUser.phone) {
+      throw new Error("Authenticated user not found")
     }
     return RecipientUserService.getByPhone(AuthService.currentUser.phone)
   }
@@ -24,7 +24,6 @@ export class RecipientUserService {
       query: GET_RECIPIENT_USER_BY_PHONE,
       variables: { phone },
     })
-
     return result.data.ListRecipientUserReadModels.items[0]
   }
 
@@ -86,15 +85,15 @@ export class RecipientUserService {
   private static recipientUserToCommandVariables(recipientUser: Partial<RecipientUser>) {
     return {
       recipientUser:
-          {
-            recipientUserId: recipientUser.id,
-            firstName: recipientUser.firstName,
-            lastName: recipientUser.lastName,
-            dateOfBirth: recipientUser.dateOfBirth,
-            typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
-            identityDocumentNumber: recipientUser.identityDocumentNumber,
-            phone: recipientUser.phone,
-          }
+      {
+        recipientUserId: recipientUser.id,
+        firstName: recipientUser.firstName,
+        lastName: recipientUser.lastName,
+        dateOfBirth: recipientUser.dateOfBirth,
+        typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
+        identityDocumentNumber: recipientUser.identityDocumentNumber,
+        phone: recipientUser.phone,
+      }
     }
   }
 }
