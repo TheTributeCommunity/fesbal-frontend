@@ -18,6 +18,7 @@ export const namespaces = {
         registerEmail: "pages.registerEmail",
         registerUser: "pages.registerUser",
         registerReferral: "pages.registerReferral",
+        registerReferralSendDate: "pages.registerReferralSendDate",
         registerRequestSent: "pages.registerRequestSent",
         validatePhone: "pages.validatePhone",
         welcomeScreen: "pages.welcomeScreen",

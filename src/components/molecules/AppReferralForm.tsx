@@ -5,6 +5,8 @@ import AppNextButton from "../atom/AppNextButton";
 import ReferralFormProps from "../../types/ReferralFormProps";
 import ReferralFileUploaded from "./ReferralFileUploaded";
 import ReferralNoFileUploaded from "./ReferralNoFileUploaded";
+import { useNavigate } from "react-router-dom";
+import { AppRoute } from "../../enums/app-route";
 
 export default ({link, showSublink}: ReferralFormProps) => {
     const {
@@ -17,6 +19,8 @@ export default ({link, showSublink}: ReferralFormProps) => {
         handleOnClick
     } = useUploadReferral();
     const {t: translate} = useTranslation(namespaces.pages.registerReferral);
+
+    const navigate = useNavigate();
 
     return (
         <div className="flex w-full flex-col justify-between gap-4">
@@ -36,7 +40,7 @@ export default ({link, showSublink}: ReferralFormProps) => {
             </div>
             <div className="flex flex-col gap-4">
                 {showSublink &&
-                    <a className="text-center underline font-small-link">{translate("link")}</a>}
+                    <a className="text-center underline font-small-link" onClick={()=>{navigate(AppRoute.REGISTER_REFERRAL_SHEET_SEND_DATE)}}>{translate("link")}</a>}
                 <AppNextButton title={translate("next")} disabled={!file} onClick={() => handleOnClick(link)}/>
             </div>
         </div>

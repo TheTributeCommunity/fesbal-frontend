@@ -13,6 +13,7 @@ import ProfileScreen from "./pages/ProfileScreen";
 import RegisterFamilyMembers from "./pages/RegisterFamilyMembers";
 import RegisterLegal from "./pages/RegisterLegal";
 import RegisterReferral from "./pages/RegisterReferral";
+import RegisterReferralSendDate from "./pages/RegisterReferralSendDate";
 import RegisterRequestSent from "./pages/RegisterRequestSent";
 import RegisterEmail from "./pages/RegisterEmail";
 import ValidatePhone from "./pages/ValidatePhone";
@@ -51,6 +52,7 @@ function App() {
                 <Route path={AppRoute.REGISTER_FAMILY_MEMBERS} element={<RegisterFamilyMembers/>}/>
                 <Route path={AppRoute.REGISTER_FAMILY_MEMBERS_ADD} element={<AddFamilyMember/>}/>
                 <Route path={AppRoute.REGISTER_REFERRAL_SHEET} element={<RegisterReferral/>}/>
+                <Route path={AppRoute.REGISTER_REFERRAL_SHEET_SEND_DATE} element={<RegisterReferralSendDate/>}/>
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                 <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>

@@ -10,4 +10,5 @@ export enum AppRoute {
     REGISTER_REFERRAL_SHEET = '/register/referral',
     RECIPIENT_HOME = '/recipient-home',
     PROFILE = '/profile',
+    REGISTER_REFERRAL_SHEET_SEND_DATE = '/register/referral/send-date',
 }

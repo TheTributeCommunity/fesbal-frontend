@@ -15,6 +15,7 @@ import { registerUserEn, registerUserEs } from "./pages/registerUser";
 import {registerEmailEn, registerEmailEs} from "./pages/registerEmail";
 import { registerLegalEn, registerLegalEs } from "./pages/registerLegal";
 import { registerReferralEn, registerReferralEs } from "./pages/registerReferral";
+import { registerReferralSendDateEn, registerReferralSendDateEs } from "./pages/registerReferralSendDate";
 import { registerRequestSentEn, registerRequestSentEs } from "./pages/registerRequestSent";
 import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
 import {welcomeScreenEn, welcomeScreenEs} from "./pages/welcomeScreen";
@@ -45,6 +46,7 @@ export const es = {
     [namespaces.pages.registerLegal]: registerLegalEs,
     [namespaces.pages.registerEmail]: registerEmailEs,
     [namespaces.pages.registerReferral]: registerReferralEs,
+    [namespaces.pages.registerReferralSendDate]: registerReferralSendDateEs,
     [namespaces.pages.registerRequestSent]: registerRequestSentEs,
     [namespaces.components.burgerMenu]: burgerMenuEs,
     [namespaces.pages.validatePhone]: validatePhoneEs,
@@ -77,6 +79,7 @@ export const en = {
     [namespaces.pages.registerPhone]: registerPhoneEn,
     [namespaces.pages.registerLegal]: registerLegalEn,
     [namespaces.pages.registerReferral]: registerReferralEn,
+    [namespaces.pages.registerReferralSendDate]: registerReferralSendDateEn,
     [namespaces.pages.registerRequestSent]: registerRequestSentEn,
     [namespaces.components.burgerMenu]: burgerMenuEn,
     [namespaces.pages.validatePhone]: validatePhoneEn,
