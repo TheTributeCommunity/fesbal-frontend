@@ -10,7 +10,7 @@ import AlertIcon from "../components/icons/AlertIcon";
 
 const RegisterReferralSendDate = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerReferralSendDate);
-    const [showConfirmDialog, setshowConfirmDialog] = useState(false);
+    const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
     const onSubmit = () => {
         setshowConfirmDialog(true);
