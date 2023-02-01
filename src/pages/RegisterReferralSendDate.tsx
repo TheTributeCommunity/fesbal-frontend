@@ -22,7 +22,7 @@ const RegisterReferralSendDate = () => {
     };
 
     const selectCancel = () => {
-        setshowConfirmDialog(false);
+        setShowConfirmDialog(false);
     };
 
 
