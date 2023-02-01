@@ -18,7 +18,7 @@ const RegisterReferralSendDate = () => {
 
     const selectSubmit = () => {
         // TODO: submit form
-        setshowConfirmDialog(false);
+        setShowConfirmDialog(false);
     };
 
     const selectCancel = () => {
