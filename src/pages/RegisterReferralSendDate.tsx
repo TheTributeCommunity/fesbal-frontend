@@ -13,7 +13,7 @@ const RegisterReferralSendDate = () => {
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
     const onSubmit = () => {
-        setshowConfirmDialog(true);
+        setShowConfirmDialog(true);
     };
 
     const selectSubmit = () => {
