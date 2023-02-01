@@ -5,7 +5,7 @@ export const registerReferralSendDateEs = {
     sendDate: "Fecha de la cita",
     
     adviceTitle: "Importante",
-    adviceDescription: "Recuerda que una vez cumplido la fecha tendrás que subir la hoja de derivación que te entreguen. De lo contrario se bloqueará el servicio.",
+    adviceDescription: "Recuerda que una vez cumplida la fecha tendrás que subir la hoja de derivación que te entreguen. De lo contrario se bloqueará el servicio.",
     adviceConfirm: "Enviar solicitud",
     adviceCancel: "Cancelar",
 
