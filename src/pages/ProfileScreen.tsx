@@ -18,7 +18,7 @@ const ProfileScreen = () => {
         return [
             {
                 title: translate('fullName'),
-                value: user?.firstName,
+                value: `${user?.firstName} ${user?.lastName}`,
             },
             {
                 title: translate('id'),

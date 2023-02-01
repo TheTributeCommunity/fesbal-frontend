@@ -22,7 +22,7 @@ export const loginValidatePhoneEn = {
     resendCode: "Resend code",
 
     successfulValidationTitle: "Successful validation",
-    successfulValidationMessage: "Congratulations! Your phone number has been validated. Please click on continue start using the app.",
+    successfulValidationMessage: "Congratulations! Your phone number has been validated. Please click on continue to start using the app.",
 
     unsuccessfulValidationTitle: "Wrong code",
     unsuccessfulValidationMessage: "The validation code entered does not match the one we sent you. Please try again.",
