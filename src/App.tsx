@@ -25,6 +25,7 @@ import RegisterPhone from "./pages/RegisterPhone";
 import AddFamilyMember from "./pages/AddFamilyMember";
 import RegisterUser from "./pages/RegisterUser";
 import {AppRoute} from "./enums/app-route";
+import LoginValidatePhone from "./pages/LoginValidatePhone";
 
 function App() {
     return (
@@ -33,6 +34,7 @@ function App() {
                 <Route path="*" element={<WelcomeScreen/>}/>
                 <Route path="/login" element={<LoginScreen/>}/>
                 <Route path="/login/password-recovery" element={<LoginPasswordRecovery/>}/>
+                <Route path={AppRoute.LOGIN_VALIDATE_PHONE} element={<LoginValidatePhone/>}/>
                 <Route path="/notifications" element={<NotificationsScreen/>}/>
                 <Route path="/notifications/:id" element={<NotificationDetails/>}/>
                 <Route path="/pickup-point" element={<PickupPoint/>}/>
@@ -40,7 +42,7 @@ function App() {
                 <Route path="/profile/edit-email" element={<ProfileEditEmail/>}/>
                 <Route path="/profile/edit-new-password" element={<ProfileEditNewPassword/>}/>
                 <Route path="/profile/edit-prev-password" element={<ProfileEditPrevPassword/>}/>
-                <Route path="/recipient-home" element={<RecipientLandingScreen/>}/>
+                <Route path={AppRoute.RECIPIENT_HOME} element={<RecipientLandingScreen/>}/>
                 <Route path="/referral" element={<MenuReferral/>}/>
                 <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
                 <Route path="/register/legal" element={<RegisterLegal/>}/>
@@ -54,7 +56,7 @@ function App() {
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                 <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
-                <Route path="/pickup-historic" element={<PickupHistoryPage/>}/>
+                <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
             </Routes>
         </Router>
     );

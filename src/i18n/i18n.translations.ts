@@ -3,6 +3,7 @@ import { appCalendarEs, appCalendarEn } from "./atoms/appCalendar";
 import { namespaces } from "./i18n.constants";
 import { loginPasswordRecoveryEn, loginPasswordRecoveryEs } from "./pages/loginPasswordRecovery";
 import { loginScreenEn, loginScreenEs } from "./pages/loginScreen";
+import { loginValidatePhoneEn, loginValidatePhoneEs } from "./pages/loginValidatePhone";
 import { menuDeleteAccountEn, menuDeleteAccountEs } from "./pages/menuDeleteAccount";
 import { menuReferralEn, menuReferralEs } from "./pages/menuReferral";
 import { profileEditEmailEn, profileEditEmailEs } from "./pages/profileEditEmail";
@@ -30,6 +31,7 @@ export const es = {
     },
     [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEs,
     [namespaces.pages.loginScreen]: loginScreenEs,
+    [namespaces.pages.loginValidatePhone]: loginValidatePhoneEs,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEs,
     [namespaces.pages.menuReferral]: menuReferralEs,
     [namespaces.pages.notifications]: { title: "Notificaciones" },
@@ -62,6 +64,7 @@ export const en = {
     },
     [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEn,
     [namespaces.pages.loginScreen]: loginScreenEn,
+    [namespaces.pages.loginValidatePhone]: loginValidatePhoneEn,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEn,
     [namespaces.pages.menuReferral]: menuReferralEn,
     [namespaces.pages.notifications]: { title: "Notifications" },

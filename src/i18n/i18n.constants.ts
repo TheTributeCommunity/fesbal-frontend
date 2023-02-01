@@ -2,6 +2,7 @@ export const namespaces = {
     pages: {
         loginPasswordRecovery: "pages.loginPasswordRecovery",
         loginScreen: "pages.loginScreen",
+        loginValidatePhone: "pages.loginValidatePhone",
         recipientLanding: "pages.recipientLanding",
         menuDeleteAccount: "pages.menuDeleteAccount",
         menuReferral: "pages.menuReferral",
@@ -11,7 +12,7 @@ export const namespaces = {
         profileEditNewPassword: "pages.profile.profileEditNewPassword",
         profileEditPrevPassword: "pages.profile.profileEditPrevPassword",
         profileScreen: "pages.profileScreen",
-        registerFamilyMembers: "pages.registerFamilyMember",
+        registerFamilyMembers: "pages.registerFamilyMembers",
         registerPhone: "pages.registerPhone",
         registerLegal: "pages.registerLegal",
         registerEmail: "pages.registerEmail",

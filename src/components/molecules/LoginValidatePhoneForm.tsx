@@ -1,24 +1,26 @@
 import AppNextButton from "../atom/AppNextButton";
-import useValidatePhoneForm from "../../hooks/useValidatePhoneForm";
+import useLoginPhoneValidationForm from "../../hooks/useLoginValidatePhoneForm";
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../../i18n/i18n.constants";
 import { AppDigitsInput } from "../atom/AppDigitsInput";
 import { FormEvent } from "react";
 
-interface ValidatePhoneFormProps {
+interface LoginValidatePhoneProps {
     onSubmit: (success: boolean) => void;
 }
 
-const ValidatePhoneForm = ({onSubmit: parentOnSubmit}: ValidatePhoneFormProps) => {
-    const {validationCode, CODE_LENGTH, checkValidationCodeLength, onValidationCodeChange, onSubmit} = useValidatePhoneForm();
+const LoginValidatePhoneForm = ({onSubmit: parentOnSubmit}: LoginValidatePhoneProps) => {
+    const {validationCode, CODE_LENGTH, checkValidationCodeLength, onValidationCodeChange, onSubmit} = useLoginPhoneValidationForm();
     const {t: translate} = useTranslation(namespaces.pages.validatePhone);
 
     const handleResendCode = () => {
         // TODO implement resend code
     };
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        parentOnSubmit(await onSubmit(e));
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        onSubmit(e).then((result) => {
+            parentOnSubmit(result)
+        })
     };
 
     return (
@@ -34,4 +36,4 @@ const ValidatePhoneForm = ({onSubmit: parentOnSubmit}: ValidatePhoneFormProps) =
     );
 }
 
-export default ValidatePhoneForm;
+export default LoginValidatePhoneForm;

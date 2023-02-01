@@ -1,17 +1,17 @@
-import ValidatePhoneForm from "../components/molecules/ValidatePhoneForm";
+import LoginValidatePhoneForm from "../components/molecules/LoginValidatePhoneForm";
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../i18n/i18n.constants";
-import { useState } from "react";
 import AppPageHeader from "../components/molecules/AppPageHeader";
 import AppWrapper from "../components/molecules/AppWrapper";
 import AppMessageDialog from "../components/molecules/AppMessageDialog";
-import SuccessIcon from "../components/icons/SuccessIcon";
 import { useNavigate } from "react-router-dom";
 import UnsuccessIcon from "../components/icons/UnsuccessIcon";
-import {AppRoute} from "../enums/app-route";
+import { useState } from "react";
+import { AppRoute } from "../enums/app-route";
+import SuccessIcon from "../components/icons/SuccessIcon";
 
-const ValidatePhone = () => {
-    const { t: translate } = useTranslation(namespaces.pages.validatePhone);
+const LoginValidatePhone = () => {
+    const { t: translate } = useTranslation(namespaces.pages.loginValidatePhone);
     const [showSuccessDialog, setShowSuccessDialog] = useState(false);
     const [showFailureDialog, setShowFailureDialog] = useState(false);
 
@@ -19,28 +19,28 @@ const ValidatePhone = () => {
 
     const handleSubmit = (success: boolean) => {
         if (success) {
-            setShowSuccessDialog(true);
+            setShowSuccessDialog(true)
         } else {
             setShowFailureDialog(true);
         }
     };
 
     return (
-        <AppWrapper link={AppRoute.REGISTER_PHONE} title={translate("headerTitle")}>
+        <AppWrapper link={"/login"}>
             <AppPageHeader
                 title={translate("title")}
                 description={translate("description") as string}
             />
-            <ValidatePhoneForm onSubmit={handleSubmit} />
+            <LoginValidatePhoneForm onSubmit={handleSubmit} />
             {showSuccessDialog && (
                 <AppMessageDialog
                     icon={<SuccessIcon />}
                     description={translate("successfulValidationMessage")}
                     title={translate("successfulValidationTitle")}
-                    buttonText={translate("next")}
+                    buttonText={translate("continue")}
                     buttonOnClick={() => {
                         setShowSuccessDialog(false);
-                        navigate(AppRoute.REGISTER_EMAIL)
+                        navigate(AppRoute.RECIPIENT_HOME)
                     }}
                 />
             )}
@@ -58,4 +58,4 @@ const ValidatePhone = () => {
     );
 };
 
-export default ValidatePhone;
+export default LoginValidatePhone;

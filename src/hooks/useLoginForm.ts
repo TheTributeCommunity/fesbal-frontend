@@ -1,26 +1,25 @@
-import { FormEvent, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {AuthService} from "../services/auth-service";
+import { FormEvent, useState } from "react";
+import { AuthService } from "../services/auth-service";
 
 const useLoginForm = (submitButtonId: string) => {
     const [userPhone, setUserPhone] = useState<string>('');
-    const [hasError, setHasError] = useState<boolean>(false);
-
-    const navigate = useNavigate();
 
     const onUserPhoneChange = (phone: string) => {
         setUserPhone(phone);
-        setHasError(false);
     }
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
 
+    const onSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
+        e.preventDefault();
         if (validateUserPhone()) {
-            AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
-                .then(() => navigate('/recipient-home'))
-                .catch(() => setHasError(true))
-        }
+            return AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
+                .then(() => true)
+                .catch((e) => {
+                    console.log(e)
+                    return false
+                })
+        } else return false
     }
+
     const validateUserPhone = (): boolean => {
         const PHONE_REGEX = new RegExp(/^\d{9}(,\d{9})*$/);
         return PHONE_REGEX.test(userPhone);
@@ -30,7 +29,6 @@ const useLoginForm = (submitButtonId: string) => {
         userPhone,
         onUserPhoneChange,
         validateUserPhone,
-        hasError,
         onSubmit,
     }
 }

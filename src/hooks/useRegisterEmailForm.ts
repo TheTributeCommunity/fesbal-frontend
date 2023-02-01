@@ -1,5 +1,6 @@
-import {ChangeEvent, FormEvent, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RecipientUserService } from "../services/recipient-user-service";
 
 const createValidationInput = () => {
     let newValidationInput = document.createElement('input');
@@ -11,8 +12,6 @@ const createValidationInput = () => {
 const useRegisterEmailForm = () => {
     const [userEmail, setUserEmail] = useState<string>('');
     let validationInput = createValidationInput();
-
-    const navigate = useNavigate();
 
     const simpleEmailValidation = (email: string): boolean => {
         return /\S+@\S+\.\S+/.test(email);
@@ -45,11 +44,16 @@ const useRegisterEmailForm = () => {
         setUserEmail(e.target.value);
     }
 
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
         e.preventDefault();
         if (validateEmail()) {
-            navigate('/');
-        }
+            return RecipientUserService.getAuth()
+                .then((recipientUser) => RecipientUserService.updateEmail(recipientUser.id, userEmail))
+                .catch((e) => {
+                    console.log(e)
+                    return false
+                })
+        } else return false
     }
 
     return {
