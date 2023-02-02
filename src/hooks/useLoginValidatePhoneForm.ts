@@ -1,10 +1,7 @@
 import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { AuthService } from "../services/auth-service";
 import { RecipientUserService } from "../services/recipient-user-service";
-import { UserGuestService } from "../services/user-guest-service";
-import { AppRoute } from "../enums/app-route";
-import { RecipientUser, RecipientUserRole } from "../models/recipient-user";
+import { RecipientUserRole } from "../models/recipient-user";
 
 const useLoginValidatePhoneForm = () => {
     const [validationCode, setValidationCode] = useState<string>('');
@@ -33,7 +30,8 @@ const useLoginValidatePhoneForm = () => {
                             break
                     }
                     return true
-                }).catch(() => {
+                }).catch((e) => {
+                    console.log(e)
                     return false;
                 })
         } else return false
