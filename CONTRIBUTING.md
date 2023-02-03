@@ -200,6 +200,7 @@ In order to create a PR, you must create a branch from `main`. You should follow
 - `feature-XXX/*` - PR that implements a new feature
 - `fix-XXX/*` - PR that fixes a bug
 - `doc-XXX/*` - PR that enhances the documentation
+- `refactor-XXX/*` - PR that refactors curent code
 
 Where the `XXX` is the issue number. In the right side of the branch name you can include the GitHub issue number. An example of doing this could be:
 
