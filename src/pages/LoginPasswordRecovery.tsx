@@ -8,7 +8,7 @@ const LoginPasswordRecovery = () => {
     const {t: translate} = useTranslation(namespaces.pages.loginPasswordRecovery);
 
     return (
-        <AppWrapper link="/login">
+        <AppWrapper showBackButton>
             <div className="flex w-full flex-col self-center justify-start">
                 <AppPageHeader title={translate("title")} description={translate("description") as string}/>
                 <LoginPasswordRecoveryForm/>

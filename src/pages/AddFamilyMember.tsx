@@ -52,7 +52,7 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
     }
 
     return (
-        <AppWrapper link={AppRoute.REGISTER_FAMILY_MEMBERS} title={translate("addMember")}>
+        <AppWrapper showBackButton title={translate("addMember")}>
             <form noValidate onSubmit={onSubmit} className="flex w-full flex-col gap-4">
                 <div className="flex flex-col gap-4">
                     <AppFormInput name="name"

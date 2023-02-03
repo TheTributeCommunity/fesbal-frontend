@@ -26,7 +26,7 @@ const LoginValidatePhone = () => {
     };
 
     return (
-        <AppWrapper link={"/login"}>
+        <AppWrapper showBackButton>
             <AppPageHeader
                 title={translate("title")}
                 description={translate("description") as string}

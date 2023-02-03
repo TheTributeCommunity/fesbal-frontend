@@ -8,7 +8,7 @@ const ProfileEditPrevPassword = () => {
     const {t: translate} = useTranslation(namespaces.pages.profileEditPrevPassword);
 
     return (
-        <AppWrapper title={translate("title")} link="/profile">
+        <AppWrapper title={translate("title")} showBackButton>
             <PageHeader description={translate("description") as string}/>
             <ProfileEditPrevPasswordForm/>
         </AppWrapper>

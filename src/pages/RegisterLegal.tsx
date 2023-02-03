@@ -10,7 +10,7 @@ const RegisterLegal = () => {
 
     return (
         <>
-        <AppWrapper link={AppRoute.WELCOME}>
+        <AppWrapper showBackButton>
             <div className="flex w-full flex-col items-center mt-8 gap-4">
                 <LogoFesbalIcon />
             </div>
