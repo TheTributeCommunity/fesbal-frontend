@@ -1,5 +1,6 @@
 export enum AppRoute {
     WELCOME = '/welcome',
+    LOGIN = '/login',
     LOGIN_VALIDATE_PHONE = '/login/validate-phone',
     REGISTER = "/register",
     REGISTER_PHONE = '/register/phone',
@@ -11,4 +12,8 @@ export enum AppRoute {
     RECIPIENT_HOME = '/recipient-home',
     PROFILE = '/profile',
     REGISTER_REFERRAL_SHEET_SEND_DATE = '/register/referral/send-date',
+    NOTIFICATIONS = '/notifications',
+    PICKUP_HISTORY = '/pickup-history',
+    PICKUP_POINT = '/pickup-point',
+    REFERRAL = '/referral'
 }
