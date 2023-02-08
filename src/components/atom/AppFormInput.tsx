@@ -18,7 +18,7 @@ export default ({
             <label htmlFor={name} className={`app-label ${value ? "" : "app-label--hidden"}`}>
                 {label}
             </label>
-            <div>
+            <div className={`${toggleShowPassword ? "relative" : ""}`}>
                 <input
                     type={type}
                     name={name}
