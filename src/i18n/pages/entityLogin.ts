@@ -1,15 +1,19 @@
-export const loginScreenEs = {
+export const entityLoginEs = {
     title: "Iniciar sesión",
-    description: "Por favor, introduce tu número de teléfono para poder iniciar sesión.",
-    phone: "Número de teléfono",
-    next: "Continuar",
-    error: "El número de télefono no es válido. Por favor, introduzca un número de teléfono sin el prefijo e inténtelo de nuevo.",
+    description: "Por favor, introduce tu email y contraseña para poder acceder.",
+    email: "Email",
+    password: "Contraseña",
+    forgotPassword: "¿Olvidaste tu contraseña?",
+    next: "Iniciar sesión",
+    error: "El email y/o contraseña no coinciden. Inténtalo de nuevo.",
 }
 
-export const loginScreenEn = {
+export const entityLoginEn = {
     title: "Login",
-    description: "Please, introduce your phone number to sign in.",
-    phone: "Phone number",
-    next: "Continue",
-    error: "The phone number introduced is not valid. Please, introduce you phone number without the prefix and try again.",
+    description: "Please, enter your email and password to access.",
+    email: "Email",
+    password: "Password",
+    forgotPassword: "Forgot your password?",
+    next: "Login",
+    error: "Email and/or password do not match. Please try again.",
 }
