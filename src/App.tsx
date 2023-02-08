@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import LoginPasswordRecovery from "./pages/LoginPasswordRecovery";
+import EntityLoginPasswordRecovery from "./pages/EntityLoginPasswordRecovery";
 import LoginScreen from "./pages/LoginScreen";
 import MenuReferral from "./pages/MenuReferral";
 import MenuReferralUpload from "./pages/MenuReferralUpload";
@@ -26,6 +26,7 @@ import AddFamilyMember from "./pages/AddFamilyMember";
 import RegisterUser from "./pages/RegisterUser";
 import {AppRoute} from "./enums/app-route";
 import LoginValidatePhone from "./pages/LoginValidatePhone";
+import EntityLogin from "./pages/EntityLogin";
 
 function App() {
     return (
@@ -33,7 +34,6 @@ function App() {
             <Routes>
                 <Route path="*" element={<WelcomeScreen/>}/>
                 <Route path="/login" element={<LoginScreen/>}/>
-                <Route path="/login/password-recovery" element={<LoginPasswordRecovery/>}/>
                 <Route path={AppRoute.LOGIN_VALIDATE_PHONE} element={<LoginValidatePhone/>}/>
                 <Route path="/notifications" element={<NotificationsScreen/>}/>
                 <Route path="/notifications/:id" element={<NotificationDetails/>}/>
@@ -57,6 +57,8 @@ function App() {
                 <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                 <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
                 <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
+                <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
+                <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
             </Routes>
         </Router>
     );

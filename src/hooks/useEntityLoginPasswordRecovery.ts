@@ -10,7 +10,7 @@ const useLoginPasswordRecovery = <T extends string>(initialState: T) => {
     const [hasError, setHasError] = useState<boolean>(false);
 
     const navigate = useNavigate();
-    const {t: translate} = useTranslation(namespaces.pages.loginPasswordRecovery);
+    const {t: translate} = useTranslation(namespaces.pages.entityLoginPasswordRecovery);
     const isFormValid = (email: string): boolean => {
         return usersMock.some((user) => user.email === email);
     }
