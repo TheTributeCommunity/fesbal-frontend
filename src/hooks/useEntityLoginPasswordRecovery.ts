@@ -1,33 +1,41 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import usersMock from "../mocks/users.mock";
 import {namespaces} from "../i18n/i18n.constants";
 import AppPopupAlert from "../components/atom/AppPopupAlert";
+import {AppRoute} from "../enums/app-route";
+import ValidateEmail from "../helpers/validateEmail";
+import {AuthService} from "../services/auth-service";
 
-const useLoginPasswordRecovery = <T extends string>(initialState: T) => {
-    const [email, setEmail] = useState<T>(initialState);
+
+const useEntityLoginPasswordRecovery = () => {
+    const [email, setEmail] = useState<string>('');
     const [hasError, setHasError] = useState<boolean>(false);
 
     const navigate = useNavigate();
     const {t: translate} = useTranslation(namespaces.pages.entityLoginPasswordRecovery);
-    const isFormValid = (email: string): boolean => {
-        return usersMock.some((user) => user.email === email);
+    const validateEmail = (): boolean => {
+        return ValidateEmail(email);
     }
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(email => e.target.value as T);
+        setEmail(e.target.value);
         setHasError(false);
     }
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setHasError(!isFormValid(email));
-        if (isFormValid(email)) {
+        try {
+            await AuthService.sendPasswordRecoveryEmail(email);
             AppPopupAlert({
                 icon: 'success',
                 title: translate("sweetAlert.title") as string,
                 text: translate("sweetAlert.description") as string,
                 confirmButtonText: translate("sweetAlert.confirm") as string,
-            }).fire().then(() => navigate('/login'));
+            }).fire().then(() => navigate(AppRoute.ENTITY_LOGIN));
+            return true;
+        } catch (error) {
+            console.log(error);
+            setHasError(true);
+            return false;
         }
     }
 
@@ -35,8 +43,9 @@ const useLoginPasswordRecovery = <T extends string>(initialState: T) => {
         onChange,
         hasError,
         onSubmit,
-        email
+        email,
+        validateEmail
     }
 }
 
-export default useLoginPasswordRecovery;
+export default useEntityLoginPasswordRecovery;
