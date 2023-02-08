@@ -1,35 +1,38 @@
 import { FormEvent, useState } from "react";
 import { AuthService } from "../services/auth-service";
+import validateEmail from "../helpers/validateEmail";
 
-const useLoginForm = (submitButtonId: string) => {
-    const [userPhone, setUserPhone] = useState<string>('');
+const useLoginForm = () => {
+    const [user, setUser] = useState({email: '', password: ''});
+    const [hasError, setHasError] = useState(false);
 
-    const onUserPhoneChange = (phone: string) => {
-        setUserPhone(phone);
+    const onUserChange = (e: FormEvent<HTMLInputElement>) => {
+        setUser({...user, [e.currentTarget.name]: e.currentTarget.value});
+        setHasError(false);
     }
 
-    const onSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
+    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (validateUserPhone()) {
-            return AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
-                .then(() => true)
-                .catch((e) => {
-                    console.log(e)
-                    return false
-                })
-        } else return false
-    }
+        try {
+            await AuthService.signIn(user.email, user.password);
+            return true;
+        } catch (error) {
+            console.log(error);
+            setHasError(true)
+            return false;
+        }
+    };
 
-    const validateUserPhone = (): boolean => {
-        const PHONE_REGEX = new RegExp(/^\d{9}(,\d{9})*$/);
-        return PHONE_REGEX.test(userPhone);
+    const validateUser = () => {
+        return validateEmail(user.email) && user.password;
     }
 
     return {
-        userPhone,
-        onUserPhoneChange,
-        validateUserPhone,
+        user,
+        hasError,
+        onUserChange,
         onSubmit,
+        validateUser
     }
 }
 
