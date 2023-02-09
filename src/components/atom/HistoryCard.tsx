@@ -13,11 +13,11 @@ const HistoryCard: FC<HistoryCardProps> = ({ title, isoDate, description }) => {
   return (
     <div className="px-8 py-5 bg-white">
       <div className="flex justify-between">
-        <p className="text-xs text-[#0F95CE]">{date}</p>
-        <p className="text-xs text-[#0F95CE]">{time}</p>
+        <p className="text-xs text-primary-color">{date}</p>
+        <p className="text-xs text-primary-color">{time}</p>
       </div>
-      <p className="text-[#002E5D] font-bold">{title}</p>
-      <p className="font-light max-h-12 truncate">{description}</p>
+      <p className="text-secondary-color font-bold">{title}</p>
+      <p className="text-secondary-color font-light max-h-12 truncate">{description}</p>
     </div>
   );
 };

@@ -3,22 +3,22 @@ import { FoodType } from "../types/FoodType"
 export const FoodMock: FoodType[] = [
     {
         id: 1,
-        name: "Food 1",
+        name: "Leche",
     },
     {
         id: 2,
-        name: "Food 2",
+        name: "Garbanzos",
     },
     {
         id: 3,
-        name: "Food 3",
+        name: "Aceite",
     },
     {
         id: 4,
-        name: "Food 4",
+        name: "Galletas",
     },
     {
         id: 5,
-        name: "Food 5",
+        name: "Frijoles",
    }
 ]
