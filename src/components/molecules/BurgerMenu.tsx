@@ -37,7 +37,6 @@ const MenuItem = ({icon, title, onClick}: MenuItemProps) => {
 const BurgerMenu = ({visible, onHide}: BurgerMenuProps): JSX.Element => {
     const navigate = useNavigate()
     const {t: translate} = useTranslation(namespaces.components.burgerMenu);
-    const menuTitle = 'BALPA'
 
     return (
         <Sidebar
@@ -50,7 +49,7 @@ const BurgerMenu = ({visible, onHide}: BurgerMenuProps): JSX.Element => {
             <div className="flex flex-col gap-4">
                 <div className="flex flex-row justify-end px-8">
                     <div className="w-3/5 flex justify-center items-center">
-                        <span className="text-primary-color font-bold text-2xl leading-7">{menuTitle}</span>
+                        <span className="text-primary-color font-bold text-2xl leading-7">{translate('title')}</span>
                     </div>
                     <div className="w-1/5 flex justify-end items-center">
                         <AppCloseButton onClick={onHide}/>
