@@ -4,6 +4,8 @@ import {useTranslation} from "react-i18next";
 import usersMock from "../mocks/users.mock";
 import {namespaces} from "../i18n/i18n.constants";
 import AppPopupAlert from "../components/atom/AppPopupAlert";
+import {validateEmail as isAnEmail} from "../helpers";
+
 
 const useProfileEditEmail = <T extends string>(initialState: T) => {
     const [email, setEmail] = useState<T>(initialState);
@@ -11,10 +13,6 @@ const useProfileEditEmail = <T extends string>(initialState: T) => {
     const {t: translate} = useTranslation(namespaces.pages.profileEditEmail);
 
     const navigate = useNavigate();
-    const isAnEmail = (email: string): boolean => {
-        const regex = /\S+@\S+\.\S+/;
-        return regex.test(email);
-    }
     const emailAlreadyExists = (email: string): boolean => {
         return usersMock.some(user => user.email === email);
     }
