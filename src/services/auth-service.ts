@@ -19,7 +19,6 @@ export class AuthService {
             messagingSenderId: getEnvVar('FIREBASE_MESSAGING_SENDER_ID'),
             appId: getEnvVar('FIREBASE_APP_ID'),
         })
-
         this.setUpAuth();
     }
 
@@ -60,10 +59,8 @@ export class AuthService {
     }
 
     public static confirmPhoneCode(code: string) {
-        return this.confirmationResult.confirm(code).then((user) => {
-            this.saveToken()
-            return user
-        })
+        return this.confirmationResult.confirm(code).then((user) =>
+            this.saveToken())
     }
 
     public static signIn(email: string, password: string) {
@@ -71,7 +68,7 @@ export class AuthService {
     }
 
     private static saveToken() {
-        this.currentUser?.getToken()?.then((token) => localStorage.setItem("token", token))
+        return this.currentUser?.getToken()?.then((token) => localStorage.setItem("token", token))
     }
 
     public static addPhonePrefix(phone: string) {
