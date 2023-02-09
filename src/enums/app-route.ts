@@ -1,7 +1,7 @@
 export enum AppRoute {
     WELCOME = '/welcome',
     LOGIN_VALIDATE_PHONE = '/login/validate-phone',
-    REGISTER = "/register",
+    REGISTER = '/register',
     REGISTER_PHONE = '/register/phone',
     REGISTER_VALIDATE_PHONE = '/register/validate-phone',
     REGISTER_EMAIL = '/register/email',
@@ -12,4 +12,6 @@ export enum AppRoute {
     PROFILE = '/profile',
     REGISTER_REFERRAL_SHEET_SEND_DATE = '/register/referral/send-date',
     BACK = -1,
+    ENTITY_LOGIN = '/entity-login',
+    ENTITY_LOGIN_PASSWORD_RECOVERY = '/entity-login/password-recovery',
 }

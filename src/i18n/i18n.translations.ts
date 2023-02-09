@@ -1,7 +1,8 @@
 import { burgerMenuEn, burgerMenuEs } from "./components/burgerMenu";
 import { appCalendarEs, appCalendarEn } from "./atoms/appCalendar";
 import { namespaces } from "./i18n.constants";
-import { loginPasswordRecoveryEn, loginPasswordRecoveryEs } from "./pages/loginPasswordRecovery";
+import { entityLoginEn, entityLoginEs} from "./pages/entityLogin";
+import { entityLoginPasswordRecoveryEn, entityLoginPasswordRecoveryEs } from "./pages/entityLoginPasswordRecovery";
 import { loginScreenEn, loginScreenEs } from "./pages/loginScreen";
 import { loginValidatePhoneEn, loginValidatePhoneEs } from "./pages/loginValidatePhone";
 import { menuDeleteAccountEn, menuDeleteAccountEs } from "./pages/menuDeleteAccount";
@@ -29,7 +30,8 @@ export const es = {
             cancel: "Cancelar",
         },
     },
-    [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEs,
+    [namespaces.pages.entityLogin]: entityLoginEs,
+    [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEs,
     [namespaces.pages.loginScreen]: loginScreenEs,
     [namespaces.pages.loginValidatePhone]: loginValidatePhoneEs,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEs,
@@ -62,7 +64,8 @@ export const en = {
             cancel: "Cancel",
         },
     },
-    [namespaces.pages.loginPasswordRecovery]: loginPasswordRecoveryEn,
+    [namespaces.pages.entityLogin]: entityLoginEn,
+    [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEn,
     [namespaces.pages.loginScreen]: loginScreenEn,
     [namespaces.pages.loginValidatePhone]: loginValidatePhoneEn,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEn,
