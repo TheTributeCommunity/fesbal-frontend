@@ -6,7 +6,6 @@ import FamilyMembersIcon from "../components/icons/FamilyMembersIcon";
 import AppWrapper from "../components/molecules/AppWrapper";
 import FamilyMemberCard from "../components/atom/FamilyMemberCard";
 import useRegisterFamilyMembers from "../hooks/useRegisterFamilyMembers";
-import EditIcon from "../components/icons/EditIcon";
 import AppEditProfileButton from "../components/atom/AppEditProfileButton";
 import { AppRoute } from "../enums/app-route";
 
@@ -60,7 +59,7 @@ const ProfileScreen = () => {
                     <h2 className="font-mini-title">{translate('familyMembers')}</h2>
                     <div className="ml-auto"><AppEditProfileButton goTo={AppRoute.REGISTER_FAMILY_MEMBERS} /></div>
                 </div>
-                {familyMembers.map((familyMember, index) => 
+                {familyMembers.map((familyMember, index) =>
                     <div className="flex flex-col gap-4 pb-2">
                         <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('familyMember', {ns: 'pages.registerFamilyMembers'})} {index+1}</span>
                         <FamilyMemberCard person={familyMember} />
