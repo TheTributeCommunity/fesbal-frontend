@@ -21,6 +21,7 @@ import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
 import {welcomeScreenEn, welcomeScreenEs} from "./pages/welcomeScreen";
 import {validatePhoneEn, validatePhoneEs} from "./pages/validatePhone";
 import { recipientLandingEs, recipientLandingEn } from "./pages/recipientLanding";
+import { pickupDetailsEs, pickupDetailsEn } from "./pages/pickupDetails";
 
 export const es = {
     [namespaces.common]: {
@@ -53,6 +54,7 @@ export const es = {
     [namespaces.pages.welcomeScreen]: welcomeScreenEs,
     [namespaces.atoms.appCalendar]: appCalendarEs,
     [namespaces.pages.recipientLanding]: recipientLandingEs,
+    [namespaces.pages.pickupDetails]: pickupDetailsEs,
 };
 
 export const en = {
@@ -86,4 +88,5 @@ export const en = {
     [namespaces.pages.welcomeScreen]: welcomeScreenEn,
     [namespaces.atoms.appCalendar]: appCalendarEn,
     [namespaces.pages.recipientLanding]: recipientLandingEn,
+    [namespaces.pages.pickupDetails]: pickupDetailsEn,
 };
