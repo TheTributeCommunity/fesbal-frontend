@@ -3,6 +3,7 @@ import { appCalendarEs, appCalendarEn } from "./atoms/appCalendar";
 import { namespaces } from "./i18n.constants";
 import { entityLoginEn, entityLoginEs} from "./pages/entityLogin";
 import { entityLoginPasswordRecoveryEn, entityLoginPasswordRecoveryEs } from "./pages/entityLoginPasswordRecovery";
+import { entityProfileEs, entityProfileEn } from "./pages/entityProfile";
 import { loginScreenEn, loginScreenEs } from "./pages/loginScreen";
 import { loginValidatePhoneEn, loginValidatePhoneEs } from "./pages/loginValidatePhone";
 import { menuDeleteAccountEn, menuDeleteAccountEs } from "./pages/menuDeleteAccount";
@@ -32,6 +33,7 @@ export const es = {
     },
     [namespaces.pages.entityLogin]: entityLoginEs,
     [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEs,
+    [namespaces.pages.entityProfile]: entityProfileEs,
     [namespaces.pages.loginScreen]: loginScreenEs,
     [namespaces.pages.loginValidatePhone]: loginValidatePhoneEs,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEs,
@@ -66,6 +68,7 @@ export const en = {
     },
     [namespaces.pages.entityLogin]: entityLoginEn,
     [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEn,
+    [namespaces.pages.entityProfile]: entityProfileEn,
     [namespaces.pages.loginScreen]: loginScreenEn,
     [namespaces.pages.loginValidatePhone]: loginValidatePhoneEn,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEn,
