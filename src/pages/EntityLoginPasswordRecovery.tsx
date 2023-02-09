@@ -3,14 +3,13 @@ import EntityLoginPasswordRecoveryForm from '../components/molecules/EntityLogin
 import AppPageHeader from '../components/molecules/AppPageHeader'
 import {useTranslation} from 'react-i18next'
 import AppWrapper from '../components/molecules/AppWrapper'
-import {AppRoute} from '../enums/app-route'
 
 
 const EntityLoginPasswordRecovery = () => {
     const {t: translate} = useTranslation(namespaces.pages.entityLoginPasswordRecovery)
 
     return (
-        <AppWrapper showBackButton>
+        <AppWrapper>
             <div className="flex w-full flex-col self-center justify-start">
                 <AppPageHeader title={translate('title')} description={translate('description') as string}/>
                 <EntityLoginPasswordRecoveryForm/>
