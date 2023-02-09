@@ -1,9 +1,9 @@
-import {useRef, useState} from 'react';
-import {useNavigate} from "react-router-dom";
-import {RecipientUserService} from "../services/recipient-user-service";
+import { useRef, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { RecipientUserService } from "../services/recipient-user-service";
 import usersMock from "../mocks/users.mock";
 import axios from "axios";
-import {RegistrationRequestService} from "../services/registration-request-service";
+import { RegistrationRequestService } from "../services/registration-request-service";
 import { v4 as uuidv4 } from 'uuid';
 
 const useUploadReferral = () => {
@@ -22,8 +22,9 @@ const useUploadReferral = () => {
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.item(0);
+        file && setFile(file) // FIX, so it works in demo
         if (file && isValidFile(file)) {
-            if(usersMock[0].recipientUserId) { // TODO - Replace but real Recipient User
+            if (usersMock[0].recipientUserId) { // TODO - Replace but real Recipient User
                 uploadReferralSheet(usersMock[0].recipientUserId, file).then(() => setFile(file))
             }
         }
@@ -32,12 +33,12 @@ const useUploadReferral = () => {
     const uploadReferralSheet = (recipientUserId: string, file: File) => {
         return RecipientUserService.getReferralSheetUploadUrl(recipientUserId)
             .then((referralSheetUploadUrl) => uploadFileToReferralSheetUploadUrl(referralSheetUploadUrl, file))
-            .then((referralSheetUrl)=> RecipientUserService.updateReferralSheetUrl(recipientUserId, referralSheetUrl))
+            .then((referralSheetUrl) => RecipientUserService.updateReferralSheetUrl(recipientUserId, referralSheetUrl))
     }
 
     const uploadFileToReferralSheetUploadUrl = (referralSheetUploadUrl: string, file: File) => {
         return axios.put(referralSheetUploadUrl, file)
-            .then(()=> getReferralSheetUrlFromReferralSheetUploadUrl(referralSheetUploadUrl))
+            .then(() => getReferralSheetUrlFromReferralSheetUploadUrl(referralSheetUploadUrl))
     }
 
     const getReferralSheetUrlFromReferralSheetUploadUrl = (referralSheetUploadUrl: string) => {
@@ -46,7 +47,7 @@ const useUploadReferral = () => {
             .split("/")[2]
             .split("?")[0];
     }
-   
+
     const handleClick = (ref: React.RefObject<HTMLInputElement>) => {
         if (ref.current) {
             ref.current.click();
@@ -54,7 +55,7 @@ const useUploadReferral = () => {
     };
 
     const handleOnClick = (href: string) => {
-        if(usersMock[0].recipientUserId) {
+        if (usersMock[0].recipientUserId) {
             RegistrationRequestService.create({
                 registrationRequestId: uuidv4(),
                 recipientUserId: usersMock[0].recipientUserId
@@ -63,7 +64,7 @@ const useUploadReferral = () => {
         }
     }
 
-    return {file, setFile, inputRef, cameraRef, handleFileChange, handleClick, handleOnClick};
+    return { file, setFile, inputRef, cameraRef, handleFileChange, handleClick, handleOnClick };
 }
 
 export default useUploadReferral;

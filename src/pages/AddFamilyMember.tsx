@@ -38,16 +38,14 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
         e.preventDefault();
         if (validForm()) {
             const userGuest = UserGuestService.create(userName, userSurname, selectedDate, selectedOption, userID);
-            console.log('user guest', userGuest)
 
             RecipientUserService.getAuth()
-                .then((recipientUser) =>
+                .then((recipientUser) => 
                     RelativeService.create({...userGuest,recipientUserId: recipientUser.id})
                 )
-                .then(() => new Promise(r => setTimeout(r, 1000)))
+                .then(() => new Promise(r => setTimeout(r, 500)))
                 .then(() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS))
                 .catch((e) => console.log(e))
-            
         }
     }
 
