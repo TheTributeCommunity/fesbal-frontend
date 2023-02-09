@@ -7,7 +7,7 @@ import AppWrapper from "../components/molecules/AppWrapper";
 const ProfileEditNewPassword = () => {
     const {t: translate} = useTranslation(namespaces.pages.profileEditNewPassword);
     return (
-        <AppWrapper title={translate("title")} link="/profile/edit-prev-password">
+        <AppWrapper title={translate("title")} showBackButton>
             <PageHeader description={translate("description") as string}/>
             <EditNewPasswordForm/>
         </AppWrapper>

@@ -14,7 +14,7 @@ const RegisterFamilyMembers = () => {
     const {user, familyMembers, handleNextWithFamilyMembers, handleWithoutFamilyMembers, disableNext} = useRegisterFamilyMembers();
 
     return (
-        <AppWrapper  link={AppRoute.REGISTER_EMAIL} title={translate("title")}>
+        <AppWrapper  showBackButton title={translate("title")}>
             <div className="flex flex-col gap-4 w-full">
                 <AppPageHeader
                             title={translate("pageHeading")} description={translate("description") as string}/>

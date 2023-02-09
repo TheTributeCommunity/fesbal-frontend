@@ -2,7 +2,7 @@ export enum AppRoute {
     WELCOME = '/welcome',
     LOGIN = '/login',
     LOGIN_VALIDATE_PHONE = '/login/validate-phone',
-    REGISTER = "/register",
+    REGISTER = '/register',
     REGISTER_PHONE = '/register/phone',
     REGISTER_VALIDATE_PHONE = '/register/validate-phone',
     REGISTER_EMAIL = '/register/email',
@@ -16,4 +16,7 @@ export enum AppRoute {
     PICKUP_HISTORY = '/pickup-history',
     PICKUP_POINT = '/pickup-point',
     REFERRAL = '/referral'
+    BACK = -1,
+    ENTITY_LOGIN = '/entity-login',
+    ENTITY_LOGIN_PASSWORD_RECOVERY = '/entity-login/password-recovery',
 }

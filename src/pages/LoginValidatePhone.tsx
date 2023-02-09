@@ -26,7 +26,7 @@ const LoginValidatePhone = () => {
     };
 
     return (
-        <AppWrapper link={"/login"}>
+        <AppWrapper showBackButton>
             <AppPageHeader
                 title={translate("title")}
                 description={translate("description") as string}
@@ -39,6 +39,9 @@ const LoginValidatePhone = () => {
                     title={translate("successfulValidationTitle")}
                     buttonText={translate("continue")}
                     buttonOnClick={() => {
+                        // TODO login was successful,
+                        // but we need to redirect the user to a different screen
+                        // depending on its role
                         setShowSuccessDialog(false);
                         navigate(AppRoute.RECIPIENT_HOME)
                     }}
