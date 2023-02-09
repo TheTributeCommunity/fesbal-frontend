@@ -1,16 +1,14 @@
-import FamilyMember from "./FamilyMember";
-
-interface UserProps {
-    recipientUserId?: string;
-    id: string;
-    password: string;
-    email?: string;
-    fullName?: string;
-    birthDate?: string;
-    phone?: string;
-    derivationLimit?: Date;
-    nextPickup?: Date;
-    familyMembers?: FamilyMember[];
+interface EntityProps {
+    name: string;
+    code: string;
+    province: string;
+    nextDelivery: string;
+    address: string;
+    supervisorName: string;
+    contactPerson: string;
+    contactPhone: string;
+    contactEmail: string;
+    warehouseCapacity: string;
 }
 
-export default UserProps;
+export default EntityProps;
