@@ -11,7 +11,7 @@ interface AppWrapperProps {
     children?: ReactNode
 }
 
-const AppWrapper = ({title, titleClassName = '', showBurger = false, showBackButton, children}: AppWrapperProps): JSX.Element => {
+const AppWrapper = ({title, titleClassName = '', showBurger = false, showBackButton = true, children}: AppWrapperProps): JSX.Element => {
     return (
         // We set the height to the screen, and then set the 
         // height to 100dvh - this is because some browsers
