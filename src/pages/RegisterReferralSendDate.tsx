@@ -27,7 +27,7 @@ const RegisterReferralSendDate = () => {
 
 
     return (
-        <AppWrapper title={translate("headerTitle")} link={AppRoute.REGISTER_REFERRAL_SHEET}>
+        <AppWrapper title={translate("headerTitle")} showBackButton>
             <div className="flex h-full w-full flex-col self-center text-secondary-color">
                 <AppPageHeader title={translate("title")} description={translate("description") as string}/>
                 <AppReferralSendDateForm onSubmit={onSubmit}/>

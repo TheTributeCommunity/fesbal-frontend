@@ -1,13 +1,15 @@
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import { AppRoute } from "../../enums/app-route";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 
+const AppBackButton = () => {
+    const navigate = useNavigate()
 
-const AppBackButton = ({link}: { link: string }) => {
     return (
-        <Link to={link} className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md">
+        <button onClick={() => navigate(AppRoute.BACK)} className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md">
             <LeftArrowIcon/>
-        </Link>
-    );
-};
+        </button>
+    )
+}
 
-export default AppBackButton;
+export default AppBackButton

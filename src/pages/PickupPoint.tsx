@@ -11,7 +11,7 @@ const PickupPoint = () => {
     const {t: translate} = useTranslation(namespaces.pages.pickupPoint);
 
     return (
-        <AppWrapper title={translate("title")} link="/login" showBurger>
+        <AppWrapper title={translate("title")} showBackButton showBurger>
             <div className="flex w-full flex-col justify-start">
                 <h1 className="my-4 font-big-title">{pickup.neighbourhood}</h1>
                 <p className="text-primary-color font-label">{translate("address")}</p>

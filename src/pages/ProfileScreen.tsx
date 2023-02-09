@@ -48,7 +48,7 @@ const ProfileScreen = () => {
     };
 
     return (
-        <AppWrapper link="/login" title={translate('title')} showBurger>
+        <AppWrapper showBackButton title={translate('title')} showBurger>
             <div className="flex w-full flex-col gap-4 mb-2">
                 <ul>
                     {getPersonalData().map((personalData, index) => (

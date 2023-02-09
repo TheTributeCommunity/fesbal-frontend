@@ -17,7 +17,7 @@ const LoginScreen = () => {
     }
 
     return (
-        <AppWrapper link={AppRoute.WELCOME}>
+        <AppWrapper showBackButton>
             <div className="flex h-full w-full flex-col self-center">
                 <PageHeader title={translate("title")} description={translate("description") as string}/>
                 <LoginForm onSubmit={handleSubmit} />
