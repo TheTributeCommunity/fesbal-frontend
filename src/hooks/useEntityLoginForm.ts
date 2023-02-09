@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import { AuthService } from "../services/auth-service";
-import validateEmail from "../helpers/validateEmail";
+import {validateEmail} from "../helpers";
 
 const useLoginForm = () => {
     const [user, setUser] = useState({email: '', password: ''});

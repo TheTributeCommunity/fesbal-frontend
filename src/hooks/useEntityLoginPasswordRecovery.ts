@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
 import AppPopupAlert from "../components/atom/AppPopupAlert";
 import {AppRoute} from "../enums/app-route";
-import ValidateEmail from "../helpers/validateEmail";
+import {validateEmail} from "../helpers";
 import {AuthService} from "../services/auth-service";
 
 
@@ -14,8 +14,8 @@ const useEntityLoginPasswordRecovery = () => {
 
     const navigate = useNavigate();
     const {t: translate} = useTranslation(namespaces.pages.entityLoginPasswordRecovery);
-    const validateEmail = (): boolean => {
-        return ValidateEmail(email);
+    const isEmailValid = (): boolean => {
+        return validateEmail(email);
     }
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -44,7 +44,7 @@ const useEntityLoginPasswordRecovery = () => {
         hasError,
         onSubmit,
         email,
-        validateEmail
+        validateEmail: isEmailValid
     }
 }
 
