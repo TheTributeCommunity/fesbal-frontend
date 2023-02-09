@@ -1,7 +1,5 @@
 import { FormEvent, useState } from "react";
 import { AuthService } from "../services/auth-service";
-import { RecipientUserService } from "../services/recipient-user-service";
-import { RecipientUserRole } from "../models/recipient-user";
 
 const useLoginValidatePhoneForm = () => {
     const [validationCode, setValidationCode] = useState<string>('');
@@ -19,18 +17,8 @@ const useLoginValidatePhoneForm = () => {
         e.preventDefault();
         if (checkValidationCodeLength()) {
             return AuthService.confirmPhoneCode(validationCode)
-                .then(() => RecipientUserService.getAuth())
-                .then((user) => {
-                    switch (user.role) {
-                        case RecipientUserRole.UserAccepted:
-                            break
-                        case RecipientUserRole.UserPending:
-                            break
-                        case RecipientUserRole.UserRegistered:
-                            break
-                    }
-                    return true
-                }).catch((e) => {
+                .then(() => true)
+                .catch((e) => {
                     console.log(e)
                     return false;
                 })

@@ -41,7 +41,7 @@ export default ({link, showSublink}: ReferralFormProps) => {
             <div className="flex flex-col gap-4">
                 {showSublink &&
                     <a className="text-center underline font-small-link" onClick={()=>{navigate(AppRoute.REGISTER_REFERRAL_SHEET_SEND_DATE)}}>{translate("link")}</a>}
-                {/* below, onClick should be handleOnClick, but it's been replaced for the demo */}
+                {/* TODO below, onClick should be handleOnClick, but it's been replaced for the demo */}
                 <AppNextButton title={translate("next")} disabled={!file} onClick={() => navigate('/register/request-sent')}/>
             </div>
         </div>
