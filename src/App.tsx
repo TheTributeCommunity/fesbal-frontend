@@ -1,5 +1,4 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import EntityLoginPasswordRecovery from "./pages/EntityLoginPasswordRecovery";
 import LoginScreen from "./pages/LoginScreen";
 import MenuReferral from "./pages/MenuReferral";
 import MenuReferralUpload from "./pages/MenuReferralUpload";
@@ -27,6 +26,8 @@ import RegisterUser from "./pages/RegisterUser";
 import {AppRoute} from "./enums/app-route";
 import LoginValidatePhone from "./pages/LoginValidatePhone";
 import EntityLogin from "./pages/EntityLogin";
+import EntityLoginPasswordRecovery from "./pages/EntityLoginPasswordRecovery";
+import EntityProfile from "./pages/EntityProfile";
 
 function App() {
     return (
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
+                <Route path={AppRoute.ENTITY_PROFILE} element={<EntityProfile/>}/>
             </Routes>
         </Router>
     );

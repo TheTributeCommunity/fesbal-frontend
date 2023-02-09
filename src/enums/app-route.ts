@@ -13,4 +13,5 @@ export enum AppRoute {
     REGISTER_REFERRAL_SHEET_SEND_DATE = '/register/referral/send-date',
     ENTITY_LOGIN = '/entity-login',
     ENTITY_LOGIN_PASSWORD_RECOVERY = '/entity-login/password-recovery',
+    ENTITY_PROFILE = '/entity-profile',
 }
