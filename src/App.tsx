@@ -26,6 +26,7 @@ import AddFamilyMember from "./pages/AddFamilyMember";
 import RegisterUser from "./pages/RegisterUser";
 import {AppRoute} from "./enums/app-route";
 import LoginValidatePhone from "./pages/LoginValidatePhone";
+import { PickupDetails } from "./pages/PickupDetails";
 
 function App() {
     return (
@@ -56,7 +57,8 @@ function App() {
                 <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
                 <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                 <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
-                <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
+                <Route path={AppRoute.PICKUP_HISTORY} element={<PickupHistoryPage/>}/>
+                <Route path={AppRoute.PICKUP_DETAILS} element={<PickupDetails/>}/>
             </Routes>
         </Router>
     );
