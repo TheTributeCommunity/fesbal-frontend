@@ -15,7 +15,7 @@ const PickupHistoryPage = () => {
   }, []);
 
   return (
-    <AppWrapper title="Historial de recogidas" link="/login" showBurger>
+    <AppWrapper title="Historial de recogidas" showBackButton showBurger>
       <div className="mb-6">
         <h2 className="text-[#002E5D] text-xs px-8 mb-1">Última recogida</h2>
         {!lastPickup ? (

@@ -26,7 +26,7 @@ const ProfileEditEmail = () => {
     }
     
     return (
-        <AppWrapper link="/profile" title={translate('title')}>
+        <AppWrapper showBackButton title={translate('title')}>
             <div className="flex flex-col self-center w-full h-full">
                 <PageHeader description={translate('description') as string}/>
                 <ProfileEditEmailForm onSubmit={handleSubmit}/>

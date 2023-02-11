@@ -12,7 +12,7 @@ const NotificationsScreen = () => {
     const {t: translate} = useTranslation(namespaces.pages.notifications);
 
     return (
-        <AppWrapper link="/login" title={translate("title")} showBurger>
+        <AppWrapper showBackButton title={translate("title")} showBurger>
                 <ul className="flex w-full flex-col justify-start gap-4 mb-2">
                 {notifications.map((notification, index) => (
                     <NotificationItem key={index} {...notification}/>

@@ -8,7 +8,7 @@ const MenuReferralUpload = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerReferral);
 
     return (
-        <AppWrapper title={translate("title")} link="/referral" showBurger>
+        <AppWrapper title={translate("title")} showBackButton showBurger>
             <div className="flex flex-col gap-4">
                 <AppPageHeader 
                             description={translate("description") as string}/>

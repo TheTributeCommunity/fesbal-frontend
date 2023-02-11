@@ -26,7 +26,7 @@ const ValidatePhone = () => {
     };
 
     return (
-        <AppWrapper link={AppRoute.REGISTER_PHONE} title={translate("headerTitle")}>
+        <AppWrapper showBackButton title={translate("headerTitle")}>
             <AppPageHeader
                 title={translate("title")}
                 description={translate("description") as string}

@@ -13,7 +13,7 @@ const MenuReferral = () => {
     const goToUpload = () => navigate("/referral/upload");
 
     return (
-        <AppWrapper title={translate("title")} link="/login" showBurger>
+        <AppWrapper title={translate("title")} showBackButton showBurger>
             <div className="w-full flex flex-col gap-4">
                 {referrals.map((referral, index) => (
                     <MenuReferralCard

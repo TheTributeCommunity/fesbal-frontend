@@ -17,7 +17,7 @@ const RegisterPhone = () => {
     }
 
     return (
-        <AppWrapper link={AppRoute.REGISTER} title={translate("title")}>
+        <AppWrapper showBackButton title={translate("title")}>
             <div className="flex h-full w-full flex-col self-center text-secondary-color">
                 <PageHeader title={translate("titleSecondary")} description={translate("description") as string}/>
                 <RegisterPhoneForm onSubmit={handleSubmit}/>
