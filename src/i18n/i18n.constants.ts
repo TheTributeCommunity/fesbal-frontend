@@ -1,5 +1,6 @@
 export const namespaces = {
     pages: {
+        entityHome: "pages.entityHome",
         entityLogin: "pages.entityLogin",
         entityLoginPasswordRecovery: "pages.entityLoginPasswordRecovery",
         loginScreen: "pages.loginScreen",
