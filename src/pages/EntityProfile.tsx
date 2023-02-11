@@ -1,6 +1,5 @@
 import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
-import { AppRoute } from "../enums/app-route";
 import entityMock from "../mocks/entity.mock";
 import AppWrapper from "../components/molecules/AppWrapper";
 import BuildingsIcon from "../components/icons/BuildingsIcon";
@@ -65,7 +64,7 @@ const EntityProfile = () => {
     }
 
     return (
-        <AppWrapper link={AppRoute.ENTITY_LOGIN} title={translate('title')}>
+        <AppWrapper title={translate('title')}>
             <div className="flex w-full flex-col mb-2">
                 <ul>
                     {getData().entity.map((personalData, index) => (
