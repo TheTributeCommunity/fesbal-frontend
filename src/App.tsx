@@ -27,6 +27,7 @@ import RegisterUser from "./pages/RegisterUser";
 import {AppRoute} from "./enums/app-route";
 import LoginValidatePhone from "./pages/LoginValidatePhone";
 import EntityLogin from "./pages/EntityLogin";
+import EntityHome from "./pages/EntityHome";
 
 function App() {
     return (
@@ -57,6 +58,7 @@ function App() {
                 <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                 <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
                 <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
+                <Route path={AppRoute.ENTITY_HOME} element={<EntityHome/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
             </Routes>
