@@ -52,7 +52,7 @@ const ProfileScreen = () => {
                 </ul>
                 <div className="flex flex-row items-center gap-2 px-8 font-bold mt-3">
                     <FamilyMembersIcon/>
-                    <h2 className="font-mini-title">{translate('familyMembers')}</h2>
+                    <h2 className="font-mini-title text-secondary-color">{translate('familyMembers')}</h2>
                     <div className="ml-auto"></div>
                 </div>
                 {familyMembers.map((familyMember, index) => 
