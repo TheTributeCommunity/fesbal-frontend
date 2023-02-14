@@ -43,7 +43,7 @@ const ProfileScreen = () => {
     }
 
     return (
-        <AppWrapper showBackButton title={translate('title')} containerClassName="!px-0" showBurger>
+        <AppWrapper showBackButton title={translate('title')} containerClassName="px-0" showBurger>
             <div className="flex w-full flex-col gap-4 mb-2">
                 <ul className='border-b-[1px] border-b-primary-color'>
                     {getPersonalData().map((personalData, index) => (
