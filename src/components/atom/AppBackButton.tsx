@@ -1,6 +1,6 @@
-import {useNavigate} from "react-router-dom";
-import { AppRoute } from "../../enums/app-route";
-import LeftArrowIcon from "../icons/LeftArrowIcon";
+import {useNavigate} from 'react-router-dom'
+import { AppRoute } from '../../enums/app-route'
+import LeftArrowIcon from '../icons/LeftArrowIcon'
 
 const AppBackButton = () => {
     const navigate = useNavigate()
