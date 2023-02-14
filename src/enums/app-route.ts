@@ -15,7 +15,7 @@ export enum AppRoute {
     NOTIFICATIONS = '/notifications',
     PICKUP_HISTORY = '/pickup-history',
     PICKUP_POINT = '/pickup-point',
-    REFERRAL = '/referral'
+    REFERRAL = '/referral',
     BACK = -1,
     ENTITY_LOGIN = '/entity-login',
     ENTITY_LOGIN_PASSWORD_RECOVERY = '/entity-login/password-recovery',
