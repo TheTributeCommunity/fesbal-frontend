@@ -6,4 +6,4 @@ const ClockIcon = () => {
     )
 }
 
-export default ClockIcon;
+export default ClockIcon
