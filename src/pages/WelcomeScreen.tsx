@@ -1,10 +1,14 @@
-import {useTranslation} from "react-i18next";
-import {namespaces} from "../i18n/i18n.constants";
 import LogoFesbalWhiteIcon from "../components/icons/LogoFesbalWhiteIcon";
 import {AppRoute} from "../enums/app-route";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 const WelcomeScreen = () => {
-    const {t: translate} = useTranslation(namespaces.pages.welcomeScreen);
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        setTimeout(() => navigate(AppRoute.WELCOME), 1000)
+    }, [])
 
     return (
         <a href={AppRoute.WELCOME}>
