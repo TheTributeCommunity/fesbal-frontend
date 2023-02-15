@@ -1,5 +1,6 @@
 export const AppRoute = {
     WELCOME: '/welcome',
+    LOGIN: '/login',
     LOGIN_VALIDATE_PHONE: '/login/validate-phone',
     REGISTER: '/register',
     REGISTER_PHONE: '/register/phone',

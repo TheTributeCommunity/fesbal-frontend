@@ -64,7 +64,7 @@ const BurgerMenu = ({visible, onHide}: BurgerMenuProps): JSX.Element => {
                     <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.location.replace('https://www.fesbal.org.es/faqs')}} />
                     <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => {return}} />
                 </div>
-                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={() => navigate('/login')}>
+                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={() => navigate(AppRoute.LOGIN)}>
                     {<PowerIcon />}
                     <span className="text-center font-roboto-flex text-focus-warning-color font-normal text-base leading-5">{translate('logOut', '')}</span>
                 </div>
