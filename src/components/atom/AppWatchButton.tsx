@@ -1,11 +1,11 @@
-import WatchIcon from "../icons/WatchIcon";
+//import WatchIcon from "../icons/WatchIcon";
 
 const AppWatchButton = () => {
     return (
         <button>
-            <WatchIcon/>
+            {/*<WatchIcon/>*/}
         </button>
-    );
-};
+    )
+}
 
-export default AppWatchButton;
+export default AppWatchButton
