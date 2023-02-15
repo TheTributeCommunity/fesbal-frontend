@@ -1,4 +1,9 @@
+const burgerMenuCommon = {
+    title: 'BALPA'
+}
+
 export const burgerMenuEs = {
+    ...burgerMenuCommon,
     profile: "Perfil",
     notifications: "Notificaciones",
     history: "Histórico de recogidas",
@@ -10,6 +15,7 @@ export const burgerMenuEs = {
 }
 
 export const burgerMenuEn = {
+    ...burgerMenuCommon,
     profile: "Profile",
     notifications: "Notifications",
     history: "Pickup history",
