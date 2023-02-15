@@ -1,16 +1,16 @@
-import {useTranslation} from "react-i18next";
-import {namespaces} from "../i18n/i18n.constants";
-import entityMock from "../mocks/entity.mock";
-import AppWrapper from "../components/molecules/AppWrapper";
-import BuildingsIcon from "../components/icons/BuildingsIcon";
-import ContactIcon from "../components/icons/ContactIcon";
-import EntityProfileProps from "../types/EntityProfileProps";
-import ProfilePersonalDataItem from "../components/atom/ProfilePersonalDataItem";
+import {useTranslation} from 'react-i18next'
+import {namespaces} from '../i18n/i18n.constants'
+import entityMock from '../mocks/entity.mock'
+import AppWrapper from '../components/molecules/AppWrapper'
+import BuildingsIcon from '../components/icons/BuildingsIcon'
+import ContactIcon from '../components/icons/ContactIcon'
+import EntityProfileProps from '../types/EntityProfileProps'
+import ProfilePersonalDataItem from '../components/atom/ProfilePersonalDataItem'
 
 
 const EntityProfile = () => {
-    const {t: translate} = useTranslation(namespaces.pages.entityProfile);
-    const entity = entityMock;
+    const {t: translate} = useTranslation(namespaces.pages.entityProfile)
+    const entity = entityMock
 
     const getData = (): EntityProfileProps => {
         return {
@@ -77,7 +77,7 @@ const EntityProfile = () => {
                 </div>
                 <ul>
                     {getData().contact.map((personalData, index) => (
-                        <ProfilePersonalDataItem key={index} personalData={personalData} index={index} startWithWhite/>
+                        <ProfilePersonalDataItem key={index} personalData={personalData} index={index}/>
                     ))}
                 </ul>
                 <div className="flex flex-row items-center gap-2 pl-2 font-bold py-6 ">
@@ -85,11 +85,11 @@ const EntityProfile = () => {
                     <h2 className="font-mini-title">{translate('logisticData')}</h2>
                 </div>
                 <ul>
-                    <ProfilePersonalDataItem personalData={getData().logistic[0]} index={0} startWithWhite/>
+                    <ProfilePersonalDataItem personalData={getData().logistic[0]} index={0}/>
                 </ul>
             </div>
         </AppWrapper>
-    );
+    )
 }
 
-export default EntityProfile;
+export default EntityProfile
