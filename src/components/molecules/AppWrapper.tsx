@@ -20,7 +20,7 @@ const AppWrapper = ({title, titleClassName = '', showBurger = false, showBackBut
         // it doesn't support it, it stays as viewport height
         <div className="bg-page h-screen h-[100dvh]">
             <div className={`flex flex-col justify-center mx-auto w-full md:w-1/2 lg:w-1/3 p-8 h-full ${containerClassName}`}>
-                <div className={'flex flex-row fixed w-full md:w-1/2 lg:w-1/3 px-8 py-4 top-0 left-0 right-0 mx-auto'}>
+                <div className="flex flex-row fixed w-full md:w-1/2 lg:w-1/3 px-8 py-4 top-0 left-0 right-0 mx-auto">
                     <div className="w-1/4 flex flex-row justify-start">
                         {showBackButton && <AppBackButton />}
                     </div>
