@@ -1,18 +1,18 @@
-import { Sidebar } from "primereact/sidebar"
-import { ReactNode } from "react";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
-import { AppRoute } from "../../enums/app-route";
-import { namespaces } from "../../i18n/i18n.constants";
-import AppCloseButton from "../atom/AppCloseButton";
-import ClockIcon from "../icons/ClockIcon";
-import DeleteAccountIcon from "../icons/DeleteAccountIcon";
-import DocumentIcon from "../icons/DocumentIcon";
-import HelpIcon from "../icons/HelpIcon";
-import NotificationsIcon from "../icons/NotificationsIcon";
-import PersonIcon from "../icons/PersonIcon";
-import PickupIcon from "../icons/PickupIcon";
-import PowerIcon from "../icons/PowerIcon";
+import { Sidebar } from 'primereact/sidebar'
+import { ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router'
+import { AppRoute } from '../../enums/app-route'
+import { namespaces } from '../../i18n/i18n.constants'
+import AppCloseButton from '../atom/AppCloseButton'
+import ClockIcon from '../icons/ClockIcon'
+import DeleteAccountIcon from '../icons/DeleteAccountIcon'
+import DocumentIcon from '../icons/DocumentIcon'
+import HelpIcon from '../icons/HelpIcon'
+import NotificationsIcon from '../icons/NotificationsIcon'
+import PersonIcon from '../icons/PersonIcon'
+import PickupIcon from '../icons/PickupIcon'
+import PowerIcon from '../icons/PowerIcon'
 
 interface BurgerMenuProps {
     visible: boolean,
@@ -36,15 +36,15 @@ const MenuItem = ({icon, title, onClick}: MenuItemProps) => {
 
 const BurgerMenu = ({visible, onHide}: BurgerMenuProps): JSX.Element => {
     const navigate = useNavigate()
-    const {t: translate} = useTranslation(namespaces.components.burgerMenu);
+    const {t: translate} = useTranslation(namespaces.components.burgerMenu)
 
     return (
         <Sidebar
-        visible={visible} position="right" onHide={onHide}
-        className="bg-white rounded-md border border-white shadow-md py-2"
-        maskClassName="bg-mask-opaque w-full h-full"
-        closeOnEscape blockScroll
-        showCloseIcon={false}
+            visible={visible} position="right" onHide={onHide}
+            className="bg-white rounded-md border border-white shadow-md py-2"
+            maskClassName="bg-mask-opaque w-full h-full"
+            closeOnEscape blockScroll
+            showCloseIcon={false}
         >
             <div className="flex flex-col gap-4">
                 <div className="flex flex-row justify-end px-8">
@@ -64,7 +64,7 @@ const BurgerMenu = ({visible, onHide}: BurgerMenuProps): JSX.Element => {
                     <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.location.replace('https://www.fesbal.org.es/faqs')}} />
                     <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => {}} />
                 </div>
-                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={() => navigate(AppRoute.LOGIN)}>
+                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={() => navigate('/login')}>
                     {<PowerIcon />}
                     <span className="text-center font-roboto-flex text-focus-warning-color font-normal text-base leading-5">{translate('logOut', '')}</span>
                 </div>
@@ -73,4 +73,4 @@ const BurgerMenu = ({visible, onHide}: BurgerMenuProps): JSX.Element => {
     )
 }
 
-export default BurgerMenu;
+export default BurgerMenu
