@@ -1,0 +1,31 @@
+export const entityProfileEs = {
+    title: "Perfil",
+    entityName: "Nombre de la entidad",
+    code: "Código",
+    province: "Provincia",
+    nextDelivery: "Próxima entrega",
+    address: "Dirección postal",
+    supervisorName: "Nombre del supervisor",
+    contact: "Contacto",
+    contactPerson: "Persona de contacto",
+    contactPhone: "Teléfono",
+    contactEmail: "Correo electrónico",
+    logisticData: "Datos logísticos",
+    warehouseCapacity: "Capacidad del almacén",
+}
+
+export const entityProfileEn = {
+    title: "Profile",
+    entityName: "Entity name",
+    code: "Code",
+    province: "Province",
+    nextDelivery: "Next delivery",
+    address: "Postal address",
+    supervisorName: "Supervisor name",
+    contact: "Contact",
+    contactPerson: "Contact person",
+    contactPhone: "Phone",
+    contactEmail: "Email",
+    logisticData: "Logistic data",
+    warehouseCapacity: "Warehouse capacity",
+}
