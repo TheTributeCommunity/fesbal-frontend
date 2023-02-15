@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { AppRoute } from './enums/app-route'
 import AddFamilyMember from './pages/AddFamilyMember'
 import EntityHome from './pages/EntityHome'
-import EntityProfile from "./pages/EntityProfile";
+import EntityProfile from './pages/EntityProfile'
 import EntityLogin from './pages/EntityLogin'
 import EntityLoginPasswordRecovery from './pages/EntityLoginPasswordRecovery'
 import LoginScreen from './pages/LoginScreen'
