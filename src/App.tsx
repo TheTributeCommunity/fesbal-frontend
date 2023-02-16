@@ -28,6 +28,7 @@ import {AppRoute} from "./enums/app-route";
 import LoginValidatePhone from "./pages/LoginValidatePhone";
 import EntityLogin from "./pages/EntityLogin";
 import EntityHome from "./pages/EntityHome";
+import EntityUserScanned from "./pages/EntityUserScanned";
 
 function App() {
     return (
@@ -61,6 +62,7 @@ function App() {
                 <Route path={AppRoute.ENTITY_HOME} element={<EntityHome/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
+                <Route path={AppRoute.ENTITY_USER_SCANNED} element={<EntityUserScanned/>}/>
             </Routes>
         </Router>
     );
