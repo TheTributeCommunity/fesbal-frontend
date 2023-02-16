@@ -29,13 +29,14 @@ import LoginValidatePhone from "./pages/LoginValidatePhone";
 import EntityLogin from "./pages/EntityLogin";
 import EntityHome from "./pages/EntityHome";
 import EntityUserScanned from "./pages/EntityUserScanned";
+import EntityProfile from "./pages/EntityProfile";
 
 function App() {
     return (
         <Router>
             <Routes>
                 <Route path="*" element={<WelcomeScreen/>}/>
-                <Route path="/login" element={<LoginScreen/>}/>
+                <Route path={AppRoute.LOGIN} element={<LoginScreen/>}/>
                 <Route path={AppRoute.LOGIN_VALIDATE_PHONE} element={<LoginValidatePhone/>}/>
                 <Route path="/notifications" element={<NotificationsScreen/>}/>
                 <Route path="/notifications/:id" element={<NotificationDetails/>}/>
@@ -62,6 +63,7 @@ function App() {
                 <Route path={AppRoute.ENTITY_HOME} element={<EntityHome/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
+                <Route path={AppRoute.ENTITY_PROFILE} element={<EntityProfile/>}/>
                 <Route path={AppRoute.ENTITY_USER_SCANNED} element={<EntityUserScanned/>}/>
             </Routes>
         </Router>

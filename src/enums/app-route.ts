@@ -1,5 +1,6 @@
 export const AppRoute = {
     WELCOME: '/welcome',
+    LOGIN: '/login',
     LOGIN_VALIDATE_PHONE: '/login/validate-phone',
     REGISTER: '/register',
     REGISTER_PHONE: '/register/phone',
@@ -18,6 +19,7 @@ export const AppRoute = {
     ENTITY_HOME: '/entity/home',
     ENTITY_LOGIN: '/entity/login',
     ENTITY_LOGIN_PASSWORD_RECOVERY: '/entity/login/password-recovery',
+    ENTITY_PROFILE: '/entity-profile',
     ENTITY_USER_SCANNED: '/entity/user-scanned',
     BACK: -1,
 }

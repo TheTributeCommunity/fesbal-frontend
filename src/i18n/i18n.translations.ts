@@ -1,28 +1,29 @@
-import { burgerMenuEn, burgerMenuEs } from "./components/burgerMenu";
-import { appCalendarEs, appCalendarEn } from "./atoms/appCalendar";
-import { namespaces } from "./i18n.constants";
-import { entityLoginEn, entityLoginEs} from "./pages/entityLogin";
-import { entityLoginPasswordRecoveryEn, entityLoginPasswordRecoveryEs } from "./pages/entityLoginPasswordRecovery";
-import { loginScreenEn, loginScreenEs } from "./pages/loginScreen";
-import { loginValidatePhoneEn, loginValidatePhoneEs } from "./pages/loginValidatePhone";
-import { menuDeleteAccountEn, menuDeleteAccountEs } from "./pages/menuDeleteAccount";
-import { menuReferralEn, menuReferralEs } from "./pages/menuReferral";
-import { profileEditEmailEn, profileEditEmailEs } from "./pages/profileEditEmail";
-import { profileEditNewPasswordEn, profileEditNewPasswordEs } from "./pages/profileEditNewPassword";
-import { profileEditPrevPasswordEn, profileEditPrevPasswordEs } from "./pages/profileEditPrevPassword";
-import { profileScreenEn, profileScreenEs } from "./pages/profileScreen";
-import { registerFamilyMembersEn, registerFamilyMembersEs } from "./pages/registerFamilyMembers";
-import { registerUserEn, registerUserEs } from "./pages/registerUser";
-import {registerEmailEn, registerEmailEs} from "./pages/registerEmail";
-import { registerLegalEn, registerLegalEs } from "./pages/registerLegal";
-import { registerReferralEn, registerReferralEs } from "./pages/registerReferral";
-import { registerReferralSendDateEn, registerReferralSendDateEs } from "./pages/registerReferralSendDate";
-import { registerRequestSentEn, registerRequestSentEs } from "./pages/registerRequestSent";
-import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
-import {welcomeScreenEn, welcomeScreenEs} from "./pages/welcomeScreen";
-import {validatePhoneEn, validatePhoneEs} from "./pages/validatePhone";
-import { recipientLandingEs, recipientLandingEn } from "./pages/recipientLanding";
+import {appCalendarEs, appCalendarEn} from "./atoms/appCalendar";
+import {burgerMenuEn, burgerMenuEs} from "./components/burgerMenu";
+import {entityLoginEn, entityLoginEs} from "./pages/entityLogin";
+import {entityLoginPasswordRecoveryEn, entityLoginPasswordRecoveryEs} from "./pages/entityLoginPasswordRecovery";
+import {entityProfileEs, entityProfileEn} from "./pages/entityProfile";
 import {entityUserScannedEs} from "./pages/entityUserScanned";
+import {loginScreenEn, loginScreenEs} from "./pages/loginScreen";
+import {loginValidatePhoneEn, loginValidatePhoneEs} from "./pages/loginValidatePhone";
+import {menuDeleteAccountEn, menuDeleteAccountEs} from "./pages/menuDeleteAccount";
+import {menuReferralEn, menuReferralEs} from "./pages/menuReferral";
+import {namespaces} from "./i18n.constants";
+import {profileEditEmailEn, profileEditEmailEs} from "./pages/profileEditEmail";
+import {profileEditNewPasswordEn, profileEditNewPasswordEs} from "./pages/profileEditNewPassword";
+import {profileEditPrevPasswordEn, profileEditPrevPasswordEs} from "./pages/profileEditPrevPassword";
+import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
+import {recipientLandingEs, recipientLandingEn} from "./pages/recipientLanding";
+import {registerEmailEn, registerEmailEs} from "./pages/registerEmail";
+import {registerFamilyMembersEn, registerFamilyMembersEs} from "./pages/registerFamilyMembers";
+import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
+import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
+import {registerReferralEn, registerReferralEs} from "./pages/registerReferral";
+import {registerReferralSendDateEn, registerReferralSendDateEs} from "./pages/registerReferralSendDate";
+import {registerRequestSentEn, registerRequestSentEs} from "./pages/registerRequestSent";
+import {registerUserEn, registerUserEs} from "./pages/registerUser";
+import {validatePhoneEn, validatePhoneEs} from "./pages/validatePhone";
+import {welcomeScreenEn, welcomeScreenEs} from "./pages/welcomeScreen";
 
 export const es = {
     [namespaces.common]: {
@@ -35,6 +36,7 @@ export const es = {
     [namespaces.pages.entityLogin]: entityLoginEs,
     [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEs,
     [namespaces.pages.entityUserScanned]: entityUserScannedEs,
+    [namespaces.pages.entityProfile]: entityProfileEs,
     [namespaces.pages.loginScreen]: loginScreenEs,
     [namespaces.pages.loginValidatePhone]: loginValidatePhoneEs,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEs,
@@ -71,6 +73,7 @@ export const en = {
     [namespaces.pages.entityLogin]: entityLoginEn,
     [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEn,
     [namespaces.pages.entityUserScanned]: entityUserScannedEs,
+    [namespaces.pages.entityProfile]: entityProfileEn,
     [namespaces.pages.loginScreen]: loginScreenEn,
     [namespaces.pages.loginValidatePhone]: loginValidatePhoneEn,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEn,
