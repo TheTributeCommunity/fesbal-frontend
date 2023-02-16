@@ -3,6 +3,7 @@ export const namespaces = {
         entityHome: "pages.entityHome",
         entityLogin: "pages.entityLogin",
         entityLoginPasswordRecovery: "pages.entityLoginPasswordRecovery",
+        entityUserScanned: "pages.entityUserScanned",
         loginScreen: "pages.loginScreen",
         loginValidatePhone: "pages.loginValidatePhone",
         recipientLanding: "pages.recipientLanding",

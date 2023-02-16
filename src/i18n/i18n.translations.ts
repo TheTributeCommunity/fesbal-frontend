@@ -22,6 +22,7 @@ import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
 import {welcomeScreenEn, welcomeScreenEs} from "./pages/welcomeScreen";
 import {validatePhoneEn, validatePhoneEs} from "./pages/validatePhone";
 import { recipientLandingEs, recipientLandingEn } from "./pages/recipientLanding";
+import {entityUserScannedEs} from "./pages/entityUserScanned";
 
 export const es = {
     [namespaces.common]: {
@@ -33,6 +34,7 @@ export const es = {
     [namespaces.pages.entityHome]: { title: "BALPA", address: "Asociación de vecinos de Máspalomas" },
     [namespaces.pages.entityLogin]: entityLoginEs,
     [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEs,
+    [namespaces.pages.entityUserScanned]: entityUserScannedEs,
     [namespaces.pages.loginScreen]: loginScreenEs,
     [namespaces.pages.loginValidatePhone]: loginValidatePhoneEs,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEs,
@@ -68,6 +70,7 @@ export const en = {
     [namespaces.pages.entityHome]: { title: "BALPA", address: "Asociación de vecinos de Máspalomas" },
     [namespaces.pages.entityLogin]: entityLoginEn,
     [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEn,
+    [namespaces.pages.entityUserScanned]: entityUserScannedEs,
     [namespaces.pages.loginScreen]: loginScreenEn,
     [namespaces.pages.loginValidatePhone]: loginValidatePhoneEn,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEn,
