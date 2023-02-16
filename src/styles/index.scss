@@ -68,6 +68,10 @@
     background-color: $warning-color;
   }
 
+  .bg-ghost-white {
+    background-color: $ghost-white;
+  }
+
   .hover-warning-color:hover {
     background-color: $hover-warning-color;
   }
@@ -215,7 +219,7 @@
     &--digits {
       @apply text-center font-semibold text-2xl px-1 py-4;
       -moz-appearence: textfield; // Firefox
-    }  
+    }
 
     &--digits::-webkit-outer-spin-button, &--digits::-webkit-inner-spin-button {
       -webkit-appearance: none; // Chrome, Safari, Edge - https://stackoverflow.com/a/4298216
@@ -254,7 +258,7 @@
   .app-calendar {
     &::after {
       content: url(../components/icons/AppCalendarIcon.svg);
-      
+
       right: 18px;
       top: 0px;
       height: 100%;
