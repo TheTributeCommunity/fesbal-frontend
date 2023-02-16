@@ -65,7 +65,7 @@ const EntityUserScanned = () => {
                     </li>
                 </ul>
             </div>
-            <div className="flex px-8 py-4">
+            <div className="flex px-8 py-4 mt-10">
                 <AppNextButton title={translate('sendFoodList')}/>
             </div>
         </AppWrapper>
