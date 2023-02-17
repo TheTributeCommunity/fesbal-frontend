@@ -24,18 +24,6 @@ const defaultFoodItemsByAge: DefaultFoodItemsByAge = {
     ],
     between3and15: [
         {
-            name: FoodNames.RICE,
-            quantity: 2,
-            measurementUnit: MeasurementUnit.KILOGRAMS,
-        },
-        {
-            name: FoodNames.MILK,
-            quantity: 2,
-            measurementUnit: MeasurementUnit.LITERS,
-        },
-    ],
-    over16: [
-        {
             name: FoodNames.OIL,
             quantity: 750,
             measurementUnit: MeasurementUnit.MILLILITERS,
@@ -44,6 +32,18 @@ const defaultFoodItemsByAge: DefaultFoodItemsByAge = {
             name: FoodNames.CHICKPEAS,
             quantity: 2,
             measurementUnit: MeasurementUnit.KILOGRAMS,
+        },
+    ],
+    over16: [
+        {
+            name: FoodNames.RICE,
+            quantity: 2,
+            measurementUnit: MeasurementUnit.KILOGRAMS,
+        },
+        {
+            name: FoodNames.MILK,
+            quantity: 2,
+            measurementUnit: MeasurementUnit.LITERS,
         },
     ],
 };
