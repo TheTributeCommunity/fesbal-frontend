@@ -12,7 +12,6 @@ import {useTranslation} from "react-i18next";
 import {namespaces} from "../i18n/i18n.constants";
 
 const recipientUser = recipientUserMock;
-
 const EntityUserScanned = () => {
     const {familyUnitAges} = useFamilyUnitAges(recipientUser);
     const {foodItems, removeFoodItem, addFoodItem} = useFoodItems(familyUnitAges);
