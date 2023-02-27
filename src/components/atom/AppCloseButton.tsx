@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import CloseIcon from "../icons/CloseIcon"
-import CrossIcon from "../icons/CrossIcon"
+import CrossIcon from "../icons/CloseIcon"
 
 interface AppCloseButtonProps {
     onClick: () => void
@@ -9,7 +9,7 @@ interface AppCloseButtonProps {
 const AppCloseButton = ({onClick}: AppCloseButtonProps): JSX.Element => {
     return (
         <button className="rounded-full shadow-md w-12 h-12" onClick={onClick}>
-            <CloseIcon />
+            <CrossIcon color="text-secondary-color" size="xl"/>
         </button>
     )
 }

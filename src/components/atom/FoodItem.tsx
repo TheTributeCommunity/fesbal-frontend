@@ -1,4 +1,4 @@
-import CrossIcon from '../icons/CrossIcon'
+import CrossIcon from '../icons/CloseIcon'
 import FoodItemProps from '../../types/FoodItemProps'
 import {Link} from 'react-router-dom'
 import {AppRoute} from '../../enums/app-route'
