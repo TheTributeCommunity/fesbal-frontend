@@ -1,10 +1,16 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faXmark} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTimes} from '@fortawesome/free-solid-svg-icons'
+import {SizeProp} from '@fortawesome/fontawesome-svg-core'
 
-const CrossIcon = () => {
+type CloseIconProps = {
+    color?: string;
+    size?: SizeProp;
+};
+
+const CloseIcon = ({color = 'text-warning-color', size = 'lg'}: CloseIconProps) => {
     return (
-        <FontAwesomeIcon icon={faXmark} className="text-warning-color cursor-pointer" size="lg"/>
+        <FontAwesomeIcon icon={faTimes} className={color} size={size}/>
     )
 }
 
-export default CrossIcon;
+export default CloseIcon
