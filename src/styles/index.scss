@@ -168,6 +168,14 @@
     line-height: 20px;
   }
 
+  .font-mega-input {
+    font-family: $main-font;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+  }
+
   .app-page {
     @apply flex min-h-screen flex-col justify-between p-8 page-bg text-secondary-color;
   }
