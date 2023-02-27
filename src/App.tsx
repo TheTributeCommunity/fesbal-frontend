@@ -1,35 +1,35 @@
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import EntityLoginPasswordRecovery from "./pages/EntityLoginPasswordRecovery";
-import LoginScreen from "./pages/LoginScreen";
-import MenuReferral from "./pages/MenuReferral";
-import MenuReferralUpload from "./pages/MenuReferralUpload";
-import NotificationDetails from "./pages/NotificationDetails";
-import NotificationsScreen from "./pages/NotificationsScreen";
-import PickupPoint from "./pages/PickupPoint";
-import ProfileEditEmail from "./pages/ProfileEditEmail";
-import ProfileEditNewPassword from "./pages/ProfileEditNewPassword";
-import ProfileEditPrevPassword from "./pages/ProfileEditPrevPassword";
-import ProfileScreen from "./pages/ProfileScreen";
-import RegisterFamilyMembers from "./pages/RegisterFamilyMembers";
-import RegisterLegal from "./pages/RegisterLegal";
-import RegisterReferral from "./pages/RegisterReferral";
-import RegisterReferralSendDate from "./pages/RegisterReferralSendDate";
-import RegisterRequestSent from "./pages/RegisterRequestSent";
-import RegisterEmail from "./pages/RegisterEmail";
-import ValidatePhone from "./pages/ValidatePhone";
-import WelcomeScreen from "./pages/WelcomeScreen";
-import PickupHistoryPage from './pages/PickupHistoryPage';
-import RecipientLandingScreen from "./pages/RecipientLandingScreen";
-import SplashScreen from "./pages/SplashScreen";
-import RegisterPhone from "./pages/RegisterPhone";
-import AddFamilyMember from "./pages/AddFamilyMember";
-import RegisterUser from "./pages/RegisterUser";
-import {AppRoute} from "./enums/app-route";
-import LoginValidatePhone from "./pages/LoginValidatePhone";
-import EntityLogin from "./pages/EntityLogin";
-import EntityHome from "./pages/EntityHome";
-import EntityUserScanned from "./pages/EntityUserScanned";
-import EntityProfile from "./pages/EntityProfile";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import EntityLoginPasswordRecovery from './pages/EntityLoginPasswordRecovery'
+import LoginScreen from './pages/LoginScreen'
+import MenuReferral from './pages/MenuReferral'
+import MenuReferralUpload from './pages/MenuReferralUpload'
+import NotificationDetails from './pages/NotificationDetails'
+import NotificationsScreen from './pages/NotificationsScreen'
+import PickupPoint from './pages/PickupPoint'
+import ProfileEditEmail from './pages/ProfileEditEmail'
+import ProfileEditNewPassword from './pages/ProfileEditNewPassword'
+import ProfileEditPrevPassword from './pages/ProfileEditPrevPassword'
+import ProfileScreen from './pages/ProfileScreen'
+import RegisterFamilyMembers from './pages/RegisterFamilyMembers'
+import RegisterLegal from './pages/RegisterLegal'
+import RegisterReferral from './pages/RegisterReferral'
+import RegisterReferralSendDate from './pages/RegisterReferralSendDate'
+import RegisterRequestSent from './pages/RegisterRequestSent'
+import RegisterEmail from './pages/RegisterEmail'
+import ValidatePhone from './pages/ValidatePhone'
+import WelcomeScreen from './pages/WelcomeScreen'
+import PickupHistoryPage from './pages/PickupHistoryPage'
+import RecipientLandingScreen from './pages/RecipientLandingScreen'
+import SplashScreen from './pages/SplashScreen'
+import RegisterPhone from './pages/RegisterPhone'
+import AddFamilyMember from './pages/AddFamilyMember'
+import RegisterUser from './pages/RegisterUser'
+import {AppRoute} from './enums/app-route'
+import LoginValidatePhone from './pages/LoginValidatePhone'
+import EntityLogin from './pages/EntityLogin'
+import EntityHome from './pages/EntityHome'
+import EntityUserScanned from './pages/EntityUserScanned'
+import EntityProfile from './pages/EntityProfile'
 
 function App() {
     return (
@@ -67,7 +67,7 @@ function App() {
                 <Route path={AppRoute.ENTITY_USER_SCANNED} element={<EntityUserScanned/>}/>
             </Routes>
         </Router>
-    );
+    )
 }
 
-export default App;
+export default App
