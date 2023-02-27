@@ -37,5 +37,5 @@ export const measurements: { [key: string]: Measurement } = {
         unit: MeasurementUnit.UNITS,
         name: 'Unidades'
     }
-};
+}
 
