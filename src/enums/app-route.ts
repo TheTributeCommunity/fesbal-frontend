@@ -17,8 +17,9 @@ export const AppRoute = {
     PICKUP_POINT: '/pickup-point',
     REFERRAL: '/referral',
     ENTITY_HOME: '/entity/home',
+    ENTITY_LOGIN: '/entity/login',
+    ENTITY_LOGIN_PASSWORD_RECOVERY: '/entity/login/password-recovery',
     ENTITY_PROFILE: '/entity-profile',
-    ENTITY_LOGIN: '/entity-login',
-    ENTITY_LOGIN_PASSWORD_RECOVERY: '/entity-login/password-recovery',
+    ENTITY_USER_SCANNED: '/entity/user-scanned',
     BACK: -1,
 }
