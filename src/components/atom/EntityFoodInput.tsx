@@ -1,5 +1,5 @@
 import React from 'react';
-import CrossIcon from '../icons/CrossIcon';
+import CrossIcon from '../icons/CloseIcon';
 
 type InputProps = {
     value: string;
