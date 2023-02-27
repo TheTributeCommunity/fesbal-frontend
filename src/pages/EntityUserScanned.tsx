@@ -1,21 +1,34 @@
-import AppWrapper from "../components/molecules/AppWrapper";
-import {Link} from "react-router-dom";
-import PlusAddIcon from "../components/icons/PlusAddIcon";
-import AppNextButton from "../components/atom/AppNextButton";
-import {useFamilyUnitAges} from "../hooks/useFamilyUnitAges";
-import recipientUserMock from "../mocks/recipientUser.mock";
-import AgeGroupItem from "../components/atom/AgeGroupItem";
-import FoodItem from "../components/atom/FoodItem";
-import useFoodItems from "../hooks/useFoodItems";
-import {AppRoute} from "../enums/app-route";
-import {useTranslation} from "react-i18next";
-import {namespaces} from "../i18n/i18n.constants";
+import AppWrapper from '../components/molecules/AppWrapper'
+import {useLocation} from 'react-router-dom'
+import PlusAddIcon from '../components/icons/PlusAddIcon'
+import AppNextButton from '../components/atom/AppNextButton'
+import recipientUserMock from '../mocks/recipientUser.mock'
+import AgeGroupItem from '../components/atom/AgeGroupItem'
+import FoodItem from '../components/atom/FoodItem'
+import useFoodItems from '../hooks/useFoodItems'
+import {AppRoute} from '../enums/app-route'
+import {useTranslation} from 'react-i18next'
+import {namespaces} from '../i18n/i18n.constants'
+import getDefaultFoodItems from '../helpers/getDefaultFoodItems'
+import getFamilyUnitAges from '../helpers/getFamilyUnitAges'
+import {useNavigate} from 'react-router'
+import FoodNames from '../enums/food-names'
 
-const recipientUser = recipientUserMock;
+const recipientUser = recipientUserMock
+const familyUnitAges = getFamilyUnitAges(recipientUser)
+const defaultFoodItems = getDefaultFoodItems(familyUnitAges)
+
 const EntityUserScanned = () => {
-    const {familyUnitAges} = useFamilyUnitAges(recipientUser);
-    const {foodItems, removeFoodItem, addFoodItem} = useFoodItems(familyUnitAges);
-    const {t: translate} = useTranslation(namespaces.pages.entityUserScanned);
+    const {state} = useLocation()
+    const {foodItems, removeFoodItem} = useFoodItems(state?.foodItems || defaultFoodItems)
+    const {t: translate} = useTranslation(namespaces.pages.entityUserScanned)
+    const navigate = useNavigate()
+    const handleOnUpdateFoodItem = (foodName: FoodNames) => {
+        navigate(AppRoute.ENTITY_FOOD_SEARCH, {state: {foodName, foodItems}})
+    }
+    const handleOnAddFoodItem = () => {
+        navigate(AppRoute.ENTITY_FOOD_SEARCH, {state: {foodItems}})
+    }
 
     return (
         <AppWrapper title={translate('title')} showBurger={true} containerClassName="px-0">
@@ -27,7 +40,7 @@ const EntityUserScanned = () => {
                 <div className="flex flex-col bg-ghost-white px-8 py-4 gap-2">
                     <h3 className="font-label text-primary-color">{translate('familyUnitAges')}</h3>
                     <ul className="flex flex-wrap gap-x-6 gap-y-2">
-                        <AgeGroupItem description={translate('under3')} count={familyUnitAges.under3}/>
+                        <AgeGroupItem description={translate('under3')} count={familyUnitAges.under2}/>
                         <AgeGroupItem description={translate('between3and15')} count={familyUnitAges.between3and15}/>
                         <AgeGroupItem description={translate('over16')} count={familyUnitAges.over16}/>
                     </ul>
@@ -52,16 +65,16 @@ const EntityUserScanned = () => {
                                 quantity={food.quantity}
                                 measurementUnit={food.measurementUnit}
                                 onRemove={() => removeFoodItem(food)}
+                                onFoodClick={() => handleOnUpdateFoodItem(food.name)}
                             />
                         ))}
                         <li>
-                            <Link to={AppRoute.ENTITY_LOGIN}>
-                                <div
-                                    className="bg-tertiary-color rounded-lg flex justify-center items-center py-4 gap-2 border border-white">
-                                    <PlusAddIcon/>
-                                    <p className="text-primary-color font-button">{translate('addFood')}</p>
-                                </div>
-                            </Link>
+                            <div
+                                className="bg-tertiary-color rounded-lg flex justify-center items-center py-4 gap-2 border border-white cursor-pointer"
+                                onClick={handleOnAddFoodItem}>
+                                <PlusAddIcon/>
+                                <p className="text-primary-color font-button">{translate('addFood')}</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -70,7 +83,7 @@ const EntityUserScanned = () => {
                 <AppNextButton title={translate('sendFoodList')}/>
             </div>
         </AppWrapper>
-    );
-};
+    )
+}
 
-export default EntityUserScanned;
+export default EntityUserScanned
