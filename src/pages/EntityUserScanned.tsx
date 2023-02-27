@@ -40,9 +40,9 @@ const EntityUserScanned = () => {
                 <div className="flex flex-col bg-ghost-white px-8 py-4 gap-2">
                     <h3 className="font-label text-primary-color">{translate('familyUnitAges')}</h3>
                     <ul className="flex flex-wrap gap-x-6 gap-y-2">
-                        <AgeGroupItem description={translate('under3')} count={familyUnitAges.under2}/>
+                        <AgeGroupItem description={translate('under3')} count={familyUnitAges.under3}/>
                         <AgeGroupItem description={translate('between3and15')} count={familyUnitAges.between3and15}/>
-                        <AgeGroupItem description={translate('over16')} count={familyUnitAges.over16}/>
+                        <AgeGroupItem description={translate('over16')} count={familyUnitAges.over15}/>
                     </ul>
                 </div>
                 <div className="flex flex-col px-8 py-4 gap-2">
