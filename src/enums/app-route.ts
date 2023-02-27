@@ -16,6 +16,7 @@ export const AppRoute = {
     PICKUP_HISTORY: '/pickup-history',
     PICKUP_POINT: '/pickup-point',
     REFERRAL: '/referral',
+    ENTITY_FOOD_SEARCH: '/entity/food-search',
     ENTITY_HOME: '/entity/home',
     ENTITY_LOGIN: '/entity/login',
     ENTITY_LOGIN_PASSWORD_RECOVERY: '/entity/login/password-recovery',

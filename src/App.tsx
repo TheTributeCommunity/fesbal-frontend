@@ -30,6 +30,7 @@ import EntityLogin from './pages/EntityLogin'
 import EntityHome from './pages/EntityHome'
 import EntityUserScanned from './pages/EntityUserScanned'
 import EntityProfile from './pages/EntityProfile'
+import EntityFoodSearch from './pages/EntityFoodSearch'
 
 function App() {
     return (
@@ -60,6 +61,7 @@ function App() {
                 <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                 <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
                 <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
+                <Route path={AppRoute.ENTITY_FOOD_SEARCH} element={<EntityFoodSearch/>}/>
                 <Route path={AppRoute.ENTITY_HOME} element={<EntityHome/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
