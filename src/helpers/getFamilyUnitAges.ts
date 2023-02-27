@@ -18,7 +18,7 @@ const getFamilyUnitAges = (user: RecipientUser): FamilyUnitAgesProps => {
     const under3 = ages.filter(age => age < 3).length
     const between3and15 = ages.filter(age => age >= 3 && age <= 15).length
     const over16 = ages.filter(age => age >= 16).length
-    return {under2: under3, between3and15, over16}
+    return {under3: under3, between3and15, over15: over16}
 }
 
 export default getFamilyUnitAges

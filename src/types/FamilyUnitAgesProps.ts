@@ -1,5 +1,5 @@
 export default interface FamilyUnitAgesProps {
-    under2: number,
+    under3: number,
     between3and15: number,
-    over16: number
+    over15: number
 }

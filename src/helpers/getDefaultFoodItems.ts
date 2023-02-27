@@ -35,7 +35,7 @@ const addOrUpdateFoodItem = (foodItem: FoodItemProps, items: FoodItemProps[]) =>
 }
 
 const defaultFoodItemsByAge: DefaultFoodItemsByAge = {
-    under2: [
+    under3: [
         {
             name: FoodNames.COOKIES,
             quantity: 2,
@@ -59,7 +59,7 @@ const defaultFoodItemsByAge: DefaultFoodItemsByAge = {
             measurementUnit: MeasurementUnit.KILOGRAMS,
         },
     ],
-    over16: [
+    over15: [
         {
             name: FoodNames.RICE,
             quantity: 2,
