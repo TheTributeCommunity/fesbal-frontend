@@ -3,7 +3,7 @@ interface PageHeaderProps {
     description?: string | null;
 }
 
-const PageHeaderProps = ({title, description}: PageHeaderProps) => {
+const AppPageHeader = ({title, description}: PageHeaderProps) => {
     return (
         <div>
             {title && <h1 className="mb-4 font-big-title text-secondary-color">{title}</h1>}
@@ -12,5 +12,5 @@ const PageHeaderProps = ({title, description}: PageHeaderProps) => {
     )
 }
 
-export default PageHeaderProps
+export default AppPageHeader
 

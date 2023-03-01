@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { AppRoute } from '../../enums/app-route'
@@ -14,10 +13,8 @@ const AppReferralForm = ({link, showSublink}: ReferralFormProps) => {
         file,
         setFile,
         inputRef,
-        cameraRef,
         handleFileChange,
         handleClick,
-        handleOnClick
     } = useUploadReferral()
     const {t: translate} = useTranslation(namespaces.pages.registerReferral)
 
