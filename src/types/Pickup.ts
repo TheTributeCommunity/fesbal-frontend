@@ -10,7 +10,7 @@ export interface Pickup {
 
 export const getPickupDescription = (pickup: Pickup) => { 
   const itemsStr = pickup.pickupItems.map(
-    item => `${item.quantity} ${item.unity.unity.toLowerCase()} de ${item.food.name}`)
+    item => `${item.quantity} ${item.unit.unit.toLowerCase()} de ${item.food.name}`)
     .join(', ');
   return itemsStr;
 }

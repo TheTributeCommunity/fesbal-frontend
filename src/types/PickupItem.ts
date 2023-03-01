@@ -1,8 +1,8 @@
 import { FoodType } from "./FoodType";
-import { QuantityUnity } from "./QuantityUnity";
+import { QuantityUnit } from "./QuantityUnit";
 
 export interface PickupItem {
     food: FoodType;
-    unity: QuantityUnity;
+    unit: QuantityUnit;
     quantity: number;
 }

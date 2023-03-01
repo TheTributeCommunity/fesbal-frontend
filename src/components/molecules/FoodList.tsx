@@ -26,7 +26,7 @@ export const FoodList = ({items}:FoodListProps) => {
                             <td className="px-6 text-left py-7">{item.food.name}</td>
                             <td className="px-6 text-right py-7">
                                 {item.quantity}
-                                <span className="text-[0.625rem] text-primary-color pl-[0.125rem]">{item.unity.abbreviation}</span>
+                                <span className="text-[0.625rem] text-primary-color pl-[0.125rem]">{item.unit.abbreviation}</span>
                             </td>
                         </tr>
                     ))}

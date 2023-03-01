@@ -1,34 +1,34 @@
-import { QuantityUnity } from "../types/QuantityUnity";
+import { QuantityUnit } from "../types/QuantityUnit";
 
-export const QuantityUnitMock: QuantityUnity[] = [
+export const QuantityUnitMock: QuantityUnit[] = [
     {
         id: 1,
-        unity: "Gramos",
+        unit: "Gramos",
         abbreviation: "g",
     },
     {
         id: 2,
-        unity: "Kilogramos",
-        abbreviation: "Kg",
+        unit: "Kilogramos",
+        abbreviation: "kg",
     },
     {
         id: 3,
-        unity: "Litros",
+        unit: "Litros",
         abbreviation: "l",
     },
     {
         id: 4,
-        unity: "Centilitros",
+        unit: "Centilitros",
         abbreviation: "cl",
     },
     {
         id: 5,
-        unity: "Mililitros",
+        unit: "Mililitros",
         abbreviation: "ml",
     },
     {
         id: 6,
-        unity: "Unidades",
+        unit: "Unidades",
         abbreviation: "ud",
     },
 ]
