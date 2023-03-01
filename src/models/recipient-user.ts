@@ -20,3 +20,7 @@ export interface RecipientUser {
   referralSheetUrl?: string
   role?: string
 }
+
+export interface RecipientUserWithLastPickup extends RecipientUser {
+    lastPickupDate: string
+}

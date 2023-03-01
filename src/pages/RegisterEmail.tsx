@@ -26,7 +26,7 @@ const RegisterEmail = () => {
     }
     
     return (
-        <AppWrapper link={AppRoute.REGISTER_PHONE} title={translate("headerTitle")}>
+        <AppWrapper showBackButton title={translate("headerTitle")}>
             <div className="flex flex-col">
                 <PageHeader title={translate("title")} description={translate("description") as string} />
                 <RegisterEmailForm onSubmit={handleSubmit}/>

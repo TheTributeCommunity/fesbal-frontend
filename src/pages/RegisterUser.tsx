@@ -37,7 +37,7 @@ const RegisterUser = (): JSX.Element => {
     }
 
     return (
-        <AppWrapper link={AppRoute.WELCOME} title={translate("title")}>
+        <AppWrapper showBackButton title={translate("title")}>
             <form noValidate onSubmit={onSubmit} className="flex w-full flex-col gap-4">
                 <div className="flex flex-col gap-4">
                     <AppFormInput name="name"

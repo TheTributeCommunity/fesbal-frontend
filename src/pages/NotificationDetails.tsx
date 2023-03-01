@@ -10,7 +10,7 @@ const NotificationDetails = () => {
     const {t: translate} = useTranslation(namespaces.pages.notifications);
 
     return (
-        <AppWrapper title={translate("title")} link="/notifications" showBurger>
+        <AppWrapper title={translate("title")} showBackButton showBurger>
             <div className="flex w-full flex-col justify-start gap-4 mb-2">
                 <p className="text-primary-color font-label">{date}</p>
                 <h2 className="font-mini-title">{title}</h2>

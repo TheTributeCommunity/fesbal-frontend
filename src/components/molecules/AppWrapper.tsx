@@ -1,27 +1,32 @@
-import classNames from "classnames"
-import { ReactNode } from "react"
-import AppBackButton from "../atom/AppBackButton"
-import AppBurgerMenuButton from "../atom/AppBurgerMenuButton"
+import classNames from 'classnames'
+import { ReactNode } from 'react'
+import AppBackButton from '../atom/AppBackButton'
+import AppBurgerMenuButton from '../atom/AppBurgerMenuButton'
 
 interface AppWrapperProps {
-    link?: string | null,
     title?: string | null,
     titleClassName?: string,
+    containerClassName?: string,
     showBurger?: boolean
+    showBackButton?: boolean
     children?: ReactNode
 }
 
-const AppWrapper = ({link, title, titleClassName = '', showBurger = false, children}: AppWrapperProps): JSX.Element => {
+const AppWrapper = ({title, titleClassName = '', showBurger = false, showBackButton = true, children, containerClassName = ''} : AppWrapperProps): JSX.Element => {
     return (
+        // We set the height to the screen, and then set the
+        // height to 100dvh - this is because some browsers
+        // do not yet support dynamic viewport, so in the event
+        // it doesn't support it, it stays as viewport height
         <div className="bg-page h-screen h-[100dvh]">
-            <div className="flex flex-col justify-center mx-auto w-full md:w-1/2 lg:w-1/3 p-8 h-full overflow-y-scroll">
-                <div className="flex flex-row fixed w-full md:w-1/2 lg:w-1/3 px-8 py-4 top-0 left-0 right-0 mx-auto overflow-y-visible">
+            <div className={`flex flex-col justify-center mx-auto w-full md:w-1/2 lg:w-1/3 p-8 h-full overflow-y-scroll ${containerClassName}`}>
+                <div className="flex flex-row fixed w-full md:w-1/2 lg:w-1/3 px-8 py-4 top-0 left-0 right-0 mx-auto  overflow-y-scroll">
                     <div className="w-1/4 flex flex-row justify-start">
-                        {link && <AppBackButton link={link} />}
+                        {showBackButton && <AppBackButton />}
                     </div>
                     <div className="w-1/2 text-center flex flex-row justify-center items-center">
                         <span className={classNames({
-                            "font-roboto-flex font-bold text-base leading-6 text-primary-color": !titleClassName,
+                            'font-roboto-flex font-bold text-base leading-6 text-primary-color': !titleClassName,
                             [titleClassName]: titleClassName,
                         })}>{title}</span>
                     </div>
@@ -37,4 +42,4 @@ const AppWrapper = ({link, title, titleClassName = '', showBurger = false, child
     )
 }
 
-export default AppWrapper;
+export default AppWrapper
