@@ -18,9 +18,9 @@ const AppWrapper = ({title, titleClassName = '', showBurger = false, showBackBut
         // height to 100dvh - this is because some browsers
         // do not yet support dynamic viewport, so in the event
         // it doesn't support it, it stays as viewport height
-        <div className="bg-page h-screen h-[100dvh]">
-            <div className={`flex flex-col justify-center mx-auto w-full md:w-1/2 lg:w-1/3 p-8 h-full overflow-y-scroll ${containerClassName}`}>
-                <div className="flex flex-row fixed w-full md:w-1/2 lg:w-1/3 px-8 py-4 top-0 left-0 right-0 mx-auto  overflow-y-scroll">
+        <div className="bg-page h-screen h-[100dvh] overflow-y-auto">
+            <div className={`flex flex-col justify-center mx-auto w-full md:w-1/2 lg:w-1/3 p-8 h-full overflow-y-visible ${containerClassName}`}>
+                <div className="flex flex-row fixed w-full md:w-1/2 lg:w-1/3 px-8 py-4 top-0 left-0 right-0 mx-auto  overflow-y-visible">
                     <div className="w-1/4 flex flex-row justify-start">
                         {showBackButton && <AppBackButton />}
                     </div>
