@@ -5,6 +5,7 @@ export const namespaces = {
         entityLogin: 'pages.entityLogin',
         entityLoginPasswordRecovery: 'pages.entityLoginPasswordRecovery',
         entityProfile: 'pages.entityProfile',
+        entityQuantityMeasurement: 'pages.entityQuantityMeasurement',
         entityUserScanned: 'pages.entityUserScanned',
         loginScreen: 'pages.loginScreen',
         loginValidatePhone: 'pages.loginValidatePhone',
