@@ -20,6 +20,7 @@ export const AppRoute = {
     ENTITY_HOME: '/entity/home',
     ENTITY_LOGIN: '/entity/login',
     ENTITY_LOGIN_PASSWORD_RECOVERY: '/entity/login/password-recovery',
+    ENTITY_QUANTITY_MEASUREMENT: '/entity/quantity-measurement',
     ENTITY_PROFILE: '/entity-profile',
     ENTITY_USER_SCANNED: '/entity/user-scanned',
     BACK: -1,

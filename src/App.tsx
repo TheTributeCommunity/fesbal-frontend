@@ -31,6 +31,7 @@ import EntityHome from './pages/EntityHome'
 import EntityUserScanned from './pages/EntityUserScanned'
 import EntityProfile from './pages/EntityProfile'
 import EntityFoodSearch from './pages/EntityFoodSearch'
+import EntityQuantityMeasurement from './pages/EntityQuantityMeasurement'
 
 function App() {
     return (
@@ -65,6 +66,7 @@ function App() {
                 <Route path={AppRoute.ENTITY_HOME} element={<EntityHome/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
+                <Route path={AppRoute.ENTITY_QUANTITY_MEASUREMENT} element={<EntityQuantityMeasurement/>}/>
                 <Route path={AppRoute.ENTITY_PROFILE} element={<EntityProfile/>}/>
                 <Route path={AppRoute.ENTITY_USER_SCANNED} element={<EntityUserScanned/>}/>
             </Routes>
