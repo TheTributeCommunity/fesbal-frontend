@@ -13,6 +13,7 @@ import getDefaultFoodItems from '../helpers/getDefaultFoodItems'
 import getFamilyUnitAges from '../helpers/getFamilyUnitAges'
 import {useNavigate} from 'react-router'
 import FoodNames from '../enums/food-names'
+import FoodItemProps from '../types/FoodItemProps'
 
 const recipientUser = recipientUserMock
 const familyUnitAges = getFamilyUnitAges(recipientUser)
@@ -23,15 +24,18 @@ const EntityUserScanned = () => {
     const {foodItems, removeFoodItem} = useFoodItems(state?.foodItems || defaultFoodItems)
     const {t: translate} = useTranslation(namespaces.pages.entityUserScanned)
     const navigate = useNavigate()
-    const handleOnUpdateFoodItem = (foodName: FoodNames) => {
+    const handleOnUpdateFoodName = (foodName: FoodNames) => {
         navigate(AppRoute.ENTITY_FOOD_SEARCH, {state: {foodName, foodItems}})
+    }
+    const handleOnUpdateQuantity = (foodItem: FoodItemProps) => {
+        navigate(AppRoute.ENTITY_QUANTITY_MEASUREMENT, {state: {foodItem, foodItems}})
     }
     const handleOnAddFoodItem = () => {
         navigate(AppRoute.ENTITY_FOOD_SEARCH, {state: {foodItems}})
     }
 
     return (
-        <AppWrapper title={translate('title')} showBurger={true} containerClassName="px-0">
+        <AppWrapper title={translate('title')} showBurger={true} containerClassName="px-0" topbarClassName="bg-white">
             <div className="h-full">
                 <div className="flex flex-col bg-white px-8 py-4 gap-2">
                     <h1 className="font-big-title text-secondary-color">{recipientUser.firstName} {recipientUser.lastName}</h1>
@@ -65,7 +69,8 @@ const EntityUserScanned = () => {
                                 quantity={food.quantity}
                                 measurementUnit={food.measurementUnit}
                                 onRemove={() => removeFoodItem(food)}
-                                onFoodClick={() => handleOnUpdateFoodItem(food.name)}
+                                onFoodClick={() => handleOnUpdateFoodName(food.name)}
+                                onQuantityClick={() => handleOnUpdateQuantity(food)}
                             />
                         ))}
                         <li>
