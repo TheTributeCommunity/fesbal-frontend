@@ -1,5 +1,5 @@
-import React from 'react';
-import CrossIcon from '../icons/CloseIcon';
+import React from 'react'
+import CrossIcon from '../icons/CloseIcon'
 
 type InputProps = {
     value: string;
@@ -24,7 +24,7 @@ const EntityFoodInput = ({ value, placeholder, onChange, onClear }: InputProps) 
                 </div>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default EntityFoodInput;
+export default EntityFoodInput
