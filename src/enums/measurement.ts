@@ -7,7 +7,7 @@ export enum MeasurementUnit {
     UNITS = 'ud'
 }
 
-interface Measurement {
+export interface Measurement {
     unit: MeasurementUnit;
     name: string;
 }
@@ -21,17 +21,17 @@ export const measurements: { [key: string]: Measurement } = {
         unit: MeasurementUnit.KILOGRAMS,
         name: 'Kilogramos'
     },
-    MILLILITERS: {
-        unit: MeasurementUnit.MILLILITERS,
-        name: 'Mililitros'
+    LITERS: {
+        unit: MeasurementUnit.LITERS,
+        name: 'Litros'
     },
     CENTILITERS: {
         unit: MeasurementUnit.CENTILITERS,
         name: 'Centilitros'
     },
-    LITERS: {
-        unit: MeasurementUnit.LITERS,
-        name: 'Litros'
+    MILLILITERS: {
+        unit: MeasurementUnit.MILLILITERS,
+        name: 'Mililitros'
     },
     UNITS: {
         unit: MeasurementUnit.UNITS,
