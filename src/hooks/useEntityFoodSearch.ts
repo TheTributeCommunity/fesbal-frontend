@@ -7,13 +7,13 @@ const useEntityFoodSearch = () => {
     const { state } = useLocation()
     const foodItems = state?.foodItems || []
     const foodToUpdate = state?.foodName || null
-    const { addFoodItem, updateFoodItem } = useFoodItems(foodItems)
+    const { addFoodItem, updateFoodName } = useFoodItems(foodItems)
     const {inputValue, deleteInputValue, handleInputChange} = useAppInput(foodToUpdate || '')
     const foodNames = Object.values(FoodNames)
 
     const handleOnClick = (selectedFoodName: FoodNames) => {
         if (foodToUpdate) {
-            updateFoodItem(selectedFoodName, foodToUpdate)
+            updateFoodName(selectedFoodName, foodToUpdate)
         } else {
             addFoodItem(selectedFoodName)
         }
