@@ -87,93 +87,107 @@
   .bg-primary-color-light {
     background-color: $primary-color-light;
   }
+  //fontSize: {
+  //'mega-title': ['2rem', { lineHeight: '2.375rem', fontWeight: 'bold' }],
+  //'big-title': ['1.5rem', { lineHeight: '1.75rem', fontWeight: 'bold' }],
+  //'medium-title': ['1.5rem', { lineHeight: '1.75rem', fontWeight: 'medium' }],
+  //'mini-title': ['1rem', { lineHeight: '1.25rem', fontWeight: 'bold' }],
+  //'text': ['1rem', { lineHeight: '1.5rem', fontWeight: 'light' }],
+  //'label': ['0.75rem', { lineHeight: '0.875rem', fontWeight: 'medium' }],
+  //'input': ['1rem', { lineHeight: '1.25rem', fontWeight: 'normal' }],
+  //'button': ['1rem', { lineHeight: '1.25rem', fontWeight: 'semibold' }],
+  //'big-link': ['1rem', { lineHeight: '1.25rem', fontWeight: 'semibold' }],
+  //'small-link': ['0.75rem', { lineHeight: '1.25rem', fontWeight: 'semibold' }],
+  //'mega-input': ['2rem', { lineHeight: '2.375rem', fontWeight: 'normal' }],
+  //'big-input': ['1.5rem', { lineHeight: '1.75rem', fontWeight: 'normal' }],
+  //},
 
   .font-mega-title {
     font-family: $main-font;
     font-style: normal;
     font-weight: 700;
-    font-size: 32px;
-    line-height: 38px;
+    font-size: 2rem;
+    line-height: 2.375rem;
   }
 
   .font-big-title {
     font-family: $main-font;
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
   }
 
   .font-medium-title {
     font-family: $main-font;
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
   }
 
   .font-mini-title {
     font-family: $main-font;
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1rem;
+    line-height: 1.25rem;
   }
 
   .font-text {
     font-family: $main-font;
     font-style: normal;
     font-weight: 300;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .font-label {
     font-family: $main-font;
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
   }
 
   .font-input {
     font-family: $main-font;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1rem;
+    line-height: 1.25rem;
   }
 
   .font-button {
     font-family: $main-font;
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1rem;
+    line-height: 1.25rem;
   }
 
   .font-big-link {
     font-family: $main-font;
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1rem;
+    line-height: 1.25rem;
   }
 
   .font-small-link {
     font-family: $main-font;
     font-style: normal;
     font-weight: 600;
-    font-size: 12px;
-    line-height: 20px;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
   }
 
   .font-mega-input {
     font-family: $main-font;
     font-style: normal;
     font-weight: 400;
-    font-size: 32px;
-    line-height: 38px;
+    font-size: 2rem;
+    line-height: 2.375rem;
   }
 
   .app-page {
