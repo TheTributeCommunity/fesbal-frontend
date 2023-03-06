@@ -1,17 +1,18 @@
 export const registerReferralEs = {
-    title: "Hoja de derivación",
-    description: `Necesitamos que nos facilites una hoja de derivación para poder gestionar tu solicitud de registro. Los formatos aceptados son PDF, PNG, JPG o JPEG.`,
-    upload: "Subir imagen",
-    camera: "Cámara",
-    link: "No tengo hoja de derivación, pero tengo una cita con Servicios Sociales para su solicitud",
-    next: "Enviar solicitud",
+    headerTitle: 'Hoja de derivación',
+    title: 'Adjunta tu hoja de derivación',
+    description: 'Por favor, saca una fotografía de la hoja de derivación oficial emitida por Servicios Sociales y adjúntala en el siguiente apartado.',
+    upload: 'Adjunta tu hoja de derivación',
+    link: 'No tengo hoja de derivación, pero tengo una cita con Servicios Sociales para su solicitud',
+    next: 'Enviar solicitud',
 }
 
 export const registerReferralEn = {
-    title: "Referral sheet",
-    description: `We need you to provide us with a referral sheet to be able to manage your registration request. The accepted formats are PDF, PNG, JPG or JPEG.`,
-    upload: "Upload image",
-    camera: "Camera",
-    link: "I don't have a referral sheet, but I have an appointment with Social Services for its request",
-    next: "Send request",
+    headerTitle: 'Referral sheet',
+    title: 'Attach your referral sheet',
+    description: 'Please, take a picture of the official referral sheet issued by Social Services and attach it in the following section.',
+    upload: 'Upload image',
+    camera: 'Camera',
+    link: 'I don\'t have a referral sheet, but I have an appointment with Social Services for its request',
+    next: 'Send request',
 }
