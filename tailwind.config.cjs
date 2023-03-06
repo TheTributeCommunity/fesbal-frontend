@@ -23,7 +23,10 @@ module.exports = {
             backgroundImage: {'page': 'linear-gradient(169.42deg, #ffffff 10.03%, #e8f8ff 35.86%, #e8f8ff 68.88%, #ffffff 89.63%)'},
             backgroundColor: {
                 'mask-opaque': 'rgba(0, 0, 0, 0.2)',
-            }
+            },
+            boxShadow: {
+                'table': '0px 4px 8px rgba(0, 46, 93, 0.08)',
+            },
         },
     },
     plugins: [],

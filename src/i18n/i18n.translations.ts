@@ -1,38 +1,39 @@
-import {appCalendarEs, appCalendarEn} from "./atoms/appCalendar";
-import {burgerMenuEn, burgerMenuEs} from "./components/burgerMenu";
-import {entityLoginEn, entityLoginEs} from "./pages/entityLogin";
-import {entityLoginPasswordRecoveryEn, entityLoginPasswordRecoveryEs} from "./pages/entityLoginPasswordRecovery";
-import {entityProfileEs, entityProfileEn} from "./pages/entityProfile";
-import {entityUserScannedEs} from "./pages/entityUserScanned";
-import {loginScreenEn, loginScreenEs} from "./pages/loginScreen";
-import {loginValidatePhoneEn, loginValidatePhoneEs} from "./pages/loginValidatePhone";
-import {menuDeleteAccountEn, menuDeleteAccountEs} from "./pages/menuDeleteAccount";
-import {menuReferralEn, menuReferralEs} from "./pages/menuReferral";
-import {namespaces} from "./i18n.constants";
-import {profileEditEmailEn, profileEditEmailEs} from "./pages/profileEditEmail";
-import {profileEditNewPasswordEn, profileEditNewPasswordEs} from "./pages/profileEditNewPassword";
-import {profileEditPrevPasswordEn, profileEditPrevPasswordEs} from "./pages/profileEditPrevPassword";
-import {profileScreenEn, profileScreenEs} from "./pages/profileScreen";
-import {recipientLandingEs, recipientLandingEn} from "./pages/recipientLanding";
-import {registerEmailEn, registerEmailEs} from "./pages/registerEmail";
-import {registerFamilyMembersEn, registerFamilyMembersEs} from "./pages/registerFamilyMembers";
-import {registerLegalEn, registerLegalEs} from "./pages/registerLegal";
-import {registerPhoneEn, registerPhoneEs} from "./pages/registerPhone";
-import {registerReferralEn, registerReferralEs} from "./pages/registerReferral";
-import {registerReferralSendDateEn, registerReferralSendDateEs} from "./pages/registerReferralSendDate";
-import {registerRequestSentEn, registerRequestSentEs} from "./pages/registerRequestSent";
-import {registerUserEn, registerUserEs} from "./pages/registerUser";
-import {validatePhoneEn, validatePhoneEs} from "./pages/validatePhone";
-import {welcomeScreenEn, welcomeScreenEs} from "./pages/welcomeScreen";
+import { appCalendarEn, appCalendarEs } from './atoms/appCalendar'
+import { burgerMenuEn, burgerMenuEs } from './components/burgerMenu'
+import { namespaces } from './i18n.constants'
+import { entityLoginEn, entityLoginEs } from './pages/entityLogin'
+import { entityLoginPasswordRecoveryEn, entityLoginPasswordRecoveryEs } from './pages/entityLoginPasswordRecovery'
+import { entityProfileEn, entityProfileEs } from './pages/entityProfile'
+import { entityUserScannedEs } from './pages/entityUserScanned'
+import { loginScreenEn, loginScreenEs } from './pages/loginScreen'
+import { loginValidatePhoneEn, loginValidatePhoneEs } from './pages/loginValidatePhone'
+import { menuDeleteAccountEn, menuDeleteAccountEs } from './pages/menuDeleteAccount'
+import { menuReferralEn, menuReferralEs } from './pages/menuReferral'
+import { pickupDetailsEn, pickupDetailsEs } from './pages/pickupDetails'
+import { profileEditEmailEn, profileEditEmailEs } from './pages/profileEditEmail'
+import { profileEditNewPasswordEn, profileEditNewPasswordEs } from './pages/profileEditNewPassword'
+import { profileEditPrevPasswordEn, profileEditPrevPasswordEs } from './pages/profileEditPrevPassword'
+import { profileScreenEn, profileScreenEs } from './pages/profileScreen'
+import { recipientLandingEn, recipientLandingEs } from './pages/recipientLanding'
+import { registerEmailEn, registerEmailEs } from './pages/registerEmail'
+import { registerFamilyMembersEn, registerFamilyMembersEs } from './pages/registerFamilyMembers'
+import { registerLegalEn, registerLegalEs } from './pages/registerLegal'
+import { registerPhoneEn, registerPhoneEs } from './pages/registerPhone'
+import { registerReferralEn, registerReferralEs } from './pages/registerReferral'
+import { registerReferralSendDateEn, registerReferralSendDateEs } from './pages/registerReferralSendDate'
+import { registerRequestSentEn, registerRequestSentEs } from './pages/registerRequestSent'
+import { registerUserEn, registerUserEs } from './pages/registerUser'
+import { validatePhoneEn, validatePhoneEs } from './pages/validatePhone'
+import { welcomeScreenEn, welcomeScreenEs } from './pages/welcomeScreen'
 
 export const es = {
     [namespaces.common]: {
         buttons: {
-            ok: "Aceptar",
-            cancel: "Cancelar",
+            ok: 'Aceptar',
+            cancel: 'Cancelar',
         },
     },
-    [namespaces.pages.entityHome]: { title: "BALPA", address: "Asociación de vecinos de Máspalomas" },
+    [namespaces.pages.entityHome]: { title: 'BALPA', address: 'Asociación de vecinos de Máspalomas' },
     [namespaces.pages.entityLogin]: entityLoginEs,
     [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEs,
     [namespaces.pages.entityUserScanned]: entityUserScannedEs,
@@ -41,8 +42,8 @@ export const es = {
     [namespaces.pages.loginValidatePhone]: loginValidatePhoneEs,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEs,
     [namespaces.pages.menuReferral]: menuReferralEs,
-    [namespaces.pages.notifications]: { title: "Notificaciones" },
-    [namespaces.pages.pickupPoint]: { title: "Punto de recogida", address: "Dirección" },
+    [namespaces.pages.notifications]: { title: 'Notificaciones' },
+    [namespaces.pages.pickupPoint]: { title: 'Punto de recogida', address: 'Dirección' },
     [namespaces.pages.profileEditEmail]: profileEditEmailEs,
     [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEs,
     [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEs,
@@ -60,16 +61,17 @@ export const es = {
     [namespaces.pages.welcomeScreen]: welcomeScreenEs,
     [namespaces.atoms.appCalendar]: appCalendarEs,
     [namespaces.pages.recipientLanding]: recipientLandingEs,
-};
+    [namespaces.pages.pickupDetails]: pickupDetailsEs,
+}
 
 export const en = {
     [namespaces.common]: {
         buttons: {
-            ok: "Ok",
-            cancel: "Cancel",
+            ok: 'Ok',
+            cancel: 'Cancel',
         },
     },
-    [namespaces.pages.entityHome]: { title: "BALPA", address: "Asociación de vecinos de Máspalomas" },
+    [namespaces.pages.entityHome]: { title: 'BALPA', address: 'Asociación de vecinos de Máspalomas' },
     [namespaces.pages.entityLogin]: entityLoginEn,
     [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEn,
     [namespaces.pages.entityUserScanned]: entityUserScannedEs,
@@ -78,8 +80,8 @@ export const en = {
     [namespaces.pages.loginValidatePhone]: loginValidatePhoneEn,
     [namespaces.pages.menuDeleteAccount]: menuDeleteAccountEn,
     [namespaces.pages.menuReferral]: menuReferralEn,
-    [namespaces.pages.notifications]: { title: "Notifications" },
-    [namespaces.pages.pickupPoint]: { title: "Pickup point", address: "Address" },
+    [namespaces.pages.notifications]: { title: 'Notifications' },
+    [namespaces.pages.pickupPoint]: { title: 'Pickup point', address: 'Address' },
     [namespaces.pages.profileEditEmail]: profileEditEmailEn,
     [namespaces.pages.profileEditNewPassword]: profileEditNewPasswordEn,
     [namespaces.pages.profileEditPrevPassword]: profileEditPrevPasswordEn,
@@ -97,4 +99,5 @@ export const en = {
     [namespaces.pages.welcomeScreen]: welcomeScreenEn,
     [namespaces.atoms.appCalendar]: appCalendarEn,
     [namespaces.pages.recipientLanding]: recipientLandingEn,
-};
+    [namespaces.pages.pickupDetails]: pickupDetailsEn,
+}
