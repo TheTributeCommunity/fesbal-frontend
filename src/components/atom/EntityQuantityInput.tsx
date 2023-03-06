@@ -14,7 +14,7 @@ const EntityQuantityInput = ({quantity, measurementUnit, onChange, onClear}: Ent
                 <input
                     type="number"
                     className="font-roboto-flex text-mega-input text-secondary-color w-28 text-right px-2"
-                    value={quantity || 0}
+                    value={quantity}
                     onFocus={(event) => event.target.select()}
                     onChange={onChange}
                 />
