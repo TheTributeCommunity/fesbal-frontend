@@ -14,6 +14,7 @@ export const AppRoute = {
     REGISTER_REFERRAL_SHEET_SEND_DATE: '/register/referral/send-date',
     NOTIFICATIONS: '/notifications',
     PICKUP_HISTORY: '/pickup-history',
+    PICKUP_DETAILS: '/pickup-history/details/:id',
     PICKUP_POINT: '/pickup-point',
     REFERRAL: '/referral',
     ENTITY_FOOD_SEARCH: '/entity/food-search',

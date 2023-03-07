@@ -24,6 +24,7 @@ import {registerRequestSentEn, registerRequestSentEs} from './pages/registerRequ
 import {registerUserEn, registerUserEs} from './pages/registerUser'
 import {validatePhoneEn, validatePhoneEs} from './pages/validatePhone'
 import {welcomeScreenEn, welcomeScreenEs} from './pages/welcomeScreen'
+import {pickupDetailsEn, pickupDetailsEs} from './pages/pickupDetails'
 
 export const es = {
     [namespaces.common]: {
@@ -62,6 +63,7 @@ export const es = {
     [namespaces.pages.welcomeScreen]: welcomeScreenEs,
     [namespaces.atoms.appCalendar]: appCalendarEs,
     [namespaces.pages.recipientLanding]: recipientLandingEs,
+    [namespaces.pages.pickupDetails]: pickupDetailsEs,
 }
 
 export const en = {
@@ -101,4 +103,5 @@ export const en = {
     [namespaces.pages.welcomeScreen]: welcomeScreenEn,
     [namespaces.atoms.appCalendar]: appCalendarEn,
     [namespaces.pages.recipientLanding]: recipientLandingEn,
+    [namespaces.pages.pickupDetails]: pickupDetailsEn,
 }

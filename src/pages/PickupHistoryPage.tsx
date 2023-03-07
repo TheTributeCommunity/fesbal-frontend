@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import HistoryCard from '../components/atom/HistoryCard'
 import AppWrapper from '../components/molecules/AppWrapper'
 import PickupService from '../services/PickupService'
-import { Pickup } from '../types/Pickup'
+import { getPickupDescription, Pickup } from '../types/Pickup'
 
 const PickupHistoryPage = () => {
     const [pickupHistory, setPickupHistory] = useState<Pickup[]>([])
@@ -19,13 +19,13 @@ const PickupHistoryPage = () => {
                 {!lastPickup ? (
                     <p>No hay última recogida</p>
                 ) : (
-                    <HistoryCard title={lastPickup.title} isoDate={lastPickup.date} description={lastPickup.description} />
+                    <HistoryCard id={lastPickup.id} title={lastPickup.title} isoDate={lastPickup.date} description={getPickupDescription(lastPickup)} />
                 )}
             </div>
             <h2 className="text-secondary-color text-xs px-8 mb-1">Recogidas anteriores</h2>
             <div className="flex flex-col gap-2">
-                {pickupHistory.slice(1).map((pickup, index) => (
-                    <HistoryCard key={index} title={pickup.title} isoDate={pickup.date} description={pickup.description} />
+                {pickupHistory.slice(1).map((pickup) => (
+                    <HistoryCard key={pickup.id} id={pickup.id} title={pickup.title} isoDate={pickup.date} description={getPickupDescription(pickup)} />
                 ))}
             </div>
         </AppWrapper>

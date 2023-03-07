@@ -28,6 +28,7 @@ export const namespaces = {
         registerRequestSent: 'pages.registerRequestSent',
         validatePhone: 'pages.validatePhone',
         welcomeScreen: 'pages.welcomeScreen',
+        pickupDetails: 'pages.pickupDetails',
     },
     atoms: {
         appCalendar: 'atoms.appCalendar',

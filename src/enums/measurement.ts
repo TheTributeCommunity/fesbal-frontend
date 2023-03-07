@@ -38,4 +38,3 @@ export const measurements: { [key: string]: Measurement } = {
         name: 'Unidades'
     }
 }
-
