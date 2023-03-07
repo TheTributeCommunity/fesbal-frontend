@@ -11,7 +11,7 @@ const useFoodItems = (userFoodItems: FoodItemProps[] = []) => {
     const removeFoodItem = (foodItem: FoodItemProps) => {
         setFoodItems(foodItems.filter(item => item.name !== foodItem.name))
     }
-    const updateFoodItem = (foodName: FoodNames, oldFoodName: FoodNames) => {
+    const updateFoodName = (foodName: FoodNames, oldFoodName: FoodNames) => {
         const foodNameAlreadyExists = foodItems.some(item => item.name === foodName)
         if (foodNameAlreadyExists) {
             const removedFoodItems = foodItems.filter(item => item.name !== oldFoodName)
@@ -21,6 +21,15 @@ const useFoodItems = (userFoodItems: FoodItemProps[] = []) => {
         }
         const updatedFoodItems = foodItems.map(item => {
             if (item.name === oldFoodName) return {...item, name: foodName}
+            return item
+        })
+        setFoodItems(updatedFoodItems)
+        navigate(AppRoute.ENTITY_USER_SCANNED, {state: {foodItems: updatedFoodItems}})
+    }
+
+    const updateFoodQuantity = (foodName: FoodNames, quantity: number, measurementUnit: MeasurementUnit) => {
+        const updatedFoodItems = foodItems.map(item => {
+            if (item.name === foodName) return {...item, quantity, measurementUnit}
             return item
         })
         setFoodItems(updatedFoodItems)
@@ -46,7 +55,8 @@ const useFoodItems = (userFoodItems: FoodItemProps[] = []) => {
         foodItems,
         addFoodItem,
         removeFoodItem,
-        updateFoodItem,
+        updateFoodName,
+        updateFoodQuantity
     }
 }
 
