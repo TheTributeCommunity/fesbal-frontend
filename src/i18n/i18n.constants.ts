@@ -7,6 +7,7 @@ export const namespaces = {
         entityProfile: 'pages.entityProfile',
         entityQuantityMeasurement: 'pages.entityQuantityMeasurement',
         entityUserScanned: 'pages.entityUserScanned',
+        entityUserSignature: 'pages.entityUserSignature',
         loginScreen: 'pages.loginScreen',
         loginValidatePhone: 'pages.loginValidatePhone',
         recipientLanding: 'pages.recipientLanding',

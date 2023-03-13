@@ -3,7 +3,7 @@ import {burgerMenuEn, burgerMenuEs} from './components/burgerMenu'
 import {entityLoginEn, entityLoginEs} from './pages/entityLogin'
 import {entityLoginPasswordRecoveryEn, entityLoginPasswordRecoveryEs} from './pages/entityLoginPasswordRecovery'
 import {entityProfileEn, entityProfileEs} from './pages/entityProfile'
-import {entityUserScannedEs} from './pages/entityUserScanned'
+import {entityUserScannedEn, entityUserScannedEs} from './pages/entityUserScanned'
 import {loginScreenEn, loginScreenEs} from './pages/loginScreen'
 import {loginValidatePhoneEn, loginValidatePhoneEs} from './pages/loginValidatePhone'
 import {menuDeleteAccountEn, menuDeleteAccountEs} from './pages/menuDeleteAccount'
@@ -25,6 +25,7 @@ import {registerUserEn, registerUserEs} from './pages/registerUser'
 import {validatePhoneEn, validatePhoneEs} from './pages/validatePhone'
 import {welcomeScreenEn, welcomeScreenEs} from './pages/welcomeScreen'
 import {pickupDetailsEn, pickupDetailsEs} from './pages/pickupDetails'
+import {entityUserSignatureEn, entityUserSignatureEs} from './pages/entityUserSignature'
 
 export const es = {
     [namespaces.common]: {
@@ -38,6 +39,7 @@ export const es = {
     [namespaces.pages.entityLogin]: entityLoginEs,
     [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEs,
     [namespaces.pages.entityUserScanned]: entityUserScannedEs,
+    [namespaces.pages.entityUserSignature]: entityUserSignatureEs,
     [namespaces.pages.entityProfile]: entityProfileEs,
     [namespaces.pages.entityQuantityMeasurement]: {title: 'Indicador de cantidad', addQuantity: 'Añadir cantidad'},
     [namespaces.pages.loginScreen]: loginScreenEs,
@@ -77,7 +79,8 @@ export const en = {
     [namespaces.pages.entityHome]: {title: 'BALPA', address: 'Asociación de vecinos de Máspalomas'},
     [namespaces.pages.entityLogin]: entityLoginEn,
     [namespaces.pages.entityLoginPasswordRecovery]: entityLoginPasswordRecoveryEn,
-    [namespaces.pages.entityUserScanned]: entityUserScannedEs,
+    [namespaces.pages.entityUserScanned]: entityUserScannedEn,
+    [namespaces.pages.entityUserSignature]: entityUserSignatureEn,
     [namespaces.pages.entityProfile]: entityProfileEn,
     [namespaces.pages.entityQuantityMeasurement]: {title: 'Quantity indicator', addQuantity: 'Add quantity'},
     [namespaces.pages.loginScreen]: loginScreenEn,
