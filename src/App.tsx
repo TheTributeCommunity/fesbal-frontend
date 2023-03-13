@@ -33,6 +33,7 @@ import RegisterUser from './pages/RegisterUser'
 import LoginValidatePhone from './pages/LoginValidatePhone'
 import EntityFoodSearch from './pages/EntityFoodSearch'
 import EntityQuantityMeasurement from './pages/EntityQuantityMeasurement'
+import EntityUserSignature from './pages/EntityUserSignature'
 
 function App() {
     return (
@@ -72,6 +73,7 @@ function App() {
                 <Route path={AppRoute.ENTITY_QUANTITY_MEASUREMENT} element={<EntityQuantityMeasurement/>}/>
                 <Route path={AppRoute.ENTITY_PROFILE} element={<EntityProfile/>}/>
                 <Route path={AppRoute.ENTITY_USER_SCANNED} element={<EntityUserScanned/>}/>
+                <Route path={AppRoute.ENTITY_USER_SIGNATURE} element={<EntityUserSignature/>}/>
             </Routes>
         </Router>
     )

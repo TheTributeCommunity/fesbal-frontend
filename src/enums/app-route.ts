@@ -24,5 +24,6 @@ export const AppRoute = {
     ENTITY_QUANTITY_MEASUREMENT: '/entity/quantity-measurement',
     ENTITY_PROFILE: '/entity-profile',
     ENTITY_USER_SCANNED: '/entity/user-scanned',
+    ENTITY_USER_SIGNATURE: '/entity/user-signature',
     BACK: -1,
 }
