@@ -50,14 +50,16 @@ const ProfileScreen = () => {
                         <ProfilePersonalDataItem key={index} personalData={personalData} index={index} itemClassName="px-8"/>
                     ))}
                 </ul>
-                <div className="flex flex-row items-center gap-2 px-8 font-bold mt-3">
+                <div className="flex flex-row items-center gap-2 px-8 font-bold my-3">
                     <FamilyMembersIcon/>
                     <h2 className="font-mini-title text-secondary-color">{translate('familyMembers')}</h2>
                     <div className="ml-auto"></div>
                 </div>
                 {familyMembers.map((familyMember, index) => 
                     <div className="flex flex-col gap-4 pb-2" key={index}>
-                        <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('familyMember', {ns: 'pages.registerFamilyMembers'})} {index+1}</span>
+                        <div className="px-8">
+                            <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('familyMember', {ns: 'pages.registerFamilyMembers'})} {index+1}</span>
+                        </div>
                         <FamilyMemberCard person={familyMember} />
                     </div>)}
             </div>
