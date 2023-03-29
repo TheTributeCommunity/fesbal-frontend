@@ -9,7 +9,7 @@ const ReferralNoFileUploaded = ({
     return (
         <div>
             <div className="flex flex-col place-content-center">
-                <input type="file" id="file" className="hidden" onChange={handleFileChange} ref={inputRef}/>
+                <input type="file" accept="image/*,.pdf" id="file" className="hidden" onChange={handleFileChange} ref={inputRef}/>
                 <button className="text-center font-text font-roboto-flex font-semibold text-sm underline"
                     onClick={() => handleClick(inputRef)}>
                     {upload}
