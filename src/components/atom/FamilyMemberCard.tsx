@@ -1,10 +1,10 @@
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { namespaces } from "../../i18n/i18n.constants";
-import DeleteIcon from "../icons/DeleteIcon";
-import EditIcon from "../icons/EditIcon";
-import {Relative} from "../../models/relative";
-import {RecipientUser} from "../../models/recipient-user";
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { namespaces } from '../../i18n/i18n.constants'
+import DeleteIcon from '../icons/DeleteIcon'
+import EditIcon from '../icons/EditIcon'
+import {Relative} from '../../models/relative'
+import {RecipientUser} from '../../models/recipient-user'
 
 interface FamilyMemberCardProps {
     person: RecipientUser | Relative
@@ -14,7 +14,7 @@ interface FamilyMemberCardProps {
 const isRecipientUser = (p: RecipientUser | Relative): p is RecipientUser => (p as RecipientUser).phone !== undefined
 
 const FamilyMemberCard = ({person, allowEdit = false}: FamilyMemberCardProps): JSX.Element => {
-    const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers);
+    const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers)
     
     return (
         <div className="w-full flex flex-col gap-4 bg-white shadow-md rounded-xl p-4 self-center">
@@ -25,8 +25,8 @@ const FamilyMemberCard = ({person, allowEdit = false}: FamilyMemberCardProps): J
                 </div>
                 {!isRecipientUser(person) && allowEdit &&
                 <div className="flex flex-row align-center items-center gap-4">
-                    <Link to={""}><EditIcon /></Link>
-                    <Link to={""}><DeleteIcon /></Link>
+                    <Link to={''}><EditIcon /></Link>
+                    <Link to={''}><DeleteIcon /></Link>
                 </div>}
             </div>
             <div className="w-full border border-[#F2FBFF] border-solid"></div>
@@ -56,4 +56,4 @@ const FamilyMemberCard = ({person, allowEdit = false}: FamilyMemberCardProps): J
     )
 }
 
-export default FamilyMemberCard;
+export default FamilyMemberCard
