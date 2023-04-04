@@ -1,11 +1,11 @@
-import { initializeApp } from 'firebase/app';
-import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier, onAuthStateChanged, User } from "firebase/auth";
-import { getEnvVar } from "../helpers/envVars";
-import { AuthUser } from "../models/auth-user";
+import { initializeApp } from 'firebase/app'
+import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier, onAuthStateChanged, User } from 'firebase/auth'
+import { getEnvVar } from '../helpers/envVars'
+import { AuthUser } from '../models/auth-user'
 
 export class AuthService {
     private static auth: Auth
-    public static SPAIN_PHONE_PREFIX = "+34"
+    public static SPAIN_PHONE_PREFIX = '+34'
     private static confirmationResult: ConfirmationResult
     public static currentUser: AuthUser | null
 
@@ -19,17 +19,17 @@ export class AuthService {
             messagingSenderId: getEnvVar('FIREBASE_MESSAGING_SENDER_ID'),
             appId: getEnvVar('FIREBASE_APP_ID'),
         })
-        this.setUpAuth();
+        this.setUpAuth()
     }
 
     private static setUpAuth() {
-        this.auth = getAuth();
+        this.auth = getAuth()
 
-        this.auth.useDeviceLanguage();
+        this.auth.useDeviceLanguage()
 
         onAuthStateChanged(this.auth, (user) => {
-            this.currentUser = user ? this.firebaseUserToAuthUser(user) : null;
-        });
+            this.currentUser = user ? this.firebaseUserToAuthUser(user) : null
+        })
     }
 
     private static firebaseUserToAuthUser(user: User) {
@@ -42,20 +42,20 @@ export class AuthService {
     }
 
     public static signInWithPhoneNumber(submitButtonId: string, phoneWithoutPrefix: string) {
-        const recaptchaVerifier = this.setUpRecaptcha(submitButtonId);
-        const phone = this.addPhonePrefix(phoneWithoutPrefix);
+        const recaptchaVerifier = this.setUpRecaptcha(submitButtonId)
+        const phone = this.addPhonePrefix(phoneWithoutPrefix)
 
         return signInWithPhoneNumber(this.auth, phone, recaptchaVerifier)
             .then((confirmationResult) => { this.confirmationResult = confirmationResult })
     }
 
     private static setUpRecaptcha(submitButtonId: string) {
-        const INVISIBLE_RECAPTCHA_CONFIG = { 'size': 'invisible' };
-        const recaptchaVerifier = new RecaptchaVerifier(submitButtonId, INVISIBLE_RECAPTCHA_CONFIG, this.auth);
+        const INVISIBLE_RECAPTCHA_CONFIG = { 'size': 'invisible' }
+        const recaptchaVerifier = new RecaptchaVerifier(submitButtonId, INVISIBLE_RECAPTCHA_CONFIG, this.auth)
 
-        recaptchaVerifier.render();
+        recaptchaVerifier.render()
 
-        return recaptchaVerifier;
+        return recaptchaVerifier
     }
 
     public static confirmPhoneCode(code: string) {
@@ -68,7 +68,7 @@ export class AuthService {
     }
 
     private static saveToken() {
-        return this.currentUser?.getToken()?.then((token) => localStorage.setItem("token", token))
+        return this.currentUser?.getToken()?.then((token) => localStorage.setItem('token', token))
     }
 
     public static addPhonePrefix(phone: string) {

@@ -6,4 +6,4 @@ const DocumentIcon = () => {
     )
 }
 
-export default DocumentIcon;
+export default DocumentIcon

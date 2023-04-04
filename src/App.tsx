@@ -34,6 +34,8 @@ import LoginValidatePhone from './pages/LoginValidatePhone'
 import EntityFoodSearch from './pages/EntityFoodSearch'
 import EntityQuantityMeasurement from './pages/EntityQuantityMeasurement'
 import EntityUserSignature from './pages/EntityUserSignature'
+import EntityDeliveryHistory from './pages/EntityDeliveryHistory'
+import { EntityDeliveryDetails } from './pages/EntityDeliveryDetails'
 
 function App() {
     return (
@@ -42,38 +44,44 @@ function App() {
                 <Route path="*" element={<WelcomeScreen/>}/>
                 <Route path={AppRoute.LOGIN} element={<LoginScreen/>}/>
                 <Route path={AppRoute.LOGIN_VALIDATE_PHONE} element={<LoginValidatePhone/>}/>
-                <Route path="/notifications" element={<NotificationsScreen/>}/>
-                <Route path="/notifications/:id" element={<NotificationDetails/>}/>
-                <Route path="/pickup-point" element={<PickupPoint/>}/>
-                <Route path="/profile/*" element={<ProfileScreen/>}/>
-                <Route path="/profile/edit-email" element={<ProfileEditEmail/>}/>
-                <Route path="/profile/edit-new-password" element={<ProfileEditNewPassword/>}/>
-                <Route path="/profile/edit-prev-password" element={<ProfileEditPrevPassword/>}/>
+                <Route path={AppRoute.NOTIFICATIONS} element={<NotificationsScreen/>}/>
+                <Route path={`${AppRoute.NOTIFICATIONS}/:id`} element={<NotificationDetails/>}/>
+                <Route path={AppRoute.PICKUP_POINT} element={<PickupPoint/>}/>
+                <Route path={AppRoute.PROFILE} element={<ProfileScreen/>}/>
+                <Route path={AppRoute.PROFILE_EDIT_EMAIL} element={<ProfileEditEmail/>}/>
+                <Route path={AppRoute.PROFILE_EDIT_NEW_PASSWORD} element={<ProfileEditNewPassword/>}/>
+                <Route path={AppRoute.PROFILE_EDIT_PREV_PASSWORD} element={<ProfileEditPrevPassword/>}/>
                 <Route path={AppRoute.RECIPIENT_HOME} element={<RecipientLandingScreen/>}/>
-                <Route path="/referral" element={<MenuReferral/>}/>
-                <Route path="/referral/upload" element={<MenuReferralUpload/>}/>
-                <Route path="/register/legal" element={<RegisterLegal/>}/>
-                <Route path="/register/email" element={<RegisterEmail/>}/>
+                <Route path={AppRoute.REFERRAL} element={<MenuReferral/>}/>
+                <Route path={AppRoute.REFERRAL_UPLOAD} element={<MenuReferralUpload/>}/>
+                <Route path={AppRoute.REGISTER_LEGAL} element={<RegisterLegal/>}/>
+                <Route path={AppRoute.REGISTER_EMAIL} element={<RegisterEmail/>}/>
                 <Route path={AppRoute.REGISTER} element={<RegisterUser/>}/>
                 <Route path={AppRoute.REGISTER_PHONE} element={<RegisterPhone/>}/>
                 <Route path={AppRoute.REGISTER_FAMILY_MEMBERS} element={<RegisterFamilyMembers/>}/>
                 <Route path={AppRoute.REGISTER_FAMILY_MEMBERS_ADD} element={<AddFamilyMember/>}/>
                 <Route path={AppRoute.REGISTER_REFERRAL_SHEET} element={<RegisterReferral/>}/>
                 <Route path={AppRoute.REGISTER_REFERRAL_SHEET_SEND_DATE} element={<RegisterReferralSendDate/>}/>
-                <Route path="/register/request-sent" element={<RegisterRequestSent/>}/>
+                <Route path={AppRoute.REGISTER_REQUEST_SENT} element={<RegisterRequestSent/>}/>
                 <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                 <Route path={AppRoute.WELCOME} element={<SplashScreen/>}/>
-                <Route path="/pickup-history" element={<PickupHistoryPage/>}/>
+                <Route path={AppRoute.PICKUP_HISTORY} element={<PickupHistoryPage/>}/>
                 <Route path={AppRoute.ENTITY_FOOD_SEARCH} element={<EntityFoodSearch/>}/>
                 <Route path={AppRoute.PICKUP_HISTORY} element={<PickupHistoryPage/>}/>
                 <Route path={AppRoute.PICKUP_DETAILS} element={<PickupDetails/>}/>
                 <Route path={AppRoute.ENTITY_HOME} element={<EntityHome/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
                 <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
+                <Route path={AppRoute.ENTITY_DELIVERY_HISTORY} element={<EntityDeliveryHistory/>}/>
+                <Route path={AppRoute.ENTITY_DELIVERY_HISTORY_DETAILS} element={<EntityDeliveryDetails/>}/>
                 <Route path={AppRoute.ENTITY_QUANTITY_MEASUREMENT} element={<EntityQuantityMeasurement/>}/>
                 <Route path={AppRoute.ENTITY_PROFILE} element={<EntityProfile/>}/>
+                {/* TODO: replace with user search component instead */}
+                <Route path={AppRoute.ENTITY_USER_SEARCH} element={<EntityUserScanned />}/>
                 <Route path={AppRoute.ENTITY_USER_SCANNED} element={<EntityUserScanned/>}/>
                 <Route path={AppRoute.ENTITY_USER_SIGNATURE} element={<EntityUserSignature/>}/>
+                <Route path={AppRoute.ENTITY_NOTIFICATIONS} element={<NotificationsScreen/>}/>
+                <Route path={`${AppRoute.ENTITY_NOTIFICATIONS}/:id`} element={<NotificationDetails/>}/>
             </Routes>
         </Router>
     )

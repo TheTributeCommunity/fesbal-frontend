@@ -1,54 +1,54 @@
-import {useState} from 'react'
-import FoodItemProps from '../types/FoodItemProps'
-import FoodNames from '../enums/food-names'
-import {MeasurementUnit} from '../enums/measurement'
-import {useNavigate} from 'react-router'
-import {AppRoute} from '../enums/app-route'
+import { useState } from 'react'
+import { useNavigate } from 'react-router'
+import { AppRoute } from '../enums/app-route'
+import { FoodPicking } from '../types/FoodPicking'
+import { measurements, MeasurementUnit } from '../types/MeasurementUnit'
 
-const useFoodItems = (userFoodItems: FoodItemProps[] = []) => {
-    const [foodItems, setFoodItems] = useState<FoodItemProps[]>(userFoodItems)
+const useFoodItems = (userFoodItems: FoodPicking[] = []) => {
+    const [foodItems, setFoodItems] = useState<FoodPicking[]>(userFoodItems)
     const navigate = useNavigate()
-    const removeFoodItem = (foodItem: FoodItemProps) => {
-        setFoodItems(foodItems.filter(item => item.name !== foodItem.name))
+
+    const removeFoodItem = (foodItem: FoodPicking) => {
+        setFoodItems(foodItems.filter(item => item.food.name !== foodItem.food.name))
     }
-    const updateFoodName = (foodName: FoodNames, oldFoodName: FoodNames) => {
-        const foodNameAlreadyExists = foodItems.some(item => item.name === foodName)
+    const updateFoodName = (foodName: string, oldFoodName: string) => {
+        const foodNameAlreadyExists = foodItems.some(item => item.food.name === foodName)
         if (foodNameAlreadyExists) {
-            const removedFoodItems = foodItems.filter(item => item.name !== oldFoodName)
+            const removedFoodItems = foodItems.filter(item => item.food.name !== oldFoodName)
             setFoodItems(removedFoodItems)
-            navigate(AppRoute.ENTITY_USER_SCANNED, {state: {foodItems: removedFoodItems}})
+            navigate(AppRoute.ENTITY_USER_SCANNED, { state: { foodItems: removedFoodItems } })
             return
         }
         const updatedFoodItems = foodItems.map(item => {
-            if (item.name === oldFoodName) return {...item, name: foodName}
+            if (item.food.name === oldFoodName) return { ...item, name: foodName }
             return item
         })
         setFoodItems(updatedFoodItems)
-        navigate(AppRoute.ENTITY_USER_SCANNED, {state: {foodItems: updatedFoodItems}})
+        navigate(AppRoute.ENTITY_USER_SCANNED, { state: { foodItems: updatedFoodItems } })
     }
 
-    const updateFoodQuantity = (foodName: FoodNames, quantity: number, measurementUnit: MeasurementUnit) => {
+    const updateFoodQuantity = (foodName: string, quantity: number, measurementUnit: MeasurementUnit) => {
         const updatedFoodItems = foodItems.map(item => {
-            if (item.name === foodName) return {...item, quantity, measurementUnit}
+            if (item.food.name === foodName) return { ...item, quantity, measurementUnit }
             return item
         })
         setFoodItems(updatedFoodItems)
-        navigate(AppRoute.ENTITY_USER_SCANNED, {state: {foodItems: updatedFoodItems}})
+        navigate(AppRoute.ENTITY_USER_SCANNED, { state: { foodItems: updatedFoodItems } })
     }
 
-    const addFoodItem = (foodName: FoodNames) => {
-        if (foodItems.some(item => item.name === foodName)) {
-            navigate(AppRoute.ENTITY_USER_SCANNED, {state: {foodItems: foodItems}})
+    const addFoodItem = (foodName: string) => {
+        if (foodItems.some(item => item.food.name === foodName)) {
+            navigate(AppRoute.ENTITY_USER_SCANNED, { state: { foodItems: foodItems } })
             return
         }
-        const newFoodItem: FoodItemProps = {
-            name: foodName,
+        const newFoodItem: FoodPicking = {
+            food: { name: foodName },
             quantity: 1,
-            measurementUnit: MeasurementUnit.UNITS
+            unit: measurements.units
         }
         const updatedFoodItems = [...foodItems, newFoodItem]
         setFoodItems(updatedFoodItems)
-        navigate(AppRoute.ENTITY_USER_SCANNED, {state: {foodItems: updatedFoodItems}})
+        navigate(AppRoute.ENTITY_USER_SCANNED, { state: { foodItems: updatedFoodItems } })
     }
 
     return {

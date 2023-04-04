@@ -1,32 +1,30 @@
-import { PickupItem } from "../types/PickupItem";
-import { FoodMock } from "./food.mock";
-import { QuantityUnitMock } from "./quantityUnit.mock";
+import { FoodPicking } from '../types/FoodPicking'
+import { measurements } from '../types/MeasurementUnit'
 
-
-export const PickupItemMock: PickupItem[] = [
+export const PickupItemMock: FoodPicking[] = [
     {
-        food: FoodMock[0],
-        unit: QuantityUnitMock[0],
-        quantity: 1,
-    },
-    {
-        food: FoodMock[1],
-        unit: QuantityUnitMock[1],
-        quantity: 2,
-    },
-    {
-        food: FoodMock[2],
-        unit: QuantityUnitMock[2],
-        quantity: 3,
-    },
-    {
-        food: FoodMock[3],
-        unit: QuantityUnitMock[3],
+        food: { name: 'Leche' },
+        unit: measurements.liters,
         quantity: 4,
     },
     {
-        food: FoodMock[4],
-        unit: QuantityUnitMock[4],
-        quantity: 5,
+        food: { name: 'Galletas' },
+        unit: measurements.units,
+        quantity: 24,
+    },
+    {
+        food: { name: 'Arroz' },
+        unit: measurements.kilograms,
+        quantity: 2,
+    },
+    {
+        food: { name: 'Garbanzos' },
+        unit: measurements.kilograms,
+        quantity: 0.5,
+    },
+    {
+        food: { name: 'Pollo' },
+        unit: measurements.kilograms,
+        quantity: 2,
     }
 ]

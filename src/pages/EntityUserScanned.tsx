@@ -12,8 +12,8 @@ import {namespaces} from '../i18n/i18n.constants'
 import getDefaultFoodItems from '../helpers/getDefaultFoodItems'
 import getFamilyUnitAges from '../helpers/getFamilyUnitAges'
 import {useNavigate} from 'react-router'
-import FoodNames from '../enums/food-names'
-import FoodItemProps from '../types/FoodItemProps'
+import { FoodType } from '../types/FoodType'
+import { FoodPicking } from '../types/FoodPicking'
 
 const recipientUser = recipientUserMock
 const familyUnitAges = getFamilyUnitAges(recipientUser)
@@ -24,10 +24,10 @@ const EntityUserScanned = () => {
     const {foodItems, removeFoodItem} = useFoodItems(state?.foodItems || defaultFoodItems)
     const {t: translate} = useTranslation(namespaces.pages.entityUserScanned)
     const navigate = useNavigate()
-    const handleOnUpdateFoodName = (foodName: FoodNames) => {
+    const handleOnUpdateFoodName = (foodName: FoodType) => {
         navigate(AppRoute.ENTITY_FOOD_SEARCH, {state: {foodName, foodItems}})
     }
-    const handleOnUpdateQuantity = (foodItem: FoodItemProps) => {
+    const handleOnUpdateQuantity = (foodItem: FoodPicking) => {
         navigate(AppRoute.ENTITY_QUANTITY_MEASUREMENT, {state: {foodItem, foodItems}})
     }
     const handleOnAddFoodItem = () => {
@@ -64,12 +64,12 @@ const EntityUserScanned = () => {
                         )}
                         {foodItems.map((food) => (
                             <FoodItem
-                                key={food.name}
-                                name={food.name}
+                                key={food.food.name}
+                                food={food.food}
                                 quantity={food.quantity}
-                                measurementUnit={food.measurementUnit}
+                                unit={food.unit}
                                 onRemove={() => removeFoodItem(food)}
-                                onFoodClick={() => handleOnUpdateFoodName(food.name)}
+                                onFoodClick={() => handleOnUpdateFoodName(food.food)}
                                 onQuantityClick={() => handleOnUpdateQuantity(food)}
                             />
                         ))}

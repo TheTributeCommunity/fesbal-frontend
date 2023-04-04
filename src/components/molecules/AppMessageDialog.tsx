@@ -1,5 +1,5 @@
-import { FC } from "react";
-import AppNextButton from "../atom/AppNextButton";
+import { FC } from 'react'
+import AppNextButton from '../atom/AppNextButton'
 
 interface AppMessageDialogProps {
     icon?: React.ReactNode;
@@ -40,9 +40,9 @@ const AppMessageDialog: FC<AppMessageDialogProps> = ({
                                 <div className="mb-6 mx-auto">
                                     {icon}
                                 </div>
-                                <h2 className={titleClassname + " mb-8 font-big-title"}>{title}</h2>
+                                <h2 className={titleClassname + ' mb-8 font-big-title'}>{title}</h2>
                             
-                                <p className={descriptionClassname + " font-light mb-12 text-base"}>{description}</p>
+                                <p className={descriptionClassname + ' font-light mb-12 text-base'}>{description}</p>
                             
                             </div>
                             <div className="flex gap-4">
@@ -60,7 +60,7 @@ const AppMessageDialog: FC<AppMessageDialogProps> = ({
                 </div>)
             }
         </>
-    );
-};
+    )
+}
 
-export default AppMessageDialog;
+export default AppMessageDialog

@@ -1,6 +1,6 @@
-import EntityProps from "../types/EntityProps";
+import Entity from '../types/Entity'
 
-const entityMock: EntityProps = {
+const entityMock: Entity = {
     name: 'Asociación de Vecinos de Máspalomas',
     code: 'LPR123',
     province: 'Las Palmas de Gran Canaria',
@@ -13,4 +13,4 @@ const entityMock: EntityProps = {
     warehouseCapacity: '40m²'
 }
 
-export default entityMock;
+export default entityMock

@@ -1,13 +1,13 @@
-import {useState} from "react";
+import {useState} from 'react'
 
 const useShowPassword = () => {
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false)
 
     const toggleShowPassword = () => {
-        setShowPassword(!showPassword);
-    };
+        setShowPassword(!showPassword)
+    }
 
-    return { showPassword, toggleShowPassword };
+    return { showPassword, toggleShowPassword }
 }
 
-export default useShowPassword;
+export default useShowPassword

@@ -1,27 +1,27 @@
-import {FormEvent, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {validateDNI, validateNIE} from "../helpers";
-import {AppRoute} from "../enums/app-route";
+import {FormEvent, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import {validateDNI, validateNIE} from '../helpers'
+import {AppRoute} from '../enums/app-route'
 
 const useRegisterIDForm = () => {
-    const [selectedOption, setSelectedOption] = useState<string>("");
-    const [userID, setUserID] = useState<string>('');
+    const [selectedOption, setSelectedOption] = useState<string>('')
+    const [userID, setUserID] = useState<string>('')
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const validateUserID = (): boolean => {
-        return selectedOption === 'DNI' ? validateDNI(userID) : validateNIE(userID);
+        return selectedOption === 'DNI' ? validateDNI(userID) : validateNIE(userID)
     }
     const onSelectedOptionChange = (option: string) => {
-        setSelectedOption(option);
+        setSelectedOption(option)
     }
     const onUserIDChange = (id: string) => {
-        setUserID(id);
+        setUserID(id)
     }
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
         if (validateUserID()) {
-            navigate(AppRoute.REGISTER_PHONE);
+            navigate(AppRoute.REGISTER_PHONE)
         }
     }
 
@@ -35,4 +35,4 @@ const useRegisterIDForm = () => {
     }
 }
 
-export default useRegisterIDForm;
+export default useRegisterIDForm

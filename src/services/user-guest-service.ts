@@ -1,8 +1,8 @@
-import {UserGuest} from "../models/user-guest";
-import { v4 as uuidv4 } from 'uuid';
+import {UserGuest} from '../models/user-guest'
+import { v4 as uuidv4 } from 'uuid'
 
 export class UserGuestService {
-    private static USER_GUEST_KEY = "userGuest"
+    private static USER_GUEST_KEY = 'userGuest'
 
     public static create(firstName: string, lastName: string, dateOfBirth: Date, typeOfIdentityDocument: string, identityDocumentNumber: string) {
         return {
@@ -23,7 +23,7 @@ export class UserGuestService {
         const userGuestSaved = localStorage.getItem(this.USER_GUEST_KEY)
 
         if(!userGuestSaved) {
-            throw new Error("UserGuest not found")
+            throw new Error('UserGuest not found')
         }
         return this.toObject(userGuestSaved)
     }

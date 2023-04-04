@@ -6,4 +6,4 @@ const DeleteAccountIcon = () => {
     )
 }
 
-export default DeleteAccountIcon;
+export default DeleteAccountIcon

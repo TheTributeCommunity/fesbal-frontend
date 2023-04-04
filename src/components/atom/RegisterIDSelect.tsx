@@ -1,13 +1,13 @@
-import React, {FC} from 'react';
-import {useTranslation} from "react-i18next";
-import DropDownIcon from "../icons/DropDownIcon";
-import SelectProps from "../../types/SelectProps";
-import useRegisterIDSelect from "../../hooks/useRegisterIDSelect";
-import {namespaces} from "../../i18n/i18n.constants";
+import React, {FC} from 'react'
+import {useTranslation} from 'react-i18next'
+import DropDownIcon from '../icons/DropDownIcon'
+import SelectProps from '../../types/SelectProps'
+import useRegisterIDSelect from '../../hooks/useRegisterIDSelect'
+import {namespaces} from '../../i18n/i18n.constants'
 
 
 const IdentificationSelect: FC<SelectProps> = ({options, value, onChange, placeholder}) => {
-    const {onOptionClick, openDropdown, toggleDropdown, selectedOption} = useRegisterIDSelect({value, onChange});
+    const {onOptionClick, openDropdown, toggleDropdown, selectedOption} = useRegisterIDSelect({value, onChange})
 
     return (
         <div className="relative rounded-md bg-white text-primary-color">
@@ -36,7 +36,7 @@ const IdentificationSelect: FC<SelectProps> = ({options, value, onChange, placeh
                 </div>
             )}
         </div>
-    );
-};
+    )
+}
 
 export default IdentificationSelect

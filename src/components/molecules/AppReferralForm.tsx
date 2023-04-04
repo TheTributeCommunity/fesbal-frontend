@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { AppRoute } from '../../enums/app-route'
 import useUploadReferral from '../../hooks/useUploadReferral'
 import { namespaces } from '../../i18n/i18n.constants'
-import ReferralFormProps from '../../types/ReferralFormProps'
+import ReferralForm from '../../types/ReferralForm'
 import AppNextButton from '../atom/AppNextButton'
 import ReferralFileUploaded from './ReferralFileUploaded'
 import ReferralNoFileUploaded from './ReferralNoFileUploaded'
 
-const AppReferralForm = ({link, showSublink}: ReferralFormProps) => {
+const AppReferralForm = ({link, showSublink}: ReferralForm) => {
     const {
         file,
         setFile,

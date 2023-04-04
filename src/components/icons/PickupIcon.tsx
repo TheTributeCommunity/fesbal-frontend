@@ -9,4 +9,4 @@ const PickupIcon = () => {
     )
 }
 
-export default PickupIcon;
+export default PickupIcon

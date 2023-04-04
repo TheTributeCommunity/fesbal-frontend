@@ -1,6 +1,6 @@
-import ButtonProps from "../../types/ButtonProps";
-import {FC} from "react";
-import {Link} from "react-router-dom";
+import ButtonProps from '../../types/ButtonProps'
+import {FC} from 'react'
+import {Link} from 'react-router-dom'
 interface AppLinkButtonProps extends ButtonProps {
     link: string
 }
@@ -12,7 +12,7 @@ const AppLinkButton: FC<AppLinkButtonProps> = ({bgColor = 'bg-primary-color', ti
                 {title}
             </p>
         </Link>
-    );
-};
+    )
+}
 
-export default AppLinkButton;
+export default AppLinkButton

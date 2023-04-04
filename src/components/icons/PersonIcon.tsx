@@ -6,4 +6,4 @@ const PersonIcon = () => {
     )
 }
 
-export default PersonIcon;
+export default PersonIcon

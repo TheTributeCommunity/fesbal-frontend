@@ -23,11 +23,11 @@ const EntityHome = () => {
                 </div>
                 <div className="app-bottom-nav">
                     {/* TODO Fix routes when screens are done */}
-                    <Link to={AppRoute.WELCOME}>
+                    <Link to={AppRoute.ENTITY_DELIVERY_HISTORY}>
                         <ClockIcon/>
                     </Link>
                     <div className="w-1/3">
-                        <Link to={AppRoute.WELCOME}>
+                        <Link to={AppRoute.ENTITY_USER_SEARCH}>
                             <div className="app-bottom-nav--search-button">
                                 <SearchIcon width={45} height={48} color={'white'}/>
                             </div>

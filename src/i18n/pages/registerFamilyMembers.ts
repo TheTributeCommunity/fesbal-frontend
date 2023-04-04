@@ -5,13 +5,13 @@ export const registerFamilyMembersEs = {
     addMember: 'Añadir familiar',
     nextWithoutMembers: 'Continuar sin añadir familiares',
     nextWithMembers: 'Continuar',
-    incumbent: "Titular",
-    familyMember: "Familiar",
-    inputName: "Nombre",
-    inputSurname: "Apellidos",
-    inputIdType: "Tipo",
-    inputId: "Número de documento",
-    inputBirthDate: "Fecha de nacimiento",
+    incumbent: 'Titular',
+    familyMember: 'Familiar',
+    inputName: 'Nombre',
+    inputSurname: 'Apellidos',
+    inputIdType: 'Tipo',
+    inputId: 'Número de documento',
+    inputBirthDate: 'Fecha de nacimiento',
     sweetAlert: {
         title: 'Ningún familiar añadido',
         text: 'Si tienes familiares y no los añades, no contabilizarán para la asignación de alimentos.',
@@ -19,11 +19,11 @@ export const registerFamilyMembersEs = {
         cancelButtonText: 'Cancelar',
     },
     personCard: {
-        fullName: "Nombre y apellidos",
-        id: "Documento de identidad",
-        birthDate: "Fecha de nacimiento",
-        phone: "Teléfono",
-        email: "Email"
+        fullName: 'Nombre y apellidos',
+        id: 'Documento de identidad',
+        birthDate: 'Fecha de nacimiento',
+        phone: 'Teléfono',
+        email: 'Email'
     }
 }
 
@@ -34,13 +34,13 @@ export const registerFamilyMembersEn = {
     addMember: 'Add family member',
     nextWithoutMembers: 'Continue without adding family members',
     nextWithMembers: 'Continue',
-    incumbent: "Incumbent",
-    familyMember: "Family member",
-    inputName: "Name",
-    inputSurname: "Surname",
-    inputIdType: "Type",
-    inputId: "Document number",
-    inputBirthDate: "Date of birth",
+    incumbent: 'Incumbent',
+    familyMember: 'Family member',
+    inputName: 'Name',
+    inputSurname: 'Surname',
+    inputIdType: 'Type',
+    inputId: 'Document number',
+    inputBirthDate: 'Date of birth',
     sweetAlert: {
         title: 'No family members added',
         text: 'If you have family members and you don\'t add them, they won\'t count towards food allocation.',
@@ -48,10 +48,10 @@ export const registerFamilyMembersEn = {
         cancelButtonText: 'Cancel',
     },
     personCard: {
-        fullName: "Full name",
-        id: "ID document",
-        birthDate: "Date of birth",
-        phone: "Mobile phone",
-        email: "Email"
+        fullName: 'Full name',
+        id: 'ID document',
+        birthDate: 'Date of birth',
+        phone: 'Mobile phone',
+        email: 'Email'
     }
 }

@@ -1,34 +1,34 @@
-import { useTranslation } from "react-i18next";
-import { namespaces } from "../../i18n/i18n.constants";
-import AppNextButton from "../atom/AppNextButton";
-import AppCalendar from "../atom/AppCalendar";
-import { FormEvent } from "react";
-import classNames from "classnames";
-import useRegisterReferralSendDate from "../../hooks/useRegisterReferralSendDate";
+import { useTranslation } from 'react-i18next'
+import { namespaces } from '../../i18n/i18n.constants'
+import AppNextButton from '../atom/AppNextButton'
+import AppCalendar from '../atom/AppCalendar'
+import { FormEvent } from 'react'
+import classNames from 'classnames'
+import useRegisterReferralSendDate from '../../hooks/useRegisterReferralSendDate'
 
 interface Props {
     onSubmit: () => void;
 }
 
 export default ({onSubmit: parentOnSubmit}:Props) => {
-    const { selectedDate, setDate, isValidFutureDate } = useRegisterReferralSendDate();
+    const { selectedDate, setDate, isValidFutureDate } = useRegisterReferralSendDate()
     const { t: translate } = useTranslation(
         namespaces.pages.registerReferralSendDate
-    );
+    )
 
     const validForm = (): boolean => {
-        return isValidFutureDate();
-    };
+        return isValidFutureDate()
+    }
 
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
         if (validForm()) {
-            parentOnSubmit();
+            parentOnSubmit()
         }
-    };
+    }
 
-    const minDate = new Date();
-    minDate.setDate(minDate.getDate() + 1);
+    const minDate = new Date()
+    minDate.setDate(minDate.getDate() + 1)
 
 
     return (
@@ -42,23 +42,23 @@ export default ({onSubmit: parentOnSubmit}:Props) => {
                     <label
                         htmlFor="datePicker"
                         className={classNames({
-                            "text-primary-color font-roboto-flex text-xs font-medium":
+                            'text-primary-color font-roboto-flex text-xs font-medium':
                                 selectedDate,
                             invisible: !selectedDate,
                         })}
                     >
-                        {translate("sendDate")}
+                        {translate('sendDate')}
                     </label>
                     <AppCalendar
                         id="datePicker"
                         selectedDate={selectedDate || undefined}
                         minDate={minDate}
                         setDate={setDate}
-                        placeholder={translate("sendDate")}
+                        placeholder={translate('sendDate')}
                     />
                 </div>
             </div>
-            <AppNextButton disabled={!validForm()} title={translate("next")} />
+            <AppNextButton disabled={!validForm()} title={translate('next')} />
         </form>
-    );
-};
+    )
+}

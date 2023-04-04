@@ -1,101 +1,101 @@
 import { BoosterClient } from './booster-service'
 import { gql } from '@apollo/client'
 import { RecipientUser } from '../models/recipient-user'
-import { AuthService } from "./auth-service";
+import { AuthService } from './auth-service'
 
 export class RecipientUserService {
-  public static async getAll(): Promise<RecipientUser[]> {
-    const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
-      query: GET_ALL_RECIPIENTS_USERS,
-      variables: {},
-    })
-    return result.data.ListRecipientUserReadModels.items
-  }
-
-  public static async getAuth(): Promise<RecipientUser> {
-    if (!AuthService.currentUser || !AuthService.currentUser.phone) {
-      throw new Error("Authenticated user not found")
+    public static async getAll(): Promise<RecipientUser[]> {
+        const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
+            query: GET_ALL_RECIPIENTS_USERS,
+            variables: {},
+        })
+        return result.data.ListRecipientUserReadModels.items
     }
-    return RecipientUserService.getByPhone(AuthService.currentUser.phone)
-  }
 
-  private static async getByPhone(phone: string): Promise<RecipientUser> {
-    const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
-      query: GET_RECIPIENT_USER_BY_PHONE,
-      variables: { phone },
-    })
-    return result.data.ListRecipientUserReadModels.items[0]
-  }
-
-  public static async getReferralSheetUploadUrl(recipientUserId: string): Promise<string> {
-    const result = await BoosterClient.mutate<{ GetRecipientUserReferralSheetUploadUrl: string }>({
-      mutation: GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL,
-      variables: { id: { recipientUserId } },
-    })
-    if (!result.data?.GetRecipientUserReferralSheetUploadUrl) {
-      throw new Error('Error getting the URL to upload the referral sheet')
+    public static async getAuth(): Promise<RecipientUser> {
+        if (!AuthService.currentUser || !AuthService.currentUser.phone) {
+            throw new Error('Authenticated user not found')
+        }
+        return RecipientUserService.getByPhone(AuthService.currentUser.phone)
     }
-    return result.data.GetRecipientUserReferralSheetUploadUrl
-  }
 
-  public static async create(newRecipientUser: Partial<RecipientUser>): Promise<boolean> {
-    const result = await BoosterClient.mutate<{ CreateRecipientUser: boolean }>({
-      mutation: CREATE_RECIPIENT_USER,
-      variables: this.recipientUserToCommandVariables(newRecipientUser),
-    })
-    if (!result.data?.CreateRecipientUser) {
-      throw new Error('Error creating the USER')
+    private static async getByPhone(phone: string): Promise<RecipientUser> {
+        const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
+            query: GET_RECIPIENT_USER_BY_PHONE,
+            variables: { phone },
+        })
+        return result.data.ListRecipientUserReadModels.items[0]
     }
-    return result.data?.CreateRecipientUser
-  }
 
-  public static async updateEmail(recipientUserId: string, email: string): Promise<boolean> {
-    const result = await BoosterClient.mutate<{ UpdateRecipientUserEmail: boolean }>({
-      mutation: UPDATE_RECIPIENT_USER_EMAIL,
-      variables: { updatedUser: { recipientUserId, email } },
-    })
-    if (!result.data?.UpdateRecipientUserEmail) {
-      throw new Error('Error updating the USER email')
+    public static async getReferralSheetUploadUrl(recipientUserId: string): Promise<string> {
+        const result = await BoosterClient.mutate<{ GetRecipientUserReferralSheetUploadUrl: string }>({
+            mutation: GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL,
+            variables: { id: { recipientUserId } },
+        })
+        if (!result.data?.GetRecipientUserReferralSheetUploadUrl) {
+            throw new Error('Error getting the URL to upload the referral sheet')
+        }
+        return result.data.GetRecipientUserReferralSheetUploadUrl
     }
-    return result.data?.UpdateRecipientUserEmail
-  }
 
-  public static async updateReferralSheetUrl(recipientUserId: string, referralSheetUrl: string): Promise<boolean> {
-    const result = await BoosterClient.mutate<{ UpdateRecipientUserReferralSheetUrl: boolean }>({
-      mutation: UPDATE_RECIPIENT_USER_REFERRAL_SHEET_URL,
-      variables: { updatedUser: { recipientUserId, referralSheetUrl } },
-    })
-    if (!result.data?.UpdateRecipientUserReferralSheetUrl) {
-      throw new Error('Error updating the USER referralSheetUrl')
+    public static async create(newRecipientUser: Partial<RecipientUser>): Promise<boolean> {
+        const result = await BoosterClient.mutate<{ CreateRecipientUser: boolean }>({
+            mutation: CREATE_RECIPIENT_USER,
+            variables: this.recipientUserToCommandVariables(newRecipientUser),
+        })
+        if (!result.data?.CreateRecipientUser) {
+            throw new Error('Error creating the USER')
+        }
+        return result.data?.CreateRecipientUser
     }
-    return result.data?.UpdateRecipientUserReferralSheetUrl
-  }
 
-  public static async delete(recipientUserId: string): Promise<boolean> {
-    const result = await BoosterClient.mutate<{ DeleteRecipientUser: boolean }>({
-      mutation: DELETE_RECIPIENT_USER,
-      variables: { userToDelete: { recipientUserId } },
-    })
-    if (!result.data?.DeleteRecipientUser) {
-      throw new Error('Error deleting the USER')
+    public static async updateEmail(recipientUserId: string, email: string): Promise<boolean> {
+        const result = await BoosterClient.mutate<{ UpdateRecipientUserEmail: boolean }>({
+            mutation: UPDATE_RECIPIENT_USER_EMAIL,
+            variables: { updatedUser: { recipientUserId, email } },
+        })
+        if (!result.data?.UpdateRecipientUserEmail) {
+            throw new Error('Error updating the USER email')
+        }
+        return result.data?.UpdateRecipientUserEmail
     }
-    return result.data?.DeleteRecipientUser
-  }
 
-  private static recipientUserToCommandVariables(recipientUser: Partial<RecipientUser>) {
-    return {
-      recipientUser:
+    public static async updateReferralSheetUrl(recipientUserId: string, referralSheetUrl: string): Promise<boolean> {
+        const result = await BoosterClient.mutate<{ UpdateRecipientUserReferralSheetUrl: boolean }>({
+            mutation: UPDATE_RECIPIENT_USER_REFERRAL_SHEET_URL,
+            variables: { updatedUser: { recipientUserId, referralSheetUrl } },
+        })
+        if (!result.data?.UpdateRecipientUserReferralSheetUrl) {
+            throw new Error('Error updating the USER referralSheetUrl')
+        }
+        return result.data?.UpdateRecipientUserReferralSheetUrl
+    }
+
+    public static async delete(recipientUserId: string): Promise<boolean> {
+        const result = await BoosterClient.mutate<{ DeleteRecipientUser: boolean }>({
+            mutation: DELETE_RECIPIENT_USER,
+            variables: { userToDelete: { recipientUserId } },
+        })
+        if (!result.data?.DeleteRecipientUser) {
+            throw new Error('Error deleting the USER')
+        }
+        return result.data?.DeleteRecipientUser
+    }
+
+    private static recipientUserToCommandVariables(recipientUser: Partial<RecipientUser>) {
+        return {
+            recipientUser:
       {
-        recipientUserId: recipientUser.id,
-        firstName: recipientUser.firstName,
-        lastName: recipientUser.lastName,
-        dateOfBirth: recipientUser.dateOfBirth,
-        typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
-        identityDocumentNumber: recipientUser.identityDocumentNumber,
-        phone: recipientUser.phone,
+          recipientUserId: recipientUser.id,
+          firstName: recipientUser.firstName,
+          lastName: recipientUser.lastName,
+          dateOfBirth: recipientUser.dateOfBirth,
+          typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
+          identityDocumentNumber: recipientUser.identityDocumentNumber,
+          phone: recipientUser.phone,
       }
+        }
     }
-  }
 }
 
 const GET_ALL_RECIPIENTS_USERS = gql`

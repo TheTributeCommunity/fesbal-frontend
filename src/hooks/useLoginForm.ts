@@ -1,15 +1,15 @@
-import { FormEvent, useState } from "react";
-import { AuthService } from "../services/auth-service";
+import { FormEvent, useState } from 'react'
+import { AuthService } from '../services/auth-service'
 
 const useLoginForm = (submitButtonId: string) => {
-    const [userPhone, setUserPhone] = useState<string>('');
+    const [userPhone, setUserPhone] = useState<string>('')
 
     const onUserPhoneChange = (phone: string) => {
-        setUserPhone(phone);
+        setUserPhone(phone)
     }
 
     const onSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
-        e.preventDefault();
+        e.preventDefault()
         if (validateUserPhone()) {
             return AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
                 .then(() => true)
@@ -21,8 +21,8 @@ const useLoginForm = (submitButtonId: string) => {
     }
 
     const validateUserPhone = (): boolean => {
-        const PHONE_REGEX = new RegExp(/^\d{9}(,\d{9})*$/);
-        return PHONE_REGEX.test(userPhone);
+        const PHONE_REGEX = new RegExp(/^\d{9}(,\d{9})*$/)
+        return PHONE_REGEX.test(userPhone)
     }
 
     return {
@@ -33,4 +33,4 @@ const useLoginForm = (submitButtonId: string) => {
     }
 }
 
-export default useLoginForm;
+export default useLoginForm

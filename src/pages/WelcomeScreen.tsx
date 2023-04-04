@@ -1,7 +1,7 @@
-import LogoFesbalWhiteIcon from "../components/icons/LogoFesbalWhiteIcon";
-import {AppRoute} from "../enums/app-route";
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import LogoFesbalWhiteIcon from '../components/icons/LogoFesbalWhiteIcon'
+import {AppRoute} from '../enums/app-route'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router'
 
 const WelcomeScreen = () => {
     const navigate = useNavigate()
@@ -21,7 +21,7 @@ const WelcomeScreen = () => {
                 </div>
             </div>
         </a>
-    );
-};
+    )
+}
 
-export default WelcomeScreen;
+export default WelcomeScreen

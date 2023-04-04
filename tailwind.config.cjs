@@ -35,7 +35,7 @@ module.exports = {
                 'big-input': ['1.5rem', { lineHeight: '1.75rem', fontWeight: '400' }],
                 'small-label': ['0.625rem', { lineHeight: '0.875rem', fontWeight: '400' }],
             },
-            backgroundImage: {'page': 'linear-gradient(169.42deg, #ffffff 10.03%, #e8f8ff 35.86%, #e8f8ff 68.88%, #ffffff 89.63%)'},
+            backgroundImage: { 'page': 'linear-gradient(169.42deg, #ffffff 10.03%, #e8f8ff 35.86%, #e8f8ff 68.88%, #ffffff 89.63%)' },
             backgroundColor: {
                 'mask-opaque': 'rgba(0, 0, 0, 0.2)',
             },

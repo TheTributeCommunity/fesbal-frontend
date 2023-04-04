@@ -12,7 +12,7 @@ const EntityLogin = () => {
 
     const handleSubmit = (success: boolean) => {
         if (success) {
-            navigate(AppRoute.RECIPIENT_HOME)
+            navigate(AppRoute.ENTITY_HOME)
         }
     }
 

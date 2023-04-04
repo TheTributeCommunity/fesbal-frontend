@@ -6,4 +6,4 @@ const PowerIcon = () => {
     )
 }
 
-export default PowerIcon;
+export default PowerIcon

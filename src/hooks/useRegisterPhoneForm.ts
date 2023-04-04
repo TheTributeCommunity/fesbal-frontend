@@ -1,16 +1,16 @@
-import { FormEvent, useState } from "react";
-import { AuthService } from "../services/auth-service";
-import { UserGuestService } from "../services/user-guest-service";
+import { FormEvent, useState } from 'react'
+import { AuthService } from '../services/auth-service'
+import { UserGuestService } from '../services/user-guest-service'
 
 const useRegisterPhoneForm = (submitButtonId: string) => {
-    const [userPhone, setUserPhone] = useState<string>('');
+    const [userPhone, setUserPhone] = useState<string>('')
 
     const onUserPhoneChange = (phone: string) => {
-        setUserPhone(phone);
+        setUserPhone(phone)
     }
 
     const onSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
-        e.preventDefault();
+        e.preventDefault()
         if (validateUserPhone()) {
             UserGuestService.setPhone(AuthService.addPhonePrefix(userPhone))
             return AuthService.signInWithPhoneNumber(submitButtonId, userPhone)
@@ -23,8 +23,8 @@ const useRegisterPhoneForm = (submitButtonId: string) => {
     }
 
     const validateUserPhone = (): boolean => {
-        const PHONE_REGEX = new RegExp(/^\d{9}(,\d{9})*$/);
-        return PHONE_REGEX.test(userPhone);
+        const PHONE_REGEX = new RegExp(/^\d{9}(,\d{9})*$/)
+        return PHONE_REGEX.test(userPhone)
     }
 
     return {
@@ -35,4 +35,4 @@ const useRegisterPhoneForm = (submitButtonId: string) => {
     }
 }
 
-export default useRegisterPhoneForm;
+export default useRegisterPhoneForm

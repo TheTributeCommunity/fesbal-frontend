@@ -1,16 +1,10 @@
-import { PickupItem } from "./PickupItem";
+import { FoodPicking } from './FoodPicking'
 
 export interface Pickup {
-  id: number;
-  entityName: string;
-  date: string;
-  title: string;
-  pickupItems: PickupItem[];
+  id: number
+  entityName: string
+  date: string
+  title: string
+  pickupItems: FoodPicking[]
 }
 
-export const getPickupDescription = (pickup: Pickup) => { 
-  const itemsStr = pickup.pickupItems.map(
-    item => `${item.quantity} ${item.unit.unit.toLowerCase()} de ${item.food.name}`)
-    .join(', ');
-  return itemsStr;
-}

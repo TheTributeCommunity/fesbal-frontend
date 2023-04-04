@@ -1,6 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import CloseIcon from "../icons/CloseIcon"
-import CrossIcon from "../icons/CloseIcon"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import CloseIcon from '../icons/CloseIcon'
+import CrossIcon from '../icons/CloseIcon'
 
 interface AppCloseButtonProps {
     onClick: () => void
@@ -14,4 +14,4 @@ const AppCloseButton = ({onClick}: AppCloseButtonProps): JSX.Element => {
     )
 }
 
-export default AppCloseButton;
+export default AppCloseButton

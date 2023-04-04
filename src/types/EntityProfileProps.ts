@@ -1,9 +1,9 @@
-import PersonalDataItemProps from "./PersonalDataItemProps";
+import PersonalDataItemProps from './PersonalDataItemProps'
 
 interface EntityProfileProps {
-    entity: PersonalDataItemProps[],
-    contact: PersonalDataItemProps[],
+    entity: PersonalDataItemProps[]
+    contact: PersonalDataItemProps[]
     logistic: PersonalDataItemProps[]
 }
 
-export default EntityProfileProps;
+export default EntityProfileProps

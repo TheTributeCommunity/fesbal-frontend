@@ -1,4 +1,4 @@
-import { Relative } from "./relative";
+import { Relative } from './relative'
 
 export enum RecipientUserRole {
   UserRegistered = 'UserRegistered',

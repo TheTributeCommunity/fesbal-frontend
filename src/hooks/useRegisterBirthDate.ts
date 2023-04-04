@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 const useRegisterBirthDate = () => {
-    const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+    const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 
     const isValidBirthDate = () => selectedDate ? selectedDate < new Date() : false
 
@@ -26,4 +26,4 @@ const useRegisterBirthDate = () => {
     }
 }
 
-export default useRegisterBirthDate;
+export default useRegisterBirthDate

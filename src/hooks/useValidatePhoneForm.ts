@@ -1,22 +1,22 @@
-import { FormEvent, useState } from "react";
-import { AuthService } from "../services/auth-service";
-import { RecipientUserService } from "../services/recipient-user-service";
-import { UserGuestService } from "../services/user-guest-service";
+import { FormEvent, useState } from 'react'
+import { AuthService } from '../services/auth-service'
+import { RecipientUserService } from '../services/recipient-user-service'
+import { UserGuestService } from '../services/user-guest-service'
 
 const useValidatePhoneForm = () => {
-    const [validationCode, setValidationCode] = useState<string>('');
-    const CODE_LENGTH = 6;
+    const [validationCode, setValidationCode] = useState<string>('')
+    const CODE_LENGTH = 6
 
     const checkValidationCodeLength = (): boolean => {
-        return validationCode.length === CODE_LENGTH;
+        return validationCode.length === CODE_LENGTH
     }
 
     const onValidationCodeChange = (code: string) => {
-        setValidationCode(code);
+        setValidationCode(code)
     }
 
     const onSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
-        e.preventDefault();
+        e.preventDefault()
         if (checkValidationCodeLength()) {
             return AuthService.confirmPhoneCode(validationCode)
                 .then(() => RecipientUserService.create(UserGuestService.get()))
@@ -39,4 +39,4 @@ const useValidatePhoneForm = () => {
     }
 }
 
-export default useValidatePhoneForm;
+export default useValidatePhoneForm

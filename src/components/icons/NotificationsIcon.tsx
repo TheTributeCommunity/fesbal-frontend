@@ -6,4 +6,4 @@ const NotificationsIcon = () => {
     )
 }
 
-export default NotificationsIcon;
+export default NotificationsIcon

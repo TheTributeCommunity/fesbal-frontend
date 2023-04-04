@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 const useRegisterReferralSendDate = () => {
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
     const isValidFutureDate = () => selectedDate ? selectedDate > new Date() : false
 
@@ -26,4 +26,4 @@ const useRegisterReferralSendDate = () => {
     }
 }
 
-export default useRegisterReferralSendDate;
+export default useRegisterReferralSendDate
