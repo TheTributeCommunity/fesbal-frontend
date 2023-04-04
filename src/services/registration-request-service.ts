@@ -1,6 +1,6 @@
-import { BoosterClient } from "./booster-service";
-import { RegistrationRequest } from "../models/registration-request";
-import { gql } from "@apollo/client";
+import { BoosterClient } from './booster-service'
+import { RegistrationRequest } from '../models/registration-request'
+import { gql } from '@apollo/client'
 
 export class RegistrationRequestService {
     static async create(newRegistrationRequest: RegistrationRequest): Promise<boolean> {

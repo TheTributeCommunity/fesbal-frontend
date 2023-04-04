@@ -1,8 +1,7 @@
-import FoodItemProps from '../../types/FoodItemProps'
-import React from 'react'
+import { FoodPicking } from '../../types/FoodPicking'
 
 interface EntityUserSignatureFoodListProps {
-    foodItems: FoodItemProps[];
+    foodItems: FoodPicking[];
     translate: (key: string) => string;
 }
 
@@ -22,11 +21,11 @@ const EntityUserSignatureFoodList = ({ foodItems, translate }: EntityUserSignatu
                     const bgColor = index % 2 === 0 ? 'bg-ghost-white' : ''
                     return (
                         <li
-                            key={foodItem.name}
+                            key={foodItem.food.name}
                             className={`flex flex-row justify-between items-center w-full h-16 px-6 font-roboto-flex text-input text-secondary-color ${bgColor}`}
                         >
-                            <p>{foodItem.name}</p>
-                            <p>{foodItem.quantity}<span className="text-small-label text-primary-color"> {foodItem.measurementUnit}</span></p>
+                            <p>{foodItem.food.name}</p>
+                            <p>{foodItem.quantity}<span className="text-small-label text-primary-color"> {foodItem.unit.abbreviation}</span></p>
                         </li>
                     )
                 })}

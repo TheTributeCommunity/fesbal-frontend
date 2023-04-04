@@ -6,4 +6,4 @@ const EditIcon = (): JSX.Element => {
     )
 }
 
-export default EditIcon;
+export default EditIcon

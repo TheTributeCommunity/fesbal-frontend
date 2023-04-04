@@ -1,11 +1,11 @@
-import LocationIcon from "../icons/LocationIcon";
+import LocationIcon from '../icons/LocationIcon'
 
 const AppLocationButton = () => {
     return (
         <button>
             <LocationIcon/>
         </button>
-    );
-};
+    )
+}
 
-export default AppLocationButton;
+export default AppLocationButton

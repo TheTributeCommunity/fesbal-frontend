@@ -1,11 +1,11 @@
-import {FC} from "react";
-import {useTranslation} from "react-i18next";
-import {namespaces} from "../../i18n/i18n.constants";
-import ReferralSheetProps from "../../types/ReferralSheetProps";
-import classNames from "classnames";
+import {FC} from 'react'
+import {useTranslation} from 'react-i18next'
+import {namespaces} from '../../i18n/i18n.constants'
+import ReferralSheet from '../../types/ReferralSheet'
+import classNames from 'classnames'
 
-const menuReferralCard: FC<ReferralSheetProps> = ({fullname, uploadDate, familyMembers, expiredDate, status}) => {
-    const {t: translate} = useTranslation(namespaces.pages.menuReferral);
+const menuReferralCard: FC<ReferralSheet> = ({fullname, uploadDate, familyMembers, expiredDate, status}) => {
+    const {t: translate} = useTranslation(namespaces.pages.menuReferral)
     const statusClasses = classNames(
         'border',
         'rounded-2xl',
@@ -16,7 +16,7 @@ const menuReferralCard: FC<ReferralSheetProps> = ({fullname, uploadDate, familyM
             'border-primary-color text-primary-color': status === 'approved',
             'border-secondary-color text-secondary-color': status === 'pending',
             'border-warning-color text-warning-color': status === 'expired',
-    });
+        })
 
     return (
         <ul className="bg-white rounded-2xl shadow-lg p-4 flex flex-col gap-6">
@@ -59,4 +59,4 @@ const menuReferralCard: FC<ReferralSheetProps> = ({fullname, uploadDate, familyM
     )
 }
 
-export default menuReferralCard;
+export default menuReferralCard

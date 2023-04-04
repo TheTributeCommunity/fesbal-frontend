@@ -16,6 +16,7 @@ import PowerIcon from '../icons/PowerIcon'
 
 interface BurgerMenuProps {
     visible: boolean,
+    userType?: 'recipient' | 'entity'
     onHide: () => void
 }
 
@@ -34,9 +35,35 @@ const MenuItem = ({icon, title, onClick}: MenuItemProps) => {
     )
 }
 
-const BurgerMenu = ({visible, onHide}: BurgerMenuProps): JSX.Element => {
+const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps): JSX.Element => {
     const navigate = useNavigate()
     const {t: translate} = useTranslation(namespaces.components.burgerMenu)
+
+    const RecipientMenuItems = () => {
+        return (
+            <div className="flex flex-col gap-[1px]">
+                <MenuItem icon={<PersonIcon />} title={translate('profile', '')} onClick={() => {navigate(AppRoute.PROFILE)}} />
+                <MenuItem icon={<NotificationsIcon />} title={translate('notifications', '')} onClick={() => {navigate(AppRoute.NOTIFICATIONS)}} />
+                <MenuItem icon={<ClockIcon />} title={translate('history', '')} onClick={() => {navigate(AppRoute.PICKUP_HISTORY)}} />
+                <MenuItem icon={<PickupIcon />} title={translate('pickup', '')} onClick={() => {navigate(AppRoute.PICKUP_POINT)}} />
+                <MenuItem icon={<DocumentIcon />} title={translate('sheet', '')} onClick={() => {navigate(AppRoute.REFERRAL)}} />
+                <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')}} />
+                <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => {return}} />
+            </div>
+        )
+    }
+    
+    const EntityMenuItems = () => {
+        return (
+            <div className="flex flex-col gap-[1px]">
+                <MenuItem icon={<PersonIcon />} title={translate('profile', '')} onClick={() => {navigate(AppRoute.ENTITY_PROFILE)}} />
+                <MenuItem icon={<NotificationsIcon />} title={translate('notifications', '')} onClick={() => {navigate(AppRoute.ENTITY_NOTIFICATIONS)}} />
+                <MenuItem icon={<ClockIcon />} title={translate('entityDeliveryHistory', '')} onClick={() => {navigate(AppRoute.ENTITY_DELIVERY_HISTORY)}} />
+                <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')}} />
+                <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => {return}} />
+            </div>
+        )
+    }
 
     return (
         <Sidebar
@@ -55,16 +82,8 @@ const BurgerMenu = ({visible, onHide}: BurgerMenuProps): JSX.Element => {
                         <AppCloseButton onClick={onHide}/>
                     </div>
                 </div>
-                <div className="flex flex-col gap-[1px]">
-                    <MenuItem icon={<PersonIcon />} title={translate('profile', '')} onClick={() => {navigate(AppRoute.PROFILE)}} />
-                    <MenuItem icon={<NotificationsIcon />} title={translate('notifications', '')} onClick={() => {navigate(AppRoute.NOTIFICATIONS)}} />
-                    <MenuItem icon={<ClockIcon />} title={translate('history', '')} onClick={() => {navigate(AppRoute.PICKUP_HISTORY)}} />
-                    <MenuItem icon={<PickupIcon />} title={translate('pickup', '')} onClick={() => {navigate(AppRoute.PICKUP_POINT)}} />
-                    <MenuItem icon={<DocumentIcon />} title={translate('sheet', '')} onClick={() => {navigate(AppRoute.REFERRAL)}} />
-                    <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.location.replace('https://www.fesbal.org.es/faqs')}} />
-                    <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => {return}} />
-                </div>
-                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={() => navigate(AppRoute.LOGIN)}>
+                {userType === 'recipient' ? <RecipientMenuItems /> : <EntityMenuItems />}
+                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={() => navigate(AppRoute.WELCOME)}>
                     {<PowerIcon />}
                     <span className="text-center font-roboto-flex text-focus-warning-color font-normal text-base leading-5">{translate('logOut', '')}</span>
                 </div>

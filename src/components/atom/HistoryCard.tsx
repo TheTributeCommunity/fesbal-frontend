@@ -1,30 +1,27 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AppRoute } from '../../enums/app-route'
 
 interface HistoryCardProps {
   title: string;
-  id?: number;
-  isoDate: string;
+  id: number;
+  path: string
+  isoDate: string | Date;
   description: string;
 }
 
-const HistoryCard: FC<HistoryCardProps> = ({ id, title, isoDate, description }) => {
+const HistoryCard: FC<HistoryCardProps> = ({ id, path, title, isoDate, description }) => {
     const date = new Date(isoDate).toLocaleDateString()
     const time = new Date(isoDate).toLocaleTimeString()
 
     const navigate = useNavigate()
 
     function redirectToPickupDetails() {
-        let path = AppRoute.PICKUP_DETAILS.toString()
-        if (id) {
-            path = path.replace(':id', id.toString())
-            navigate(path)
-        }
+        console.log(path, id, path.replace(':id', id.toString()))
+        navigate(path.replace(':id', id.toString()))
     }
 
     return (
-        <div className="px-8 py-5 bg-white" onClick={redirectToPickupDetails}>
+        <div className="cursor-pointer px-8 py-5 bg-white" onClick={redirectToPickupDetails}>
             <div className="flex justify-between">
                 <p className="text-xs text-primary-color">{date}</p>
                 <p className="text-xs text-primary-color">{time}</p>

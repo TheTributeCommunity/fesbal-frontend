@@ -30,6 +30,7 @@ export const namespaces = {
         validatePhone: 'pages.validatePhone',
         welcomeScreen: 'pages.welcomeScreen',
         pickupDetails: 'pages.pickupDetails',
+        entityDeliveryDetails: 'pages.entityDeliveryDetails',
     },
     atoms: {
         appCalendar: 'atoms.appCalendar',

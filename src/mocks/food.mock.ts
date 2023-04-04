@@ -1,24 +1,22 @@
-import { FoodType } from "../types/FoodType"
+import { FoodType } from '../types/FoodType'
 
 export const FoodMock: FoodType[] = [
     {
-        id: 1,
-        name: "Leche",
+        name: 'Leche',
     },
     {
-        id: 2,
-        name: "Garbanzos",
+        name: 'Garbanzos',
     },
     {
-        id: 3,
-        name: "Aceite",
+        name: 'Aceite',
     },
     {
-        id: 4,
-        name: "Galletas",
+        name: 'Galletas',
     },
     {
-        id: 5,
-        name: "Frijoles",
-   }
+        name: 'Frijoles',
+    },
+    {
+        name: 'Arroz',
+    }
 ]

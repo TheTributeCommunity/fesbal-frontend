@@ -1,5 +1,5 @@
-import {RecipientUser} from '../models/recipient-user'
-import FamilyUnitAgesProps from '../types/FamilyUnitAgesProps'
+import { RecipientUser } from '../models/recipient-user'
+import FamilyUnitAges from '../types/FamilyUnitAges'
 
 const getAge = (dateOfBirth: string): number => {
     const today = new Date()
@@ -13,12 +13,12 @@ const getFamilyAges = (user: RecipientUser): number[] => {
     return [userAge, ...relativesAges]
 }
 
-const getFamilyUnitAges = (user: RecipientUser): FamilyUnitAgesProps => {
+const getFamilyUnitAges = (user: RecipientUser): FamilyUnitAges => {
     const ages = getFamilyAges(user)
     const under3 = ages.filter(age => age < 3).length
     const between3and15 = ages.filter(age => age >= 3 && age <= 15).length
     const over16 = ages.filter(age => age >= 16).length
-    return {under3: under3, between3and15, over15: over16}
+    return { under3: under3, between3and15, over15: over16 }
 }
 
 export default getFamilyUnitAges

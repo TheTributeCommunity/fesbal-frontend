@@ -1,7 +1,8 @@
-import FoodNames from '../enums/food-names'
+import { FoodMock } from '../mocks/food.mock'
 import {useLocation} from 'react-router-dom'
 import useFoodItems from './useFoodItems'
 import useAppInput from './useAppInput'
+import { FoodType } from '../types/FoodType'
 
 const useEntityFoodSearch = () => {
     const { state } = useLocation()
@@ -9,18 +10,18 @@ const useEntityFoodSearch = () => {
     const foodToUpdate = state?.foodName || null
     const { addFoodItem, updateFoodName } = useFoodItems(foodItems)
     const {inputValue, deleteInputValue, handleInputChange} = useAppInput(foodToUpdate || '')
-    const foodNames = Object.values(FoodNames)
+    const foodNames = FoodMock
 
-    const handleOnClick = (selectedFoodName: FoodNames) => {
+    const handleOnClick = (selectedFoodItem: FoodType) => {
         if (foodToUpdate) {
-            updateFoodName(selectedFoodName, foodToUpdate)
+            updateFoodName(selectedFoodItem.name, foodToUpdate)
         } else {
-            addFoodItem(selectedFoodName)
+            addFoodItem(selectedFoodItem.name)
         }
     }
 
     const filteredFoodNames = foodNames.filter(
-        (foodName) => foodName.toLowerCase().includes(inputValue.toLowerCase())
+        foodItem => foodItem.name.toLowerCase().includes(inputValue.toLowerCase())
     )
 
     return { inputValue, deleteInputValue, handleInputChange, handleOnClick, filteredFoodNames, foodToUpdate }

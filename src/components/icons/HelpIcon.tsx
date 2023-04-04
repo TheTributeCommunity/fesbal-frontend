@@ -6,4 +6,4 @@ const HelpIcon = () => {
     )
 }
 
-export default HelpIcon;
+export default HelpIcon

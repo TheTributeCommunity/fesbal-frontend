@@ -1,15 +1,15 @@
-import {useState} from "react";
-import SelectProps from "../types/SelectProps";
+import {useState} from 'react'
+import SelectProps from '../types/SelectProps'
 
 const useRegisterIDSelect = ({value, onChange}: SelectProps) => {
-    const [openDropdown, setOpenDropdown] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<string>(value);
-    const toggleDropdown = () => setOpenDropdown(!openDropdown);
-    const closeDropdown = () => setOpenDropdown(false);
+    const [openDropdown, setOpenDropdown] = useState(false)
+    const [selectedOption, setSelectedOption] = useState<string>(value)
+    const toggleDropdown = () => setOpenDropdown(!openDropdown)
+    const closeDropdown = () => setOpenDropdown(false)
     const onOptionClick = (option: string) => {
-        setSelectedOption(option);
-        onChange(option);
-        closeDropdown();
+        setSelectedOption(option)
+        onChange(option)
+        closeDropdown()
     }
 
     return {
@@ -20,4 +20,4 @@ const useRegisterIDSelect = ({value, onChange}: SelectProps) => {
     }
 }
 
-export default useRegisterIDSelect;
+export default useRegisterIDSelect

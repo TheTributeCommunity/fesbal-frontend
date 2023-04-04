@@ -12,7 +12,7 @@ const UnsuccessIcon = ({ width = 83, height = 83 }) => {
                 fill="#EB5757"
             />
         </svg>
-    );
-};
+    )
+}
 
-export default UnsuccessIcon;
+export default UnsuccessIcon

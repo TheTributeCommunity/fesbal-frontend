@@ -1,23 +1,23 @@
-import { useTranslation } from "react-i18next";
-import { namespaces } from "../../i18n/i18n.constants";
-import { PickupItem } from "../../types/PickupItem";
+import { useTranslation } from 'react-i18next'
+import { namespaces } from '../../i18n/i18n.constants'
+import { FoodPicking } from '../../types/FoodPicking'
 
 interface FoodListProps {
-    items: PickupItem[];
+    items: FoodPicking[];
 }
 
 export const FoodList = ({items}:FoodListProps) => {
 
-    const {t: translation} =  useTranslation(namespaces.pages.pickupDetails);
+    const {t: translation} =  useTranslation(namespaces.pages.pickupDetails)
 
     return (
         <div className="flex flex-col py-6 bg-white rounded-2xl gap-6 shadow-table">
-            <p className="text-2xl px-6 font-roboto-flex">{translation("foodList")}</p>
+            <p className="text-2xl px-6 font-roboto-flex">{translation('foodList')}</p>
             <table>
                 <thead>
                     <tr className="">
-                        <th className="px-6 text-xs text-primary-color text-left pb-2">{translation("foodType")}</th>
-                        <th className="px-6 text-xs text-primary-color text-right pb-2">{translation("quantity")}</th>
+                        <th className="px-6 text-xs text-primary-color text-left pb-2">{translation('foodType')}</th>
+                        <th className="px-6 text-xs text-primary-color text-right pb-2">{translation('quantity')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,5 +33,5 @@ export const FoodList = ({items}:FoodListProps) => {
                 </tbody>
             </table>
         </div>
-    );
-};
+    )
+}

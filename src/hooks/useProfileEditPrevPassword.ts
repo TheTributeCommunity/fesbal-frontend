@@ -1,22 +1,22 @@
-import {ChangeEvent, FormEvent, useState} from "react";
-import {useNavigate} from 'react-router-dom';
-import usersMock from "../mocks/users.mock";
+import {ChangeEvent, FormEvent, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import usersMock from '../mocks/users.mock'
 
 const useProfileEditPrevPassword = () => {
-    const [password, setPassword] = useState<string>('');
-    const [hasError, setHasError] = useState<boolean>(false);
+    const [password, setPassword] = useState<string>('')
+    const [hasError, setHasError] = useState<boolean>(false)
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const isPasswordValid = (password: string) => {
-        return usersMock.find(user => user.password === password);
+        return usersMock.find(user => user.password === password)
     }
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-        setHasError(false);
+        setPassword(e.target.value)
+        setHasError(false)
     }
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        return isPasswordValid(password) ? navigate('/profile/edit-new-password') : setHasError(true);
+        e.preventDefault()
+        return isPasswordValid(password) ? navigate('/profile/edit-new-password') : setHasError(true)
     }
 
     return {
@@ -26,4 +26,4 @@ const useProfileEditPrevPassword = () => {
         password,
     }
 }
-export default useProfileEditPrevPassword;
+export default useProfileEditPrevPassword

@@ -12,7 +12,7 @@ const SuccessIcon = ({width = 83, height = 83}) => {
                 fill="#0F95CE"
             />
         </svg>
-    );
-};
+    )
+}
 
-export default SuccessIcon;
+export default SuccessIcon

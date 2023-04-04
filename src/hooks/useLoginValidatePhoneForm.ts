@@ -1,26 +1,26 @@
-import { FormEvent, useState } from "react";
-import { AuthService } from "../services/auth-service";
+import { FormEvent, useState } from 'react'
+import { AuthService } from '../services/auth-service'
 
 const useLoginValidatePhoneForm = () => {
-    const [validationCode, setValidationCode] = useState<string>('');
-    const CODE_LENGTH = 6;
+    const [validationCode, setValidationCode] = useState<string>('')
+    const CODE_LENGTH = 6
 
     const checkValidationCodeLength = (): boolean => {
-        return validationCode.length === CODE_LENGTH;
+        return validationCode.length === CODE_LENGTH
     }
 
     const onValidationCodeChange = (code: string) => {
-        setValidationCode(code);
+        setValidationCode(code)
     }
 
     const onSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
-        e.preventDefault();
+        e.preventDefault()
         if (checkValidationCodeLength()) {
             return AuthService.confirmPhoneCode(validationCode)
                 .then(() => true)
                 .catch((e) => {
                     console.log(e)
-                    return false;
+                    return false
                 })
         } else return false
     }
@@ -34,4 +34,4 @@ const useLoginValidatePhoneForm = () => {
     }
 }
 
-export default useLoginValidatePhoneForm;
+export default useLoginValidatePhoneForm

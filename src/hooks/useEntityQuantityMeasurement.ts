@@ -1,15 +1,15 @@
-import {AppRoute} from '../enums/app-route'
-import FoodItemProps from '../types/FoodItemProps'
-import {MeasurementUnit} from '../enums/measurement'
-import {useState} from 'react'
-import {useLocation} from 'react-router-dom'
-import {useNavigate} from 'react-router'
+import { AppRoute } from '../enums/app-route'
+import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router'
+import { FoodPicking } from '../types/FoodPicking'
+import { MeasurementUnit } from '../types/MeasurementUnit'
 
 const useEntityFoodSearch = () => {
     const { state } = useLocation()
     const foodItems = state?.foodItems || []
     const foodItem = state?.foodItem || {}
-    const [inputFoodItem, setInputFoodItem] = useState<FoodItemProps>(foodItem)
+    const [inputFoodItem, setInputFoodItem] = useState<FoodPicking>(foodItem)
     const navigate = useNavigate()
 
     const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,12 +34,12 @@ const useEntityFoodSearch = () => {
     }
 
     const updateFoodQuantityMeasurement = () => {
-        const newFoodItems = foodItems.map((foodItem: FoodItemProps) => {
-            if (foodItem.name === inputFoodItem.name) {
+        const newFoodItems = foodItems.map((foodItem: FoodPicking) => {
+            if (foodItem.food.name === inputFoodItem.food.name) {
                 return {
                     ...foodItem,
                     quantity: inputFoodItem.quantity,
-                    measurementUnit: inputFoodItem.measurementUnit
+                    measurementUnit: inputFoodItem.unit
                 }
             }
             return foodItem
@@ -49,7 +49,7 @@ const useEntityFoodSearch = () => {
 
     return {
         inputQuantity: inputFoodItem.quantity,
-        inputMeasurement: inputFoodItem.measurementUnit,
+        inputMeasurement: inputFoodItem.unit,
         handleQuantityChange,
         handleMeasurementUnitChange,
         updateFoodQuantityMeasurement,

@@ -5,4 +5,4 @@ interface SelectProps {
     placeholder?: string;
 }
 
-export default SelectProps;
+export default SelectProps
