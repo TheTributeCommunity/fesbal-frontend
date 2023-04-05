@@ -19,6 +19,16 @@ export class RecipientUserService {
         return RecipientUserService.getByPhone(AuthService.currentUser.phone)
     }
 
+    public static async getUserById(id: string): Promise<RecipientUser> {
+        const result = await BoosterClient.query<{
+            RecipientUserReadModel: RecipientUser
+        }>({
+            query: GET_RECIPIENT_USER_BY_ID,
+            variables: { id: id }
+        })
+        return result.data.RecipientUserReadModel
+    }
+
     private static async getByPhone(phone: string): Promise<RecipientUser> {
         const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
             query: GET_RECIPIENT_USER_BY_PHONE,
@@ -43,7 +53,6 @@ export class RecipientUserService {
             mutation: CREATE_RECIPIENT_USER,
             variables: this.recipientUserToCommandVariables(newRecipientUser),
         })
-        console.log(result)
         if (!result.data?.CreateRecipientUser) {
             throw new Error('Error creating the USER')
         }
@@ -149,6 +158,34 @@ const GET_RECIPIENT_USER_BY_PHONE = gql`
     }
   }
 `
+const GET_RECIPIENT_USER_BY_ID = gql`
+    query RecipientUserReadModel ($id: ID!) {
+        RecipientUserReadModel (id: $id) {
+            id
+            firstName
+            lastName
+            dateOfBirth
+            typeOfIdentityDocument
+            identityDocumentNumber
+            phone
+            phoneVerified
+            email
+            relativesIds
+            referralSheetUrl
+            deleted
+            relatives {
+            id
+            recipientUserId
+            firstName
+            lastName
+            dateOfBirth
+            typeOfIdentityDocument
+            identityDocumentNumber
+            }
+        }
+    }
+`
+
 const GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL = gql`
   mutation ($id: GetRecipientUserReferralSheetUploadUrlInput!) {
     GetRecipientUserReferralSheetUploadUrl(input: $id)

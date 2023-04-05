@@ -1,4 +1,6 @@
 import { useTranslation } from 'react-i18next'
+import { ColorRing } from 'react-loader-spinner'
+import Spinner from '../components/atom/Spinner'
 import LogoFesbalIcon from '../components/icons/LogoFesbalIcon'
 import AppWrapper from '../components/molecules/AppWrapper'
 import useRegisterFamilyMembers from '../hooks/useRegisterFamilyMembers'
@@ -11,7 +13,7 @@ const RecipientLandingScreen = (): JSX.Element => {
 
     return (
         <AppWrapper title="FESBAL" titleClassName="text-2xl leading-7 font-bold font-sans self-center text-dark-blue" showBurger showBackButton={false}>
-            <div className="flex flex-col gap-8 justify-start items-center w-full ">
+            {!user ?  <Spinner /> : <div className="flex flex-col gap-8 justify-start items-center w-full ">
                 <div className="py-12">
                     <LogoFesbalIcon />
                 </div>
@@ -33,7 +35,8 @@ const RecipientLandingScreen = (): JSX.Element => {
                         </span>
                     </div>
                 </div>
-            </div>
+            </div>}
+            
         </AppWrapper >
     )
 }
