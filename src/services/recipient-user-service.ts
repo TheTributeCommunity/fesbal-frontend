@@ -43,6 +43,7 @@ export class RecipientUserService {
             mutation: CREATE_RECIPIENT_USER,
             variables: this.recipientUserToCommandVariables(newRecipientUser),
         })
+        console.log(result)
         if (!result.data?.CreateRecipientUser) {
             throw new Error('Error creating the USER')
         }
@@ -85,15 +86,15 @@ export class RecipientUserService {
     private static recipientUserToCommandVariables(recipientUser: Partial<RecipientUser>) {
         return {
             recipientUser:
-      {
-          recipientUserId: recipientUser.id,
-          firstName: recipientUser.firstName,
-          lastName: recipientUser.lastName,
-          dateOfBirth: recipientUser.dateOfBirth,
-          typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
-          identityDocumentNumber: recipientUser.identityDocumentNumber,
-          phone: recipientUser.phone,
-      }
+            {
+                firstName: recipientUser.firstName,
+                lastName: recipientUser.lastName,
+                dateOfBirth: recipientUser.dateOfBirth,
+                typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
+                identityDocumentNumber: recipientUser.identityDocumentNumber,
+                phone: recipientUser.phone,
+                email: 'test.email@gmail.com',
+            }
         }
     }
 }
@@ -144,7 +145,6 @@ const GET_RECIPIENT_USER_BY_PHONE = gql`
           identityDocumentNumber
         }
         referralSheetUrl
-        role
       }
     }
   }
