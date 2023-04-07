@@ -27,20 +27,20 @@ export class RecipientUserService {
         return result.data.ListRecipientUserReadModels.items[0]
     }
 
-    public static async getReferralSheetUploadUrl(recipientUserId: string): Promise<string> {
-        const result = await BoosterClient.mutate<{ GetRecipientUserReferralSheetUploadUrl: string }>({
-            mutation: GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL,
-            variables: { id: { recipientUserId } },
+    public static async getReferralSheetUploadUrl(filename : string): Promise<string> {
+        const result = await BoosterClient.mutate<{ ReferralSheetUploadUrl: string }>({
+            mutation: REFERRAL_SHEET_UPLOAD_URL,
+            variables: { filename },
         })
-        if (!result.data?.GetRecipientUserReferralSheetUploadUrl) {
+        if (!result.data?.ReferralSheetUploadUrl) {
             throw new Error('Error getting the URL to upload the referral sheet')
         }
-        return result.data.GetRecipientUserReferralSheetUploadUrl
+        return result.data.ReferralSheetUploadUrl
     }
 
     public static async create(newRecipientUser: Partial<RecipientUser>): Promise<boolean> {
         const result = await BoosterClient.mutate<{ CreateRecipientUser: boolean }>({
-            mutation: CREATE_RECIPIENT_USER,
+            mutation: CREATE_RECIPIENT,
             variables: this.recipientUserToCommandVariables(newRecipientUser),
         })
         console.log(result)
@@ -149,12 +149,12 @@ const GET_RECIPIENT_USER_BY_PHONE = gql`
     }
   }
 `
-const GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL = gql`
-  mutation ($id: GetRecipientUserReferralSheetUploadUrlInput!) {
-    GetRecipientUserReferralSheetUploadUrl(input: $id)
+const REFERRAL_SHEET_UPLOAD_URL = gql`
+  mutation ReferralSheetUploadUrl($filename: String!) {
+    ReferralSheetUploadUrl(input: { filename: $filename })
   }
 `
-const CREATE_RECIPIENT_USER = gql`
+const CREATE_RECIPIENT = gql`
   mutation ($recipientUser: CreateRecipientUserInput!) {
     CreateRecipientUser(input: $recipientUser)
   }

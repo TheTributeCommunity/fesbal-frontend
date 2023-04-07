@@ -31,7 +31,7 @@ const useUploadReferral = () => {
     }
 
     const uploadReferralSheet = (recipientUserId: string, file: File) => {
-        return RecipientUserService.getReferralSheetUploadUrl(recipientUserId)
+        return RecipientUserService.getReferralSheetUploadUrl(file.name)
             .then((referralSheetUploadUrl) => uploadFileToReferralSheetUploadUrl(referralSheetUploadUrl, file))
             .then((referralSheetUrl) => RecipientUserService.updateReferralSheetUrl(recipientUserId, referralSheetUrl))
     }
