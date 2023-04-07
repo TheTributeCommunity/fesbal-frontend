@@ -15,8 +15,7 @@ const HistoryCard: FC<HistoryCardProps> = ({ id, path, title, isoDate, descripti
 
     const navigate = useNavigate()
 
-    function redirectToPickupDetails() {
-        console.log(path, id, path.replace(':id', id.toString()))
+    const redirectToPickupDetails = () => {
         navigate(path.replace(':id', id.toString()))
     }
 

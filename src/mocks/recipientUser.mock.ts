@@ -1,4 +1,4 @@
-import {RecipientUserWithLastPickup} from '../models/recipient-user'
+import { RecipientUserWithLastPickup } from '../models/recipient-user'
 
 const recipientUser: RecipientUserWithLastPickup = {
     id: '123',
@@ -49,7 +49,6 @@ const recipientUser: RecipientUserWithLastPickup = {
         }
     ],
     referralSheetUrl: 'https://example.com/referral-sheet',
-    role: 'Client',
     lastPickupDate: '15/05/2022',
 }
 

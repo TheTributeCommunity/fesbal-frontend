@@ -1,3 +1,4 @@
+import { getAuth, signOut } from 'firebase/auth'
 import { Sidebar } from 'primereact/sidebar'
 import { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -65,6 +66,10 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
         )
     }
 
+    const handleLogOut = () => {
+        signOut(getAuth()).then(() => navigate(AppRoute.WELCOME))
+    }
+
     return (
         <Sidebar
             visible={visible} position="right" onHide={onHide}
@@ -83,7 +88,7 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
                     </div>
                 </div>
                 {userType === 'recipient' ? <RecipientMenuItems /> : <EntityMenuItems />}
-                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={() => navigate(AppRoute.WELCOME)}>
+                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={handleLogOut}>
                     {<PowerIcon />}
                     <span className="text-center font-roboto-flex text-focus-warning-color font-normal text-base leading-5">{translate('logOut', '')}</span>
                 </div>

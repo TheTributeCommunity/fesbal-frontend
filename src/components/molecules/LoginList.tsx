@@ -1,10 +1,10 @@
 import LogoFesbalWhiteIcon from '../icons/LogoFesbalWhiteIcon'
 import {useTranslation} from 'react-i18next'
 import {namespaces} from '../../i18n/i18n.constants'
-import SplashCard from '../atom/SplashCard'
+import LoginCard from '../atom/LoginCard'
 import { AppRoute } from '../../enums/app-route'
 
-const Splash = () => {
+const LoginList = () => {
     const {t: translate} = useTranslation(namespaces.pages.welcomeScreen)
 
     return (
@@ -12,7 +12,7 @@ const Splash = () => {
             <div className="app-logo-center splash">
                 <LogoFesbalWhiteIcon/>
             </div>
-            <SplashCard
+            <LoginCard
                 title={translate('recipient.title')}
                 description={translate('recipient.description')}
                 loginText={translate('recipient.login')}
@@ -22,7 +22,7 @@ const Splash = () => {
                 buttonBackGroundColor={'bg-primary-color'}
                 hasRegisterLink={true}
             />
-            <SplashCard
+            <LoginCard
                 title={translate('entity.title')}
                 description={translate('entity.description')}
                 loginText={translate('entity.login')}
@@ -35,4 +35,4 @@ const Splash = () => {
     )
 }
 
-export default Splash
+export default LoginList
