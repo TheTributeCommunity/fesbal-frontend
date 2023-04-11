@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from 'react'
 import { RecipientUserService } from '../services/recipient-user-service'
 import axios from 'axios'
 import { UsersContext } from '../contexts/usersContext'
+import { ReferralSheetUploadUrl } from '../models/referral-sheet-upload-url'
 
 const useUploadReferral = () => {
     const [file, setFile] = useState<File | null>(null)
@@ -32,22 +33,22 @@ const useUploadReferral = () => {
         } return false
     }
 
-    const uploadReferralSheet = (recipientUserId: string, file: File) => {
+    const uploadReferralSheet = (recipientUserId: string, file: File): Promise<boolean> => {
         return RecipientUserService.getReferralSheetUploadUrl(file.name)
             .then((referralSheetUploadUrl) => uploadFileToReferralSheetUploadUrl(referralSheetUploadUrl, file))
-            .then((referralSheetUrl) => RecipientUserService.updateReferralSheetUrl(recipientUserId, referralSheetUrl))
     }
 
-    const uploadFileToReferralSheetUploadUrl = (referralSheetUploadUrl: string, file: File) => {
-        return axios.put(referralSheetUploadUrl, file)
-            .then(() => getReferralSheetUrlFromReferralSheetUploadUrl(referralSheetUploadUrl))
-    }
-
-    const getReferralSheetUrlFromReferralSheetUploadUrl = (referralSheetUploadUrl: string) => {
-        return referralSheetUploadUrl
-            .replace('https://', '')
-            .split('/')[2]
-            .split('?')[0]
+    const uploadFileToReferralSheetUploadUrl = async (referralSheetUploadUrl: ReferralSheetUploadUrl, file: File) => {
+        const form = new FormData()
+        for (const key in referralSheetUploadUrl.fields) {
+            form.append(key, referralSheetUploadUrl.fields[key])
+        }
+        form.append('file', file)
+        const result = await axios.postForm(referralSheetUploadUrl.url, form).then(() => true).catch(e => {
+            console.log(e)
+            return false
+        })
+        return result
     }
 
     const handleClick = (ref: React.RefObject<HTMLInputElement>) => {

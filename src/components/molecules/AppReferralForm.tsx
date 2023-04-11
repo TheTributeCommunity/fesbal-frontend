@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { AppRoute } from '../../enums/app-route'
 import useUploadReferral from '../../hooks/useUploadReferral'
 import { namespaces } from '../../i18n/i18n.constants'
 import AppNextButton from '../atom/AppNextButton'
+import Spinner from '../atom/Spinner'
 import ReferralFileUploaded from './ReferralFileUploaded'
 import ReferralNoFileUploaded from './ReferralNoFileUploaded'
 
@@ -21,13 +23,20 @@ const AppReferralForm = ({showSubLink, onSubmit: onParentSubmit}: AppReferralFor
         handleClick,
         onSubmit,
     } = useUploadReferral()
+    const [loading, setLoading] = useState(false)
     const {t: translate} = useTranslation(namespaces.pages.registerReferral)
 
     const navigate = useNavigate()
 
     const handleSubmit = () => {
-        onSubmit().then(result => onParentSubmit(result))
+        setLoading(true)
+        onSubmit().then(result => {
+            setLoading(false)
+            onParentSubmit(result)
+        })
     }
+
+    if (loading) return <Spinner />
 
     return (
         <div className="flex w-full flex-col justify-between gap-10 mt-8">
