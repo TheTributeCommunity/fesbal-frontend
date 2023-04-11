@@ -2,6 +2,7 @@ import { BoosterClient } from './booster-service'
 import { gql } from '@apollo/client'
 import { RecipientUser } from '../models/recipient-user'
 import { AuthService } from './auth-service'
+import { ReferralSheetUploadUrl } from '../models/referral-sheet-upload-url'
 
 export class RecipientUserService {
     public static async getAll(): Promise<RecipientUser[]> {
@@ -37,14 +38,18 @@ export class RecipientUserService {
         return result.data.ListRecipientUserReadModels.items[0]
     }
 
-    public static async getReferralSheetUploadUrl(filename : string): Promise<string> {
-        const result = await BoosterClient.mutate<{ ReferralSheetUploadUrl: string }>({
+    public static async getReferralSheetUploadUrl(filename: string): Promise<ReferralSheetUploadUrl> {
+        const result = await BoosterClient.mutate<{ ReferralSheetUploadUrl: ReferralSheetUploadUrl }>({
             mutation: REFERRAL_SHEET_UPLOAD_URL,
             variables: { filename },
         })
         if (!result.data?.ReferralSheetUploadUrl) {
             throw new Error('Error getting the URL to upload the referral sheet')
         }
+        // const url = new URL(result.data.ReferralSheetUploadUrl.url)
+        // for (const key in result.data.ReferralSheetUploadUrl.fields) {
+        //     url.searchParams.append(key, result.data.ReferralSheetUploadUrl.fields[key])
+        // }
         return result.data.ReferralSheetUploadUrl
     }
 
@@ -161,7 +166,12 @@ const GET_RECIPIENT_USER_BY_PHONE = gql`
 
 const REFERRAL_SHEET_UPLOAD_URL = gql`
   mutation ReferralSheetUploadUrl($filename: String!) {
-    ReferralSheetUploadUrl(input: { filename: $filename })
+    ReferralSheetUploadUrl(
+      input: { filename: $filename }
+    ) {
+      url,
+      fields
+    }
   }
 `
 

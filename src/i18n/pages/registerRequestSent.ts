@@ -7,7 +7,7 @@ export const registerRequestSentEs = {
     phone: 'Teléfono',
     password: 'Contraseña',
     familyMembers: 'Miembros unidad familiar',
-    next: 'Cerrar aplicación'
+    next: 'Continuar'
 }
 
 export const registerRequestSentEn = {
@@ -19,5 +19,5 @@ export const registerRequestSentEn = {
     phone: 'Phone',
     password: 'Password',
     familyMembers: 'Family members',
-    next: 'Close application'
+    next: 'Continue'
 }

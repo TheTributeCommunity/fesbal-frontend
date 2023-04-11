@@ -4,7 +4,7 @@ const RegisterPersonalDataItem = (personalData: PersonalDataItemProps, index: nu
     return (
         <li key={index} className={`col-span-${personalData.span} py-1`}>
             <p className="font-label text-primary-color">{personalData.title}</p>
-            <p className={`font-text ${personalData.className}`}>{personalData.value}</p>
+            <p className={`font-text text-ellipsis overflow-hidden ${personalData.className}`}>{personalData.value}</p>
         </li>
     )
 }

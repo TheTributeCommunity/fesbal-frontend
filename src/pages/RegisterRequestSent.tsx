@@ -1,59 +1,78 @@
+import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import AppLinkButton from '../components/atom/AppLinkButton'
+import BlankStage from '../components/atom/BlankStage'
 import RegisterPersonalDataItem from '../components/atom/RegisterPersonalDataItem'
+import Spinner from '../components/atom/Spinner'
 import LogoFesbalWhiteIcon from '../components/icons/LogoFesbalWhiteIcon'
 import RequestSentIcon from '../components/icons/RequestSentIcon'
+import { UsersContext } from '../contexts/usersContext'
 import { AppRoute } from '../enums/app-route'
 import { namespaces } from '../i18n/i18n.constants'
 import { default as users, default as UsersMock } from '../mocks/users.mock'
+import { RecipientUser } from '../models/recipient-user'
+import { RecipientUserService } from '../services/recipient-user-service'
 import PersonalDataItemProps from '../types/PersonalDataItemProps'
 
 const RegisterRequestSent = () => {
+    const [loading, setLoading] = useState(true)
+    const [user, setUser] = useState<RecipientUser>()
+    const { firebaseUser } = useContext(UsersContext)
     const {t: translate} = useTranslation(namespaces.pages.registerRequestSent)
-    const user = UsersMock[0]
 
+    useEffect(() => {
+        if (firebaseUser?.uid) RecipientUserService.getUserById(firebaseUser.uid).then(user => {
+            setUser(user)
+            setLoading(false)
+        })
+    }, [firebaseUser])
 
     const getFamilyMembers = (id: string) => {
         const user = users.find(user => user.id === id)
         return user?.familyMembers
     }
     const getPersonalData = (): PersonalDataItemProps[] => {
-        return [
-            {
-                title: translate('fullName'),
-                value: user.fullName,
-                span: 2,
-                className: 'font-bold'
-            },
-            {
-                title: translate('id'),
-                value: user.id,
-                span: 1
-            },
-            {
-                title: translate('birthDate'),
-                value: user.birthDate,
-                span: 1
-            },
-            {
-                title: translate('email'),
-                value: user.email,
-                hasEditButton: true,
-                goTo: '/profile/edit-email',
-                span: 1
-            },
-            {
-                title: translate('phone'),
-                value: user.phone,
-                span: 1
-            },
-            {
-                title: 'Miembros unidad familiar',
-                value: getFamilyMembers(user.id)?.length.toString() || '0',
-                span: 2
-            }
-        ]
+        if (user)
+            return [
+                {
+                    title: translate('fullName'),
+                    value: user.firstName + ' ' + user.lastName,
+                    span: 2,
+                },
+                {
+                    title: translate('id'),
+                    value: user.identityDocumentNumber,
+                    span: 1
+                },
+                {
+                    title: translate('birthDate'),
+                    value: user.dateOfBirth,
+                    span: 1
+                },
+                {
+                    title: translate('email'),
+                    value: user.email,
+                    span: 1
+                },
+                {
+                    title: translate('phone'),
+                    value: user.phone,
+                    span: 1
+                },
+                {
+                    title: 'Miembros unidad familiar',
+                    value: getFamilyMembers(user.id)?.length.toString() || '0',
+                    span: 2
+                }
+            ]
+        else return []
     }
+
+    if (loading) return (
+        <BlankStage >
+            <Spinner />
+        </BlankStage>
+    )
 
     return (
         <div className="min-h-screen flex flex-col justify-between bg-primary-color px-4 pb-4">
@@ -70,7 +89,7 @@ const RegisterRequestSent = () => {
                         ))}
                     </ul>
                 </div>
-                <AppLinkButton title={translate('next')} link={AppRoute.WELCOME}/>
+                <AppLinkButton title={translate('next')} link={AppRoute.RECIPIENT_HOME}/>
             </div>
         </div>
     )
