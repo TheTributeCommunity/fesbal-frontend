@@ -11,11 +11,12 @@ import useRegisterBirthDate from '../hooks/useRegisterBirthDate'
 import AppCalendar from '../components/atom/AppCalendar'
 import FamilyMember from '../types/FamilyMember'
 import {AppRoute} from '../enums/app-route'
-import {FormEvent} from 'react'
+import {FormEvent, useContext} from 'react'
 import {UserGuestService} from '../services/user-guest-service'
 import {useNavigate} from 'react-router-dom'
 import {RecipientUserService} from '../services/recipient-user-service'
 import {RelativeService} from '../services/relative-service'
+import { UsersContext } from '../contexts/usersContext'
 
 interface AddFamilyMemberProps {
     member?: FamilyMember
@@ -26,6 +27,7 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
     const {selectedOption, userID, validateUserID, onUserIDChange, onSelectedOptionChange} = useRegisterIDForm()
     const {selectedDate, setDate, isValidBirthDate} = useRegisterBirthDate()
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers)
+    const { firebaseUser } = useContext(UsersContext)
 
     const selectOptions: string[] = ['DNI', 'NIE']
     const navigate = useNavigate()
@@ -36,14 +38,10 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (validForm()) {
+        if (validForm() && firebaseUser?.uid) {
             const userGuest = UserGuestService.create(userName, userSurname, selectedDate, selectedOption, userID)
 
-            RecipientUserService.getAuth()
-                .then((recipientUser) => 
-                    RelativeService.create({...userGuest,recipientUserId: recipientUser.id})
-                )
-                .then(() => new Promise(r => setTimeout(r, 500)))
+            RelativeService.create({...userGuest,recipientUserId: firebaseUser.uid})
                 .then(() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS))
                 .catch((e) => console.log(e))
         }

@@ -1,7 +1,12 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import { UsersContext } from '../contexts/usersContext'
+import { RegistrationRequest } from '../models/registration-request'
+import { RegistrationRequestService } from '../services/registration-request-service'
 
 const useRegisterReferralSendDate = () => {
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+    const [selectedDate, setSelectedDate] = useState<Date>()
+    const { firebaseUser } = useContext(UsersContext)
 
     const isValidFutureDate = () => selectedDate ? selectedDate > new Date() : false
 
@@ -18,11 +23,29 @@ const useRegisterReferralSendDate = () => {
 
     const setDate = (dateString: string) => { setSelectedDate(new Date(dateString)) }
 
+    const submitRegistrationRequest = async (): Promise<boolean> => {
+        if (firebaseUser?.uid) {
+            const payload: RegistrationRequest = {
+                registrationRequestId: uuidv4(),
+                recipientUserId: firebaseUser.uid,
+                referralSheetSocialSecurityDate: selectedDate?.toISOString()
+            }
+            const result = await RegistrationRequestService.create(payload)
+                .then(result => result)
+                .catch(e => {
+                    console.log(e)
+                    return false
+                })
+            return result
+        } else return false
+    }
+
     return {
         selectedDate,
         setDate,
         isValidFutureDate,
-        getFormattedDate
+        getFormattedDate,
+        submitRegistrationRequest
     }
 }
 

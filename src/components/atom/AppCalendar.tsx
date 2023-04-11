@@ -34,7 +34,7 @@ const AppCalendar = ({id = 'datePicker', placeholder = 'Fecha de nacimiento', se
         return {value: i, label: m}})
 
     return (
-        <Calendar dateFormat="dd/mm/yy" id="datePicker" value={selectedDate} onChange={handleSetDate} minDate={minDate} maxDate={maxDate}
+        <Calendar dateFormat="dd/mm/yy" id={id} value={selectedDate} onChange={handleSetDate} minDate={minDate} maxDate={maxDate}
             className="w-full rounded-md text-secondary-color font-roboto-flex text-base font-normal placeholder-primary-color app-calendar"
             panelClassName="bg-white p-4 shadow-md rounded-xl text-secondary-color font-roboto-flex text-base font-normal app-calendar-date-picker"
             inputClassName="w-full rounded-md px-4 py-5 text-secondary-color font-roboto-flex text-base font-normal placeholder-primary-color"

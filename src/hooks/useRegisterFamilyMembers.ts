@@ -8,6 +8,7 @@ import { RecipientUserService } from '../services/recipient-user-service'
 import { Relative } from '../models/relative'
 import { AppRoute } from '../enums/app-route'
 import { UsersContext } from '../contexts/usersContext'
+import { RelativeService } from '../services/relative-service'
 
 const useRegisterFamilyMembers = () => {
     const { t: translate } = useTranslation(namespaces.pages.registerFamilyMembers)
@@ -17,12 +18,15 @@ const useRegisterFamilyMembers = () => {
 
     useEffect(() => {
         if (firebaseUser) {
-            RecipientUserService.getUserById(firebaseUser.uid).then((recipientUser) => {
-                setUser(recipientUser)
-                recipientUser.relatives && setFamilyMembers(recipientUser.relatives)
-            })
+            RecipientUserService.getUserById(firebaseUser.uid)
+                .then(recipientUser => {
+                    setUser(recipientUser)
+                    recipientUser.relativesIds &&
+                        RelativeService.getAllByRecipientUserId(firebaseUser.uid)
+                            .then(relatives => setFamilyMembers(relatives))
+                })
+                .catch(e => console.log(e))
         }
-
     }, [firebaseUser])
 
     const navigate = useNavigate()

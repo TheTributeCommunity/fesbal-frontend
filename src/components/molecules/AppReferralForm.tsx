@@ -3,22 +3,31 @@ import { useNavigate } from 'react-router-dom'
 import { AppRoute } from '../../enums/app-route'
 import useUploadReferral from '../../hooks/useUploadReferral'
 import { namespaces } from '../../i18n/i18n.constants'
-import ReferralForm from '../../types/ReferralForm'
 import AppNextButton from '../atom/AppNextButton'
 import ReferralFileUploaded from './ReferralFileUploaded'
 import ReferralNoFileUploaded from './ReferralNoFileUploaded'
 
-const AppReferralForm = ({link, showSublink}: ReferralForm) => {
+interface AppReferralFormProps {
+    showSubLink: boolean
+    onSubmit: (success: boolean) => void
+}
+
+const AppReferralForm = ({showSubLink, onSubmit: onParentSubmit}: AppReferralFormProps) => {
     const {
         file,
         setFile,
         inputRef,
         handleFileChange,
         handleClick,
+        onSubmit,
     } = useUploadReferral()
     const {t: translate} = useTranslation(namespaces.pages.registerReferral)
 
     const navigate = useNavigate()
+
+    const handleSubmit = () => {
+        onSubmit().then(result => onParentSubmit(result))
+    }
 
     return (
         <div className="flex w-full flex-col justify-between gap-10 mt-8">
@@ -34,10 +43,9 @@ const AppReferralForm = ({link, showSublink}: ReferralForm) => {
                 </div>
             </div>
             <div className="flex flex-col gap-4">
-                {showSublink &&
+                {showSubLink &&
                     <a className="text-center underline font-small-link" onClick={()=>{navigate(AppRoute.REGISTER_REFERRAL_SHEET_SEND_DATE)}}>{translate('link')}</a>}
-                {/* TODO below, onClick should be handleOnClick, but it's been replaced for the demo */}
-                <AppNextButton title={translate('next')} disabled={!file} onClick={() => navigate('/register/request-sent')}/>
+                <AppNextButton title={translate('next')} disabled={!file} onClick={handleSubmit}/>
             </div>
         </div>
     )

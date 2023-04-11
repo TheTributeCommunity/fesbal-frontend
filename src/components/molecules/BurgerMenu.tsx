@@ -1,11 +1,12 @@
 import { getAuth, signOut } from 'firebase/auth'
 import { Sidebar } from 'primereact/sidebar'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { AppRoute } from '../../enums/app-route'
 import { namespaces } from '../../i18n/i18n.constants'
 import AppCloseButton from '../atom/AppCloseButton'
+import AlertIcon from '../icons/AlertIcon'
 import ClockIcon from '../icons/ClockIcon'
 import DeleteAccountIcon from '../icons/DeleteAccountIcon'
 import DocumentIcon from '../icons/DocumentIcon'
@@ -14,6 +15,7 @@ import NotificationsIcon from '../icons/NotificationsIcon'
 import PersonIcon from '../icons/PersonIcon'
 import PickupIcon from '../icons/PickupIcon'
 import PowerIcon from '../icons/PowerIcon'
+import AppMessageDialog from './AppMessageDialog'
 
 interface BurgerMenuProps {
     visible: boolean,
@@ -37,6 +39,8 @@ const MenuItem = ({icon, title, onClick}: MenuItemProps) => {
 }
 
 const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps): JSX.Element => {
+    const [showLogoutDialog, setShowLogoutDialog] = useState(false)
+    const [showAccountDeletionDialog, setShowAccountDeletionDialog] = useState(false)
     const navigate = useNavigate()
     const {t: translate} = useTranslation(namespaces.components.burgerMenu)
 
@@ -49,7 +53,7 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
                 <MenuItem icon={<PickupIcon />} title={translate('pickup', '')} onClick={() => {navigate(AppRoute.PICKUP_POINT)}} />
                 <MenuItem icon={<DocumentIcon />} title={translate('sheet', '')} onClick={() => {navigate(AppRoute.REFERRAL)}} />
                 <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')}} />
-                <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => {return}} />
+                <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => setShowAccountDeletionDialog(true)} />
             </div>
         )
     }
@@ -61,14 +65,44 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
                 <MenuItem icon={<NotificationsIcon />} title={translate('notifications', '')} onClick={() => {navigate(AppRoute.ENTITY_NOTIFICATIONS)}} />
                 <MenuItem icon={<ClockIcon />} title={translate('entityDeliveryHistory', '')} onClick={() => {navigate(AppRoute.ENTITY_DELIVERY_HISTORY)}} />
                 <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')}} />
-                <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => {return}} />
+                <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => setShowAccountDeletionDialog(true)} />
             </div>
         )
     }
 
-    const handleLogOut = () => {
+    const handleLogout = () => {
         signOut(getAuth()).then(() => navigate(AppRoute.WELCOME))
     }
+
+    const handleLogoutCancel = () => setShowLogoutDialog(false)
+
+    const handleAccountDeletionAcknowledgement = () => setShowAccountDeletionDialog(false)
+
+    if (showLogoutDialog) return (
+        <AppMessageDialog
+            visible={showLogoutDialog}
+            icon={<AlertIcon />}
+            description={'¿Quieres cerrar la sesión actual?'}
+            title={'Cerrar sesión'}
+            buttonText={'Sí'}
+            buttonOnClick={handleLogout}
+            secondaryButtonText={'No'}
+            secondaryButtonOnClick={handleLogoutCancel}
+            secondaryButtonBgColor="bg-warning-color"
+        />
+    )
+
+    if (showAccountDeletionDialog) return (
+        <AppMessageDialog
+            visible={showAccountDeletionDialog}
+            icon={<DeleteAccountIcon color={'#EB5757'} width={70} height={60} />}
+            description={userType === 'entity' ? 'Para poder eliminar tu cuenta y darte de baja como entidad colaboradora debes ponerte en contacto con FESBAL.' : 'Para poder eliminar tu cuenta y darte de baja como beneficiario debes ponerte en contacto con FESBAL.'}
+            title={'Eliminar cuenta'}
+            buttonText={'Ok'}
+            buttonOnClick={handleAccountDeletionAcknowledgement}
+            buttonBgColor="bg-warning-color"
+        />
+    )
 
     return (
         <Sidebar
@@ -88,7 +122,7 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
                     </div>
                 </div>
                 {userType === 'recipient' ? <RecipientMenuItems /> : <EntityMenuItems />}
-                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={handleLogOut}>
+                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={() => setShowLogoutDialog(true)}>
                     {<PowerIcon />}
                     <span className="text-center font-roboto-flex text-focus-warning-color font-normal text-base leading-5">{translate('logOut', '')}</span>
                 </div>

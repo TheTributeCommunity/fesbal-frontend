@@ -1,8 +1,7 @@
-import React from 'react'
 import FormInputProps from '../../types/AppFormInputProps'
 import EyeHidePasswordIcon from '../icons/EyeHidePasswordIcon'
 
-export default ({
+const AppFormInput = ({
     label,
     type = 'text',
     name,
@@ -39,3 +38,5 @@ export default ({
         </div>
     )
 }
+
+export default AppFormInput

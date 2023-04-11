@@ -8,10 +8,18 @@ import AppPageHeader from '../components/molecules/AppPageHeader'
 import AppWrapper from '../components/molecules/AppWrapper'
 import FamilyMemberCard from '../components/atom/FamilyMemberCard'
 import {AppRoute} from '../enums/app-route'
+import Spinner from '../components/atom/Spinner'
+import BlankStage from '../components/atom/BlankStage'
 
 const RegisterFamilyMembers = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers)
     const {user, familyMembers, handleNextWithFamilyMembers, handleWithoutFamilyMembers, disableNext} = useRegisterFamilyMembers()
+
+    if (!user) return (
+        <BlankStage>
+            <Spinner />
+        </BlankStage>
+    )
 
     return (
         <AppWrapper  showBackButton title={translate('title')}>

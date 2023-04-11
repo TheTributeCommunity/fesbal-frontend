@@ -1,17 +1,12 @@
-import { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useContext, useRef, useState } from 'react'
 import { RecipientUserService } from '../services/recipient-user-service'
-import usersMock from '../mocks/users.mock'
 import axios from 'axios'
-import { RegistrationRequestService } from '../services/registration-request-service'
-import { v4 as uuidv4 } from 'uuid'
+import { UsersContext } from '../contexts/usersContext'
 
 const useUploadReferral = () => {
     const [file, setFile] = useState<File | null>(null)
     const inputRef = useRef<HTMLInputElement>(null)
-    const cameraRef = useRef<HTMLInputElement>(null)
-
-    const navigate = useNavigate()
+    const { firebaseUser } = useContext(UsersContext)
 
     const isValidFile = (file: File) => {
         const validFileExtensions = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf']
@@ -22,12 +17,19 @@ const useUploadReferral = () => {
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.item(0)
-        file && setFile(file) // FIX, so it works in demo
-        if (file && isValidFile(file)) {
-            if (usersMock[0].recipientUserId) { // TODO - Replace but real Recipient User
-                uploadReferralSheet(usersMock[0].recipientUserId, file).then(() => setFile(file))
-            }
+        if (file && isValidFile(file) && firebaseUser?.uid) {
+            setFile(file)
         }
+    }
+
+    const onSubmit = async (): Promise<boolean> => {
+        if (file && isValidFile(file) && firebaseUser?.uid) {
+            const result = await uploadReferralSheet(firebaseUser.uid, file).catch(e => {
+                console.log(e)
+                return false
+            })
+            return result
+        } return false
     }
 
     const uploadReferralSheet = (recipientUserId: string, file: File) => {
@@ -54,17 +56,7 @@ const useUploadReferral = () => {
         }
     }
 
-    const handleOnClick = (href: string) => {
-        if (usersMock[0].recipientUserId) {
-            RegistrationRequestService.create({
-                registrationRequestId: uuidv4(),
-                recipientUserId: usersMock[0].recipientUserId
-            })
-                .then(() => navigate(href))
-        }
-    }
-
-    return { file, setFile, inputRef, cameraRef, handleFileChange, handleClick, handleOnClick }
+    return { file, setFile, inputRef, handleFileChange, handleClick, onSubmit }
 }
 
 export default useUploadReferral

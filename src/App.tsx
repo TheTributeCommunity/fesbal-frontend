@@ -41,9 +41,13 @@ import { getAuth, onIdTokenChanged, User } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { UserType } from './enums/UserType'
 import ProtectedLayout from './components/atom/ProtectedLayout'
-import AppWrapper from './components/molecules/AppWrapper'
 import Spinner from './components/atom/Spinner'
 import BlankStage from './components/atom/BlankStage'
+import { addLocale } from 'primereact/api'
+
+addLocale('en', {
+    firstDayOfWeek: 1,
+})
 
 const App = () => {
     const [loggedUserType, setLoggedUserType] = useState<string>()
