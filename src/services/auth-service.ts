@@ -24,21 +24,7 @@ export class AuthService {
 
     private static setUpAuth() {
         this.auth = getAuth()
-
         this.auth.useDeviceLanguage()
-
-        onAuthStateChanged(this.auth, (user) => {
-            this.currentUser = user ? this.firebaseUserToAuthUser(user) : null
-        })
-    }
-
-    private static firebaseUserToAuthUser(user: User) {
-        return {
-            phone: user.phoneNumber,
-            email: user.email,
-            emailVerified: user.emailVerified,
-            getToken(): Promise<string> | undefined { return AuthService.auth.currentUser?.getIdToken() }
-        }
     }
 
     public static signInWithPhoneNumber(submitButtonId: string, phoneWithoutPrefix: string) {
@@ -59,16 +45,11 @@ export class AuthService {
     }
 
     public static confirmPhoneCode(code: string) {
-        return this.confirmationResult.confirm(code).then((user) =>
-            this.saveToken())
+        return this.confirmationResult.confirm(code)
     }
 
     public static signIn(email: string, password: string) {
         return signInWithEmailAndPassword(this.auth, email, password)
-    }
-
-    private static saveToken() {
-        return this.currentUser?.getToken()?.then((token) => localStorage.setItem('token', token))
     }
 
     public static addPhonePrefix(phone: string) {

@@ -18,9 +18,8 @@ export interface RecipientUser {
   relativesIds?: string[]
   relatives?: Relative[]
   referralSheetUrl?: string
-  role?: string
 }
 
 export interface RecipientUserWithLastPickup extends RecipientUser {
-    lastPickupDate: string
+  lastPickupDate: string
 }

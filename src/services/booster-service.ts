@@ -36,9 +36,7 @@ const wsLink = new WebSocketLink(
 )
 
 const authLink = setContext((_, { headers }) => {
-    // get the authentication token from local storage if it exists
-    const token = userToken
-    // return the headers to the context so httpLink can read them
+    const token = localStorage.getItem('token') || ''
     return {
         headers: {
             ...headers,
@@ -52,7 +50,7 @@ const splitLink = split(
         const definition = getMainDefinition(query)
         return (
             definition.kind === 'OperationDefinition' &&
-      definition.operation === 'subscription'
+            definition.operation === 'subscription'
         )
     },
     wsLink,

@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next'
 import {namespaces} from '../../i18n/i18n.constants'
 import AppLinkExternalButton from './AppLinkExtenernalButton'
 
-const SplashCard = ({title, description, loginText, loginLink, backgroundColor, textColor, buttonBackGroundColor, hasRegisterLink = false}: SplashCardProps) => {
+const LoginCard = ({title, description, loginText, loginLink, backgroundColor, textColor, buttonBackGroundColor, hasRegisterLink = false}: SplashCardProps) => {
     const {t: translate} = useTranslation(namespaces.pages.welcomeScreen)
     const isAExternalLink = (link: string) => {
         return link.includes('http')
@@ -32,4 +32,4 @@ const SplashCard = ({title, description, loginText, loginLink, backgroundColor, 
     )
 }
 
-export default SplashCard
+export default LoginCard

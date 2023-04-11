@@ -19,6 +19,16 @@ export class RecipientUserService {
         return RecipientUserService.getByPhone(AuthService.currentUser.phone)
     }
 
+    public static async getUserById(id: string): Promise<RecipientUser> {
+        const result = await BoosterClient.query<{
+            RecipientUserReadModel: RecipientUser
+        }>({
+            query: GET_RECIPIENT_USER_BY_ID,
+            variables: { id: id }
+        })
+        return result.data.RecipientUserReadModel
+    }
+
     private static async getByPhone(phone: string): Promise<RecipientUser> {
         const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
             query: GET_RECIPIENT_USER_BY_PHONE,
@@ -27,20 +37,20 @@ export class RecipientUserService {
         return result.data.ListRecipientUserReadModels.items[0]
     }
 
-    public static async getReferralSheetUploadUrl(recipientUserId: string): Promise<string> {
-        const result = await BoosterClient.mutate<{ GetRecipientUserReferralSheetUploadUrl: string }>({
-            mutation: GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL,
-            variables: { id: { recipientUserId } },
+    public static async getReferralSheetUploadUrl(filename : string): Promise<string> {
+        const result = await BoosterClient.mutate<{ ReferralSheetUploadUrl: string }>({
+            mutation: REFERRAL_SHEET_UPLOAD_URL,
+            variables: { filename },
         })
-        if (!result.data?.GetRecipientUserReferralSheetUploadUrl) {
+        if (!result.data?.ReferralSheetUploadUrl) {
             throw new Error('Error getting the URL to upload the referral sheet')
         }
-        return result.data.GetRecipientUserReferralSheetUploadUrl
+        return result.data.ReferralSheetUploadUrl
     }
 
     public static async create(newRecipientUser: Partial<RecipientUser>): Promise<boolean> {
         const result = await BoosterClient.mutate<{ CreateRecipientUser: boolean }>({
-            mutation: CREATE_RECIPIENT_USER,
+            mutation: CREATE_RECIPIENT,
             variables: this.recipientUserToCommandVariables(newRecipientUser),
         })
         if (!result.data?.CreateRecipientUser) {
@@ -85,15 +95,15 @@ export class RecipientUserService {
     private static recipientUserToCommandVariables(recipientUser: Partial<RecipientUser>) {
         return {
             recipientUser:
-      {
-          recipientUserId: recipientUser.id,
-          firstName: recipientUser.firstName,
-          lastName: recipientUser.lastName,
-          dateOfBirth: recipientUser.dateOfBirth,
-          typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
-          identityDocumentNumber: recipientUser.identityDocumentNumber,
-          phone: recipientUser.phone,
-      }
+            {
+                firstName: recipientUser.firstName,
+                lastName: recipientUser.lastName,
+                dateOfBirth: recipientUser.dateOfBirth,
+                typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
+                identityDocumentNumber: recipientUser.identityDocumentNumber,
+                phone: recipientUser.phone,
+                email: 'test.email@gmail.com',
+            }
         }
     }
 }
@@ -144,17 +154,47 @@ const GET_RECIPIENT_USER_BY_PHONE = gql`
           identityDocumentNumber
         }
         referralSheetUrl
-        role
       }
     }
   }
 `
-const GET_RECIPIENT_USER_REFERRAL_SHEET_UPLOAD_URL = gql`
-  mutation ($id: GetRecipientUserReferralSheetUploadUrlInput!) {
-    GetRecipientUserReferralSheetUploadUrl(input: $id)
+
+const REFERRAL_SHEET_UPLOAD_URL = gql`
+  mutation ReferralSheetUploadUrl($filename: String!) {
+    ReferralSheetUploadUrl(input: { filename: $filename })
   }
 `
-const CREATE_RECIPIENT_USER = gql`
+
+const GET_RECIPIENT_USER_BY_ID = gql`
+    query RecipientUserReadModel ($id: ID!) {
+        RecipientUserReadModel (id: $id) {
+            id
+            firstName
+            lastName
+            dateOfBirth
+            typeOfIdentityDocument
+            identityDocumentNumber
+            phone
+            phoneVerified
+            email
+            relativesIds
+            referralSheetUrl
+            deleted
+            relatives {
+            id
+            recipientUserId
+            firstName
+            lastName
+            dateOfBirth
+            typeOfIdentityDocument
+            identityDocumentNumber
+            }
+        }
+    }
+`
+
+
+const CREATE_RECIPIENT = gql`
   mutation ($recipientUser: CreateRecipientUserInput!) {
     CreateRecipientUser(input: $recipientUser)
   }
