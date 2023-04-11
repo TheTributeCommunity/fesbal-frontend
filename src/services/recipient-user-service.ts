@@ -46,10 +46,6 @@ export class RecipientUserService {
         if (!result.data?.ReferralSheetUploadUrl) {
             throw new Error('Error getting the URL to upload the referral sheet')
         }
-        // const url = new URL(result.data.ReferralSheetUploadUrl.url)
-        // for (const key in result.data.ReferralSheetUploadUrl.fields) {
-        //     url.searchParams.append(key, result.data.ReferralSheetUploadUrl.fields[key])
-        // }
         return result.data.ReferralSheetUploadUrl
     }
 
