@@ -16,49 +16,56 @@ const apolloOptions: DefaultOptions = {
     },
 }
 
-const userToken = localStorage.getItem('token') || ''
+const getUserToken = (): string => localStorage.getItem('token') || ''
 
-const httpLink = createHttpLink({
-    uri: getEnvVar('BACKEND_URL') || 'http://localhost:3000/graphql'
-})
+const buildLinks = () => {
+    const httpLink = createHttpLink({
+        uri: getEnvVar('BACKEND_URL') || 'http://localhost:3000/graphql'
+    })
 
-const wsLink = new WebSocketLink(
-    new SubscriptionClient(
+    const subscriptionsClient = new SubscriptionClient(
         getEnvVar('BACKEND_WS') || 'wss://localhost:3000',
         {
             connectionParams: () => {
                 return {
-                    Authorization: `Bearer ${userToken}`,
+                    Authorization: `Bearer ${getUserToken()}`,
                 }
             },
         }
     )
-)
 
-const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem('token') || ''
-    return {
-        headers: {
-            ...headers,
-            Authorization: token ? `Bearer ${token}` : '',
+    const wsLink = new WebSocketLink(
+        subscriptionsClient
+    )
+
+    const authLink = setContext((_, { headers }) => {
+        return {
+            headers: {
+                ...headers,
+                Authorization: getUserToken() ? `Bearer ${getUserToken()}` : '',
+            },
+        }
+    })
+
+    return split(
+        ({ query }) => {
+            const definition = getMainDefinition(query)
+            return (
+                definition.kind === 'OperationDefinition' &&
+                definition.operation === 'subscription'
+            )
         },
-    }
-})
-
-const splitLink = split(
-    ({ query }) => {
-        const definition = getMainDefinition(query)
-        return (
-            definition.kind === 'OperationDefinition' &&
-            definition.operation === 'subscription'
-        )
-    },
-    wsLink,
-    authLink.concat(httpLink)
-)
+        wsLink,
+        authLink.concat(httpLink)
+    )
+}
 
 export const BoosterClient = new ApolloClient({
-    link: splitLink,
+    link: buildLinks(),
     cache: new InMemoryCache({ addTypename: false }),
     defaultOptions: apolloOptions,
+})
+
+BoosterClient.onResetStore(async () => {
+    BoosterClient.setLink(buildLinks())
 })
