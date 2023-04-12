@@ -18,6 +18,7 @@ module.exports = {
                 'ghost-white': '#F9FDFF',
             },
             fontFamily: {
+                'sans': ['Roboto Flex', 'Arial'],
                 'roboto-flex': ['Roboto Flex', 'Arial']
             },
             fontSize: {
