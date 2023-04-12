@@ -3,20 +3,22 @@ import { RegistrationRequest } from '../models/registration-request'
 import { gql } from '@apollo/client'
 
 export class RegistrationRequestService {
-    static async create(newRegistrationRequest: RegistrationRequest): Promise<boolean> {
-        const result = await BoosterClient.mutate<{ CreateRegistrationRequest: boolean }>({
-            mutation: CREATE_REGISTRATION_REQUEST,
-            variables: { newRegistrationRequest },
+    static async send(registrationRequest: RegistrationRequest): Promise<boolean> {
+        const response = await BoosterClient.mutate<{ SendRegistrationRequest: boolean }>({
+            mutation: SEND_REGISTRATION_REQUEST,
+            variables: { registrationRequest },
         })
-        if (!result.data?.CreateRegistrationRequest) {
+        if (!response.data?.SendRegistrationRequest) {
             throw new Error('Error creating the REGISTRATION REQUEST')
         }
-        return result.data?.CreateRegistrationRequest
+        return response.data?.SendRegistrationRequest
     }
 }
 
-const CREATE_REGISTRATION_REQUEST = gql`
-  mutation ($newRegistrationRequest: CreateRegistrationRequestInput!) {
-    CreateRegistrationRequest(input: $newRegistrationRequest)
+const SEND_REGISTRATION_REQUEST = gql`
+  mutation SendRegistrationRequest ($registrationRequest: SendRegistrationRequestInput!) {
+    SendRegistrationRequest(
+      input: $registrationRequest
+    )
   }
 `
