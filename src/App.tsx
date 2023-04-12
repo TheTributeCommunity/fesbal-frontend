@@ -44,6 +44,7 @@ import ProtectedLayout from './components/atom/ProtectedLayout'
 import Spinner from './components/atom/Spinner'
 import BlankStage from './components/atom/BlankStage'
 import { addLocale } from 'primereact/api'
+import { BoosterClient } from './services/booster-service'
 
 addLocale('en', {
     firstDayOfWeek: 1,
@@ -61,11 +62,12 @@ const App = () => {
                 const userType = user.providerData[0].providerId === 'phone' ? UserType.RECIPIENT : UserType.ENTITY
                 setLoggedUserType(userType)
                 setFirebaseUser(user)
-                user.getIdToken().then(token => localStorage.setItem('token', token))
+                user.getIdToken().then(token => localStorage.setItem('token', token)).then(() => { BoosterClient.resetStore()})
             } else {
                 setLoggedUserType(undefined)
                 setFirebaseUser(undefined)
                 localStorage.removeItem('token')
+                localStorage.removeItem('userGuest')
             }
         })
     }, [])
