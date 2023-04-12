@@ -27,10 +27,9 @@ const useRegisterReferralSendDate = () => {
         if (firebaseUser?.uid) {
             const payload: RegistrationRequest = {
                 registrationRequestId: uuidv4(),
-                recipientUserId: firebaseUser.uid,
-                referralSheetSocialSecurityDate: selectedDate?.toISOString()
+                socialServiceAppointment: selectedDate?.toISOString()
             }
-            const result = await RegistrationRequestService.create(payload)
+            const result = await RegistrationRequestService.send(payload)
                 .then(result => result)
                 .catch(e => {
                     console.log(e)

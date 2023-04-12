@@ -1,5 +1,5 @@
 export interface RegistrationRequest {
-    registrationRequestId: string
-    recipientUserId: string
-    referralSheetSocialSecurityDate?: string
+  registrationRequestId: string;
+  referralSheet?: string;
+  socialServiceAppointment?: string;
 }

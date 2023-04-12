@@ -3,6 +3,9 @@ import { RecipientUserService } from '../services/recipient-user-service'
 import axios from 'axios'
 import { UsersContext } from '../contexts/usersContext'
 import { ReferralSheetUploadUrl } from '../models/referral-sheet-upload-url'
+import { RegistrationRequest } from '../models/registration-request'
+import { RegistrationRequestService } from '../services/registration-request-service'
+import { v4 as uuidv4 } from 'uuid'
 
 const useUploadReferral = () => {
     const [file, setFile] = useState<File | null>(null)
@@ -28,6 +31,9 @@ const useUploadReferral = () => {
             const result = await uploadReferralSheet(firebaseUser.uid, file).catch(e => {
                 console.log(e)
                 return false
+            }).then( () => submitRegistrationRequest(file)).catch(e => {
+                console.log(e)
+                return false
             })
             return result
         } return false
@@ -49,6 +55,22 @@ const useUploadReferral = () => {
             return false
         })
         return result
+    }
+
+    const submitRegistrationRequest = async (file: File): Promise<boolean> => {
+        if (firebaseUser?.uid) {
+            const payload: RegistrationRequest = {
+                registrationRequestId: uuidv4(),
+                referralSheet: file.name
+            }
+            const result = await RegistrationRequestService.send(payload)
+                .then(result => result)
+                .catch(e => {
+                    console.log(e)
+                    return false
+                })
+            return result
+        } else return false
     }
 
     const handleClick = (ref: React.RefObject<HTMLInputElement>) => {
