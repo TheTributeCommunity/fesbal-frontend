@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { namespaces } from '../i18n/i18n.constants'
 import AppPopupAlert from '../components/atom/AppPopupAlert'
-import { RecipientUser } from '../models/recipient-user'
+import { Recipient } from '../models/recipient-user'
 import { RecipientUserService, SUBSCRIBE_TO_RECIPIENT_USER } from '../services/recipient-user-service'
 import { Relative } from '../models/relative'
 import { AppRoute } from '../enums/app-route'
@@ -14,7 +14,7 @@ import { useSubscription } from '@apollo/client'
 const useRegisterFamilyMembers = () => {
     const { t: translate } = useTranslation(namespaces.pages.registerFamilyMembers)
     const [familyMembers, setFamilyMembers] = useState<Relative[]>([])
-    const [user, setUser] = useState<RecipientUser>()
+    const [user, setUser] = useState<Recipient>()
     const { firebaseUser } = useContext(UsersContext)
     useSubscription(SUBSCRIBE_TO_RECIPIENT_USER,
         {

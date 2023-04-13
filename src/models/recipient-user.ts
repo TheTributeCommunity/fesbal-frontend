@@ -1,12 +1,5 @@
 import { Relative } from './relative'
-
-export enum RecipientUserRole {
-  UserRegistered = 'UserRegistered',
-  UserPending = 'UserPending',
-  UserAccepted = 'UserAccepted'
-}
-
-export interface RecipientUser {
+export interface Recipient {
   id: string
   firstName: string
   lastName: string
@@ -20,6 +13,6 @@ export interface RecipientUser {
   referralSheetUrl?: string
 }
 
-export interface RecipientUserWithLastPickup extends RecipientUser {
+export interface RecipientUserWithLastPickup extends Recipient {
   lastPickupDate: string
 }

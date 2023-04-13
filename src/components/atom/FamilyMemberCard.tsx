@@ -4,14 +4,14 @@ import { namespaces } from '../../i18n/i18n.constants'
 import DeleteIcon from '../icons/DeleteIcon'
 import EditIcon from '../icons/EditIcon'
 import {Relative} from '../../models/relative'
-import {RecipientUser} from '../../models/recipient-user'
+import {Recipient} from '../../models/recipient-user'
 
 interface FamilyMemberCardProps {
-    person: RecipientUser | Relative
+    person: Recipient | Relative
     allowEdit?: boolean
 }
 
-const isRecipientUser = (p: RecipientUser | Relative): p is RecipientUser => (p as RecipientUser).phone !== undefined
+const isRecipientUser = (p: Recipient | Relative): p is Recipient => (p as Recipient).phone !== undefined
 
 const FamilyMemberCard = ({person, allowEdit = false}: FamilyMemberCardProps): JSX.Element => {
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers)

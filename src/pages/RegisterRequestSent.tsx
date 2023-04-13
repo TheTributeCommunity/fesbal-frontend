@@ -9,14 +9,14 @@ import RequestSentIcon from '../components/icons/RequestSentIcon'
 import { UsersContext } from '../contexts/usersContext'
 import { AppRoute } from '../enums/app-route'
 import { namespaces } from '../i18n/i18n.constants'
-import { RecipientUser } from '../models/recipient-user'
+import { Recipient } from '../models/recipient-user'
 import { Relative } from '../models/relative'
 import { RecipientUserService } from '../services/recipient-user-service'
 import PersonalDataItemProps from '../types/PersonalDataItemProps'
 
 const RegisterRequestSent = () => {
     const [loading, setLoading] = useState(true)
-    const [user, setUser] = useState<RecipientUser>()
+    const [user, setUser] = useState<Recipient>()
     const { firebaseUser } = useContext(UsersContext)
     const {t: translate} = useTranslation(namespaces.pages.registerRequestSent)
 
