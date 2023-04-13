@@ -1,41 +1,41 @@
 import { BoosterClient } from './booster-service'
 import { gql } from '@apollo/client'
-import { RecipientUser } from '../models/recipient-user'
+import { Recipient } from '../models/recipient-user'
 import { AuthService } from './auth-service'
 import { ReferralSheetUploadUrl } from '../models/referral-sheet-upload-url'
 
 export class RecipientUserService {
-    public static async getAll(): Promise<RecipientUser[]> {
-        const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
-            query: GET_ALL_RECIPIENTS_USERS,
+    public static async getAll(): Promise<Recipient[]> {
+        const result = await BoosterClient.query<{ ListRecipientReadModels: { items: Recipient[] } }>({
+            query: GET_ALL_RECIPIENTS,
             variables: {},
         })
-        return result.data.ListRecipientUserReadModels.items
+        return result.data.ListRecipientReadModels.items
     }
 
-    public static async getAuth(): Promise<RecipientUser> {
+    public static async getAuth(): Promise<Recipient> {
         if (!AuthService.currentUser || !AuthService.currentUser.phone) {
             throw new Error('Authenticated user not found')
         }
         return RecipientUserService.getByPhone(AuthService.currentUser.phone)
     }
 
-    public static async getUserById(id: string): Promise<RecipientUser> {
+    public static async getUserById(id: string): Promise<Recipient> {
         const result = await BoosterClient.query<{
-            RecipientUserReadModel: RecipientUser
+            RecipientReadModel: Recipient
         }>({
-            query: GET_RECIPIENT_USER_BY_ID,
+            query: GET_RECIPIENT_BY_ID,
             variables: { id: id }
         })
-        return result.data.RecipientUserReadModel
+        return result.data.RecipientReadModel
     }
 
-    private static async getByPhone(phone: string): Promise<RecipientUser> {
-        const result = await BoosterClient.query<{ ListRecipientUserReadModels: { items: RecipientUser[] } }>({
-            query: GET_RECIPIENT_USER_BY_PHONE,
+    private static async getByPhone(phone: string): Promise<Recipient> {
+        const result = await BoosterClient.query<{ ListRecipientReadModels: { items: Recipient[] } }>({
+            query: GET_RECIPIENT_BY_PHONE,
             variables: { phone },
         })
-        return result.data.ListRecipientUserReadModels.items[0]
+        return result.data.ListRecipientReadModels.items[0]
     }
 
     public static async getReferralSheetUploadUrl(filename: string): Promise<ReferralSheetUploadUrl> {
@@ -49,31 +49,31 @@ export class RecipientUserService {
         return result.data.ReferralSheetUploadUrl
     }
 
-    public static async create(newRecipientUser: Partial<RecipientUser>): Promise<boolean> {
-        const result = await BoosterClient.mutate<{ CreateRecipientUser: boolean }>({
+    public static async create(newRecipient: Partial<Recipient>): Promise<boolean> {
+        const result = await BoosterClient.mutate<{ CreateRecipient: boolean }>({
             mutation: CREATE_RECIPIENT,
-            variables: this.recipientUserToCommandVariables(newRecipientUser),
+            variables: this.recipientToCommandVariables(newRecipient),
         })
-        if (!result.data?.CreateRecipientUser) {
-            throw new Error('Error creating the USER')
+        if (!result.data?.CreateRecipient) {
+            throw new Error('Error creating the recipient')
         }
-        return result.data?.CreateRecipientUser
+        return result.data?.CreateRecipient
     }
 
-    public static async updateEmail(recipientUserId: string, email: string): Promise<boolean> {
-        const result = await BoosterClient.mutate<{ UpdateRecipientUserEmail: boolean }>({
-            mutation: UPDATE_RECIPIENT_USER_EMAIL,
-            variables: { updatedUser: { recipientUserId, email } },
+    public static async updateEmail(recipientId: string, email: string): Promise<boolean> {
+        const result = await BoosterClient.mutate<{ UpdateRecipientEmail: boolean }>({
+            mutation: UPDATE_RECIPIENT_EMAIL,
+            variables: { updatedUser: { recipientId: recipientId, email } },
         })
-        if (!result.data?.UpdateRecipientUserEmail) {
+        if (!result.data?.UpdateRecipientEmail) {
             throw new Error('Error updating the USER email')
         }
-        return result.data?.UpdateRecipientUserEmail
+        return result.data?.UpdateRecipientEmail
     }
 
     public static async updateReferralSheetUrl(recipientUserId: string, referralSheetUrl: string): Promise<boolean> {
         const result = await BoosterClient.mutate<{ UpdateRecipientUserReferralSheetUrl: boolean }>({
-            mutation: UPDATE_RECIPIENT_USER_REFERRAL_SHEET_URL,
+            mutation: UPDATE_RECIPIENT_REFERRAL_SHEET_URL,
             variables: { updatedUser: { recipientUserId, referralSheetUrl } },
         })
         if (!result.data?.UpdateRecipientUserReferralSheetUrl) {
@@ -93,25 +93,25 @@ export class RecipientUserService {
         return result.data?.DeleteRecipientUser
     }
 
-    private static recipientUserToCommandVariables(recipientUser: Partial<RecipientUser>) {
+    private static recipientToCommandVariables(recipient: Partial<Recipient>) {
         return {
-            recipientUser:
+            recipient:
             {
-                firstName: recipientUser.firstName,
-                lastName: recipientUser.lastName,
-                dateOfBirth: recipientUser.dateOfBirth,
-                typeOfIdentityDocument: recipientUser.typeOfIdentityDocument,
-                identityDocumentNumber: recipientUser.identityDocumentNumber,
-                phone: recipientUser.phone,
+                firstName: recipient.firstName,
+                lastName: recipient.lastName,
+                dateOfBirth: recipient.dateOfBirth,
+                typeOfIdentityDocument: recipient.typeOfIdentityDocument,
+                identityDocumentNumber: recipient.identityDocumentNumber,
+                phone: recipient.phone,
                 email: 'test.email@gmail.com',
             }
         }
     }
 }
 
-const GET_ALL_RECIPIENTS_USERS = gql`
-  query ListRecipientUserReadModels  {
-    ListRecipientUserReadModels  {
+const GET_ALL_RECIPIENTS = gql`
+  query ListRecipientReadModels  {
+    ListRecipientReadModels  {
       items {
         id
         firstName
@@ -130,9 +130,9 @@ const GET_ALL_RECIPIENTS_USERS = gql`
   }
 `
 
-const GET_RECIPIENT_USER_BY_PHONE = gql`
-  query ListRecipientUserReadModels ($phone: String!) {
-    ListRecipientUserReadModels(
+const GET_RECIPIENT_BY_PHONE = gql`
+  query ListRecipientReadModels ($phone: String!) {
+    ListRecipientReadModels(
       filter: { phone: {eq: $phone } }
       sortBy: {}
   )  {
@@ -171,9 +171,9 @@ const REFERRAL_SHEET_UPLOAD_URL = gql`
   }
 `
 
-const GET_RECIPIENT_USER_BY_ID = gql`
-    query RecipientUserReadModel ($id: ID!) {
-        RecipientUserReadModel (id: $id) {
+const GET_RECIPIENT_BY_ID = gql`
+    query RecipientReadModel ($id: ID!) {
+        RecipientReadModel (id: $id) {
             id
             firstName
             lastName
@@ -201,18 +201,18 @@ const GET_RECIPIENT_USER_BY_ID = gql`
 
 
 const CREATE_RECIPIENT = gql`
-  mutation ($recipientUser: CreateRecipientUserInput!) {
-    CreateRecipientUser(input: $recipientUser)
+  mutation CreateRecipient ($recipient: CreateRecipientInput!) {
+    CreateRecipient(input: $recipient)
   }
 `
 
-const UPDATE_RECIPIENT_USER_EMAIL = gql`
-  mutation ($updatedUser: UpdateRecipientUserEmailInput!) {
-    UpdateRecipientUserEmail(input: $updatedUser)
+const UPDATE_RECIPIENT_EMAIL = gql`
+  mutation ($updatedUser: UpdateRecipientEmailInput!) {
+    UpdateRecipientEmail(input: $updatedUser)
   }
 `
 
-const UPDATE_RECIPIENT_USER_REFERRAL_SHEET_URL = gql`
+const UPDATE_RECIPIENT_REFERRAL_SHEET_URL = gql`
   mutation ($updatedUser: UpdateRecipientUserReferralSheetUrlInput!) {
     UpdateRecipientUserReferralSheetUrl(input: $updatedUser)
   }
@@ -226,7 +226,7 @@ const DELETE_RECIPIENT_USER = gql`
 
 export const SUBSCRIBE_TO_RECIPIENT_USER = gql`
     subscription ($id: ID!) {
-        RecipientUserReadModel(id: $id) {
+        RecipientReadModel(id: $id) {
             relativesIds
         }
     }
