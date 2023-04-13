@@ -12,6 +12,7 @@ interface AppWrapperProps {
     children?: ReactNode,
     bgColor?: string
     topbarClassName?: string
+    bgOpaque?: boolean
 }
 
 const AppWrapper = ({
@@ -22,7 +23,8 @@ const AppWrapper = ({
     children,
     containerClassName = '',
     bgColor = 'bg-page',
-    topbarClassName
+    topbarClassName,
+    bgOpaque = true
 }: AppWrapperProps): JSX.Element => {
     return (
         // We set the height to the screen, and then set the
@@ -33,7 +35,7 @@ const AppWrapper = ({
             <div
                 className={`flex flex-col justify-center mx-auto w-full md:w-1/2 lg:w-1/3 p-8 h-full ${containerClassName}`}>
                 <div
-                    className={`flex flex-row fixed w-full md:w-1/2 lg:w-1/3 px-8 py-4 top-0 left-0 right-0 mx-auto ${topbarClassName}`}>
+                    className={`flex flex-row fixed w-full md:w-1/2 lg:w-1/3 px-8 py-4 top-0 left-0 right-0 mx-auto ${bgOpaque ? 'bg-white shadow-md' : ''} ${topbarClassName}`}>
                     <div className="w-1/4 flex flex-row justify-start">
                         {showBackButton && <AppBackButton/>}
                     </div>

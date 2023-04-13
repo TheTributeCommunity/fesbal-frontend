@@ -48,10 +48,10 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
         return (
             <div className="flex flex-col gap-[1px]">
                 <MenuItem icon={<PersonIcon />} title={translate('profile', '')} onClick={() => {navigate(AppRoute.PROFILE)}} />
-                <MenuItem icon={<NotificationsIcon />} title={translate('notifications', '')} onClick={() => {navigate(AppRoute.NOTIFICATIONS)}} />
+                {/* <MenuItem icon={<NotificationsIcon />} title={translate('notifications', '')} onClick={() => {navigate(AppRoute.NOTIFICATIONS)}} />
                 <MenuItem icon={<ClockIcon />} title={translate('history', '')} onClick={() => {navigate(AppRoute.PICKUP_HISTORY)}} />
                 <MenuItem icon={<PickupIcon />} title={translate('pickup', '')} onClick={() => {navigate(AppRoute.PICKUP_POINT)}} />
-                <MenuItem icon={<DocumentIcon />} title={translate('sheet', '')} onClick={() => {navigate(AppRoute.REFERRAL)}} />
+                <MenuItem icon={<DocumentIcon />} title={translate('sheet', '')} onClick={() => {navigate(AppRoute.REFERRAL)}} /> */}
                 <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')}} />
                 <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => setShowAccountDeletionDialog(true)} />
             </div>
