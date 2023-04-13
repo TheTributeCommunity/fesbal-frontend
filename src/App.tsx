@@ -89,6 +89,8 @@ const App = () => {
                     <Route path={AppRoute.REGISTER_PHONE} element={<RegisterPhone/>}/>
                     <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
                     <Route path={AppRoute.WELCOME} element={<Welcome/>}/>
+                    <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
+                    <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
 
                     <Route element={<ProtectedLayout allowedRoles={[UserType.RECIPIENT]}/>}>
                         <Route path={AppRoute.REGISTER_EMAIL} element={<RegisterEmail/>}/>
@@ -114,8 +116,6 @@ const App = () => {
                     <Route element={<ProtectedLayout allowedRoles={[UserType.ENTITY]}/>}>
                         <Route path={AppRoute.ENTITY_FOOD_SEARCH} element={<EntityFoodSearch/>}/>
                         <Route path={AppRoute.ENTITY_HOME} element={<EntityHome/>}/>
-                        <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
-                        <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
                         <Route path={AppRoute.ENTITY_DELIVERY_HISTORY} element={<EntityDeliveryHistory/>}/>
                         <Route path={AppRoute.ENTITY_DELIVERY_HISTORY_DETAILS} element={<EntityDeliveryDetails/>}/>
                         <Route path={AppRoute.ENTITY_QUANTITY_MEASUREMENT} element={<EntityQuantityMeasurement/>}/>
