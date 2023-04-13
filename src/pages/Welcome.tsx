@@ -24,7 +24,7 @@ const Welcome = () => {
         <div className="bg-page">
             <div className="flex flex-row w-full fixed md:w-1/2 lg:w-1/3 px-8 pt-4 pb-4 top-0 left-0 right-0 mx-auto justify-center">
                 <span
-                    className="font-roboto-flex font-bold text-xl leading-6 text-dark-blue">FESBAL</span>
+                    className="font-roboto-flex font-bold text-xl leading-6 text-dark-blue">BALPA</span>
             </div>
             <PageHeader/>
             <LoginList/>

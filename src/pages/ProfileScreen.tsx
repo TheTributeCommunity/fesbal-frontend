@@ -38,11 +38,11 @@ const ProfileScreen = () => {
                 title: translate('phone'),
                 value: user?.phone,
             },
-            {
-                title: translate('password'),
-                value: '********',
-                goTo: '/profile/edit-prev-password',
-            }
+            // {
+            //     title: translate('password'),
+            //     value: '********',
+            //     goTo: '/profile/edit-prev-password',
+            // }
         ]
     }
 

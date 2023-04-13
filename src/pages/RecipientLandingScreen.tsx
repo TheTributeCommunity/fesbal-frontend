@@ -12,7 +12,7 @@ const RecipientLandingScreen = (): JSX.Element => {
     const {user, familyMembers} = useRegisterFamilyMembers()
 
     return (
-        <AppWrapper title="FESBAL" titleClassName="text-2xl leading-7 font-bold font-sans self-center text-dark-blue" showBurger showBackButton={false}>
+        <AppWrapper title="BALPA" titleClassName="text-2xl leading-7 font-bold font-sans self-center text-dark-blue" showBurger showBackButton={false} bgOpaque={false}>
             {!user ?  <Spinner /> : <div className="flex flex-col gap-8 justify-start items-center w-full ">
                 <div className="py-12">
                     <LogoFesbalIcon />
