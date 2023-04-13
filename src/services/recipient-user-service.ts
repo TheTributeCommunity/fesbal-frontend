@@ -223,3 +223,11 @@ const DELETE_RECIPIENT_USER = gql`
     DeleteRecipientUser(input: $userToDelete)
   }
 `
+
+export const SUBSCRIBE_TO_RECIPIENT_USER = gql`
+    subscription ($id: ID!) {
+        RecipientUserReadModel(id: $id) {
+            relativesIds
+        }
+    }
+`

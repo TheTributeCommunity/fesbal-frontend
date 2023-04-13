@@ -1,4 +1,3 @@
-import CloseIcon from '../icons/CloseIcon'
 import ReferralFileUploadedProps from '../../types/ReferralFileUploadProps'
 import DeleteIcon from '../icons/DeleteIcon'
 
