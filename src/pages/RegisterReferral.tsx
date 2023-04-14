@@ -22,7 +22,7 @@ const RegisterReferral = () => {
     }
 
     return (
-        <AppWrapper title={translate('headerTitle')} showBackButton showBurger>
+        <AppWrapper title={translate('headerTitle')} showBackButton>
             <div className="flex h-full w-full flex-col self-center text-secondary-color">
                 <AppPageHeader title={translate('title')} description={translate('description') as string}/>
                 <AppReferralForm showSubLink onSubmit={onSubmit}/>
