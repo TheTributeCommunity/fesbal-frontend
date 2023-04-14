@@ -42,13 +42,13 @@ const FamilyMemberCard = ({person, allowEdit = false}: FamilyMemberCardProps): J
             </div>
             {isRecipientUser(person) &&
                 <div className="w-full flex flex-row justify-between">
-                    <div className="w-1/2 flex flex-col pr-1">
-                        <span className="text-primary-color font-medium text-xs text-ellipsis overflow-hidden">{translate('personCard.phone')}</span>
-                        <span className="text-secondary-color font-normal text-base text-ellipsis overflow-hidden">{person.phone}</span>
-                    </div>
                     <div className="w-1/2 flex flex-col pl-1">
                         <span className="text-primary-color font-medium text-xs text-ellipsis overflow-hidden">{translate('personCard.email')}</span>
                         <span className="text-secondary-color font-normal text-base text-ellipsis overflow-hidden">{person.email}</span>
+                    </div>
+                    <div className="w-1/2 flex flex-col pr-1">
+                        <span className="text-primary-color font-medium text-xs text-ellipsis overflow-hidden">{translate('personCard.phone')}</span>
+                        <span className="text-secondary-color font-normal text-base text-ellipsis overflow-hidden">{person.phone}</span>
                     </div>
                 </div>
             }

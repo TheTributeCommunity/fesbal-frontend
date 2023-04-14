@@ -9,17 +9,16 @@ import UserIDSelect from '../components/atom/RegisterIDSelect'
 import classNames from 'classnames'
 import useRegisterBirthDate from '../hooks/useRegisterBirthDate'
 import AppCalendar from '../components/atom/AppCalendar'
-import FamilyMember from '../types/FamilyMember'
 import {AppRoute} from '../enums/app-route'
-import {FormEvent, useContext} from 'react'
+import {FormEvent, useContext, useEffect} from 'react'
 import {UserGuestService} from '../services/user-guest-service'
 import {useNavigate} from 'react-router-dom'
-import {RecipientUserService} from '../services/recipient-user-service'
 import {RelativeService} from '../services/relative-service'
 import { UsersContext } from '../contexts/usersContext'
+import { Relative } from '../models/relative'
 
 interface AddFamilyMemberProps {
-    member?: FamilyMember
+    member?: Relative
 }
 
 const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
