@@ -45,6 +45,8 @@ import Spinner from './components/atom/Spinner'
 import BlankStage from './components/atom/BlankStage'
 import { addLocale } from 'primereact/api'
 import { BoosterClient } from './services/booster-service'
+import jwtDecode, { JwtPayload } from 'jwt-decode'
+import RefreshTokenService from './services/refresh-token-service'
 
 addLocale('en', {
     firstDayOfWeek: 1,
@@ -60,9 +62,19 @@ const App = () => {
             if (user) {
                 !loadedAuthData && setLoadedAuthData(true)
                 const userType = user.providerData[0].providerId === 'phone' ? UserType.RECIPIENT : UserType.ENTITY
-                setLoggedUserType(userType)
-                setFirebaseUser(user)
-                user.getIdToken().then(token => localStorage.setItem('token', token)).then(() => { BoosterClient.resetStore()})
+                if (!firebaseUser || firebaseUser.uid !== user.uid) {
+                    // only change state if this is a different user,
+                    // we don't want to re-render the component tree with token refreshes
+                    setLoggedUserType(userType)
+                    setFirebaseUser(user)
+                }
+                user.getIdToken().then(token => {
+                    localStorage.setItem('token', token)
+                    // set refresh token callbacks
+                    const decoded = jwtDecode<JwtPayload>(token)
+                    decoded.exp && decoded.iat && RefreshTokenService.refreshOnFocusAndAt(new Date(decoded.iat * 1000), new Date(decoded.exp * 1000))
+                    BoosterClient.resetStore()
+                })
             } else {
                 setLoggedUserType(undefined)
                 setFirebaseUser(undefined)

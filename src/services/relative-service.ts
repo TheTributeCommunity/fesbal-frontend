@@ -32,16 +32,15 @@ export class RelativeService {
 
     private static relativeToCommandVariables(relative: Partial<Relative>) {
         return {
-            relative:
-      {
-          relativeId: relative.id,
-          recipientUserId: relative.recipientUserId,
-          firstName: relative.firstName,
-          lastName: relative.lastName,
-          dateOfBirth: relative.dateOfBirth,
-          typeOfIdentityDocument: relative.typeOfIdentityDocument,
-          identityDocumentNumber: relative.identityDocumentNumber,
-      }
+            relative: {
+                relativeId: relative.id,
+                recipientUserId: relative.recipientUserId,
+                firstName: relative.firstName,
+                lastName: relative.lastName,
+                dateOfBirth: relative.dateOfBirth,
+                typeOfIdentityDocument: relative.typeOfIdentityDocument,
+                identityDocumentNumber: relative.identityDocumentNumber,
+            }
         }
     }
 }
@@ -82,4 +81,18 @@ const CREATE_RELATIVE = gql`
   mutation ($relative: CreateRelativeInput!) {
     CreateRelative(input: $relative)
   }
+`
+
+export const SUBSCRIBE_TO_RELATIVES_BY_UID = gql`
+    subscription relativeReadModels($id: ID!) {
+        RelativeReadModels(filter: { recipientUserId: { eq: $id } }) {
+        id
+        recipientUserId
+        firstName
+        lastName
+        dateOfBirth
+        typeOfIdentityDocument
+        identityDocumentNumber
+        }
+    }
 `

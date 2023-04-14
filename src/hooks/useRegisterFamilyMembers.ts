@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next'
 import { namespaces } from '../i18n/i18n.constants'
 import AppPopupAlert from '../components/atom/AppPopupAlert'
 import { Recipient } from '../models/recipient-user'
-import { RecipientUserService, SUBSCRIBE_TO_RECIPIENT_USER } from '../services/recipient-user-service'
+import { RecipientUserService } from '../services/recipient-user-service'
 import { Relative } from '../models/relative'
 import { AppRoute } from '../enums/app-route'
 import { UsersContext } from '../contexts/usersContext'
-import { RelativeService } from '../services/relative-service'
+import { RelativeService, SUBSCRIBE_TO_RELATIVES_BY_UID } from '../services/relative-service'
 import { useSubscription } from '@apollo/client'
 
 const useRegisterFamilyMembers = () => {
@@ -16,11 +16,14 @@ const useRegisterFamilyMembers = () => {
     const [familyMembers, setFamilyMembers] = useState<Relative[]>([])
     const [user, setUser] = useState<Recipient>()
     const { firebaseUser } = useContext(UsersContext)
-    useSubscription(SUBSCRIBE_TO_RECIPIENT_USER,
+    useSubscription(SUBSCRIBE_TO_RELATIVES_BY_UID,
         {
             variables: { id: user?.id ?? '' },
             skip: user ? false : true,
-            onSubscriptionData: () => fetchRelatives(user?.id ?? '').then(relatives => setFamilyMembers(relatives))
+            onSubscriptionData: ({ subscriptionData }) => {
+                const relative = subscriptionData.data.RelativeReadModels as Relative
+                familyMembers.every(member => member.id !== relative.id) && setFamilyMembers([...familyMembers, relative])
+            }
         })
 
     useEffect(() => {
