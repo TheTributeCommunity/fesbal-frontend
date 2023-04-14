@@ -6,58 +6,55 @@ import BuildingsIcon from '../components/icons/BuildingsIcon'
 import ContactIcon from '../components/icons/ContactIcon'
 import EntityProfileProps from '../types/EntityProfileProps'
 import ProfilePersonalDataItem from '../components/atom/ProfilePersonalDataItem'
+import useEntityInfo from '../hooks/useEntityInfo'
 
 
 const EntityProfile = () => {
     const {t: translate} = useTranslation(namespaces.pages.entityProfile)
-    const entity = entityMock
+    const entity = useEntityInfo()
 
     const getData = (): EntityProfileProps => {
         return {
             entity: [
                 {
                     title: translate('entityName'),
-                    value: entity?.name
+                    value: entity?.entity?.entityName,
                 },
                 {
                     title: translate('code'),
-                    value: entity?.code,
+                    value: entity?.entity?.entityCode,
                 },
                 {
                     title: translate('province'),
-                    value: entity?.province,
+                    value: entity?.entity?.region,
                 },
                 {
                     title: translate('nextDelivery'),
-                    value: entity?.nextDelivery,
+                    value: entity?.entity?.nextDelivery,
                 },
                 {
                     title: translate('address'),
-                    value: entity?.address,
-                },
-                {
-                    title: translate('supervisorName'),
-                    value: entity?.supervisorName,
+                    value: entity?.entity?.address,
                 }
             ],
             contact: [
                 {
                     title: translate('contactPerson'),
-                    value: entity?.contactPerson,
+                    value: entity?.entity?.contactPerson,
                 },
                 {
                     title: translate('contactPhone'),
-                    value: entity?.contactPhone,
+                    value: entity?.entity?.phone,
                 },
                 {
                     title: translate('contactEmail'),
-                    value: entity?.contactEmail,
+                    value: entity?.entity?.email,
                 },
             ],
             logistic: [
                 {
                     title: translate('warehouseCapacity'),
-                    value: entity?.warehouseCapacity,
+                    value: entity?.entity?.storingCapacity.toString()+'m2',
                 },
             ]
         }
