@@ -17,8 +17,14 @@ const GET_ENTITY_BY_ID = gql`
         EntityReadModel(id: $id) {
             id
             entityName
+            entityCode
+            region
+            nextDelivery
+            address
+            contactPerson
             email
             phone
+            storingCapacity
         }
     }
 `
