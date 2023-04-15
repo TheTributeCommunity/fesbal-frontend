@@ -22,7 +22,7 @@ const MenuReferralUpload = () => {
     }
 
     return (
-        <AppWrapper title={translate('title')} showBackButton showBurger>
+        <AppWrapper title={translate('title')} showBackButton>
             <div className="flex flex-col gap-4">
                 <AppPageHeader 
                     description={translate('description') as string}/>
