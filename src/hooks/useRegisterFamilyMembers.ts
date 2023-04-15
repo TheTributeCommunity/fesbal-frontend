@@ -57,26 +57,11 @@ const useRegisterFamilyMembers = () => {
         }
     }
 
-    const handleWithoutFamilyMembers = () => {
-        AppPopupAlert({
-            icon: 'warning',
-            title: translate('sweetAlert.title') as string,
-            text: translate('sweetAlert.text') as string,
-            confirmButtonText: translate('sweetAlert.confirmButtonText') as string,
-            cancelButtonText: translate('sweetAlert.cancelButtonText') as string,
-        }).fire().then((result) => {
-            if (result.isConfirmed) {
-                navigate(AppRoute.REGISTER_REFERRAL_SHEET)
-            }
-        })
-    }
-
     return {
         user,
         familyMembers,
         setFamilyMembers,
         handleNextWithFamilyMembers,
-        handleWithoutFamilyMembers,
         disableNext
     }
 }

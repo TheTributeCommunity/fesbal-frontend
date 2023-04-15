@@ -65,12 +65,12 @@ const ProfileScreen = () => {
                     <h2 className="font-mini-title text-secondary-color">{translate('familyMembers')}</h2>
                     <div className="ml-auto"></div>
                 </div>
-                <div className="flex flex-col justify-center mx-auto w-full md:w-1/2 lg:w-1/3 px-8 h-full">
-                    {familyMembers.map((familyMember, index) => 
+                <div className="flex flex-col justify-center mx-auto w-full px-8 h-full">
+                    {familyMembers.length ? familyMembers.map((familyMember, index) => 
                         <div className="flex flex-col gap-4 pb-2" key={index}>
                             <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('familyMember', {ns: 'pages.registerFamilyMembers'})} {index+1}</span>
                             <FamilyMemberCard person={familyMember} />
-                        </div>)}
+                        </div>) : <p className="text-base">No hay otros miembros en la unidad familiar.</p>}
                 </div>
             </div>
         </AppWrapper>
