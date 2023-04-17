@@ -3,7 +3,7 @@ import AppLinkButton from '../components/atom/AppLinkButton'
 import LogoFesbalIcon from '../components/icons/LogoFesbalIcon'
 import {namespaces} from '../i18n/i18n.constants'
 import AppWrapper from '../components/molecules/AppWrapper'
-import {AppRoute} from '../enums/app-route'
+import { ExternalLinks } from '../enums/external-links'
 
 const RegisterLegal = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerLegal)
@@ -23,7 +23,7 @@ const RegisterLegal = () => {
                     </div>
                     <div>
                         <p className="font-label">{translate('subtitle')}</p>
-                        <a href="https://www.theagilemonkeys.com/" target="_blank" rel="noreferrer">
+                        <a href={ExternalLinks.BALPA_TERMS_AND_CONDITIONS} target="_blank" rel="noreferrer">
                             <p className="underline text-primary-color font-small-link">{translate('terms')}</p>
                         </a>
                     </div>

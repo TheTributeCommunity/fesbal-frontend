@@ -5,6 +5,7 @@ import { ReactNode, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { AppRoute } from '../../enums/app-route'
+import { ExternalLinks } from '../../enums/external-links'
 import { getCurrentRoute } from '../../helpers/getCurrentRoute'
 import { namespaces } from '../../i18n/i18n.constants'
 import AppCloseButton from '../atom/AppCloseButton'
@@ -78,7 +79,7 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
             icon: <HelpIcon />,
             title: translate('help', ''),
             onClick: () => {
-                window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')
+                window.open(ExternalLinks.BALPA_HOME, '_blank', 'noreferrer')
             },
         },
         {
@@ -110,7 +111,7 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
             icon: <HelpIcon />,
             title: translate('help', ''),
             onClick: () => {
-                window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')
+                window.open(ExternalLinks.BALPA_HOME, '_blank', 'noreferrer')
             },
         },
         {
