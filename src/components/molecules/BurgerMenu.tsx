@@ -4,6 +4,7 @@ import { ReactNode, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { AppRoute } from '../../enums/app-route'
+import { ExternalLinks } from '../../enums/external-links'
 import { namespaces } from '../../i18n/i18n.constants'
 import AppCloseButton from '../atom/AppCloseButton'
 import AlertIcon from '../icons/AlertIcon'
@@ -52,7 +53,7 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
                 <MenuItem icon={<ClockIcon />} title={translate('history', '')} onClick={() => {navigate(AppRoute.PICKUP_HISTORY)}} />
                 <MenuItem icon={<PickupIcon />} title={translate('pickup', '')} onClick={() => {navigate(AppRoute.PICKUP_POINT)}} />
                 <MenuItem icon={<DocumentIcon />} title={translate('sheet', '')} onClick={() => {navigate(AppRoute.REFERRAL)}} /> */}
-                <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')}} />
+                <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open(ExternalLinks.BALPA_HOME, '_blank', 'noreferrer')}} />
                 <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => setShowAccountDeletionDialog(true)} />
             </div>
         )
@@ -64,7 +65,7 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
                 <MenuItem icon={<PersonIcon />} title={translate('profile', '')} onClick={() => {navigate(AppRoute.ENTITY_PROFILE)}} />
                 <MenuItem icon={<NotificationsIcon />} title={translate('notifications', '')} onClick={() => {navigate(AppRoute.ENTITY_NOTIFICATIONS)}} />
                 <MenuItem icon={<ClockIcon />} title={translate('entityDeliveryHistory', '')} onClick={() => {navigate(AppRoute.ENTITY_DELIVERY_HISTORY)}} />
-                <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')}} />
+                <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open(ExternalLinks.BALPA_HOME, '_blank', 'noreferrer')}} />
                 <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => setShowAccountDeletionDialog(true)} />
             </div>
         )
