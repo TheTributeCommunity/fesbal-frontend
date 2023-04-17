@@ -1,7 +1,7 @@
 export const registerEmailEs = {
     headerTitle: 'Email',
     title: 'Añade tu email',
-    description: 'Utilizaremos esta vía para enviarte actualizaciones importantes acerca del servicio y novedades del Banco de Alimentos.',
+    description: 'Utilizaremos esta vía para enviarte actualizaciones importantes acerca del servicio y novedades del Banco de Alimentos. Si no tienes email, haz click en \'Continuar\'.',
     email: 'Email',
     next: 'Continuar',
     errorEmail: 'Por favor, introduce un email válido.',
@@ -18,7 +18,7 @@ export const registerEmailEs = {
 export const registerEmailEn = {
     headerTitle: 'Email',
     title: 'Add your email',
-    description: 'We will use this channel to send you important updates about the service and news from the Food Bank.',
+    description: 'We will use this channel to send you important updates about the service and news from the Food Bank. If you don\'t have one, click on  \'Continue\'.',
     email: 'Email',
     next: 'Continue',
     errorEmail: 'Please enter a valid email.',
