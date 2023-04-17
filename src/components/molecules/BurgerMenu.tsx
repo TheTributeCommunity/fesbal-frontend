@@ -1,9 +1,11 @@
+import classNames from 'classnames'
 import { getAuth, signOut } from 'firebase/auth'
 import { Sidebar } from 'primereact/sidebar'
 import { ReactNode, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { AppRoute } from '../../enums/app-route'
+import { getCurrentRoute } from '../../helpers/getCurrentRoute'
 import { namespaces } from '../../i18n/i18n.constants'
 import AppCloseButton from '../atom/AppCloseButton'
 import AlertIcon from '../icons/AlertIcon'
@@ -26,14 +28,15 @@ interface BurgerMenuProps {
 interface MenuItemProps {
     icon: ReactNode,
     title: string,
+    selected?: boolean,
     onClick: () => void
 }
 
-const MenuItem = ({icon, title, onClick}: MenuItemProps) => {
+const MenuItem = ({icon, title, onClick, selected = false}: MenuItemProps) => {
     return (
-        <div className="cursor-pointer w-full bg-[#F2FBFF] flex flex-row justify-start items-center gap-4 px-4 py-5" onClick={onClick}>
-            {icon}
-            <span className="text-center font-roboto-flex text-secondary-color font-normal text-base leading-5">{title}</span>
+        <div className={classNames('cursor-pointer w-full flex flex-row justify-start items-center gap-4 px-4 py-5', {'bg-[#F2FBFF]': !selected, 'bg-white' : selected})} onClick={onClick}>
+            <div className="flex justify-end w-[1.75rem]">{icon}</div>
+            <span className={classNames('text-center font-roboto-flex font-normal text-base leading-5', {'text-secondary-color': !selected, 'text-primary-color': selected})}>{title}</span>
         </div>
     )
 }
@@ -43,32 +46,81 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
     const [showAccountDeletionDialog, setShowAccountDeletionDialog] = useState(false)
     const navigate = useNavigate()
     const {t: translate} = useTranslation(namespaces.components.burgerMenu)
+    const currentRoute = getCurrentRoute()
 
-    const RecipientMenuItems = () => {
-        return (
-            <div className="flex flex-col gap-[1px]">
-                <MenuItem icon={<PersonIcon />} title={translate('profile', '')} onClick={() => {navigate(AppRoute.PROFILE)}} />
-                {/* <MenuItem icon={<NotificationsIcon />} title={translate('notifications', '')} onClick={() => {navigate(AppRoute.NOTIFICATIONS)}} />
-                <MenuItem icon={<ClockIcon />} title={translate('history', '')} onClick={() => {navigate(AppRoute.PICKUP_HISTORY)}} />
-                <MenuItem icon={<PickupIcon />} title={translate('pickup', '')} onClick={() => {navigate(AppRoute.PICKUP_POINT)}} />
-                <MenuItem icon={<DocumentIcon />} title={translate('sheet', '')} onClick={() => {navigate(AppRoute.REFERRAL)}} /> */}
-                <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')}} />
-                <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => setShowAccountDeletionDialog(true)} />
-            </div>
-        )
-    }
+    const recipientMmenuItems = [
+        {
+            icon: <PersonIcon />,
+            title: translate('profile', ''),
+            navigateTo: AppRoute.PROFILE,
+        },
+        {
+            icon: <NotificationsIcon />,
+            title: translate('notifications', ''),
+            navigateTo: AppRoute.NOTIFICATIONS,
+        },
+        {
+            icon: <ClockIcon />,
+            title: translate('history', ''),
+            navigateTo: AppRoute.PICKUP_HISTORY,
+        },
+        {
+            icon: <PickupIcon />,
+            title: translate('pickup', ''),
+            navigateTo: AppRoute.PICKUP_POINT,
+        },
+        {
+            icon: <DocumentIcon />,
+            title: translate('sheet', ''),
+            navigateTo: AppRoute.REFERRAL,
+        },
+        {
+            icon: <HelpIcon />,
+            title: translate('help', ''),
+            onClick: () => {
+                window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')
+            },
+        },
+        {
+            icon: <DeleteAccountIcon />,
+            title: translate('deleteAccount', ''),
+            onClick: () => {
+                setShowAccountDeletionDialog(true)
+            },
+        },
+    ]
     
-    const EntityMenuItems = () => {
-        return (
-            <div className="flex flex-col gap-[1px]">
-                <MenuItem icon={<PersonIcon />} title={translate('profile', '')} onClick={() => {navigate(AppRoute.ENTITY_PROFILE)}} />
-                <MenuItem icon={<NotificationsIcon />} title={translate('notifications', '')} onClick={() => {navigate(AppRoute.ENTITY_NOTIFICATIONS)}} />
-                <MenuItem icon={<ClockIcon />} title={translate('entityDeliveryHistory', '')} onClick={() => {navigate(AppRoute.ENTITY_DELIVERY_HISTORY)}} />
-                <MenuItem icon={<HelpIcon />} title={translate('help', '')} onClick={() => {window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')}} />
-                <MenuItem icon={<DeleteAccountIcon />} title={translate('deleteAccount', '')} onClick={() => setShowAccountDeletionDialog(true)} />
-            </div>
-        )
-    }
+    const entityMenuItems = [
+        {
+            icon: <PersonIcon />,
+            title: translate('profile', ''),
+            navigateTo: AppRoute.ENTITY_PROFILE,
+        },
+        {
+            icon: <NotificationsIcon />,
+            title: translate('notifications', ''),
+            navigateTo: AppRoute.ENTITY_NOTIFICATIONS,
+        },
+        {
+            icon: <ClockIcon />,
+            title: translate('entityDeliveryHistory', ''),
+            navigateTo: AppRoute.ENTITY_DELIVERY_HISTORY,
+        },
+        {
+            icon: <HelpIcon />,
+            title: translate('help', ''),
+            onClick: () => {
+                window.open('https://www.fesbal.org.es/faqs', '_blank', 'noreferrer')
+            },
+        },
+        {
+            icon: <DeleteAccountIcon />,
+            title: translate('deleteAccount', ''),
+            onClick: () => {
+                setShowAccountDeletionDialog(true)
+            },
+        },
+    ]
 
     const handleLogout = () => {
         signOut(getAuth()).then(() => navigate(AppRoute.WELCOME))
@@ -121,9 +173,13 @@ const BurgerMenu = ({visible, onHide, userType = 'recipient'}: BurgerMenuProps):
                         <AppCloseButton onClick={onHide}/>
                     </div>
                 </div>
-                {userType === 'recipient' ? <RecipientMenuItems /> : <EntityMenuItems />}
-                <div className="cursor-pointer w-full flex flex-row justify-start items-center gap-5 px-5 pb-5" onClick={() => setShowLogoutDialog(true)}>
-                    {<PowerIcon />}
+                <div className="flex flex-col gap-[1px]">
+                    {(userType === 'recipient' ? recipientMmenuItems : entityMenuItems).map((menuItem, index) => (
+                        <MenuItem key={index} selected={menuItem?.navigateTo === currentRoute ?? false} icon={menuItem.icon} title={menuItem.title} onClick={menuItem.onClick ? menuItem.onClick : () => navigate(menuItem.navigateTo)} />
+                    ))}
+                </div>
+                <div className="cursor-pointer w-full bg-white flex flex-row justify-start items-center gap-4 px-4 py-5" onClick={() => setShowLogoutDialog(true)}>
+                    <div className="flex justify-end w-[1.75rem]">{<PowerIcon />}</div>
                     <span className="text-center font-roboto-flex text-focus-warning-color font-normal text-base leading-5">{translate('logOut', '')}</span>
                 </div>
             </div>
