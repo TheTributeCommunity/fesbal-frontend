@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { UsersContext } from '../contexts/usersContext'
 import { RecipientUserService } from '../services/recipient-user-service'
 
@@ -21,9 +20,7 @@ const useRegisterEmailForm = () => {
 
     // email validation based on https://stackoverflow.com/a/13975255
     const validateEmail = (): boolean => {
-        if (!userEmail) {
-            return false
-        }
+        if (!userEmail) return true // empty email is valid during registration
 
         if (validationInput === null) {
             validationInput = createValidationInput()

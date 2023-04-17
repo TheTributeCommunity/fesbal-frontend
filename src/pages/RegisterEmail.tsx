@@ -7,19 +7,17 @@ import { AppRoute } from '../enums/app-route'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import AppMessageDialog from '../components/molecules/AppMessageDialog'
-import SuccessIcon from '../components/icons/SuccessIcon'
 import UnsuccessIcon from '../components/icons/UnsuccessIcon'
 
 const RegisterEmail = () => {
     const { t: translate } = useTranslation(namespaces.pages.registerEmail)
-    const [showSuccessDialog, setShowSuccessDialog] = useState(false)
     const [showFailureDialog, setShowFailureDialog] = useState(false)
 
     const navigate = useNavigate()
 
     const handleSubmit = (success: boolean) => {
         if (success) {
-            setShowSuccessDialog(true)
+            navigate(AppRoute.REGISTER_FAMILY_MEMBERS)
         } else {
             setShowFailureDialog(true)
         }
@@ -30,18 +28,6 @@ const RegisterEmail = () => {
             <div className="flex flex-col">
                 <PageHeader title={translate('title')} description={translate('description') as string} />
                 <RegisterEmailForm onSubmit={handleSubmit}/>
-                {showSuccessDialog && (
-                    <AppMessageDialog
-                        icon={<SuccessIcon />}
-                        description={translate('successfulValidationMessage')}
-                        title={translate('successfulValidationTitle')}
-                        buttonText={translate('continue')}
-                        buttonOnClick={() => {
-                            setShowSuccessDialog(false)
-                            navigate(AppRoute.REGISTER_FAMILY_MEMBERS)
-                        }}
-                    />
-                )}
                 {showFailureDialog && (
                     <AppMessageDialog
                         icon={<UnsuccessIcon />}
