@@ -32,7 +32,7 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
     const navigate = useNavigate()
 
     const validForm = (): boolean => {
-        return validateNameSurname() && validateUserID() && isValidBirthDate()
+        return validateNameSurname() && validateUserID(selectedDate) && isValidBirthDate()
     }
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
