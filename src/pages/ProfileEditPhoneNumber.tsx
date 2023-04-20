@@ -1,29 +1,26 @@
 import {useTranslation} from 'react-i18next'
 import {namespaces} from '../i18n/i18n.constants'
-import PageHeader from '../components/molecules/AppPageHeader'
 import PhoneForm from '../components/molecules/PhoneForm'
 import AppWrapper from '../components/molecules/AppWrapper'
 import {AppRoute} from '../enums/app-route'
 import { useNavigate } from 'react-router'
 
-const RegisterPhone = () => {
-    const {t: translate} = useTranslation(namespaces.pages.registerPhone)
+const ProfileEditPhoneNumber = () => {
     const navigate = useNavigate()
 
     const handleSubmit = (success: boolean) => {
         if (success) {
-            navigate(AppRoute.REGISTER_VALIDATE_PHONE)
+            navigate(AppRoute.PROFILE_EDIT_VALIDATE_PHONE_NUMBER)
         }
     }
 
     return (
-        <AppWrapper showBackButton title={translate('title')}>
+        <AppWrapper showBackButton title="Cambiar teléfono móvil">
             <div className="flex h-full w-full flex-col self-center text-secondary-color">
-                <PageHeader title={translate('titleSecondary')} description={translate('description') as string}/>
-                <PhoneForm onSubmit={handleSubmit}/>
+                <PhoneForm onSubmit={handleSubmit} mode="edit"/>
             </div>
         </AppWrapper>
     )
 }
 
-export default RegisterPhone
+export default ProfileEditPhoneNumber

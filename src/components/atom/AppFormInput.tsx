@@ -14,9 +14,10 @@ const AppFormInput = ({
 }: FormInputProps) => {
     return (
         <div className="flex flex-col gap-1.5">
+            {label &&
             <label htmlFor={name} className={`app-label ${value ? '' : 'app-label--hidden'}`}>
                 {label}
-            </label>
+            </label>}
             <div className={`${toggleShowPassword ? 'relative' : ''}`}>
                 <input
                     type={type}

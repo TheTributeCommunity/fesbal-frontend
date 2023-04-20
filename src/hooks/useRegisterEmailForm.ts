@@ -9,7 +9,7 @@ const createValidationInput = () => {
     return newValidationInput
 }
 
-const useRegisterEmailForm = () => {
+const useRegisterEmailForm = (allowEmptyEmail = true) => {
     const [userEmail, setUserEmail] = useState<string>('')
     const { firebaseUser } = useContext(UsersContext)
     let validationInput = createValidationInput()
@@ -20,7 +20,7 @@ const useRegisterEmailForm = () => {
 
     // email validation based on https://stackoverflow.com/a/13975255
     const validateEmail = (): boolean => {
-        if (!userEmail) return true // empty email is valid during registration
+        if (!userEmail && allowEmptyEmail) return true // empty email is valid during registration
 
         if (validationInput === null) {
             validationInput = createValidationInput()

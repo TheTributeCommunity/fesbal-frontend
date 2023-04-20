@@ -13,6 +13,7 @@ import {FormEvent} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {UserGuestService} from '../services/user-guest-service'
 import {AppRoute} from '../enums/app-route'
+import { IDtypes } from '../enums/IDtypes.ts'
 
 const RegisterUser = (): JSX.Element => {
     const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange} = useRegisterNameForm()
@@ -20,7 +21,7 @@ const RegisterUser = (): JSX.Element => {
     const {selectedDate, setDate, isValidBirthDate} = useRegisterBirthDate()
     const {t: translate} = useTranslation(namespaces.pages.registerUser)
 
-    const selectOptions: string[] = ['DNI', 'NIE']
+    const selectOptions: string[] = Object.values(IDtypes)
     const navigate = useNavigate()
 
     const validForm = (): boolean => {

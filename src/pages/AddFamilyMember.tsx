@@ -3,6 +3,7 @@ import AppFormInput from '../components/atom/AppFormInput'
 import AppNextButton from '../components/atom/AppNextButton'
 import AppWrapper from '../components/molecules/AppWrapper'
 import useRegisterIDForm from '../hooks/useRegisterIDForm'
+import { v4 as uuidv4 } from 'uuid'
 import useRegisterNameForm from '../hooks/useRegisterNameForm'
 import { namespaces } from '../i18n/i18n.constants'
 import UserIDSelect from '../components/atom/RegisterIDSelect'
@@ -10,25 +11,41 @@ import classNames from 'classnames'
 import useRegisterBirthDate from '../hooks/useRegisterBirthDate'
 import AppCalendar from '../components/atom/AppCalendar'
 import {AppRoute} from '../enums/app-route'
-import {FormEvent, useContext, useEffect} from 'react'
-import {UserGuestService} from '../services/user-guest-service'
-import {useNavigate} from 'react-router-dom'
+import {FormEvent, useContext, useEffect, useState} from 'react'
+import {useLocation, useNavigate} from 'react-router-dom'
 import {RelativeService} from '../services/relative-service'
 import { UsersContext } from '../contexts/usersContext'
-import { Relative } from '../models/relative'
+import { Relative, RelativeMutate } from '../models/relative'
+import { IDtypes } from '../enums/IDtypes.ts'
+import AppMessageDialog from '../components/molecules/AppMessageDialog'
+import UnsuccessIcon from '../components/icons/UnsuccessIcon'
 
-interface AddFamilyMemberProps {
-    member?: Relative
-}
-
-const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
-    const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange} = useRegisterNameForm()
-    const {selectedOption, userID, validateUserID, onUserIDChange, onSelectedOptionChange} = useRegisterIDForm()
+const AddFamilyMember = (): JSX.Element => {
+    const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange, setUserName, setUserSurname} = useRegisterNameForm()
+    const {selectedOption, userID, validateUserID, onUserIDChange, onSelectedOptionChange, setSelectedOption, setUserID} = useRegisterIDForm()
     const {selectedDate, setDate, isValidBirthDate} = useRegisterBirthDate()
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers)
     const { firebaseUser } = useContext(UsersContext)
+    const location = useLocation()
+    const memberData = location.state?.relative as Relative
+    const [mode, setMode] = useState('create')
+    const [editID, setEditID] = useState('')
+    const [showErrorDialog, setShowErrorDialog] = useState(false)
 
-    const selectOptions: string[] = ['DNI', 'NIE']
+    useEffect(() => {
+        if (memberData) {
+            // we have been given a member to edit
+            setMode('edit')
+            setEditID(memberData.id)
+            setUserName(memberData.firstName)
+            setUserSurname(memberData.lastName)
+            setDate(memberData.dateOfBirth)
+            memberData.typeOfIdentityDocument && setSelectedOption(memberData.typeOfIdentityDocument)
+            memberData.identityDocumentNumber && setUserID(memberData.identityDocumentNumber)
+        }
+    }, [])
+
+    const selectOptions: string[] = Object.values(IDtypes)
     const navigate = useNavigate()
 
     const validForm = (): boolean => {
@@ -38,16 +55,32 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (validForm() && firebaseUser?.uid) {
-            const userGuest = UserGuestService.create(userName, userSurname, selectedDate, selectedOption, userID)
-
-            RelativeService.create({...userGuest,recipientUserId: firebaseUser.uid})
-                .then(() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS))
-                .catch((e) => console.log(e))
+            const relative: Partial<RelativeMutate> = {
+                relativeId: mode === 'create' ? uuidv4() : editID,
+                firstName: userName,
+                lastName: userSurname,
+                dateOfBirth: selectedDate.toLocaleDateString('es-ES'),
+            }
+            if (mode === 'create') relative.recipientUserId = firebaseUser.uid
+            if (selectedOption && userID) {
+                relative.typeOfIdentityDocument = selectedOption
+                relative.identityDocumentNumber = userID
+            }
+            const operation = mode === 'create' ? RelativeService.create : RelativeService.update
+            operation(relative)
+                .then(success => {
+                    if (success) navigate(AppRoute.REGISTER_FAMILY_MEMBERS)
+                    else setShowErrorDialog(true)
+                })
+                .catch((e) => {
+                    console.log(e)
+                    setShowErrorDialog(true)
+                })
         }
     }
 
     return (
-        <AppWrapper showBackButton title={translate('addMember')}>
+        <AppWrapper showBackButton title={mode === 'create' ? translate('addMember') : 'Editar familiar'}>
             <form noValidate onSubmit={onSubmit} className="flex w-full flex-col gap-4">
                 <div className="flex flex-col gap-4">
                     <AppFormInput name="name"
@@ -83,8 +116,17 @@ const AddFamilyMember = ({member}: AddFamilyMemberProps): JSX.Element => {
                         </div>
                     </div>
                 </div>
-                <AppNextButton disabled={!validForm()} title={translate('addMember')}/>
+                <AppNextButton disabled={!validForm()} title={mode === 'create' ? translate('addMember') : 'Editar familiar'}/>
             </form>
+            <AppMessageDialog
+                visible={showErrorDialog}
+                icon={<UnsuccessIcon />}
+                description="La operacion ha fallado, puedo intentarlo de nuevo"
+                title="Fallo en la operación"
+                buttonText="Intentarlo de nuevo"
+                buttonBgColor="bg-warning-color"
+                buttonOnClick={() => setShowErrorDialog(false)}
+            />
         </AppWrapper>
     )
 }

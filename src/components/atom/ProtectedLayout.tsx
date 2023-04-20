@@ -8,7 +8,7 @@ interface ProtectedLayoutProps {
     allowedRoles: string[]
 }
 
-const ProtectedLayout = ({ allowedRoles }:ProtectedLayoutProps): JSX.Element => {
+const ProtectedLayout = ({ allowedRoles }: ProtectedLayoutProps): JSX.Element => {
     const { loggedUserType } = useContext(UsersContext)
 
     if (localStorage.getItem('token') === null) return <Navigate to={AppRoute.WELCOME} />

@@ -34,7 +34,9 @@ const useRegisterIDForm = () => {
         onSelectedOptionChange,
         onUserIDChange,
         onSubmit,
-        validateUserID
+        validateUserID,
+        setSelectedOption,
+        setUserID
     }
 }
 

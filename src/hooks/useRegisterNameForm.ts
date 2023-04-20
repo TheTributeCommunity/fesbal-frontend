@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { isLettersOnly } from '../helpers/textUtils'
-import {AppRoute} from '../enums/app-route'
+import { AppRoute } from '../enums/app-route'
 
 
 const useRegisterNameForm = () => {
@@ -37,7 +37,9 @@ const useRegisterNameForm = () => {
         onNameChange,
         onSurnameChange,
         onSubmit,
-        validateNameSurname
+        validateNameSurname,
+        setUserName,
+        setUserSurname,
     }
 }
 

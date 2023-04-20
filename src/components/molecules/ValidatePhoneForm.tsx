@@ -6,11 +6,12 @@ import { AppDigitsInput } from '../atom/AppDigitsInput'
 import { FormEvent } from 'react'
 
 interface ValidatePhoneFormProps {
-    onSubmit: (success: boolean) => void;
+    onSubmit: (success: boolean) => void
+    mode?: string
 }
 
-const ValidatePhoneForm = ({onSubmit: parentOnSubmit}: ValidatePhoneFormProps) => {
-    const {validationCode, CODE_LENGTH, checkValidationCodeLength, onValidationCodeChange, onSubmit} = useValidatePhoneForm()
+const ValidatePhoneForm = ({onSubmit: parentOnSubmit, mode = 'register'}: ValidatePhoneFormProps) => {
+    const {validationCode, CODE_LENGTH, checkValidationCodeLength, onValidationCodeChange, onRegisterSubmit, onEditSubmit} = useValidatePhoneForm()
     const {t: translate} = useTranslation(namespaces.pages.validatePhone)
 
     const handleResendCode = () => {
@@ -18,7 +19,8 @@ const ValidatePhoneForm = ({onSubmit: parentOnSubmit}: ValidatePhoneFormProps) =
     }
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        parentOnSubmit(await onSubmit(e))
+        const submit = mode === 'register' ? onRegisterSubmit : onEditSubmit
+        parentOnSubmit(await submit(e))
     }
 
     return (

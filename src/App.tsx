@@ -15,8 +15,6 @@ import {PickupDetails} from './pages/PickupDetails'
 import PickupHistoryPage from './pages/PickupHistoryPage'
 import PickupPoint from './pages/PickupPoint'
 import ProfileEditEmail from './pages/ProfileEditEmail'
-import ProfileEditNewPassword from './pages/ProfileEditNewPassword'
-import ProfileEditPrevPassword from './pages/ProfileEditPrevPassword'
 import ProfileScreen from './pages/ProfileScreen'
 import RegisterFamilyMembers from './pages/RegisterFamilyMembers'
 import RegisterLegal from './pages/RegisterLegal'
@@ -47,6 +45,10 @@ import { addLocale } from 'primereact/api'
 import { BoosterClient } from './services/booster-service'
 import jwtDecode, { JwtPayload } from 'jwt-decode'
 import RefreshTokenService from './services/refresh-token-service'
+import ProfileEditNameAndSurname from './pages/ProfileEditNameAndSurname'
+import ProfileEditBirthDate from './pages/ProfileEditBirthDate'
+import ProfileEditPhoneNumber from './pages/ProfileEditPhoneNumber'
+import ProfileEditValidatePhone from './pages/ProfileEditValidatePhone'
 
 addLocale('en', {
     firstDayOfWeek: 1,
@@ -113,8 +115,10 @@ const App = () => {
                         <Route path={AppRoute.REGISTER_REQUEST_SENT} element={<RegisterRequestSent/>}/>
                         <Route path={AppRoute.PROFILE} element={<ProfileScreen/>}/>
                         <Route path={AppRoute.PROFILE_EDIT_EMAIL} element={<ProfileEditEmail/>}/>
-                        <Route path={AppRoute.PROFILE_EDIT_NEW_PASSWORD} element={<ProfileEditNewPassword/>}/>
-                        <Route path={AppRoute.PROFILE_EDIT_PREV_PASSWORD} element={<ProfileEditPrevPassword/>}/>
+                        <Route path={AppRoute.PROFILE_EDIT_NAME_AND_SURNAME} element={<ProfileEditNameAndSurname/>}/>
+                        <Route path={AppRoute.PROFILE_EDIT_BIRTHDATE} element={<ProfileEditBirthDate/>}/>
+                        <Route path={AppRoute.PROFILE_EDIT_PHONE_NUMBER} element={<ProfileEditPhoneNumber />} />
+                        <Route path={AppRoute.PROFILE_EDIT_VALIDATE_PHONE_NUMBER} element={<ProfileEditValidatePhone />} />
                         <Route path={AppRoute.RECIPIENT_HOME} element={<RecipientLandingScreen/>}/>
                         <Route path={AppRoute.REFERRAL} element={<MenuReferral/>}/>
                         <Route path={AppRoute.NOTIFICATIONS} element={<NotificationsScreen/>}/>
