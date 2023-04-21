@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier, onAuthStateChanged, User } from 'firebase/auth'
+import { Auth, ConfirmationResult, getAuth, signInWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier, updatePhoneNumber, PhoneAuthProvider } from 'firebase/auth'
 import { getEnvVar } from '../helpers/envVars'
 import { AuthUser } from '../models/auth-user'
 
@@ -8,6 +8,9 @@ export class AuthService {
     public static SPAIN_PHONE_PREFIX = '+34'
     private static confirmationResult: ConfirmationResult
     public static currentUser: AuthUser | null
+    public static updatePhoneAuthProvider: PhoneAuthProvider
+    public static updatePhoneVerificationId: string
+    public static updatePhoneNumber: string
 
     public static initialize(): void {
         initializeApp({
@@ -46,6 +49,30 @@ export class AuthService {
 
     public static confirmPhoneCode(code: string) {
         return this.confirmationResult.confirm(code)
+    }
+
+    public static updatePhoneNumberSendCode(submitButtonId: string, phoneWithoutPrefix: string) {
+        this.updatePhoneNumber = this.addPhonePrefix(phoneWithoutPrefix)
+        this.updatePhoneAuthProvider = new PhoneAuthProvider(getAuth())
+        return this.updatePhoneAuthProvider.verifyPhoneNumber(this.updatePhoneNumber, this.setUpRecaptcha(submitButtonId)).then(verificationId => {
+            this.updatePhoneVerificationId = verificationId
+            return true
+        }).catch(e => {
+            console.log(e)
+            return false
+        })
+    }
+
+    public static updatePhoneNumberWithCode(verificationCode: string): Promise<boolean> {
+        const phoneAuthCredential = PhoneAuthProvider.credential(this.updatePhoneVerificationId, verificationCode)
+        const user = getAuth().currentUser
+        if (user) {
+            return updatePhoneNumber(user, phoneAuthCredential).then(() => true).catch(e => {
+                console.log(e)
+                return false
+            })
+        }
+        else return Promise.reject(false)
     }
 
     public static signIn(email: string, password: string) {

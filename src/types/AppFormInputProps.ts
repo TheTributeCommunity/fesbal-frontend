@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default interface FormInputProps {
-    label: string
+    label?: string | null
     name: string
     placeholder: string
     value: string

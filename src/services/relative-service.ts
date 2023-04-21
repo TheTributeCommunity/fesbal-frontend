@@ -1,6 +1,6 @@
 import { BoosterClient } from './booster-service'
 import { gql } from '@apollo/client'
-import { Relative } from '../models/relative'
+import { Relative, RelativeMutate } from '../models/relative'
 
 export class RelativeService {
     public static async getAllByRecipientUserId(recipientUserId: string): Promise<Relative[]> {
@@ -19,15 +19,37 @@ export class RelativeService {
         return result.data.RelativeReadModel
     }
 
-    public static async create(newRelative: Relative): Promise<boolean> {
+    public static async create(newRelative: Partial<Relative>): Promise<boolean> {
         const result = await BoosterClient.mutate<{ CreateRelative: boolean }>({
             mutation: CREATE_RELATIVE,
-            variables: this.relativeToCommandVariables(newRelative),
+            variables: { relative: { ...newRelative } }
         })
         if (!result.data?.CreateRelative) {
             throw new Error('Error creating the RELATIVE')
         }
         return result.data?.CreateRelative
+    }
+
+    public static async update(relativeUpdate: Partial<RelativeMutate>): Promise<boolean> {
+        const result = await BoosterClient.mutate<{ UpdateRelative: boolean }>({
+            mutation: UPDATE_RELATIVE,
+            variables: { updatedRelative: relativeUpdate }
+        })
+        if (!result.data?.UpdateRelative) {
+            throw new Error('Error updating the RELATIVE')
+        }
+        return result.data?.UpdateRelative
+    }
+
+    public static async delete(id: string): Promise<boolean> {
+        const result = await BoosterClient.mutate<{ DeleteRelative: boolean }>({
+            mutation: DELETE_RELATIVE,
+            variables: { id },
+        })
+        if (!result.data?.DeleteRelative) {
+            throw new Error('Error deleting the relative')
+        }
+        return result.data?.DeleteRelative
     }
 
     private static relativeToCommandVariables(relative: Partial<Relative>) {
@@ -48,7 +70,7 @@ export class RelativeService {
 const GET_ALL_RELATIVES_BY_RECIPIENT_USER = gql`
   query ListRelativeReadModels ($recipientUserId: ID!) {
     ListRelativeReadModels(
-      filter: { recipientUserId: {eq: $recipientUserId } }
+      filter: { recipientUserId: {eq: $recipientUserId }, isDeleted: {eq: false} }
       sortBy: {}
   )  {
       items {
@@ -66,7 +88,7 @@ const GET_ALL_RELATIVES_BY_RECIPIENT_USER = gql`
 
 const GET_RELATIVE = gql`
   query RelativeReadModel ($id: ID!) {
-    RelativeReadModel (id: $id) {
+    RelativeReadModel (id: $id, isDeleted: false) {
       id
       recipientUserId
       firstName
@@ -83,6 +105,18 @@ const CREATE_RELATIVE = gql`
   }
 `
 
+const UPDATE_RELATIVE = gql`
+    mutation($updatedRelative: UpdateRelativeInput!) {
+        UpdateRelative(input: $updatedRelative)
+    }
+`
+
+const DELETE_RELATIVE = gql`
+    mutation ($id: ID!) {
+        DeleteRelative(input: { relativeId: $id})
+    }
+`
+
 export const SUBSCRIBE_TO_RELATIVES_BY_UID = gql`
     subscription relativeReadModels($id: ID!) {
         RelativeReadModels(filter: { recipientUserId: { eq: $id } }) {
@@ -90,6 +124,7 @@ export const SUBSCRIBE_TO_RELATIVES_BY_UID = gql`
         recipientUserId
         firstName
         lastName
+        isDeleted
         dateOfBirth
         typeOfIdentityDocument
         identityDocumentNumber

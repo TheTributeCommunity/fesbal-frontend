@@ -1,22 +1,24 @@
 import {useTranslation} from 'react-i18next'
 import AppNextButton from '../atom/AppNextButton'
 import {namespaces} from '../../i18n/i18n.constants'
-import useRegisterPhoneForm from '../../hooks/useRegisterPhoneForm'
+import usePhoneForm from '../../hooks/usePhoneForm'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import AppFormInput from '../atom/AppFormInput'
 
-interface RegisterPhoneFormProps {
-    onSubmit: (success: boolean) => void;
+interface PhoneFormProps {
+    onSubmit: (success: boolean) => void
+    mode?: string
 }
 
-const RegisterPhoneForm = ({onSubmit: parentOnSubmit}: RegisterPhoneFormProps) => {
+const PhoneForm = ({onSubmit: parentOnSubmit, mode = 'register'}: PhoneFormProps) => {
     const NEXT_BUTTON_ID = 'validate-phone-button-id'
-    const { userPhone, onSubmit, validateUserPhone, onUserPhoneChange} = useRegisterPhoneForm(NEXT_BUTTON_ID)
+    const { userPhone, onRegisterSubmit, onEditSubmit, validateUserPhone, onUserPhoneChange} = usePhoneForm(NEXT_BUTTON_ID)
     const {t: translate} = useTranslation(namespaces.pages.registerPhone)
     const [hasError, setHasError] = useState(false)
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        onSubmit(e).then((result) => {
+        const submit = mode === 'register' ? onRegisterSubmit : onEditSubmit
+        submit(e).then((result) => {
             setHasError(!result)
             parentOnSubmit(result)
         })
@@ -28,10 +30,9 @@ const RegisterPhoneForm = ({onSubmit: parentOnSubmit}: RegisterPhoneFormProps) =
     }
 
     return (
-        <form noValidate onSubmit={handleSubmit} className="mt-8 flex w-full flex-col justify-between gap-4 self-center">
+        <form noValidate onSubmit={handleSubmit} className="mt-2 flex w-full flex-col justify-between gap-4 self-center">
             <div className="flex flex-col gap-8">
                 <AppFormInput
-                    label={translate('phone')}
                     name="phone"
                     value={userPhone}
                     onChange={handleUserPhoneChange}
@@ -46,4 +47,4 @@ const RegisterPhoneForm = ({onSubmit: parentOnSubmit}: RegisterPhoneFormProps) =
     )
 }
 
-export default RegisterPhoneForm
+export default PhoneForm

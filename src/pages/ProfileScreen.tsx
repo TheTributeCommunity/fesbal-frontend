@@ -19,6 +19,8 @@ const ProfileScreen = () => {
             {
                 title: translate('fullName'),
                 value: `${user?.firstName} ${user?.lastName}`,
+                hasEditButton: true,
+                goTo: AppRoute.PROFILE_EDIT_NAME_AND_SURNAME
             },
             {
                 title: translate('id'),
@@ -27,6 +29,8 @@ const ProfileScreen = () => {
             {
                 title: translate('birthDate'),
                 value: user?.dateOfBirth,
+                hasEditButton: true,
+                goTo: AppRoute.PROFILE_EDIT_BIRTHDATE,
             },
             {
                 title: translate('email'),
@@ -37,12 +41,9 @@ const ProfileScreen = () => {
             {
                 title: translate('phone'),
                 value: user?.phone,
-            },
-            // {
-            //     title: translate('password'),
-            //     value: '********',
-            //     goTo: '/profile/edit-prev-password',
-            // }
+                hasEditButton: true,
+                goTo: AppRoute.PROFILE_EDIT_PHONE_NUMBER,
+            }
         ]
     }
 

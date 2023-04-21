@@ -60,6 +60,17 @@ export class RecipientUserService {
         return result.data?.CreateRecipient
     }
 
+    public static async update(recipientUpdates: Partial<Recipient>): Promise<boolean> {
+        const result = await BoosterClient.mutate<{ UpdateRecipient: boolean }>({
+            mutation: UPDATE_RECIPIENT,
+            variables: { updatedUser: recipientUpdates }
+        })
+        if (!result.data?.UpdateRecipient) {
+            throw new Error('Error updating the USER')
+        }
+        return result.data?.UpdateRecipient
+    }
+
     public static async updateEmail(recipientId: string, email: string): Promise<boolean> {
         const result = await BoosterClient.mutate<{ UpdateRecipientEmail: boolean }>({
             mutation: UPDATE_RECIPIENT_EMAIL,
@@ -212,6 +223,12 @@ const UPDATE_RECIPIENT_EMAIL = gql`
   }
 `
 
+const UPDATE_RECIPIENT = gql`
+    mutation ($updatedUser: UpdateRecipientInput!) {
+        UpdateRecipient(input: $updatedUser)
+    }
+`
+
 const UPDATE_RECIPIENT_REFERRAL_SHEET_URL = gql`
   mutation ($updatedUser: UpdateRecipientUserReferralSheetUrlInput!) {
     UpdateRecipientUserReferralSheetUrl(input: $updatedUser)
@@ -227,6 +244,15 @@ const DELETE_RECIPIENT_USER = gql`
 export const SUBSCRIBE_TO_RECIPIENT_USER = gql`
     subscription ($id: ID!) {
         RecipientReadModel(id: $id) {
+            id
+            firstName
+            lastName
+            dateOfBirth
+            typeOfIdentityDocument
+            identityDocumentNumber
+            phone
+            email
+            referralSheetUrl
             relativesIds
         }
     }

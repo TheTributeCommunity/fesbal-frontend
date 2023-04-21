@@ -1,10 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { namespaces } from '../i18n/i18n.constants'
-import AppPopupAlert from '../components/atom/AppPopupAlert'
 import { Recipient } from '../models/recipient-user'
-import { RecipientUserService } from '../services/recipient-user-service'
+import { RecipientUserService, SUBSCRIBE_TO_RECIPIENT_USER } from '../services/recipient-user-service'
 import { Relative } from '../models/relative'
 import { AppRoute } from '../enums/app-route'
 import { UsersContext } from '../contexts/usersContext'
@@ -12,7 +9,6 @@ import { RelativeService, SUBSCRIBE_TO_RELATIVES_BY_UID } from '../services/rela
 import { useSubscription } from '@apollo/client'
 
 const useRegisterFamilyMembers = () => {
-    const { t: translate } = useTranslation(namespaces.pages.registerFamilyMembers)
     const [familyMembers, setFamilyMembers] = useState<Relative[]>([])
     const [user, setUser] = useState<Recipient>()
     const { firebaseUser } = useContext(UsersContext)
@@ -22,7 +18,23 @@ const useRegisterFamilyMembers = () => {
             skip: user ? false : true,
             onSubscriptionData: ({ subscriptionData }) => {
                 const relative = subscriptionData.data.RelativeReadModels as Relative
-                familyMembers.every(member => member.id !== relative.id) && setFamilyMembers([...familyMembers, relative])
+                if (relative.isDeleted) {
+                    setFamilyMembers(familyMembers.filter(member => member.id !== relative.id))
+                } else {
+                    setFamilyMembers([...familyMembers.filter(member => member.id !== relative.id), relative])
+                    // if (familyMembers.every(member => member.id !== relative.id)) setFamilyMembers([...familyMembers, relative])
+                    // else setFamilyMembers([...familyMembers.filter(member => member.id !== relative.id), relative])
+                }
+
+            }
+        })
+    useSubscription(SUBSCRIBE_TO_RECIPIENT_USER,
+        {
+            variables: { id: user?.id ?? '' },
+            skip: user ? false : true,
+            onSubscriptionData: ({ subscriptionData }) => {
+                const recipient = subscriptionData.data.RecipientReadModel as Recipient
+                setUser(recipient)
             }
         })
 

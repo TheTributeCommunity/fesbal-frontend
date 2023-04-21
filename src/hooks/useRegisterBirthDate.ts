@@ -1,9 +1,17 @@
+import moment from 'moment'
 import { useState } from 'react'
 
 const useRegisterBirthDate = () => {
     const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 
-    const isValidBirthDate = () => selectedDate ? selectedDate < new Date() : false
+    const isValidBirthDate = (allowToday = true) => {
+        if (selectedDate) {
+            return allowToday ?
+                selectedDate <= new Date()
+                : selectedDate < new Date(new Date().setHours(0, 0, 0, 0))
+        }
+        else return false
+    }
 
     const getFormattedBirthDate = (): string => {
         if (selectedDate) {
@@ -16,7 +24,7 @@ const useRegisterBirthDate = () => {
         } else return ''
     }
 
-    const setDate = (dateString: string) => { setSelectedDate(new Date(dateString)) }
+    const setDate = (dateString: string) => { setSelectedDate(new Date(moment(dateString, 'DD/M/YYYY').toDate())) }
 
     return {
         selectedDate,

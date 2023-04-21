@@ -11,7 +11,7 @@ interface ProfileEditEmailForm {
 }
 
 const ProfileEditEmailForm = ({onSubmit: parentOnSubmit}: ProfileEditEmailForm) => {
-    const {userEmail, onSubmit, validateEmail, onEmailChange} = useRegisterEmailForm()
+    const {userEmail, onSubmit, validateEmail, onEmailChange} = useRegisterEmailForm(false)
     const {t: translate} = useTranslation(namespaces.pages.profileEditEmail)
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

@@ -15,7 +15,7 @@ const useValidatePhoneForm = () => {
         setValidationCode(code)
     }
 
-    const onSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
+    const onRegisterSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
         e.preventDefault()
         if (checkValidationCodeLength()) {
             return AuthService.confirmPhoneCode(validationCode)
@@ -30,12 +30,25 @@ const useValidatePhoneForm = () => {
         } else return false
     }
 
+    const onEditSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
+        e.preventDefault()
+        if (checkValidationCodeLength()) {
+            return AuthService.updatePhoneNumberWithCode(validationCode)
+                .then(success => success)
+                .catch((e) => {
+                    console.log(e)
+                    return false
+                })
+        } else return false
+    }
+
     return {
         validationCode,
         CODE_LENGTH,
         checkValidationCodeLength,
         onValidationCodeChange,
-        onSubmit
+        onRegisterSubmit,
+        onEditSubmit,
     }
 }
 

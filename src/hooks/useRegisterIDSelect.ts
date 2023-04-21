@@ -1,7 +1,7 @@
-import {useState} from 'react'
+import { useEffect, useState } from 'react'
 import SelectProps from '../types/SelectProps'
 
-const useRegisterIDSelect = ({value, onChange}: SelectProps) => {
+const useRegisterIDSelect = ({ value, onChange }: SelectProps) => {
     const [openDropdown, setOpenDropdown] = useState(false)
     const [selectedOption, setSelectedOption] = useState<string>(value)
     const toggleDropdown = () => setOpenDropdown(!openDropdown)
@@ -16,7 +16,8 @@ const useRegisterIDSelect = ({value, onChange}: SelectProps) => {
         openDropdown,
         toggleDropdown,
         selectedOption,
-        onOptionClick
+        onOptionClick,
+        setSelectedOption,
     }
 }
 
