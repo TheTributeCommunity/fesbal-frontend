@@ -38,6 +38,17 @@ export class RecipientUserService {
         return result.data.ListRecipientReadModels.items[0]
     }
 
+    public static async getByDocumentId(id: string): Promise<Partial<Recipient>[]> {
+        const result = await BoosterClient.query<{ ListRecipientReadModels: { items: Partial<Recipient>[] } }>({
+            query: GET_RECIPIENTS_BY_ID_DOCUMENT_NUMBER,
+            variables: { id },
+        })
+        if (!result.data?.ListRecipientReadModels) {
+            throw new Error('Error getting recipients by document ID')
+        }
+        return result.data.ListRecipientReadModels.items
+    }
+
     public static async getReferralSheetUploadUrl(filename: string): Promise<ReferralSheetUploadUrl> {
         const result = await BoosterClient.mutate<{ ReferralSheetUploadUrl: ReferralSheetUploadUrl }>({
             mutation: REFERRAL_SHEET_UPLOAD_URL,
@@ -208,6 +219,22 @@ const GET_RECIPIENT_BY_ID = gql`
             }
         }
     }
+`
+
+const GET_RECIPIENTS_BY_ID_DOCUMENT_NUMBER = gql`
+query ListRecipientReadModels ($id: String!) {
+    ListRecipientReadModels(
+      filter: { identityDocumentNumber: {eq: $id }    }
+      sortBy: {}
+  )  {
+      items {
+        id
+        firstName
+        lastName
+        identityDocumentNumber
+      }
+    }
+  }
 `
 
 
