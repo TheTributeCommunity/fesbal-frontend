@@ -49,6 +49,7 @@ import ProfileEditNameAndSurname from './pages/ProfileEditNameAndSurname'
 import ProfileEditBirthDate from './pages/ProfileEditBirthDate'
 import ProfileEditPhoneNumber from './pages/ProfileEditPhoneNumber'
 import ProfileEditValidatePhone from './pages/ProfileEditValidatePhone'
+import RecipientSearch from './pages/RecipientSearch'
 
 addLocale('en', {
     firstDayOfWeek: 1,
@@ -136,8 +137,7 @@ const App = () => {
                         <Route path={AppRoute.ENTITY_DELIVERY_HISTORY_DETAILS} element={<EntityDeliveryDetails/>}/>
                         <Route path={AppRoute.ENTITY_QUANTITY_MEASUREMENT} element={<EntityQuantityMeasurement/>}/>
                         <Route path={AppRoute.ENTITY_PROFILE} element={<EntityProfile/>}/>
-                        {/* TODO: replace with user search component instead */}
-                        <Route path={AppRoute.ENTITY_USER_SEARCH} element={<EntityUserScanned />}/>
+                        <Route path={AppRoute.ENTITY_USER_SEARCH} element={<RecipientSearch />}/>
                         <Route path={AppRoute.ENTITY_USER_SCANNED} element={<EntityUserScanned/>}/>
                         <Route path={AppRoute.ENTITY_USER_SIGNATURE} element={<EntityUserSignature/>}/>
                         <Route path={AppRoute.ENTITY_NOTIFICATIONS} element={<NotificationsScreen/>}/>

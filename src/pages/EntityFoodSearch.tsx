@@ -1,5 +1,5 @@
 import AppWrapper from '../components/molecules/AppWrapper'
-import EntityFoodInput from '../components/atom/EntityFoodInput'
+import SearchInput from '../components/atom/SearchInput'
 import EntityFoodNamesList from '../components/atom/EntityFoodNamesList'
 import useEntityFoodSearch from '../hooks/useEntityFoodSearch'
 import {useTranslation} from 'react-i18next'
@@ -12,7 +12,7 @@ const EntityFoodSearch = () => {
     return (
         <AppWrapper title={translate('title')} showBurger={true} containerClassName="px-0"
             bgColor="bg-tertiary-color">
-            <EntityFoodInput value={inputValue} placeholder={translate('placeholder') as string} onChange={handleInputChange}
+            <SearchInput value={inputValue} placeholder={translate('placeholder') as string} onChange={handleInputChange}
                 onClear={deleteInputValue}/>
             {inputValue.length > 0 && (
                 <div className="w-full h-96 overflow-y-scroll">
