@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next'
-import { ColorRing } from 'react-loader-spinner'
 import Spinner from '../components/atom/Spinner'
 import LogoFesbalIcon from '../components/icons/LogoFesbalIcon'
 import AppWrapper from '../components/molecules/AppWrapper'
@@ -9,7 +8,7 @@ import usersMock from '../mocks/users.mock'
 
 const RecipientLandingScreen = (): JSX.Element => {
     const {t: translate} = useTranslation(namespaces.pages.recipientLanding)
-    const {user, familyMembers} = useRegisterFamilyMembers()
+    const {user} = useRegisterFamilyMembers()
 
     return (
         <AppWrapper title="BALPA" titleClassName="text-2xl leading-7 font-bold font-sans self-center text-dark-blue" showBurger showBackButton={false} bgOpaque={false}>

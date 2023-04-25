@@ -1,22 +1,24 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import HistoryCard from '../components/atom/HistoryCard'
 import AppWrapper from '../components/molecules/AppWrapper'
 import PickupService from '../services/PickupService'
-import { Pickup } from '../types/Pickup'
+import { PickupWithItems } from '../types/Pickup'
 import { getPickupItemsDescription } from '../types/FoodPicking'
 import { AppRoute } from '../enums/app-route'
+import { UsersContext } from '../contexts/usersContext'
 
 const PickupHistoryPage = () => {
-    const [pickupHistory, setPickupHistory] = useState<Pickup[]>([])
+    const [pickupHistory, setPickupHistory] = useState<PickupWithItems[]>([])
     const lastPickup = useMemo(() => pickupHistory[0], [pickupHistory])
+    const { firebaseUser } = useContext(UsersContext)
 
     useEffect(() => {
-        PickupService.getPickupHistory().then(setPickupHistory)
-    }, [])
+        firebaseUser && PickupService.getPickupHistory(firebaseUser.uid).then(setPickupHistory)
+    }, [firebaseUser])
 
-    const PickupCard = ({pickup}: {pickup: Pickup}): JSX.Element => {
+    const PickupCard = ({pickup}: {pickup: PickupWithItems}): JSX.Element => {
         return (
-            <HistoryCard path={AppRoute.PICKUP_DETAILS} id={pickup.id} title={pickup.title} isoDate={pickup.date} description={getPickupItemsDescription(pickup.pickupItems)} />
+            <HistoryCard path={AppRoute.PICKUP_DETAILS} id={pickup.id} title={pickup.entityId} isoDate={pickup.startedAt} description={getPickupItemsDescription(pickup.pickupItems)} />
         )
     }
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 interface HistoryCardProps {
   title: string;
-  id: number;
+  id: string;
   path: string
   isoDate: string | Date;
   description: string;

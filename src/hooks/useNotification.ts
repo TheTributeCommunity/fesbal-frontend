@@ -4,12 +4,12 @@ import notificationsMock from '../mocks/notifications.mock'
 
 const useNotification = (id: string) => {
     const notification: NotificationProps | undefined = notificationsMock.find((notification) => notification.id === id)
-    const { title, message, date } = notification || {}
+    const { title, body: message, dateCreated: date } = notification || {}
 
     useEffect(() => {
         notificationsMock.map((notification) => {
             if (notification.id === id) {
-                notification.hasBeenRead = true
+                notification.read = true
             }
         })
     })

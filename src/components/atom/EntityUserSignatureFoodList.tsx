@@ -6,7 +6,7 @@ interface EntityUserSignatureFoodListProps {
 }
 
 
-const EntityUserSignatureFoodList = ({ foodItems, translate }: EntityUserSignatureFoodListProps) => {
+const UserSignatureFoodList = ({ foodItems, translate }: EntityUserSignatureFoodListProps) => {
     return (
         <div className="flex flex-col gap-2 rounded-2xl bg-white py-6">
             <h3 className="mb-6 px-6 font-roboto-flex text-medium-title text-secondary-color">
@@ -34,4 +34,4 @@ const EntityUserSignatureFoodList = ({ foodItems, translate }: EntityUserSignatu
     )
 }
 
-export default EntityUserSignatureFoodList
+export default UserSignatureFoodList

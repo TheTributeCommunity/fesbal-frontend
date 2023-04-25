@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom'
 import {AppRoute} from './enums/app-route'
 import AddFamilyMember from './pages/AddFamilyMember'
 import EntityHome from './pages/EntityHome'
@@ -31,7 +31,7 @@ import RegisterUser from './pages/RegisterUser'
 import LoginValidatePhone from './pages/LoginValidatePhone'
 import EntityFoodSearch from './pages/EntityFoodSearch'
 import EntityQuantityMeasurement from './pages/EntityQuantityMeasurement'
-import EntityUserSignature from './pages/EntityUserSignature'
+import UserSignature from './pages/UserSignature'
 import EntityDeliveryHistory from './pages/EntityDeliveryHistory'
 import { EntityDeliveryDetails } from './pages/EntityDeliveryDetails'
 import { UsersContext } from './contexts/usersContext'
@@ -43,38 +43,48 @@ import Spinner from './components/atom/Spinner'
 import BlankStage from './components/atom/BlankStage'
 import { addLocale } from 'primereact/api'
 import { BoosterClient } from './services/booster-service'
-import jwtDecode, { JwtPayload } from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import RefreshTokenService from './services/refresh-token-service'
 import ProfileEditNameAndSurname from './pages/ProfileEditNameAndSurname'
 import ProfileEditBirthDate from './pages/ProfileEditBirthDate'
 import ProfileEditPhoneNumber from './pages/ProfileEditPhoneNumber'
 import ProfileEditValidatePhone from './pages/ProfileEditValidatePhone'
 import RecipientSearch from './pages/RecipientSearch'
+import { ExtendedJwt } from './types/ExtendedJwt'
+import { useSubscription } from '@apollo/client'
+import { SUBSCRIBE_TO_RECIPIENT_MESSAGES } from './services/recipient-user-service'
+import { RecipientMessages } from './models/recipient-user'
+import Notification from './types/Notification'
+import PickupService from './services/PickupService'
+import { PickupWithItems } from './types/Pickup'
 
 addLocale('en', {
-    firstDayOfWeek: 1,
+    firstDayOfWeek: 1, // set first day of the week to Monday
 })
 
 const App = () => {
     const [loggedUserType, setLoggedUserType] = useState<string>()
     const [firebaseUser, setFirebaseUser] = useState<User>()
+    const [pickupToSign, setPickupToSign] = useState<PickupWithItems>()
+    const [notifications, setNotificatinos] = useState<Notification[]>()
     const [loadedAuthData, setLoadedAuthData] = useState(localStorage.getItem('token') ? false : true)
+    const navigate = useNavigate()
 
     useEffect(() => {
         onIdTokenChanged(getAuth(), user => {
             if (user) {
                 !loadedAuthData && setLoadedAuthData(true)
-                const userType = user.providerData[0].providerId === 'phone' ? UserType.RECIPIENT : UserType.ENTITY
-                if (!firebaseUser || firebaseUser.uid !== user.uid) {
-                    // only change state if this is a different user,
-                    // we don't want to re-render the component tree with token refreshes
-                    setLoggedUserType(userType)
-                    setFirebaseUser(user)
-                }
                 user.getIdToken().then(token => {
                     localStorage.setItem('token', token)
+                    const decoded = jwtDecode<ExtendedJwt>(token)
+                    const userType = decoded.role === 'entity' ? UserType.ENTITY : UserType.RECIPIENT
+                    if (!firebaseUser || firebaseUser.uid !== user.uid) {
+                        // only change state if this is a different user,
+                        // we don't want to re-render the component tree with token refreshes
+                        setLoggedUserType(userType)
+                        setFirebaseUser(user)
+                    }
                     // set refresh token callbacks
-                    const decoded = jwtDecode<JwtPayload>(token)
                     decoded.exp && decoded.iat && RefreshTokenService.refreshOnFocusAndAt(new Date(decoded.iat * 1000), new Date(decoded.exp * 1000))
                     BoosterClient.resetStore()
                 })
@@ -87,13 +97,28 @@ const App = () => {
         })
     }, [])
 
+    useSubscription(SUBSCRIBE_TO_RECIPIENT_MESSAGES,
+        {
+            variables: { id: firebaseUser?.uid ?? '' },
+            skip: firebaseUser && loggedUserType === UserType.RECIPIENT ? false : true,
+            onSubscriptionData: ({ subscriptionData }) => {
+                const recipientMessages = subscriptionData.data.RecipientReadModel as RecipientMessages
+                setNotificatinos(recipientMessages.notifications ?? [])
+                if (recipientMessages.pendingSignsIds) {
+                    PickupService.getPickupDetails(recipientMessages.pendingSignsIds[0])
+                        .then(pickup => setPickupToSign(pickup))
+                        .then(() => navigate(AppRoute.USER_SIGNATURE))
+                }
+            }
+        })
+
     if (!loadedAuthData) return (
         <BlankStage>
             <Spinner />
         </BlankStage>)
 
     return (
-        <UsersContext.Provider value={{loggedUserType: loggedUserType, firebaseUser: firebaseUser}}>
+        <UsersContext.Provider value={{loggedUserType, firebaseUser, notifications, pickupToSign}}>
             <Router>
                 <Routes>
                     <Route path="*" element={<SplashScreen/>}/>
@@ -128,6 +153,7 @@ const App = () => {
                         <Route path={AppRoute.REFERRAL_UPLOAD} element={<MenuReferralUpload/>}/>
                         <Route path={AppRoute.PICKUP_HISTORY} element={<PickupHistoryPage/>}/>
                         <Route path={AppRoute.PICKUP_DETAILS} element={<PickupDetails/>}/>
+                        <Route path={AppRoute.USER_SIGNATURE} element={<UserSignature/>}/>
                     </Route>
 
                     <Route element={<ProtectedLayout allowedRoles={[UserType.ENTITY]}/>}>
@@ -139,8 +165,7 @@ const App = () => {
                         <Route path={AppRoute.ENTITY_PROFILE} element={<EntityProfile/>}/>
                         <Route path={AppRoute.ENTITY_USER_SEARCH} element={<RecipientSearch />}/>
                         <Route path={AppRoute.ENTITY_USER_SCANNED} element={<EntityUserScanned/>}/>
-                        <Route path={AppRoute.ENTITY_USER_SIGNATURE} element={<EntityUserSignature/>}/>
-                        <Route path={AppRoute.ENTITY_NOTIFICATIONS} element={<NotificationsScreen/>}/>
+                        <Route path={AppRoute.ENTITY_NOTIFICATIONS} element={<NotificationsScreen mode='entity'/>}/>
                         <Route path={`${AppRoute.ENTITY_NOTIFICATIONS}/:id`} element={<NotificationDetails/>}/>
                     </Route>
                 </Routes>

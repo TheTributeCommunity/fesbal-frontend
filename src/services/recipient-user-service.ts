@@ -284,3 +284,20 @@ export const SUBSCRIBE_TO_RECIPIENT_USER = gql`
         }
     }
 `
+
+export const SUBSCRIBE_TO_RECIPIENT_MESSAGES = gql`
+    subscription ($id: ID!) {
+        RecipientReadModel(id: $id) {
+            pendingSignsIds
+            notifications {
+                id
+                title
+                body
+                read
+                createdAt
+                readAt
+                isDeleted
+            }
+        }
+    }
+`

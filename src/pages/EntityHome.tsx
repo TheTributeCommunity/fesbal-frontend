@@ -8,6 +8,7 @@ import AppWrapper from '../components/molecules/AppWrapper'
 import { AppRoute } from '../enums/app-route'
 import { namespaces } from '../i18n/i18n.constants'
 import useEntityInfo from '../hooks/useEntityInfo'
+import Spinner from '../components/atom/Spinner'
 
 const EntityHome = () => {
     const {t: translate} = useTranslation(namespaces.pages.entityHome)
@@ -17,14 +18,13 @@ const EntityHome = () => {
     return (
         <>
             <AppWrapper showBurger showBackButton={false} title={translate('title')} containerClassName="px-0 pb-0">
-                <div className="grid grid-rows-3 grid-cols-1 h-full w-full flex-col justify-between text-secondary-color text-center px-8">
+                { !entity ? <Spinner /> : <><div className="grid grid-rows-3 grid-cols-1 h-full w-full flex-col justify-between text-secondary-color text-center px-8">
                     <h1 className="mb-4 text-3xl lg:text-2xl leading-[2.375rem] font-bold text-secondary-color">{entity?.entityName}</h1>
                     <div className="row-start-2 mx-auto">
                         <LogoFesbalIcon/>
                     </div>
                 </div>
                 <div className="app-bottom-nav">
-                    {/* TODO Fix routes when screens are done */}
                     <Link to={AppRoute.ENTITY_DELIVERY_HISTORY}>
                         <ClockIcon/>
                     </Link>
@@ -35,7 +35,7 @@ const EntityHome = () => {
                             </div>
                         </Link>
                     </div>
-                    <Link to={AppRoute.WELCOME} className="relative">
+                    <Link to={AppRoute.ENTITY_NOTIFICATIONS} className="relative">
                         <BellIcon/>
                         {alerts > 0 && (
                             <span className="absolute bottom-4 left-2.5 w-4 h-4 bg-warning-color rounded-full text-white text-xs flex items-center justify-center">
@@ -44,6 +44,7 @@ const EntityHome = () => {
                         )}
                     </Link>
                 </div>
+                </>}
             </AppWrapper>
         </>
     )

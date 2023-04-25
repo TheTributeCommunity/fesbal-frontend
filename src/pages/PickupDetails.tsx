@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import AppWrapper from '../components/molecules/AppWrapper'
 import { namespaces } from '../i18n/i18n.constants'
-import { Pickup } from '../types/Pickup'
+import { PickupWithItems } from '../types/Pickup'
 import PickupService from '../services/PickupService'
 import { dateToDdMmYyyy, dateToHoursMinutes } from '../helpers/textUtils'
 import { FoodList } from '../components/molecules/FoodList'
@@ -11,17 +11,17 @@ import { FoodList } from '../components/molecules/FoodList'
 export const PickupDetails = () => {
 
     const { id } = useParams<{ id: string }>()
-    const [ pickup, setPickup ] = useState<Pickup | null>(null)
+    const [ pickup, setPickup ] = useState<PickupWithItems | null>(null)
 
 
     useEffect(() => {
-        PickupService.getPickupDetails(Number(id)).then(setPickup)
+        PickupService.getPickupDetails(id ?? '').then(setPickup)
     }, [])
 
     const {t: translation} =  useTranslation(namespaces.pages.pickupDetails)
 
-    const date = pickup ? dateToDdMmYyyy(new Date(pickup.date)) : ''
-    const time = pickup ? dateToHoursMinutes(new Date(pickup.date)) : ''
+    const date = pickup ? dateToDdMmYyyy(new Date(pickup.startedAt)) : ''
+    const time = pickup ? dateToHoursMinutes(new Date(pickup.startedAt)) : ''
 
     return (
         <AppWrapper title={translation('title')}>
@@ -29,7 +29,7 @@ export const PickupDetails = () => {
                 <div className="flex-col px-6 gap-6 mb-8">
                     <div className="flex-1 pb-6">
                         <p className="text-xs text-primary-color">{translation('entityName')}</p>
-                        <p className="leading-5">{pickup?.entityName}</p>
+                        <p className="leading-5">{pickup?.entityId}</p>
                     </div>
                     <div className="flex flex-1">
                         <div className="flex-auto">
