@@ -6,13 +6,16 @@ import './i18n/i18n'
 import { BoosterClient } from './services/booster-service'
 import { ApolloProvider } from '@apollo/client'
 import { AuthService } from './services/auth-service'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 AuthService.initialize()
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         <ApolloProvider client={BoosterClient}>
-            <App />
+            <Router>
+                <App />
+            </Router>
         </ApolloProvider>
     </React.StrictMode>
 )

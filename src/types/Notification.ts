@@ -1,10 +1,11 @@
 interface Notification {
     id: string
     title: string
-    message: string
-    date: string
-
-    hasBeenRead?: boolean
+    body: string
+    dateCreated: string
+    dateRead: string
+    read: boolean
+    isDeleted: boolean
 }
 
 export default Notification

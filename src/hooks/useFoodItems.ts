@@ -4,8 +4,8 @@ import { AppRoute } from '../enums/app-route'
 import { FoodPicking } from '../types/FoodPicking'
 import { measurements, MeasurementUnit } from '../types/MeasurementUnit'
 
-const useFoodItems = (userFoodItems: FoodPicking[] = []) => {
-    const [foodItems, setFoodItems] = useState<FoodPicking[]>(userFoodItems)
+const useFoodItems = () => {
+    const [foodItems, setFoodItems] = useState<FoodPicking[]>([])
     const navigate = useNavigate()
 
     const removeFoodItem = (foodItem: FoodPicking) => {
@@ -54,6 +54,7 @@ const useFoodItems = (userFoodItems: FoodPicking[] = []) => {
     return {
         foodItems,
         addFoodItem,
+        setFoodItems,
         removeFoodItem,
         updateFoodName,
         updateFoodQuantity

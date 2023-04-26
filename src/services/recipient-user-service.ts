@@ -1,6 +1,6 @@
 import { BoosterClient } from './booster-service'
 import { gql } from '@apollo/client'
-import { Recipient } from '../models/recipient-user'
+import { Recipient, RecipientMessages } from '../models/recipient-user'
 import { AuthService } from './auth-service'
 import { ReferralSheetUploadUrl } from '../models/referral-sheet-upload-url'
 
@@ -25,6 +25,16 @@ export class RecipientUserService {
             RecipientReadModel: Recipient
         }>({
             query: GET_RECIPIENT_BY_ID,
+            variables: { id: id }
+        })
+        return result.data.RecipientReadModel
+    }
+
+    public static async getUserMessages(id: string): Promise<RecipientMessages> {
+        const result = await BoosterClient.query<{
+            RecipientReadModel: RecipientMessages
+        }>({
+            query: GET_RECIPIENT_MESSAGES,
             variables: { id: id }
         })
         return result.data.RecipientReadModel
@@ -209,13 +219,30 @@ const GET_RECIPIENT_BY_ID = gql`
             referralSheetUrl
             deleted
             relatives {
-            id
-            recipientUserId
-            firstName
-            lastName
-            dateOfBirth
-            typeOfIdentityDocument
-            identityDocumentNumber
+                id
+                recipientUserId
+                firstName
+                lastName
+                dateOfBirth
+                typeOfIdentityDocument
+                identityDocumentNumber
+            }
+        }
+    }
+`
+
+const GET_RECIPIENT_MESSAGES = gql`
+    query RecipientReadModel ($id: ID!) {
+        RecipientReadModel (id: $id) {
+            pendingSignsIds
+            notifications {
+                id
+                title
+                body
+                read
+                createdAt
+                readAt
+                isDeleted
             }
         }
     }
@@ -232,6 +259,15 @@ query ListRecipientReadModels ($id: String!) {
         firstName
         lastName
         identityDocumentNumber
+        relatives {
+            id
+            recipientUserId
+            firstName
+            lastName
+            dateOfBirth
+            typeOfIdentityDocument
+            identityDocumentNumber
+        }
       }
     }
   }
@@ -281,6 +317,23 @@ export const SUBSCRIBE_TO_RECIPIENT_USER = gql`
             email
             referralSheetUrl
             relativesIds
+        }
+    }
+`
+
+export const SUBSCRIBE_TO_RECIPIENT_MESSAGES = gql`
+    subscription ($id: ID!) {
+        RecipientReadModel(id: $id) {
+            pendingSignsIds
+            notifications {
+                id
+                title
+                body
+                read
+                createdAt
+                readAt
+                isDeleted
+            }
         }
     }
 `

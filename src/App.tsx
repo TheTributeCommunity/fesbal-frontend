@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom'
 import {AppRoute} from './enums/app-route'
 import AddFamilyMember from './pages/AddFamilyMember'
 import EntityHome from './pages/EntityHome'
@@ -31,7 +31,7 @@ import RegisterUser from './pages/RegisterUser'
 import LoginValidatePhone from './pages/LoginValidatePhone'
 import EntityFoodSearch from './pages/EntityFoodSearch'
 import EntityQuantityMeasurement from './pages/EntityQuantityMeasurement'
-import EntityUserSignature from './pages/EntityUserSignature'
+import UserSignature from './pages/UserSignature'
 import EntityDeliveryHistory from './pages/EntityDeliveryHistory'
 import { EntityDeliveryDetails } from './pages/EntityDeliveryDetails'
 import { UsersContext } from './contexts/usersContext'
@@ -43,40 +43,69 @@ import Spinner from './components/atom/Spinner'
 import BlankStage from './components/atom/BlankStage'
 import { addLocale } from 'primereact/api'
 import { BoosterClient } from './services/booster-service'
-import jwtDecode, { JwtPayload } from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import RefreshTokenService from './services/refresh-token-service'
 import ProfileEditNameAndSurname from './pages/ProfileEditNameAndSurname'
 import ProfileEditBirthDate from './pages/ProfileEditBirthDate'
 import ProfileEditPhoneNumber from './pages/ProfileEditPhoneNumber'
 import ProfileEditValidatePhone from './pages/ProfileEditValidatePhone'
 import RecipientSearch from './pages/RecipientSearch'
+import { ExtendedJwt } from './types/ExtendedJwt'
+import { useSubscription } from '@apollo/client'
+import { RecipientUserService, SUBSCRIBE_TO_RECIPIENT_MESSAGES } from './services/recipient-user-service'
+import { RecipientMessages } from './models/recipient-user'
+import Notification from './types/Notification'
+import PickupService from './services/PickupService'
+import { InflatedPickup } from './types/Pickup'
+import { EntityService } from './services/entity-service'
 
 addLocale('en', {
-    firstDayOfWeek: 1,
+    firstDayOfWeek: 1, // set first day of the week to Monday
 })
 
 const App = () => {
     const [loggedUserType, setLoggedUserType] = useState<string>()
     const [firebaseUser, setFirebaseUser] = useState<User>()
+    const [pickupToSign, setPickupToSign] = useState<InflatedPickup>()
+    const [notifications, setNotifications] = useState<Notification[]>([])
     const [loadedAuthData, setLoadedAuthData] = useState(localStorage.getItem('token') ? false : true)
+    const navigate = useNavigate()
 
     useEffect(() => {
         onIdTokenChanged(getAuth(), user => {
             if (user) {
                 !loadedAuthData && setLoadedAuthData(true)
-                const userType = user.providerData[0].providerId === 'phone' ? UserType.RECIPIENT : UserType.ENTITY
-                if (!firebaseUser || firebaseUser.uid !== user.uid) {
-                    // only change state if this is a different user,
-                    // we don't want to re-render the component tree with token refreshes
-                    setLoggedUserType(userType)
-                    setFirebaseUser(user)
-                }
-                user.getIdToken().then(token => {
+                user.getIdToken().then(async token => {
                     localStorage.setItem('token', token)
+                    const decoded = jwtDecode<ExtendedJwt>(token)
+                    const userType = decoded.role === 'entity' ? UserType.ENTITY : UserType.RECIPIENT
                     // set refresh token callbacks
-                    const decoded = jwtDecode<JwtPayload>(token)
                     decoded.exp && decoded.iat && RefreshTokenService.refreshOnFocusAndAt(new Date(decoded.iat * 1000), new Date(decoded.exp * 1000))
-                    BoosterClient.resetStore()
+                    await BoosterClient.resetStore()
+                    if (!firebaseUser || firebaseUser.uid !== user.uid) {
+                        // only change state if this is a different user,
+                        // we don't want to re-render the component tree with token refreshes
+                        setLoggedUserType(userType)
+                        setFirebaseUser(user)
+                        if (userType === UserType.RECIPIENT) {
+                            RecipientUserService.getUserMessages(user.uid)
+                                .then(userMessages => {
+                                    setNotifications(userMessages.notifications)
+                                    if (userMessages.pendingSignsIds) {
+                                        PickupService.getPickupDetails(userMessages.pendingSignsIds[0])
+                                            .then(pickup => {
+                                                setPickupToSign(pickup)
+                                            })
+                                    }
+                                })
+                        } else {
+                            EntityService.getEntityMessages(user.uid)
+                                .then(entityMessages => {
+                                    setNotifications(entityMessages.notifications)
+                                })
+                        }
+                    }
+                    
                 })
             } else {
                 setLoggedUserType(undefined)
@@ -87,64 +116,80 @@ const App = () => {
         })
     }, [])
 
+    useEffect(() => {
+        if (pickupToSign?.signed === false) navigate(AppRoute.USER_SIGNATURE)
+    }, [pickupToSign])
+
+    useSubscription(SUBSCRIBE_TO_RECIPIENT_MESSAGES,
+        {
+            variables: { id: firebaseUser?.uid ?? '' },
+            skip: firebaseUser && loggedUserType === UserType.RECIPIENT ? false : true,
+            onSubscriptionData: ({ subscriptionData }) => {
+                const recipientMessages = subscriptionData.data.RecipientReadModel as RecipientMessages
+                setNotifications([...notifications, ...recipientMessages.notifications])
+                if (recipientMessages.pendingSignsIds) {
+                    PickupService.getPickupDetails(recipientMessages.pendingSignsIds[0])
+                        .then(pickup => setPickupToSign(pickup))
+                }
+            }
+        })
+
     if (!loadedAuthData) return (
         <BlankStage>
             <Spinner />
         </BlankStage>)
 
     return (
-        <UsersContext.Provider value={{loggedUserType: loggedUserType, firebaseUser: firebaseUser}}>
-            <Router>
-                <Routes>
-                    <Route path="*" element={<SplashScreen/>}/>
-                    <Route path={AppRoute.LOGIN} element={<LoginScreen/>}/>
-                    <Route path={AppRoute.LOGIN_VALIDATE_PHONE} element={<LoginValidatePhone/>}/>
-                    <Route path={AppRoute.REGISTER_LEGAL} element={<RegisterLegal/>}/>
-                    <Route path={AppRoute.REGISTER} element={<RegisterUser/>}/>
-                    <Route path={AppRoute.REGISTER_PHONE} element={<RegisterPhone/>}/>
-                    <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
-                    <Route path={AppRoute.WELCOME} element={<Welcome/>}/>
-                    <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
-                    <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
+        <UsersContext.Provider value={{loggedUserType, firebaseUser, notifications, pickupToSign}}>
+            <Routes>
+                <Route path="*" element={<SplashScreen/>}/>
+                <Route path={AppRoute.LOGIN} element={<LoginScreen/>}/>
+                <Route path={AppRoute.LOGIN_VALIDATE_PHONE} element={<LoginValidatePhone/>}/>
+                <Route path={AppRoute.REGISTER_LEGAL} element={<RegisterLegal/>}/>
+                <Route path={AppRoute.REGISTER} element={<RegisterUser/>}/>
+                <Route path={AppRoute.REGISTER_PHONE} element={<RegisterPhone/>}/>
+                <Route path={AppRoute.REGISTER_VALIDATE_PHONE} element={<ValidatePhone/>}/>
+                <Route path={AppRoute.WELCOME} element={<Welcome/>}/>
+                <Route path={AppRoute.ENTITY_LOGIN} element={<EntityLogin/>}/>
+                <Route path={AppRoute.ENTITY_LOGIN_PASSWORD_RECOVERY} element={<EntityLoginPasswordRecovery/>}/>
 
-                    <Route element={<ProtectedLayout allowedRoles={[UserType.RECIPIENT]}/>}>
-                        <Route path={AppRoute.REGISTER_EMAIL} element={<RegisterEmail/>}/>
-                        <Route path={AppRoute.REGISTER_FAMILY_MEMBERS} element={<RegisterFamilyMembers/>}/>
-                        <Route path={AppRoute.REGISTER_FAMILY_MEMBERS_ADD} element={<AddFamilyMember/>}/>
-                        <Route path={AppRoute.REGISTER_REFERRAL_SHEET} element={<RegisterReferral/>}/>
-                        <Route path={AppRoute.REGISTER_REFERRAL_SHEET_SEND_DATE} element={<RegisterReferralSendDate/>}/>
-                        <Route path={AppRoute.REGISTER_REQUEST_SENT} element={<RegisterRequestSent/>}/>
-                        <Route path={AppRoute.PROFILE} element={<ProfileScreen/>}/>
-                        <Route path={AppRoute.PROFILE_EDIT_EMAIL} element={<ProfileEditEmail/>}/>
-                        <Route path={AppRoute.PROFILE_EDIT_NAME_AND_SURNAME} element={<ProfileEditNameAndSurname/>}/>
-                        <Route path={AppRoute.PROFILE_EDIT_BIRTHDATE} element={<ProfileEditBirthDate/>}/>
-                        <Route path={AppRoute.PROFILE_EDIT_PHONE_NUMBER} element={<ProfileEditPhoneNumber />} />
-                        <Route path={AppRoute.PROFILE_EDIT_VALIDATE_PHONE_NUMBER} element={<ProfileEditValidatePhone />} />
-                        <Route path={AppRoute.RECIPIENT_HOME} element={<RecipientLandingScreen/>}/>
-                        <Route path={AppRoute.REFERRAL} element={<MenuReferral/>}/>
-                        <Route path={AppRoute.NOTIFICATIONS} element={<NotificationsScreen/>}/>
-                        <Route path={`${AppRoute.NOTIFICATIONS}/:id`} element={<NotificationDetails/>}/>
-                        <Route path={AppRoute.PICKUP_POINT} element={<PickupPoint/>}/>
-                        <Route path={AppRoute.REFERRAL_UPLOAD} element={<MenuReferralUpload/>}/>
-                        <Route path={AppRoute.PICKUP_HISTORY} element={<PickupHistoryPage/>}/>
-                        <Route path={AppRoute.PICKUP_DETAILS} element={<PickupDetails/>}/>
-                    </Route>
+                <Route element={<ProtectedLayout allowedRoles={[UserType.RECIPIENT]}/>}>
+                    <Route path={AppRoute.REGISTER_EMAIL} element={<RegisterEmail/>}/>
+                    <Route path={AppRoute.REGISTER_FAMILY_MEMBERS} element={<RegisterFamilyMembers/>}/>
+                    <Route path={AppRoute.REGISTER_FAMILY_MEMBERS_ADD} element={<AddFamilyMember/>}/>
+                    <Route path={AppRoute.REGISTER_REFERRAL_SHEET} element={<RegisterReferral/>}/>
+                    <Route path={AppRoute.REGISTER_REFERRAL_SHEET_SEND_DATE} element={<RegisterReferralSendDate/>}/>
+                    <Route path={AppRoute.REGISTER_REQUEST_SENT} element={<RegisterRequestSent/>}/>
+                    <Route path={AppRoute.PROFILE} element={<ProfileScreen/>}/>
+                    <Route path={AppRoute.PROFILE_EDIT_EMAIL} element={<ProfileEditEmail/>}/>
+                    <Route path={AppRoute.PROFILE_EDIT_NAME_AND_SURNAME} element={<ProfileEditNameAndSurname/>}/>
+                    <Route path={AppRoute.PROFILE_EDIT_BIRTHDATE} element={<ProfileEditBirthDate/>}/>
+                    <Route path={AppRoute.PROFILE_EDIT_PHONE_NUMBER} element={<ProfileEditPhoneNumber />} />
+                    <Route path={AppRoute.PROFILE_EDIT_VALIDATE_PHONE_NUMBER} element={<ProfileEditValidatePhone />} />
+                    <Route path={AppRoute.RECIPIENT_HOME} element={<RecipientLandingScreen/>}/>
+                    <Route path={AppRoute.REFERRAL} element={<MenuReferral/>}/>
+                    <Route path={AppRoute.NOTIFICATIONS} element={<NotificationsScreen/>}/>
+                    <Route path={`${AppRoute.NOTIFICATIONS}/:id`} element={<NotificationDetails/>}/>
+                    <Route path={AppRoute.PICKUP_POINT} element={<PickupPoint/>}/>
+                    <Route path={AppRoute.REFERRAL_UPLOAD} element={<MenuReferralUpload/>}/>
+                    <Route path={AppRoute.PICKUP_HISTORY} element={<PickupHistoryPage/>}/>
+                    <Route path={AppRoute.PICKUP_DETAILS} element={<PickupDetails/>}/>
+                    <Route path={AppRoute.USER_SIGNATURE} element={<UserSignature/>}/>
+                </Route>
 
-                    <Route element={<ProtectedLayout allowedRoles={[UserType.ENTITY]}/>}>
-                        <Route path={AppRoute.ENTITY_FOOD_SEARCH} element={<EntityFoodSearch/>}/>
-                        <Route path={AppRoute.ENTITY_HOME} element={<EntityHome/>}/>
-                        <Route path={AppRoute.ENTITY_DELIVERY_HISTORY} element={<EntityDeliveryHistory/>}/>
-                        <Route path={AppRoute.ENTITY_DELIVERY_HISTORY_DETAILS} element={<EntityDeliveryDetails/>}/>
-                        <Route path={AppRoute.ENTITY_QUANTITY_MEASUREMENT} element={<EntityQuantityMeasurement/>}/>
-                        <Route path={AppRoute.ENTITY_PROFILE} element={<EntityProfile/>}/>
-                        <Route path={AppRoute.ENTITY_USER_SEARCH} element={<RecipientSearch />}/>
-                        <Route path={AppRoute.ENTITY_USER_SCANNED} element={<EntityUserScanned/>}/>
-                        <Route path={AppRoute.ENTITY_USER_SIGNATURE} element={<EntityUserSignature/>}/>
-                        <Route path={AppRoute.ENTITY_NOTIFICATIONS} element={<NotificationsScreen/>}/>
-                        <Route path={`${AppRoute.ENTITY_NOTIFICATIONS}/:id`} element={<NotificationDetails/>}/>
-                    </Route>
-                </Routes>
-            </Router>
+                <Route element={<ProtectedLayout allowedRoles={[UserType.ENTITY]}/>}>
+                    <Route path={AppRoute.ENTITY_FOOD_SEARCH} element={<EntityFoodSearch/>}/>
+                    <Route path={AppRoute.ENTITY_HOME} element={<EntityHome/>}/>
+                    <Route path={AppRoute.ENTITY_DELIVERY_HISTORY} element={<EntityDeliveryHistory/>}/>
+                    <Route path={AppRoute.ENTITY_DELIVERY_HISTORY_DETAILS} element={<EntityDeliveryDetails/>}/>
+                    <Route path={AppRoute.ENTITY_QUANTITY_MEASUREMENT} element={<EntityQuantityMeasurement/>}/>
+                    <Route path={AppRoute.ENTITY_PROFILE} element={<EntityProfile/>}/>
+                    <Route path={AppRoute.ENTITY_USER_SEARCH} element={<RecipientSearch />}/>
+                    <Route path={AppRoute.ENTITY_USER_SCANNED} element={<EntityUserScanned/>}/>
+                    <Route path={AppRoute.ENTITY_NOTIFICATIONS} element={<NotificationsScreen />}/>
+                    <Route path={`${AppRoute.ENTITY_NOTIFICATIONS}/:id`} element={<NotificationDetails/>}/>
+                </Route>
+            </Routes>
         </UsersContext.Provider>
     )
 }

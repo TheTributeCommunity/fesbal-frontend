@@ -5,12 +5,13 @@ import { RecipientUserService, SUBSCRIBE_TO_RECIPIENT_USER } from '../services/r
 import { Relative } from '../models/relative'
 import { AppRoute } from '../enums/app-route'
 import { UsersContext } from '../contexts/usersContext'
-import { RelativeService, SUBSCRIBE_TO_RELATIVES_BY_UID } from '../services/relative-service'
 import { useSubscription } from '@apollo/client'
+import { SUBSCRIBE_TO_RELATIVES_BY_UID } from '../services/relative-service'
 
 const useRegisterFamilyMembers = () => {
     const [familyMembers, setFamilyMembers] = useState<Relative[]>([])
     const [user, setUser] = useState<Recipient>()
+    const [loading, setLoading] = useState(true)
     const { firebaseUser } = useContext(UsersContext)
     useSubscription(SUBSCRIBE_TO_RELATIVES_BY_UID,
         {
@@ -22,8 +23,6 @@ const useRegisterFamilyMembers = () => {
                     setFamilyMembers(familyMembers.filter(member => member.id !== relative.id))
                 } else {
                     setFamilyMembers([...familyMembers.filter(member => member.id !== relative.id), relative])
-                    // if (familyMembers.every(member => member.id !== relative.id)) setFamilyMembers([...familyMembers, relative])
-                    // else setFamilyMembers([...familyMembers.filter(member => member.id !== relative.id), relative])
                 }
 
             }
@@ -43,22 +42,15 @@ const useRegisterFamilyMembers = () => {
             RecipientUserService.getUserById(firebaseUser.uid)
                 .then(recipientUser => {
                     setUser(recipientUser)
-                    recipientUser.relativesIds &&
-                        fetchRelatives(firebaseUser.uid)
-                            .then(relatives => setFamilyMembers(relatives))
+                    setFamilyMembers(recipientUser.relatives ?? [])
+                    setLoading(false)
                 })
-                .catch(e => console.log(e))
+                .catch(e => {
+                    console.log(e)
+                    setLoading(false)
+                })
         }
     }, [firebaseUser])
-
-    const fetchRelatives = async (id: string): Promise<Relative[]> => {
-        const relatives = await RelativeService.getAllByRecipientUserId(id)
-            .catch(e => {
-                console.log(e)
-                return []
-            })
-        return relatives
-    }
 
     const navigate = useNavigate()
 
@@ -72,6 +64,7 @@ const useRegisterFamilyMembers = () => {
     return {
         user,
         familyMembers,
+        loading,
         setFamilyMembers,
         handleNextWithFamilyMembers,
         disableNext

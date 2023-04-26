@@ -1,22 +1,24 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { InflatedPickup } from '../../types/Pickup'
 
 interface HistoryCardProps {
-  title: string;
-  id: number;
+  title: string
+  id: string
   path: string
-  isoDate: string | Date;
-  description: string;
+  isoDate: string | Date
+  description: string
+  pickup: InflatedPickup
 }
 
-const HistoryCard: FC<HistoryCardProps> = ({ id, path, title, isoDate, description }) => {
+const HistoryCard: FC<HistoryCardProps> = ({ id, path, title, isoDate, description, pickup }) => {
     const date = new Date(isoDate).toLocaleDateString()
     const time = new Date(isoDate).toLocaleTimeString()
 
     const navigate = useNavigate()
 
     const redirectToPickupDetails = () => {
-        navigate(path.replace(':id', id.toString()))
+        navigate(path.replace(':id', id.toString()), { state: {pickup}})
     }
 
     return (

@@ -75,7 +75,7 @@ const SwipeButton = ({onConfirm}: SwipeButtonProps) => {
         <div
             ref={buttonRef}
             className={
-                'flex items-center rounded-2xl border border-primary-color h-16 bg-ghost-white w-full' +
+                'flex items-center rounded-2xl border border-primary-color h-16 bg-ghost-white w-full touch-none' +
                 ' font-roboto-flex' +
                 ' text-button relative ' +
                 (isConfirmed ? 'cursor-default pointer-events-none' : 'cursor-grab')

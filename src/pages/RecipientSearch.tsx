@@ -1,18 +1,25 @@
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import SearchInput from '../components/atom/SearchInput'
 import AppWrapper from '../components/molecules/AppWrapper'
+import { AppRoute } from '../enums/app-route'
 import useAppInput from '../hooks/useAppInput'
-import useSearchRecipient from '../hooks/useSearchRecipient'
+import useSearchRecipient, { SearchResult } from '../hooks/useSearchRecipient'
 
 const RecipientSearch = (): JSX.Element => {
     const { inputValue, deleteInputValue, handleInputChange } = useAppInput('')
     const { searchById, MIN_SEARCH_LENGTH, searchResults, clearSearchResults } = useSearchRecipient()
     const [searching, setSearching] = useState(false)
+    const navigate = useNavigate()
     
     const handleOnClear = () => {
         deleteInputValue()
         clearSearchResults()
+    }
+
+    const handleClickOnUser = (searchResult: SearchResult) => {
+        navigate(AppRoute.ENTITY_USER_SCANNED, { state: { recipient: searchResult.recipient}})
     }
 
     useEffect(() => {
@@ -27,7 +34,7 @@ const RecipientSearch = (): JSX.Element => {
         <AppWrapper title="Buscar beneficiario por ID" showBurger={false} showBackButton containerClassName="px-0">
             <SearchInput value={inputValue} onChange={handleInputChange} onClear={handleOnClear} placeholder="ID del beneficiario" />
             {searchResults.map((result, index) => (
-                <div key={index} className={classNames('w-full py-4 px-8 bg-white', {
+                <div key={index} onClick={() => handleClickOnUser(result)} className={classNames('w-full py-4 px-8 bg-white', {
                     'bg-[#DBF4FF]': index % 2 !== 0,
                 })}>
                     <p className="text-secondary-color">{result.fullName}</p>
