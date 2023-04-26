@@ -1,15 +1,14 @@
 import { FoodMock } from '../mocks/food.mock'
-import {useLocation} from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import useFoodItems from './useFoodItems'
 import useAppInput from './useAppInput'
 import { FoodType } from '../types/FoodType'
 
 const useEntityFoodSearch = () => {
     const { state } = useLocation()
-    const foodItems = state?.foodItems || []
     const foodToUpdate = state?.foodName || null
-    const { addFoodItem, updateFoodName } = useFoodItems(foodItems)
-    const {inputValue, deleteInputValue, handleInputChange} = useAppInput(foodToUpdate || '')
+    const { addFoodItem, updateFoodName } = useFoodItems()
+    const { inputValue, deleteInputValue, handleInputChange } = useAppInput(foodToUpdate || '')
     const foodNames = FoodMock
 
     const handleOnClick = (selectedFoodItem: FoodType) => {

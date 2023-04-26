@@ -1,20 +1,27 @@
-import { useEffect } from 'react'
-import NotificationProps from '../types/Notification'
-import notificationsMock from '../mocks/notifications.mock'
+import { useContext, useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import { UsersContext } from '../contexts/usersContext'
+import Notification from '../types/Notification'
 
-const useNotification = (id: string) => {
-    const notification: NotificationProps | undefined = notificationsMock.find((notification) => notification.id === id)
-    const { title, body: message, dateCreated: date } = notification || {}
+
+const useNotification = () => {
+    const location = useLocation()
+    const [notification, setNotification] = useState<Notification>()
+    const { notifications } = useContext(UsersContext)
 
     useEffect(() => {
-        notificationsMock.map((notification) => {
-            if (notification.id === id) {
-                notification.read = true
-            }
-        })
-    })
+        const notificationId = location.state.id as string
+        const found = (notifications ?? []).find(notification => notification.id === notificationId)
 
-    return { title, message, date }
+        found && setNotification(found)
+        // TODO: set notification to read
+    }, [])
+
+    return {
+        title: notification?.title ?? '',
+        body: notification?.body ?? '',
+        date: notification?.dateCreated ?? new Date(),
+    }
 }
 
 export default useNotification

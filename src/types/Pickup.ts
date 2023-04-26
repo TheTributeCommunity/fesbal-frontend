@@ -1,13 +1,15 @@
+import { Recipient } from '../models/recipient-user'
+import { Entity } from '../models/entity'
 import { FoodPicking } from './FoodPicking'
 
-export interface PickupWithItems {
+export interface InflatedPickup {
     id: string
-    recipientId: string
-    entityId: string
-    startedAt: string
-    endedAt: string
+    recipient: Recipient
+    entity: Entity
+    startedAt: Date
+    endedAt: Date
     signed: boolean
-    signDate: string
+    signDate: Date
     pickupItems: FoodPicking[]
 }
 

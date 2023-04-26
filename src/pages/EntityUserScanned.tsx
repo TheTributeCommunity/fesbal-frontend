@@ -2,7 +2,6 @@ import AppWrapper from '../components/molecules/AppWrapper'
 import {useLocation} from 'react-router-dom'
 import PlusAddIcon from '../components/icons/PlusAddIcon'
 import AppNextButton from '../components/atom/AppNextButton'
-import recipientUserMock from '../mocks/recipientUser.mock'
 import AgeGroupItem from '../components/atom/AgeGroupItem'
 import FoodItem from '../components/atom/FoodItem'
 import useFoodItems from '../hooks/useFoodItems'
@@ -14,16 +13,28 @@ import getFamilyUnitAges from '../helpers/getFamilyUnitAges'
 import {useNavigate} from 'react-router'
 import { FoodType } from '../types/FoodType'
 import { FoodPicking } from '../types/FoodPicking'
-
-const recipientUser = recipientUserMock
-const familyUnitAges = getFamilyUnitAges(recipientUser)
-const defaultFoodItems = getDefaultFoodItems(familyUnitAges)
+import { useEffect, useState } from 'react'
+import { Recipient } from '../models/recipient-user'
+import FamilyUnitAges from '../types/FamilyUnitAges'
 
 const EntityUserScanned = () => {
-    const {state} = useLocation()
-    const {foodItems, removeFoodItem} = useFoodItems(state?.foodItems || defaultFoodItems)
+    const { state } = useLocation()
+    const {foodItems, removeFoodItem, setFoodItems} = useFoodItems()
+    const [user, setUser] = useState<Recipient>()
+    const [familyUnitAges, setFamilyUnitAges] = useState<FamilyUnitAges>()
     const {t: translate} = useTranslation(namespaces.pages.entityUserScanned)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (state.recipient) {
+            const recipient = state.recipient as Recipient
+            const familyAges = getFamilyUnitAges(recipient)
+            setFamilyUnitAges(familyAges)
+            setUser(recipient)
+            setFoodItems(getDefaultFoodItems(familyAges))
+        }
+    }, [])
+
     const handleOnUpdateFoodName = (foodName: FoodType) => {
         navigate(AppRoute.ENTITY_FOOD_SEARCH, {state: {foodName, foodItems}})
     }
@@ -38,20 +49,20 @@ const EntityUserScanned = () => {
         <AppWrapper title={translate('title')} showBurger={true} containerClassName="px-0" topbarClassName="bg-white">
             <div className="h-full">
                 <div className="flex flex-col bg-white px-8 py-4 gap-2">
-                    <h1 className="font-big-title text-secondary-color">{recipientUser.firstName} {recipientUser.lastName}</h1>
-                    <h2 className="font-medium-title text-primary-color">{recipientUser.identityDocumentNumber}</h2>
+                    <h1 className="font-big-title text-secondary-color">{user?.firstName ?? ''} {user?.lastName ?? ''}</h1>
+                    <h2 className="font-medium-title text-primary-color">{user?.identityDocumentNumber ?? ''}</h2>
                 </div>
                 <div className="flex flex-col bg-ghost-white px-8 py-4 gap-2">
                     <h3 className="font-label text-primary-color">{translate('familyUnitAges')}</h3>
                     <ul className="flex flex-wrap gap-x-6 gap-y-2">
-                        <AgeGroupItem description={translate('under3')} count={familyUnitAges.under3}/>
-                        <AgeGroupItem description={translate('between3and15')} count={familyUnitAges.between3and15}/>
-                        <AgeGroupItem description={translate('over16')} count={familyUnitAges.over15}/>
+                        <AgeGroupItem description={translate('under3')} count={familyUnitAges?.under3 ?? 0}/>
+                        <AgeGroupItem description={translate('between3and15')} count={familyUnitAges?.between3and15 ?? 0}/>
+                        <AgeGroupItem description={translate('over16')} count={familyUnitAges?.over15 ?? 0}/>
                     </ul>
                 </div>
                 <div className="flex flex-col px-8 py-4 gap-2">
                     <h3 className="font-label text-primary-color">{translate('lastPickup')}</h3>
-                    <p className="text-secondary-color font-input">{recipientUser.lastPickupDate}</p>
+                    <p className="text-secondary-color font-input">{new Date().toLocaleDateString()}</p>
                 </div>
                 <div className="flex flex-col px-8 py-4 gap-6">
                     <h2 className="font-mini-title text-secondary-color">{translate('foodList')}</h2>

@@ -1,3 +1,5 @@
+import Notification from '../types/Notification'
+
 export interface Entity {
     id: string,
     entityName: string,
@@ -9,4 +11,8 @@ export interface Entity {
     email: string,
     phone: string,
     storingCapacity: number,
+}
+
+export interface EntityMessages {
+    notifications: Notification[]
 }

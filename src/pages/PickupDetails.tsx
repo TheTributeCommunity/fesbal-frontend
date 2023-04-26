@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import AppWrapper from '../components/molecules/AppWrapper'
 import { namespaces } from '../i18n/i18n.constants'
-import { PickupWithItems } from '../types/Pickup'
-import PickupService from '../services/PickupService'
+import { InflatedPickup } from '../types/Pickup'
 import { dateToDdMmYyyy, dateToHoursMinutes } from '../helpers/textUtils'
 import { FoodList } from '../components/molecules/FoodList'
 
 export const PickupDetails = () => {
-
-    const { id } = useParams<{ id: string }>()
-    const [ pickup, setPickup ] = useState<PickupWithItems | null>(null)
-
+    const [ pickup, setPickup ] = useState<InflatedPickup>()
+    const location = useLocation()
 
     useEffect(() => {
-        PickupService.getPickupDetails(id ?? '').then(setPickup)
+        location.state?.pickup && setPickup(location.state?.pickup)
     }, [])
 
     const {t: translation} =  useTranslation(namespaces.pages.pickupDetails)
@@ -29,7 +26,7 @@ export const PickupDetails = () => {
                 <div className="flex-col px-6 gap-6 mb-8">
                     <div className="flex-1 pb-6">
                         <p className="text-xs text-primary-color">{translation('entityName')}</p>
-                        <p className="leading-5">{pickup?.entityId}</p>
+                        <p className="leading-5">{pickup?.entity.entityName}</p>
                     </div>
                     <div className="flex flex-1">
                         <div className="flex-auto">
