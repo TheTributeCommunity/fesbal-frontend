@@ -29,10 +29,6 @@ const EntityProfile = () => {
                     value: entity?.region,
                 },
                 {
-                    title: translate('nextDelivery'),
-                    value: '12/05/2023',
-                },
-                {
                     title: translate('address'),
                     value: entity?.address,
                 }
