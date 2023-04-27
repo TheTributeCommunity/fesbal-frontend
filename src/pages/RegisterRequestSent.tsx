@@ -10,7 +10,6 @@ import { UsersContext } from '../contexts/usersContext'
 import { AppRoute } from '../enums/app-route'
 import { namespaces } from '../i18n/i18n.constants'
 import { Recipient } from '../models/recipient-user'
-import { Relative } from '../models/relative'
 import { RecipientUserService } from '../services/recipient-user-service'
 import PersonalDataItemProps from '../types/PersonalDataItemProps'
 
@@ -27,8 +26,8 @@ const RegisterRequestSent = () => {
         })
     }, [firebaseUser])
 
-    const getFamilyMembers = (): Relative[] => {
-        return user?.relatives ?? []
+    const getFamilyMembers = (): string[] => {
+        return user?.relativesIds ?? []
     }
 
     const getPersonalData = (): PersonalDataItemProps[] => {
