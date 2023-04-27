@@ -2,23 +2,22 @@ import { useContext, useEffect, useState } from 'react'
 import HistoryCard from '../components/atom/HistoryCard'
 import AppWrapper from '../components/molecules/AppWrapper'
 import PickupService from '../services/PickupService'
-import { InflatedPickup } from '../types/Pickup'
+import { InflatedPickup, Pickup } from '../types/Pickup'
 import { getPickupItemsDescription } from '../types/FoodPicking'
 import { AppRoute } from '../enums/app-route'
 import { UsersContext } from '../contexts/usersContext'
-import { sortBySignDateDescending } from '../helpers/sortHelper'
 
 const PickupHistoryPage = () => {
-    const [pickupHistory, setPickupHistory] = useState<InflatedPickup[]>([])
+    const [pickupHistory, setPickupHistory] = useState<Pickup[]>([])
     const { firebaseUser } = useContext(UsersContext)
 
     useEffect(() => {
         firebaseUser && PickupService.getRecipientPickupHistory(firebaseUser.uid).then(pickups => {
-            setPickupHistory(sortBySignDateDescending(pickups))
+            setPickupHistory(pickups)
         })
     }, [firebaseUser])
 
-    const PickupCard = ({pickup}: {pickup: InflatedPickup}): JSX.Element => {
+    const PickupCard = ({pickup}: {pickup: Pickup}): JSX.Element => {
         return (
             <HistoryCard path={AppRoute.PICKUP_DETAILS} id={pickup.id} title={pickup.entity.entityName} isoDate={pickup.signDate} description={getPickupItemsDescription(pickup.pickupItems)} pickup={pickup} />
         )
