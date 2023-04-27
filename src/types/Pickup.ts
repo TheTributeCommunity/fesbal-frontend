@@ -18,8 +18,11 @@ export interface Pickup {
     recipientId: string
     entityId: string
     startedAt: string
+    recipient: Recipient
+    entity: Entity
     endedAt: string
     signed: boolean
     signDate: string
+    pickupItems: FoodPicking[]
     items: string[]
 }

@@ -6,9 +6,9 @@ import { EntityService } from './entity-service'
 import { RecipientUserService } from './recipient-user-service'
 
 class PickupService {
-    public static async getRecipientPickupHistory(userId: string): Promise<InflatedPickup[]> {
+    public static async getRecipientPickupHistory(userId: string): Promise<Pickup[]> {
         const result = await BoosterClient.query<{
-            ListPickUpReadModels: { items: InflatedPickup[] }
+            ListPickUpReadModels: { items: Pickup[] }
         }>({
             query: GET_PICKUPS_BY_USER_ID,
             variables: { id: userId }
