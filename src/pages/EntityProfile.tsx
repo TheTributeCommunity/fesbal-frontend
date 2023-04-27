@@ -30,7 +30,7 @@ const EntityProfile = () => {
                 },
                 {
                     title: translate('nextDelivery'),
-                    value: entity?.nextDelivery,
+                    value: '12/05/2023',
                 },
                 {
                     title: translate('address'),

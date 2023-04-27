@@ -21,5 +21,5 @@ export interface Pickup {
     endedAt: string
     signed: boolean
     signDate: string
-    pickupItems: string[]
+    items: string[]
 }

@@ -1,24 +1,23 @@
 import { useContext, useEffect, useState } from 'react'
 import HistoryCard from '../components/atom/HistoryCard'
 import AppWrapper from '../components/molecules/AppWrapper'
-import { getPickupItemsDescription } from '../types/FoodPicking'
 import { AppRoute } from '../enums/app-route'
-import { InflatedPickup } from '../types/Pickup'
+import { Pickup } from '../types/Pickup'
 import PickupService from '../services/PickupService'
 import { UsersContext } from '../contexts/usersContext'
 
 const EntityDeliveryHistory = () => {
-    const [pickupHistory, setPickupHistory] = useState<InflatedPickup[]>([])
+    const [pickupHistory, setPickupHistory] = useState<Pickup[]>([])
     const { firebaseUser } = useContext(UsersContext)
 
     useEffect(() => {
         firebaseUser && PickupService.getEntityPickupHistory(firebaseUser.uid).then(pickups => setPickupHistory(pickups))
     }, [firebaseUser])
 
-    const DeliveryCard = ({delivery}: {delivery: InflatedPickup}): JSX.Element => {
-        const fullRecipientName = delivery.recipient.firstName + ' ' + delivery.recipient.lastName 
+    const DeliveryCard = ({delivery}: {delivery: Pickup}): JSX.Element => {
+        const fullRecipientName = ' '//TODO: delivery.recipient.firstName + ' ' + delivery.recipient.lastName 
         return (
-            <HistoryCard path={AppRoute.ENTITY_DELIVERY_HISTORY_DETAILS} id={delivery.id} title={fullRecipientName || ''} isoDate={delivery.signDate} description={getPickupItemsDescription(delivery.pickupItems)} pickup={delivery} />
+            <HistoryCard path={AppRoute.ENTITY_DELIVERY_HISTORY_DETAILS} id={delivery.id} title={fullRecipientName || ''} isoDate={delivery.signDate} description={delivery.items.join(', ')} pickup={delivery} />
         )
     }
 
