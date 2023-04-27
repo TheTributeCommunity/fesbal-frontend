@@ -12,8 +12,8 @@ interface HistoryCardProps {
 }
 
 const HistoryCard: FC<HistoryCardProps> = ({ id, path, title, isoDate, description, pickup }) => {
-    const date = new Date(isoDate).toLocaleDateString()
-    const time = new Date(isoDate).toLocaleTimeString()
+    const date = new Date('April 26, 2023 14:13:00').toLocaleDateString()
+    const time = new Date('April 26, 2023 14:13').toLocaleTimeString()
 
     const navigate = useNavigate()
 
