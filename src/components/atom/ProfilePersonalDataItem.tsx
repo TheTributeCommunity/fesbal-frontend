@@ -14,14 +14,14 @@ const ProfilePersonalDataItem = ({personalData, index, itemClassName}: ProfilePe
         <>
             {hasEditButton ?
                 <li className={`flex flex-row justify-between items-center ${bgColor} lg:rounded-md p-4  min-h-[4.5rem] ${itemClassName}`}>
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col">
                         <p className="text-primary-color font-label">{title}</p>
                         <p className="text-secondary-color font-input mt-1">{value}</p>
                     </div>
                     {goTo && <AppEditProfileButton goTo={goTo}/>}
                 </li>
                 :
-                <li className={`${bgColor} lg:rounded-md p-4 min-h-[4.5rem] ${itemClassName}`}>
+                <li className={`${bgColor} lg:rounded-md px-7 py-4 min-h-[4.5rem] ${itemClassName}`}>
                     <p className="text-primary-color font-label">{title}</p>
                     <p className="text-secondary-color font-input mt-1">{value}</p>
                 </li>
