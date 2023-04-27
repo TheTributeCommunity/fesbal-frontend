@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { InflatedPickup } from '../../types/Pickup'
+import { Pickup } from '../../types/Pickup'
 
 interface HistoryCardProps {
   title: string
@@ -8,7 +8,7 @@ interface HistoryCardProps {
   path: string
   isoDate: string | Date
   description: string
-  pickup: InflatedPickup
+  pickup: Pickup
 }
 
 const HistoryCard: FC<HistoryCardProps> = ({ id, path, title, isoDate, description, pickup }) => {

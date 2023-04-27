@@ -16,9 +16,9 @@ class PickupService {
         return result.data.ListPickUpReadModels.items
     }
 
-    public static async getEntityPickupHistory(entityId: string): Promise<InflatedPickup[]> {
+    public static async getEntityPickupHistory(entityId: string): Promise<Pickup[]> {
         const result = await BoosterClient.query<{
-            ListPickUpReadModels: { items: InflatedPickup[] }
+            ListPickUpReadModels: { items: Pickup[] }
         }>({
             query: GET_PICKUPS_BY_ENTITY_ID,
             variables: { id: entityId }
@@ -46,7 +46,7 @@ class PickupService {
             endedAt: new Date(pickup.endedAt),
             signed: pickup.signed,
             signDate: new Date(pickup.signDate),
-            pickupItems: pickup.pickupItems.map(deserializeFood)
+            pickupItems: pickup.items.map(deserializeFood)
         }
     }
 }
