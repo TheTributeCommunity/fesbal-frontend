@@ -6,27 +6,27 @@ import { Relative } from '../models/relative'
 import { AppRoute } from '../enums/app-route'
 import { UsersContext } from '../contexts/usersContext'
 import { useSubscription } from '@apollo/client'
-import { SUBSCRIBE_TO_RELATIVES_BY_UID } from '../services/relative-service'
+import { RelativeService, SUBSCRIBE_TO_RELATIVES_BY_UID } from '../services/relative-service'
 
 const useRegisterFamilyMembers = () => {
     const [familyMembers, setFamilyMembers] = useState<Relative[]>([])
     const [user, setUser] = useState<Recipient>()
     const [loading, setLoading] = useState(true)
     const { firebaseUser } = useContext(UsersContext)
-    useSubscription(SUBSCRIBE_TO_RELATIVES_BY_UID,
-        {
-            variables: { id: user?.id ?? '' },
-            skip: user ? false : true,
-            onSubscriptionData: ({ subscriptionData }) => {
-                const relative = subscriptionData.data.RelativeReadModels as Relative
-                if (relative.isDeleted) {
-                    setFamilyMembers(familyMembers.filter(member => member.id !== relative.id))
-                } else {
-                    setFamilyMembers([...familyMembers.filter(member => member.id !== relative.id), relative])
-                }
+    // useSubscription(SUBSCRIBE_TO_RELATIVES_BY_UID,
+    //     {
+    //         variables: { id: user?.id ?? '' },
+    //         skip: user ? false : true,
+    //         onSubscriptionData: ({ subscriptionData }) => {
+    //             const relative = subscriptionData.data.RelativeReadModels as Relative
+    //             if (relative.isDeleted) {
+    //                 setFamilyMembers(familyMembers.filter(member => member.id !== relative.id))
+    //             } else {
+    //                 setFamilyMembers([...familyMembers.filter(member => member.id !== relative.id), relative])
+    //             }
 
-            }
-        })
+    //         }
+    //     })
     useSubscription(SUBSCRIBE_TO_RECIPIENT_USER,
         {
             variables: { id: user?.id ?? '' },
@@ -42,7 +42,9 @@ const useRegisterFamilyMembers = () => {
             RecipientUserService.getUserById(firebaseUser.uid)
                 .then(recipientUser => {
                     setUser(recipientUser)
-                    setFamilyMembers(recipientUser.relatives ?? [])
+                    RelativeService.getAllByRecipientUserId(recipientUser.id).then(relatives => {
+                        setFamilyMembers(relatives ?? [])
+                    })
                     setLoading(false)
                 })
                 .catch(e => {
