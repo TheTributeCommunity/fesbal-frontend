@@ -15,7 +15,7 @@ const EntityDeliveryHistory = () => {
     }, [firebaseUser])
 
     const DeliveryCard = ({delivery}: {delivery: Pickup}): JSX.Element => {
-        const fullRecipientName = ' '//TODO: delivery.recipient.firstName + ' ' + delivery.recipient.lastName 
+        const fullRecipientName = 'Santiago García Monsalve'//TODO: delivery.recipient.firstName + ' ' + delivery.recipient.lastName 
         return (
             <HistoryCard path={AppRoute.ENTITY_DELIVERY_HISTORY_DETAILS} id={delivery.id} title={fullRecipientName || ''} isoDate={delivery.signDate} description={delivery.items.join(', ')} pickup={delivery} />
         )
