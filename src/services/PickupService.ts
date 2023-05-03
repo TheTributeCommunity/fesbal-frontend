@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql, useMutation, useQuery } from '@apollo/client'
 import { deserializeFood } from '../helpers/foodHelper'
 import { InflatedPickup, Pickup } from '../types/Pickup'
 import { BoosterClient } from './booster-service'
@@ -11,7 +11,7 @@ class PickupService {
       mutation: START_PICKUP,
       variables: { recipientId },
     })
-    
+
     if (!result.data?.StartPickUp) {
       throw new Error('Pickup could not be started')
     }
@@ -29,29 +29,32 @@ class PickupService {
     }
   }
 
-
   public static async getRecipientPickupHistory(
     userId: string
   ): Promise<Pickup[]> {
-    const result = await BoosterClient.query<{
-      ListPickUpReadModels: { items: Pickup[] }
-    }>({
-      query: GET_PICKUPS_BY_USER_ID,
+    const { data, error } = useQuery(GET_PICKUPS_BY_USER_ID, {
       variables: { id: userId },
     })
-    return result.data.ListPickUpReadModels.items
+
+    if (error) {
+      throw new Error(`Pickup history could not be retrieved: ${error}`)
+    }
+
+    return data.ListPickUpReadModels.items
   }
 
   public static async getEntityPickupHistory(
     entityId: string
   ): Promise<Pickup[]> {
-    const result = await BoosterClient.query<{
-      ListPickUpReadModels: { items: Pickup[] }
-    }>({
-      query: GET_PICKUPS_BY_ENTITY_ID,
+    const { data, error } = useQuery(GET_PICKUPS_BY_ENTITY_ID, {
       variables: { id: entityId },
     })
-    return result.data.ListPickUpReadModels.items
+
+    if (error) {
+      throw new Error(`Pickup history could not be retrieved: ${error}`)
+    }
+
+    return data.ListPickUpReadModels.items
   }
 
   public static async getPickupDetails(id: string): Promise<InflatedPickup> {
@@ -76,39 +79,43 @@ class PickupService {
       startedAt: new Date(pickup.startedAt),
       endedAt: new Date(pickup.endedAt),
       signed: pickup.signed,
-      signDate: new Date(pickup.signDate)
+      signDate: new Date(pickup.signDate),
     }
   }
 }
 
 const START_PICKUP = gql`
   mutation StartPickUp($recipientId: ID!) {
-    StartPickUp(
-        input: { recipientId: $recipientId }
-    )
+    StartPickUp(input: { recipientId: $recipientId })
   }
 `
 
 const SUBMIT_PICKUP = gql`
   mutation SubmitPickUp($pickUpId: ID!) {
-    SubmitPickUp(
-        input: { pickUpId: $pickUpId }
-    )
+    SubmitPickUp(input: { pickUpId: $pickUpId })
+  }
+`
+
+const PICK_UP_DETAILS_FRAGMENT = gql`
+  fragment PickUpDetails on PickUpReadModel {
+    id
+    recipientId
+    entityId
+    startedAt
+    endedAt
+    signed
+    signDate
   }
 `
 
 const GET_PICKUP_BY_ID = gql`
   query PickupReadModel($id: ID!) {
     PickUpReadModel(id: $id) {
-      id
-      recipientId
-      entityId
-      startedAt
-      endedAt
-      signed
-      signDate
+      ...PickUpDetails
     }
   }
+
+  ${PICK_UP_DETAILS_FRAGMENT}
 `
 
 const GET_PICKUPS_BY_USER_ID = gql`
@@ -117,16 +124,12 @@ const GET_PICKUPS_BY_USER_ID = gql`
       filter: { recipientId: { eq: $id }, signed: { eq: true } }
     ) {
       items {
-        id
-        recipientId
-        entityId
-        startedAt
-        endedAt
-        signed
-        signDate
+        ...PickUpDetails
       }
     }
   }
+
+  ${PICK_UP_DETAILS_FRAGMENT}
 `
 
 const GET_PICKUPS_BY_ENTITY_ID = gql`
@@ -135,16 +138,12 @@ const GET_PICKUPS_BY_ENTITY_ID = gql`
       filter: { entityId: { eq: $id }, signed: { eq: true } }
     ) {
       items {
-        id
-        recipientId
-        entityId
-        startedAt
-        endedAt
-        signed
-        signDate
+        ...PickUpDetails
       }
     }
   }
+
+  ${PICK_UP_DETAILS_FRAGMENT}
 `
 
 export default PickupService
