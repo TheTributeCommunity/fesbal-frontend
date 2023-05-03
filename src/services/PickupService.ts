@@ -7,6 +7,10 @@ import { RecipientUserService } from './recipient-user-service'
 
 class PickupService {
   public static async startPickup(recipientId: string): Promise<string> {
+    const [startPickup] = useMutation(START_PICKUP, {
+      variables: { recipientId },
+    })
+
     const result = await BoosterClient.mutate<{ StartPickUp: string }>({
       mutation: START_PICKUP,
       variables: { recipientId },
@@ -84,7 +88,7 @@ class PickupService {
   }
 }
 
-const START_PICKUP = gql`
+export const START_PICKUP = gql`
   mutation StartPickUp($recipientId: ID!) {
     StartPickUp(input: { recipientId: $recipientId })
   }

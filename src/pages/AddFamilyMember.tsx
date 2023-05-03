@@ -19,13 +19,14 @@ import { Relative, RelativeMutate } from '../models/relative'
 import { IDtypes } from '../enums/IDtypes.ts'
 import AppMessageDialog from '../components/molecules/AppMessageDialog'
 import UnsuccessIcon from '../components/icons/UnsuccessIcon'
+import { useUserStore } from '../store/logged-user'
 
 const AddFamilyMember = (): JSX.Element => {
     const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange, setUserName, setUserSurname} = useRegisterNameForm()
     const {selectedOption, userID, validateUserID, onUserIDChange, onSelectedOptionChange, setSelectedOption, setUserID} = useRegisterIDForm()
     const {selectedDate, setDate, isValidBirthDate} = useRegisterBirthDate()
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers)
-    const { firebaseUser } = useContext(UsersContext)
+    const userId = useUserStore(state => state.userId)
     const location = useLocation()
     const memberData = location.state?.relative as Relative
     const [mode, setMode] = useState('create')
@@ -54,14 +55,14 @@ const AddFamilyMember = (): JSX.Element => {
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (validForm() && firebaseUser?.uid) {
+        if (validForm() && userId) {
             const relative: Partial<RelativeMutate> = {
                 relativeId: mode === 'create' ? uuidv4() : editID,
                 firstName: userName,
                 lastName: userSurname,
                 dateOfBirth: selectedDate.toLocaleDateString('es-ES'),
             }
-            if (mode === 'create') relative.recipientUserId = firebaseUser.uid
+            if (mode === 'create') relative.recipientUserId = userId
             if (selectedOption && userID) {
                 relative.typeOfIdentityDocument = selectedOption
                 relative.identityDocumentNumber = userID

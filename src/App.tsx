@@ -52,12 +52,14 @@ import ProfileEditValidatePhone from './pages/ProfileEditValidatePhone'
 import RecipientSearch from './pages/RecipientSearch'
 import { ExtendedJwt } from './types/ExtendedJwt'
 import { useSubscription } from '@apollo/client'
-import { RecipientUserService, SUBSCRIBE_TO_RECIPIENT_MESSAGES } from './services/recipient-user-service'
+import { RecipientUserService } from './services/recipient-user-service'
 import { RecipientMessages } from './models/recipient-user'
 import Notification from './types/Notification'
 import PickupService from './services/PickupService'
 import { InflatedPickup } from './types/Pickup'
 import { EntityService } from './services/entity-service'
+import { SUBSCRIBE_TO_RECIPIENT_MESSAGES } from './graphql/recipient-queries'
+import { useUserStore } from './store/logged-user'
 
 addLocale('en', {
     firstDayOfWeek: 1, // set first day of the week to Monday
@@ -70,6 +72,7 @@ const App = () => {
     const [notifications, setNotifications] = useState<Notification[]>([])
     const [loadedAuthData, setLoadedAuthData] = useState(localStorage.getItem('token') ? false : true)
     const navigate = useNavigate()
+    const updateUser = useUserStore(state => state.updateUser)
 
     useEffect(() => {
         onIdTokenChanged(getAuth(), user => {
@@ -86,6 +89,7 @@ const App = () => {
                         // only change state if this is a different user,
                         // we don't want to re-render the component tree with token refreshes
                         setLoggedUserType(userType)
+                        updateUser(user.uid)
                         setFirebaseUser(user)
                         if (userType === UserType.RECIPIENT) {
                             RecipientUserService.getUserMessages(user.uid)
@@ -109,6 +113,7 @@ const App = () => {
                 })
             } else {
                 setLoggedUserType(undefined)
+                updateUser(undefined)
                 setFirebaseUser(undefined)
                 localStorage.removeItem('token')
                 localStorage.removeItem('userGuest')

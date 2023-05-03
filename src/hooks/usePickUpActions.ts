@@ -1,7 +1,13 @@
-import PickupService from '../services/PickupService'
+import { useMutation } from '@apollo/client'
+import PickupService, { START_PICKUP } from '../services/PickupService'
 
 export const usePickUpActions = () => {
   const startPickUp = (recipientId: string) => {
+    
+    const [startPickup] = useMutation(START_PICKUP, {
+      variables: { recipientId },
+    })
+
     return PickupService.startPickup(recipientId)
       .then((pickUpId) => {
         return pickUpId

@@ -9,45 +9,47 @@ import { AppRoute } from '../enums/app-route'
 import useRegisterFamilyMembers from '../hooks/useRegisterFamilyMembers'
 import { namespaces } from '../i18n/i18n.constants'
 import PersonalDataItemProps from '../types/PersonalDataItemProps'
+import { useRecipient } from '../hooks/useRecipient'
 
 
 const ProfileScreen = () => {
     const {t: translate} = useTranslation(namespaces.pages.profileScreen)
-    const {user, familyMembers} = useRegisterFamilyMembers()
+    const {familyMembers} = useRegisterFamilyMembers()
+    const { data, loading } = useRecipient()
     const getPersonalData = (): PersonalDataItemProps[] => {
         return [
             {
                 title: translate('fullName'),
-                value: `${user?.firstName} ${user?.lastName}`,
+                value: `${data.RecipientReadModel.firstName} ${data.RecipientReadModel.lastName}`,
                 hasEditButton: true,
                 goTo: AppRoute.PROFILE_EDIT_NAME_AND_SURNAME
             },
             {
                 title: translate('id'),
-                value: user?.identityDocumentNumber
+                value: data.RecipientReadModel.identityDocumentNumber
             },
             {
                 title: translate('birthDate'),
-                value: user?.dateOfBirth,
+                value: data.RecipientReadModel.dateOfBirth,
                 hasEditButton: true,
                 goTo: AppRoute.PROFILE_EDIT_BIRTHDATE,
             },
             {
                 title: translate('email'),
-                value: user?.email,
+                value: data.RecipientReadModel.email,
                 hasEditButton: true,
                 goTo: AppRoute.PROFILE_EDIT_EMAIL,
             },
             {
                 title: translate('phone'),
-                value: user?.phone,
+                value: data.RecipientReadModel.phone,
                 hasEditButton: true,
                 goTo: AppRoute.PROFILE_EDIT_PHONE_NUMBER,
             }
         ]
     }
 
-    if (!user) return (
+    if (loading) return (
         <BlankStage>
             <Spinner />
         </BlankStage>

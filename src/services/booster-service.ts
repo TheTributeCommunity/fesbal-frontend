@@ -43,6 +43,7 @@ const splitLink = split(
 )
 
 export const BoosterClient = new ApolloClient({
+  connectToDevTools: true,
   link: splitLink,
   cache: new InMemoryCache(),
 })

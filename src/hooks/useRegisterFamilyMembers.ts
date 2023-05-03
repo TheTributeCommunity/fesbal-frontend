@@ -1,18 +1,20 @@
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Recipient } from '../models/recipient-user'
-import { RecipientUserService, SUBSCRIBE_TO_RECIPIENT_USER } from '../services/recipient-user-service'
+import { RecipientUserService } from '../services/recipient-user-service'
 import { Relative } from '../models/relative'
 import { AppRoute } from '../enums/app-route'
 import { UsersContext } from '../contexts/usersContext'
 import { useSubscription } from '@apollo/client'
-import { RelativeService, SUBSCRIBE_TO_RELATIVES_BY_UID } from '../services/relative-service'
+import { RelativeService } from '../services/relative-service'
+import { SUBSCRIBE_TO_RECIPIENT_USER } from '../graphql/recipient-queries'
+import { useUserStore } from '../store/logged-user'
 
 const useRegisterFamilyMembers = () => {
     const [familyMembers, setFamilyMembers] = useState<Relative[]>([])
     const [user, setUser] = useState<Recipient>()
     const [loading, setLoading] = useState(true)
-    const { firebaseUser } = useContext(UsersContext)
+    const userId = useUserStore(state => state.userId) 
     // useSubscription(SUBSCRIBE_TO_RELATIVES_BY_UID,
     //     {
     //         variables: { id: user?.id ?? '' },
@@ -38,8 +40,8 @@ const useRegisterFamilyMembers = () => {
         })
 
     useEffect(() => {
-        if (firebaseUser) {
-            RecipientUserService.getUserById(firebaseUser.uid)
+        if (userId) {
+            RecipientUserService.getUserById(userId)
                 .then(recipientUser => {
                     setUser(recipientUser)
                     RelativeService.getAllByRecipientUserId(recipientUser.id).then(relatives => {
@@ -52,7 +54,7 @@ const useRegisterFamilyMembers = () => {
                     setLoading(false)
                 })
         }
-    }, [firebaseUser])
+    }, [userId])
 
     const navigate = useNavigate()
 
@@ -64,7 +66,6 @@ const useRegisterFamilyMembers = () => {
     }
 
     return {
-        user,
         familyMembers,
         loading,
         setFamilyMembers,

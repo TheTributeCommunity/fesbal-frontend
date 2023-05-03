@@ -7,6 +7,8 @@ import { AppRoute } from '../enums/app-route'
 import useAppInput from '../hooks/useAppInput'
 import useSearchRecipient, { SearchResult } from '../hooks/useSearchRecipient'
 import { usePickUpActions } from '../hooks/usePickUpActions'
+import { useMutation } from '@apollo/client'
+import { START_PICKUP } from '../services/PickupService'
 
 const RecipientSearch = (): JSX.Element => {
   const { inputValue, deleteInputValue, handleInputChange } = useAppInput('')
@@ -14,14 +16,20 @@ const RecipientSearch = (): JSX.Element => {
     useSearchRecipient()
   const [searching, setSearching] = useState(false)
   const navigate = useNavigate()
-  const { startPickUp } = usePickUpActions()
+
+  const [startPickup] = useMutation(START_PICKUP)
+
   const handleOnClear = () => {
     deleteInputValue()
     clearSearchResults()
   }
 
   const handleClickOnUser = (searchResult: SearchResult) => {
-    startPickUp(searchResult.recipient.id).then((pickUpId) => {
+    startPickup({
+      variables: {
+        recipientId: searchResult.recipient.id,
+      },
+    }).then((pickUpId) => {
       if (pickUpId) {
         navigate(AppRoute.ENTITY_USER_SCANNED, {
           state: { recipient: searchResult.recipient, pickUpId: pickUpId },
