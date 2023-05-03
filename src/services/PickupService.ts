@@ -76,8 +76,7 @@ class PickupService {
       startedAt: new Date(pickup.startedAt),
       endedAt: new Date(pickup.endedAt),
       signed: pickup.signed,
-      signDate: new Date(pickup.signDate),
-      pickupItems: pickup.items.map(deserializeFood),
+      signDate: new Date(pickup.signDate)
     }
   }
 }
@@ -104,7 +103,6 @@ const GET_PICKUP_BY_ID = gql`
       id
       recipientId
       entityId
-      items
       startedAt
       endedAt
       signed
@@ -122,7 +120,6 @@ const GET_PICKUPS_BY_USER_ID = gql`
         id
         recipientId
         entityId
-        items
         startedAt
         endedAt
         signed
@@ -141,7 +138,6 @@ const GET_PICKUPS_BY_ENTITY_ID = gql`
         id
         recipientId
         entityId
-        items
         startedAt
         endedAt
         signed

@@ -10,7 +10,6 @@ export interface InflatedPickup {
     endedAt: Date
     signed: boolean
     signDate: Date
-    pickupItems: FoodPicking[]
 }
 
 export interface Pickup {
@@ -23,6 +22,4 @@ export interface Pickup {
     endedAt: string
     signed: boolean
     signDate: string
-    pickupItems: FoodPicking[]
-    items: string[]
 }
