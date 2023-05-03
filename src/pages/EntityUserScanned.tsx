@@ -9,13 +9,16 @@ import { useNavigate } from 'react-router'
 import { useEffect, useState } from 'react'
 import { Recipient } from '../models/recipient-user'
 import FamilyUnitAges from '../types/FamilyUnitAges'
+import { usePickUpActions } from '../hooks/usePickUpActions'
 
 const EntityUserScanned = () => {
   const { state } = useLocation()
   const [user, setUser] = useState<Recipient>()
+  const [pickUpId, setPickUpId] = useState<string>('')
   const [familyUnitAges, setFamilyUnitAges] = useState<FamilyUnitAges>()
   const { t: translate } = useTranslation(namespaces.pages.entityUserScanned)
-  const navigate = useNavigate()
+
+  const { submitPickUp } = usePickUpActions();
 
   useEffect(() => {
     if (state.recipient) {
@@ -24,7 +27,16 @@ const EntityUserScanned = () => {
       setFamilyUnitAges(familyAges)
       setUser(recipient)
     }
+
+    if (state.pickUpId) {
+      setPickUpId(state.pickUpId)
+    }
+
   }, [])
+
+  const handleSubmitDelivery = () => {
+    submitPickUp(pickUpId)
+  }
 
   return (
     <AppWrapper
@@ -71,8 +83,8 @@ const EntityUserScanned = () => {
         </div>
         <div className='flex flex-col px-8 py-4 gap-6'></div>
       </div>
-      <div className='flex px-8 py-4 mt-20 bg-white rounded-t-2xl drop-shadow'>
-        <AppNextButton title={translate('sendFoodList')} />
+      <div className='flex px-8 py-4 mt-20 bg-white rounded-t-2xl drop-shadow z-0'>
+        <AppNextButton title={translate('sendFoodList')} onClick={handleSubmitDelivery}/>
       </div>
     </AppWrapper>
   )
