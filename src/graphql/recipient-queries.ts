@@ -1,140 +1,97 @@
 import { gql } from '@apollo/client'
 
-export const GET_ALL_RECIPIENTS = gql`
-  query ListRecipientReadModels  {
-    ListRecipientReadModels  {
-      items {
-        id
-        firstName
-        lastName
-        dateOfBirth
-        typeOfIdentityDocument
-        identityDocumentNumber
-        phone
-        phoneVerified
-        email
-        relativesIds
-        referralSheetUrl
-        role
-      }
-    }
+export const RECIPIENT_DETAILS_FRAGMENT = gql`
+  fragment RecipientDetails on RecipientReadModel {
+    id
+    firstName
+    lastName
+    dateOfBirth
+    typeOfIdentityDocument
+    identityDocumentNumber
+    phone
+    phoneVerified
+    email
+    referralSheetUrl
   }
 `
 
-export const GET_RECIPIENT_BY_PHONE = gql`
-  query ListRecipientReadModels ($phone: String!) {
-    ListRecipientReadModels(
-      filter: { phone: {eq: $phone } }
-      sortBy: {}
-  )  {
+export const GET_ALL_RECIPIENTS = gql`
+  query ListRecipientReadModels {
+    ListRecipientReadModels {
       items {
-        id
-        firstName
-        lastName
-        dateOfBirth
-        typeOfIdentityDocument
-        identityDocumentNumber
-        phone
-        email
-        relativesIds
-        relatives{
-          id
-          firstName
-          lastName
-          dateOfBirth
-          typeOfIdentityDocument
-          identityDocumentNumber
-        }
-        referralSheetUrl
+        ...RecipientDetails
       }
     }
   }
+
+  ${RECIPIENT_DETAILS_FRAGMENT}
+`
+
+export const GET_RECIPIENT_BY_PHONE = gql`
+  query ListRecipientReadModels($phone: String!) {
+    ListRecipientReadModels(filter: { phone: { eq: $phone } }, sortBy: {}) {
+      items {
+        ...RecipientDetails
+      }
+    }
+  }
+
+  ${RECIPIENT_DETAILS_FRAGMENT}
 `
 
 export const REFERRAL_SHEET_UPLOAD_URL = gql`
   mutation ReferralSheetUploadUrl($filename: String!) {
-    ReferralSheetUploadUrl(
-      input: { filename: $filename }
-    ) {
-      url,
+    ReferralSheetUploadUrl(input: { filename: $filename }) {
+      url
       fields
     }
   }
 `
 
 export const GET_RECIPIENT_BY_ID = gql`
-    query RecipientReadModel ($id: ID!) {
-        RecipientReadModel (id: $id) {
-            id
-            firstName
-            lastName
-            dateOfBirth
-            typeOfIdentityDocument
-            identityDocumentNumber
-            phone
-            phoneVerified
-            email
-            relativesIds
-            referralSheetUrl
-            deleted
-            relatives {
-                id
-                recipientUserId
-                firstName
-                lastName
-                dateOfBirth
-                typeOfIdentityDocument
-                identityDocumentNumber
-            }
-        }
+  query RecipientReadModel($id: ID!) {
+    RecipientReadModel(id: $id) {
+      ...RecipientDetails
     }
+  }
+
+  ${RECIPIENT_DETAILS_FRAGMENT}
 `
 
 export const GET_RECIPIENT_MESSAGES = gql`
-    query RecipientReadModel ($id: ID!) {
-        RecipientReadModel (id: $id) {
-            pendingSignsIds
-            notifications {
-                id
-                title
-                body
-                read
-                createdAt
-                readAt
-                isDeleted
-            }
-        }
-    }
-`
-
-export const GET_RECIPIENTS_BY_ID_DOCUMENT_NUMBER = gql`
-query ListRecipientReadModels ($id: String!) {
-    ListRecipientReadModels(
-      filter: { identityDocumentNumber: {eq: $id }    }
-      sortBy: {}
-  )  {
-      items {
+  query RecipientReadModel($id: ID!) {
+    RecipientReadModel(id: $id) {
+      pendingSignsIds
+      notifications {
         id
-        firstName
-        lastName
-        identityDocumentNumber
-        relatives {
-            id
-            recipientUserId
-            firstName
-            lastName
-            dateOfBirth
-            typeOfIdentityDocument
-            identityDocumentNumber
-        }
+        title
+        body
+        read
+        createdAt
+        readAt
+        isDeleted
       }
     }
   }
 `
 
+export const GET_RECIPIENTS_BY_ID_DOCUMENT_NUMBER = gql`
+  query ListRecipientReadModels($id: String!) {
+    ListRecipientReadModels(
+      filter: { identityDocumentNumber: { eq: $id } }
+      sortBy: {}
+    ) {
+      items {
+        ...RecipientDetails
+      }
+    }
+  }
+
+  ${RECIPIENT_DETAILS_FRAGMENT}
+`
 
 export const CREATE_RECIPIENT = gql`
-  mutation CreateRecipient ($recipient: CreateRecipientInput!) {
+  mutation CreateRecipient($recipient: CreateRecipientInput!) {
     CreateRecipient(input: $recipient)
   }
 `
@@ -146,9 +103,9 @@ export const UPDATE_RECIPIENT_EMAIL = gql`
 `
 
 export const UPDATE_RECIPIENT = gql`
-    mutation ($updatedUser: UpdateRecipientInput!) {
-        UpdateRecipient(input: $updatedUser)
-    }
+  mutation ($updatedUser: UpdateRecipientInput!) {
+    UpdateRecipient(input: $updatedUser)
+  }
 `
 
 export const UPDATE_RECIPIENT_REFERRAL_SHEET_URL = gql`
@@ -164,35 +121,35 @@ export const DELETE_RECIPIENT_USER = gql`
 `
 
 export const SUBSCRIBE_TO_RECIPIENT_USER = gql`
-    subscription ($id: ID!) {
-        RecipientReadModel(id: $id) {
-            id
-            firstName
-            lastName
-            dateOfBirth
-            typeOfIdentityDocument
-            identityDocumentNumber
-            phone
-            email
-            referralSheetUrl
-            relativesIds
-        }
+  subscription ($id: ID!) {
+    RecipientReadModel(id: $id) {
+      id
+      firstName
+      lastName
+      dateOfBirth
+      typeOfIdentityDocument
+      identityDocumentNumber
+      phone
+      email
+      referralSheetUrl
+      relativesIds
     }
+  }
 `
 
 export const SUBSCRIBE_TO_RECIPIENT_MESSAGES = gql`
-    subscription ($id: ID!) {
-        RecipientReadModel(id: $id) {
-            pendingSignsIds
-            notifications {
-                id
-                title
-                body
-                read
-                createdAt
-                readAt
-                isDeleted
-            }
-        }
+  subscription ($id: ID!) {
+    RecipientReadModel(id: $id) {
+      pendingSignsIds
+      notifications {
+        id
+        title
+        body
+        read
+        createdAt
+        readAt
+        isDeleted
+      }
     }
+  }
 `
