@@ -15,19 +15,18 @@ import SuccessIcon from '../components/icons/SuccessIcon'
 import { useNavigate } from 'react-router-dom'
 import UnsuccessIcon from '../components/icons/UnsuccessIcon'
 import { AppRoute } from '../enums/app-route'
+import { useRecipient } from '../hooks/useRecipient'
 
 const UserSignature = () => {
     const {t: translate} = useTranslation(namespaces.pages.entityUserSignature)
-    const { user, loading } = useRegisterFamilyMembers()
-    const [foodItems, setFoodItems] = useState<FoodPicking[]>([])
+    const { data, loading } = useRecipient()
     const [showConfirmed, setShowConfirmed] = useState(false)
     const [showRejected, setShowRejected] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (!loading && user) {
-            const ages = getFamilyUnitAges(user)
-            setFoodItems(getDefaultFoodItems(ages))
+        if (!loading) {
+            const ages = getFamilyUnitAges(data)
         }
     }, [loading])
 
@@ -47,11 +46,10 @@ const UserSignature = () => {
                 <>
                     <div className="h-full px-8">
                         <EntityUserSignatureHeader
-                            firstName={user?.firstName ?? ''}
-                            lastName={user?.lastName ?? ''}
-                            identityDocumentNumber={user?.identityDocumentNumber ?? ''}
+                            firstName={data.RecipientReadModel.firstName ?? ''}
+                            lastName={data.RecipientReadModel.lastName ?? ''}
+                            identityDocumentNumber={data.RecipientReadModel.identityDocumentNumber ?? ''}
                         />
-                        <UserSignatureFoodList foodItems={foodItems} translate={translate}/>
                     </div>
                     <UserSignatureFooter onConfirm={onConfirm} onReject={onReject} translate={translate}/>
                 </>}

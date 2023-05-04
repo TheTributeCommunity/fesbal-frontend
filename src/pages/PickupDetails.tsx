@@ -39,9 +39,6 @@ export const PickupDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div>
-                    <FoodList items={pickup?.pickupItems || []}/>
-                </div>
             </div>
         </AppWrapper>
     )
