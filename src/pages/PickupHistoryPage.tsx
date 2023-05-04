@@ -19,7 +19,7 @@ const PickupHistoryPage = () => {
 
     const PickupCard = ({pickup}: {pickup: Pickup}): JSX.Element => {
         return (
-            <HistoryCard path={AppRoute.PICKUP_DETAILS} id={pickup.id} title={pickup.entity.entityName} isoDate={pickup.signDate} description={getPickupItemsDescription(pickup.pickupItems)} pickup={pickup} />
+            <HistoryCard path={AppRoute.PICKUP_DETAILS} id={pickup.id} title={pickup.entity.entityName} isoDate={pickup.signDate} description={''} pickup={pickup} />
         )
     }
 

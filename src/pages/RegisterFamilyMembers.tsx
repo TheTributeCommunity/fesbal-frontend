@@ -15,15 +15,17 @@ import AppMessageDialog from '../components/molecules/AppMessageDialog'
 import AlertIcon from '../components/icons/AlertIcon'
 import { RelativeService } from '../services/relative-service'
 import { Relative } from '../models/relative'
+import { useRecipient } from '../hooks/useRecipient'
 
 const RegisterFamilyMembers = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers)
-    const {user, familyMembers, handleNextWithFamilyMembers, disableNext} = useRegisterFamilyMembers()
+    const {familyMembers, handleNextWithFamilyMembers, disableNext} = useRegisterFamilyMembers()
     const [showNoRelativesDialog, setShowNoRelativesDialog] = useState(false)
     const [showConfirmDeleteDialog, setShowConfirmDeleteDialog] = useState(false)
     const [memberToDelete, setMemberToDelete] = useState('')
     const [showDeleteErrorDialog, setShowDeleteErrorDialog] = useState(false)
     const navigate = useNavigate()
+    const { data, loading } = useRecipient()
 
     const handleWithoutFamilyMembers = () => navigate(AppRoute.REGISTER_REFERRAL_SHEET)
 
@@ -42,7 +44,7 @@ const RegisterFamilyMembers = () => {
         navigate(AppRoute.REGISTER_FAMILY_MEMBERS_ADD, { state: { relative: relative }})
     }
 
-    if (!user) return (
+    if (loading) return (
         <BlankStage>
             <Spinner />
         </BlankStage>
@@ -54,7 +56,7 @@ const RegisterFamilyMembers = () => {
                 <AppPageHeader
                     title={translate('pageHeading')} description={translate('description') as string}/>
                 <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('incumbent')}</span>
-                {user && <FamilyMemberCard person={user} />}
+                {data && <FamilyMemberCard person={data} />}
                 {familyMembers.map((familyMember, index) => 
                     <div key={`familyMember_${index}`} className="flex flex-col gap-4">
                         <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('familyMember')} {index+1}</span>
