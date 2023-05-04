@@ -2,7 +2,6 @@ interface Entity {
     name: string
     code: string
     province: string
-    nextDelivery: string
     address: string
     supervisorName: string
     contactPerson: string

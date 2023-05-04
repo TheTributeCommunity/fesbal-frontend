@@ -29,7 +29,6 @@ const GET_ENTITY_BY_ID = gql`
             entityName
             entityCode
             region
-            nextDelivery
             address
             contactPerson
             email
