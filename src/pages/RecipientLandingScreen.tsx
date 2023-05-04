@@ -9,7 +9,7 @@ import { useRecipient } from '../hooks/useRecipient'
 const RecipientLandingScreen = (): JSX.Element => {
   const { t: translate } = useTranslation(namespaces.pages.recipientLanding)
   const { data, loading } = useRecipient()
-  console.log(data.RecipientReadModel)
+  
   return (
     <AppWrapper
       title='BALPA'

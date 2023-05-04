@@ -61,6 +61,7 @@ export const GET_RECIPIENT_BY_ID = gql`
 export const GET_RECIPIENT_MESSAGES = gql`
   query RecipientReadModel($id: ID!) {
     RecipientReadModel(id: $id) {
+      id
       pendingSignsIds
       notifications {
         id
@@ -140,6 +141,7 @@ export const SUBSCRIBE_TO_RECIPIENT_USER = gql`
 export const SUBSCRIBE_TO_RECIPIENT_MESSAGES = gql`
   subscription ($id: ID!) {
     RecipientReadModel(id: $id) {
+      id
       pendingSignsIds
       notifications {
         id
