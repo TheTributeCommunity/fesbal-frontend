@@ -11,11 +11,9 @@ import { BrowserRouter as Router } from 'react-router-dom'
 AuthService.initialize()
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
-        <ApolloProvider client={BoosterClient}>
-            <Router>
-                <App />
-            </Router>
-        </ApolloProvider>
-    </React.StrictMode>
+  <ApolloProvider client={BoosterClient}>
+    <Router>
+      <App />
+    </Router>
+  </ApolloProvider>
 )

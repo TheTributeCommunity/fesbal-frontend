@@ -5,14 +5,15 @@ import { AppRoute } from '../enums/app-route'
 import { Pickup } from '../types/Pickup'
 import PickupService from '../services/PickupService'
 import { UsersContext } from '../contexts/usersContext'
+import { useUserStore } from '../store/logged-user'
 
 const EntityDeliveryHistory = () => {
     const [pickupHistory, setPickupHistory] = useState<Pickup[]>([])
-    const { firebaseUser } = useContext(UsersContext)
+    const userId = useUserStore(state => state.userId)
 
     useEffect(() => {
-        firebaseUser && PickupService.getEntityPickupHistory(firebaseUser.uid).then(pickups => setPickupHistory(pickups))
-    }, [firebaseUser])
+        userId && PickupService.getEntityPickupHistory(userId).then(pickups => setPickupHistory(pickups))
+    }, [userId])
 
     const DeliveryCard = ({delivery}: {delivery: Pickup}): JSX.Element => {
         const fullRecipientName = 'Santiago García Monsalve'//TODO: delivery.recipient.firstName + ' ' + delivery.recipient.lastName 

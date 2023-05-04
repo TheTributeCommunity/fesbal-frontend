@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useContext, useState } from 'react'
 import { UsersContext } from '../contexts/usersContext'
 import { RecipientUserService } from '../services/recipient-user-service'
+import { useUserStore } from '../store/logged-user'
 
 const createValidationInput = () => {
     const newValidationInput = document.createElement('input')
@@ -11,7 +12,7 @@ const createValidationInput = () => {
 
 const useRegisterEmailForm = (allowEmptyEmail = true) => {
     const [userEmail, setUserEmail] = useState<string>('')
-    const { firebaseUser } = useContext(UsersContext)
+    const userId = useUserStore(state => state.userId)
     let validationInput = createValidationInput()
 
     const simpleEmailValidation = (email: string): boolean => {
@@ -39,8 +40,8 @@ const useRegisterEmailForm = (allowEmptyEmail = true) => {
 
     const onSubmit = async (e: FormEvent<HTMLFormElement>): Promise<boolean> => {
         e.preventDefault()
-        if (firebaseUser?.uid && validateEmail()) {
-            return RecipientUserService.updateEmail(firebaseUser.uid, userEmail)
+        if (userId && validateEmail()) {
+            return RecipientUserService.updateEmail(userId, userEmail)
                 .catch((e) => {
                     console.log(e)
                     return false

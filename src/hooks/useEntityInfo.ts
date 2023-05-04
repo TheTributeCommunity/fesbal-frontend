@@ -2,20 +2,21 @@ import { useContext, useEffect, useState } from 'react'
 import { UsersContext } from '../contexts/usersContext'
 import { Entity } from '../models/entity'
 import { EntityService } from '../services/entity-service'
+import { useUserStore } from '../store/logged-user'
 
 const useEntityInfo = () => {
     const [entity, setEntity] = useState<Entity>()
-    const { firebaseUser } = useContext(UsersContext)
+    const userId = useUserStore(state => state.userId)
 
     useEffect(() => {
-        if (firebaseUser) {
-            EntityService.getById(firebaseUser.uid)
+        if (userId) {
+            EntityService.getById(userId)
                 .then((entity) => {
                     setEntity(entity)
                 })
                 .catch((e) => console.log(e))
         }
-    }, [firebaseUser])
+    }, [userId])
 
     return {
         entity

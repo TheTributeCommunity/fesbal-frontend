@@ -1,105 +1,93 @@
 import AppWrapper from '../components/molecules/AppWrapper'
-import {useLocation} from 'react-router-dom'
-import PlusAddIcon from '../components/icons/PlusAddIcon'
+import { useLocation } from 'react-router-dom'
 import AppNextButton from '../components/atom/AppNextButton'
 import AgeGroupItem from '../components/atom/AgeGroupItem'
-import FoodItem from '../components/atom/FoodItem'
-import useFoodItems from '../hooks/useFoodItems'
-import {AppRoute} from '../enums/app-route'
-import {useTranslation} from 'react-i18next'
-import {namespaces} from '../i18n/i18n.constants'
-import getDefaultFoodItems from '../helpers/getDefaultFoodItems'
+import { useTranslation } from 'react-i18next'
+import { namespaces } from '../i18n/i18n.constants'
 import getFamilyUnitAges from '../helpers/getFamilyUnitAges'
-import {useNavigate} from 'react-router'
-import { FoodType } from '../types/FoodType'
-import { FoodPicking } from '../types/FoodPicking'
+import { useNavigate } from 'react-router'
 import { useEffect, useState } from 'react'
 import { Recipient } from '../models/recipient-user'
 import FamilyUnitAges from '../types/FamilyUnitAges'
+import { usePickUpActions } from '../hooks/usePickUpActions'
 
 const EntityUserScanned = () => {
-    const { state } = useLocation()
-    const {foodItems, removeFoodItem, setFoodItems} = useFoodItems()
-    const [user, setUser] = useState<Recipient>()
-    const [familyUnitAges, setFamilyUnitAges] = useState<FamilyUnitAges>()
-    const {t: translate} = useTranslation(namespaces.pages.entityUserScanned)
-    const navigate = useNavigate()
+  const { state } = useLocation()
+  const [user, setUser] = useState<Recipient>()
+  const [pickUpId, setPickUpId] = useState<string>('')
+  const [familyUnitAges, setFamilyUnitAges] = useState<FamilyUnitAges>()
+  const { t: translate } = useTranslation(namespaces.pages.entityUserScanned)
 
-    useEffect(() => {
-        if (state.recipient) {
-            const recipient = state.recipient as Recipient
-            const familyAges = getFamilyUnitAges(recipient)
-            setFamilyUnitAges(familyAges)
-            setUser(recipient)
-            setFoodItems(getDefaultFoodItems(familyAges))
-        }
-    }, [])
+  const { submitPickUp } = usePickUpActions();
 
-    const handleOnUpdateFoodName = (foodName: FoodType) => {
-        navigate(AppRoute.ENTITY_FOOD_SEARCH, {state: {foodName, foodItems}})
-    }
-    const handleOnUpdateQuantity = (foodItem: FoodPicking) => {
-        navigate(AppRoute.ENTITY_QUANTITY_MEASUREMENT, {state: {foodItem, foodItems}})
-    }
-    const handleOnAddFoodItem = () => {
-        navigate(AppRoute.ENTITY_FOOD_SEARCH, {state: {foodItems}})
+  useEffect(() => {
+    if (state.recipient) {
+      const recipient = state.recipient as Recipient
+      const familyAges = getFamilyUnitAges(recipient)
+      setFamilyUnitAges(familyAges)
+      setUser(recipient)
     }
 
-    return (
-        <AppWrapper title={translate('title')} showBurger={true} containerClassName="px-0" topbarClassName="bg-white">
-            <div className="h-full">
-                <div className="flex flex-col bg-white px-8 py-4 gap-2">
-                    <h1 className="font-big-title text-secondary-color">{user?.firstName ?? ''} {user?.lastName ?? ''}</h1>
-                    <h2 className="font-medium-title text-primary-color">{user?.identityDocumentNumber ?? ''}</h2>
-                </div>
-                <div className="flex flex-col bg-ghost-white px-8 py-4 gap-2">
-                    <h3 className="font-label text-primary-color">{translate('familyUnitAges')}</h3>
-                    <ul className="flex flex-wrap gap-x-6 gap-y-2">
-                        <AgeGroupItem description={translate('under3')} count={familyUnitAges?.under3 ?? 0}/>
-                        <AgeGroupItem description={translate('between3and15')} count={familyUnitAges?.between3and15 ?? 0}/>
-                        <AgeGroupItem description={translate('over16')} count={familyUnitAges?.over15 ?? 0}/>
-                    </ul>
-                </div>
-                <div className="flex flex-col px-8 py-4 gap-2">
-                    <h3 className="font-label text-primary-color">{translate('lastPickup')}</h3>
-                    <p className="text-secondary-color font-input">{new Date().toLocaleDateString()}</p>
-                </div>
-                <div className="flex flex-col px-8 py-4 gap-6">
-                    <h2 className="font-mini-title text-secondary-color">{translate('foodList')}</h2>
-                    <ul className="flex flex-col gap-2">
-                        {foodItems.length > 0 && (
-                            <li className="flex gap-4 w-full justify-between">
-                                <p className="text-primary-color font-label w-7/12">{translate('foodType')}</p>
-                                <p className="text-primary-color font-label w-4/12">{translate('quantity')}</p>
-                            </li>
-                        )}
-                        {foodItems.map((food) => (
-                            <FoodItem
-                                key={food.food.name}
-                                food={food.food}
-                                quantity={food.quantity}
-                                unit={food.unit}
-                                onRemove={() => removeFoodItem(food)}
-                                onFoodClick={() => handleOnUpdateFoodName(food.food)}
-                                onQuantityClick={() => handleOnUpdateQuantity(food)}
-                            />
-                        ))}
-                        <li>
-                            <div
-                                className="bg-tertiary-color rounded-lg flex justify-center items-center py-4 gap-2 border border-white cursor-pointer"
-                                onClick={handleOnAddFoodItem}>
-                                <PlusAddIcon/>
-                                <p className="text-primary-color font-button">{translate('addFood')}</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div className="flex px-8 py-4 mt-20 bg-white rounded-t-2xl drop-shadow">
-                <AppNextButton title={translate('sendFoodList')}/>
-            </div>
-        </AppWrapper>
-    )
+    if (state.pickUpId) {
+      setPickUpId(state.pickUpId)
+    }
+
+  }, [])
+
+  const handleSubmitDelivery = () => {
+    submitPickUp(pickUpId)
+  }
+
+  return (
+    <AppWrapper
+      title={translate('title')}
+      showBurger={true}
+      containerClassName='px-0'
+      topbarClassName='bg-white'
+    >
+      <div className='h-full'>
+        <div className='flex flex-col bg-white px-8 py-4 gap-2'>
+          <h1 className='font-big-title text-secondary-color'>
+            {user?.firstName ?? ''} {user?.lastName ?? ''}
+          </h1>
+          <h2 className='font-medium-title text-primary-color'>
+            {user?.identityDocumentNumber ?? ''}
+          </h2>
+        </div>
+        <div className='flex flex-col bg-ghost-white px-8 py-4 gap-2'>
+          <h3 className='font-label text-primary-color'>
+            {translate('familyUnitAges')}
+          </h3>
+          <ul className='flex flex-wrap gap-x-6 gap-y-2'>
+            <AgeGroupItem
+              description={translate('under3')}
+              count={familyUnitAges?.under3 ?? 0}
+            />
+            <AgeGroupItem
+              description={translate('between3and15')}
+              count={familyUnitAges?.between3and15 ?? 0}
+            />
+            <AgeGroupItem
+              description={translate('over16')}
+              count={familyUnitAges?.over15 ?? 0}
+            />
+          </ul>
+        </div>
+        <div className='flex flex-col px-8 py-4 gap-2'>
+          <h3 className='font-label text-primary-color'>
+            {translate('lastPickup')}
+          </h3>
+          <p className='text-secondary-color font-input'>
+            {new Date().toLocaleDateString()}
+          </p>
+        </div>
+        <div className='flex flex-col px-8 py-4 gap-6'></div>
+      </div>
+      <div className='flex px-8 py-4 mt-20 bg-white rounded-t-2xl drop-shadow z-0'>
+        <AppNextButton title={translate('sendFoodList')} onClick={handleSubmitDelivery}/>
+      </div>
+    </AppWrapper>
+  )
 }
 
 export default EntityUserScanned

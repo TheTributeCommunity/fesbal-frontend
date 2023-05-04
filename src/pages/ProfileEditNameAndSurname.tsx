@@ -8,11 +8,15 @@ import {AppRoute} from '../enums/app-route'
 import { RecipientUserService } from '../services/recipient-user-service'
 import AppMessageDialog from '../components/molecules/AppMessageDialog'
 import UnsuccessIcon from '../components/icons/UnsuccessIcon'
+import { useRecipient } from '../hooks/useRecipient'
+import BlankStage from '../components/atom/BlankStage'
+import Spinner from '../components/atom/Spinner'
 
 const ProfileEditNameAndSurname = (): JSX.Element => {
     const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange} = useRegisterNameForm()
     const navigate = useNavigate()
     const [showErrorDialog, setShowErrorDialog] = useState(false)
+    const { data, loading} = useRecipient()
 
     const validForm = (): boolean => {
         return validateNameSurname()
@@ -27,6 +31,12 @@ const ProfileEditNameAndSurname = (): JSX.Element => {
         }
     }
 
+    if (loading) return (
+        <BlankStage>
+            <Spinner />
+        </BlankStage>
+    )
+
     return (
         <AppWrapper showBackButton title="Editar nombre y apellidos">
             <form noValidate onSubmit={onSubmit} className="flex w-full flex-col gap-4">
@@ -35,13 +45,13 @@ const ProfileEditNameAndSurname = (): JSX.Element => {
                         label="Nombre"
                         value={userName}
                         onChange={onNameChange}
-                        placeholder="Nombre"  
+                        placeholder={data.RecipientReadModel.firstName}  
                     />
                     <AppFormInput name="surname"
                         label="Apellidos"
                         value={userSurname}
                         onChange={onSurnameChange}
-                        placeholder="Apellidos"
+                        placeholder={data.RecipientReadModel.lastName}  
                     />
                 </div>
                 <AppNextButton disabled={!validForm()} title="Actualizar" />

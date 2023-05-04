@@ -6,11 +6,12 @@ import { ReferralSheetUploadUrl } from '../models/referral-sheet-upload-url'
 import { RegistrationRequest } from '../models/registration-request'
 import { RegistrationRequestService } from '../services/registration-request-service'
 import { v4 as uuidv4 } from 'uuid'
+import { useUserStore } from '../store/logged-user'
 
 const useUploadReferral = () => {
     const [file, setFile] = useState<File | null>(null)
     const inputRef = useRef<HTMLInputElement>(null)
-    const { firebaseUser } = useContext(UsersContext)
+    const userId = useUserStore(state => state.userId)
 
     const isValidFile = (file: File) => {
         const validFileExtensions = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf']
@@ -21,14 +22,14 @@ const useUploadReferral = () => {
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.item(0)
-        if (file && isValidFile(file) && firebaseUser?.uid) {
+        if (file && isValidFile(file) && userId) {
             setFile(file)
         }
     }
 
     const onSubmit = async (): Promise<boolean> => {
-        if (file && isValidFile(file) && firebaseUser?.uid) {
-            const result = await uploadReferralSheet(firebaseUser.uid, file).catch(e => {
+        if (file && isValidFile(file) && userId) {
+            const result = await uploadReferralSheet(userId, file).catch(e => {
                 console.log(e)
                 return false
             }).then( () => submitRegistrationRequest(file)).catch(e => {
@@ -58,7 +59,7 @@ const useUploadReferral = () => {
     }
 
     const submitRegistrationRequest = async (file: File): Promise<boolean> => {
-        if (firebaseUser?.uid) {
+        if (userId) {
             const payload: RegistrationRequest = {
                 registrationRequestId: uuidv4(),
                 referralSheet: file.name
