@@ -2,7 +2,7 @@ import {useTranslation} from 'react-i18next'
 import {Link, useNavigate} from 'react-router-dom'
 import {namespaces} from '../i18n/i18n.constants'
 import AppNextButton from '../components/atom/AppNextButton'
-import PlusAddIcon from '../components/icons/PlusAddIcon'
+import PlusIcon from '../components/icons/PlusIcon'
 import useRegisterFamilyMembers from '../hooks/useRegisterFamilyMembers'
 import AppPageHeader from '../components/molecules/AppPageHeader'
 import AppWrapper from '../components/molecules/AppWrapper'
@@ -55,18 +55,11 @@ const RegisterFamilyMembers = () => {
             <div className="flex flex-col gap-4 w-full">
                 <AppPageHeader
                     title={translate('pageHeading')} description={translate('description') as string}/>
-                <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('incumbent')}</span>
-                {data && <FamilyMemberCard person={data} />}
-                {familyMembers.map((familyMember, index) => 
-                    <div key={`familyMember_${index}`} className="flex flex-col gap-4">
-                        <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('familyMember')} {index+1}</span>
-                        <FamilyMemberCard person={familyMember} allowEdit={true} deleteRelative={handleConfirmDeleteRelative} editRelative={handleEditRelative} />
-                    </div>)}
                 <div className="flex flex-col gap-8">
                     <Link to={AppRoute.REGISTER_FAMILY_MEMBERS_ADD}
-                        className="flex gap-2 bg-primary-color-light p-3.5 rounded-lg justify-center border border-white">
-                        <PlusAddIcon/>
-                        <p className="font-button text-primary-color">{translate('addMember')}</p>
+                        className="flex gap-2 bg-secondary-color p-3.5 rounded-lg justify-center border border-white">
+                        <PlusIcon colorClass="text-white"/>
+                        <p className="font-button text-white">{translate('addMember')}</p>
                     </Link>
                     {familyMembers.length === 0 &&
                         <p className="cursor-pointer text-center underline font-big-link"
@@ -75,6 +68,14 @@ const RegisterFamilyMembers = () => {
                     <AppNextButton title={translate('nextWithMembers')} disabled={disableNext}
                         onClick={handleNextWithFamilyMembers}/>
                 </div>
+                <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('incumbent')}</span>
+                {data && <FamilyMemberCard person={data} />}
+                {familyMembers.map((familyMember, index) => 
+                    <div key={`familyMember_${index}`} className="flex flex-col gap-4">
+                        <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('familyMember')} {index+1}</span>
+                        <FamilyMemberCard person={familyMember} allowEdit={true} deleteRelative={handleConfirmDeleteRelative} editRelative={handleEditRelative} />
+                    </div>)}
+                
             </div>
             <AppMessageDialog
                 visible={showNoRelativesDialog}
