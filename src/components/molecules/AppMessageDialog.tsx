@@ -33,9 +33,8 @@ const AppMessageDialog: FC<AppMessageDialogProps> = ({
     return (
         <>
             {visible &&
-                (<div className="fixed top-0 left-0 right-0 bg-secondary-color bg-opacity-40 z-50 h-screen">
-                    <div className="absolute bottom-6 left-0 right-0 px-4 ">
-                        <div className="w-full md:w-1/2 lg:w-1/3 p-6 pt-10 text-center text-secondary-color font-roboto-flex bg-white rounded-2xl mx-auto">
+                (<div className="fixed flex flex-column top-0 bottom-0 left-0 right-0 bg-secondary-color bg-opacity-40 z-50 h-screen p-8">
+                        <div className="w-full md:w-1/2 lg:w-1/3 p-6 pt-10 text-center text-secondary-color font-roboto-flex bg-white rounded-2xl mx-auto my-auto">
                             <div className="flex flex-col">
                                 <div className="mb-6 mx-auto">
                                     {icon}
@@ -56,7 +55,6 @@ const AppMessageDialog: FC<AppMessageDialogProps> = ({
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>)
             }
         </>
