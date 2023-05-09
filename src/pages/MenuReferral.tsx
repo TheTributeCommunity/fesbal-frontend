@@ -13,8 +13,11 @@ const MenuReferral = () => {
     const goToUpload = () => navigate('/referral/upload')
 
     return (
-        <AppWrapper title={translate('title')} showBackButton showBurger>
-            <div className="w-full flex flex-col gap-4">
+        <AppWrapper title={translate('title')} showBackButton showBurger childrenClassName='overflow-clip'>
+            <div className="fixed w-full md:w-1/2 lg:w-1/3 px-8 left-0 right-0 mx-auto">
+                <AppNextButton title={translate('next')} onClick={goToUpload}/>
+            </div>
+            <div className="w-full flex flex-col gap-4 mt-[5.5rem] pb-10 overflow-y-scroll">
                 {referrals.map((referral, index) => (
                     <MenuReferralCard
                         key={index}
@@ -25,7 +28,6 @@ const MenuReferral = () => {
                         status={referral.status}
                     />
                 ))}
-                <AppNextButton title={translate('next')} onClick={goToUpload}/>
             </div>
             
         </AppWrapper>

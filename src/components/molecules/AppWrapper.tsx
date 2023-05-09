@@ -13,6 +13,7 @@ interface AppWrapperProps {
     bgColor?: string
     topbarClassName?: string
     bgOpaque?: boolean
+    childrenClassName?: string
 }
 
 const AppWrapper = ({
@@ -24,7 +25,8 @@ const AppWrapper = ({
     containerClassName = '',
     bgColor = 'bg-page',
     topbarClassName,
-    bgOpaque = true
+    bgOpaque = true,
+    childrenClassName = '',
 }: AppWrapperProps): JSX.Element => {
     return (
         // We set the height to the screen, and then set the
@@ -49,7 +51,7 @@ const AppWrapper = ({
                         {showBurger && <AppBurgerMenuButton/>}
                     </div>
                 </div>
-                <div className="flex flex-col gap-1 w-full h-full overflow-y-auto pt-16 mx-auto">
+                <div className={`flex flex-col gap-1 w-full h-full pt-16 mx-auto overflow-y-auto${childrenClassName}`}>
                     {children}
                 </div>
             </div>
