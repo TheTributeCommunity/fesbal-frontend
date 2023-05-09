@@ -1,4 +1,5 @@
 import ReferralNoFileUploadedProps from '../../types/ReferralNoFileUploadProps'
+import AppNextButton from '../atom/AppNextButton'
 
 const ReferralNoFileUploaded = ({
     handleFileChange,
@@ -7,15 +8,13 @@ const ReferralNoFileUploaded = ({
     upload,
 }: ReferralNoFileUploadedProps) => {
     return (
-        <div>
-            <div className="flex flex-col place-content-center">
-                <input type="file" accept="image/jpg,image/jpeg,image/png,.pdf" id="file" className="hidden" onChange={handleFileChange} ref={inputRef}/>
-                <button className="text-center font-text font-roboto-flex font-semibold text-sm underline"
-                    onClick={() => handleClick(inputRef)}>
-                    {upload}
-                </button>
-            </div>
-        </div>
+        <>
+            <input type="file" accept="image/jpg,image/jpeg,image/png,.pdf" id="file" className="hidden" onChange={handleFileChange} ref={inputRef}/>
+            <AppNextButton bgColor='bg-secondary-color'
+                onClick={() => handleClick(inputRef)}>
+                {upload}
+            </AppNextButton>
+        </>
     )
 }
 
