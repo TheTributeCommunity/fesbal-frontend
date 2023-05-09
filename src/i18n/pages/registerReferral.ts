@@ -1,7 +1,8 @@
 export const registerReferralEs = {
     headerTitle: 'Hoja de derivación',
     title: 'Adjunta tu hoja de derivación',
-    description: 'Por favor, saca una fotografía de la hoja de derivación oficial emitida por Servicios Sociales y adjúntala en el siguiente apartado.',
+    description1: 'Por favor, saca una fotografía de la hoja de derivación oficial emitida por Servicios Sociales y adjúntala en el siguiente apartado.',
+    description2: 'La organización podrá pedir la hoja oficial en cualquier recogida. Asegúrate de conservarla.',
     upload: 'Adjunta tu hoja de derivación',
     link: 'No tengo hoja de derivación, pero tengo una cita con la Seguridad Social',
     next: 'Enviar',

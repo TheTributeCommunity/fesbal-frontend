@@ -55,8 +55,8 @@ const AppReferralForm = ({
   if (loading) return <Spinner />
 
   return (
-    <div className='flex w-full flex-col justify-between gap-10 mt-8'>
-      <div className='flex flex-col gap-4 px-6 py-7'>
+    <div className='flex w-full flex-col justify-between gap-10'>
+      <div className='flex flex-col gap-4 py-7'>
         <div>
           <label
             htmlFor='entities'
