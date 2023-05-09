@@ -16,15 +16,18 @@ const LoginCard = ({title, description, loginText, loginLink, backgroundColor, t
             <div className="mx-auto w-full md:w-1/2 lg:w-1/3 px-8 pt-16">
                 <header className="font-big-title mb-4">{title}</header>
                 <div>{description}</div>
-                <div className="pt-8 flex flex-col gap-4">
+                <div className="pt-8 flex flex-col gap-2">
                     { isAExternalLink(loginLink)
                         ? <AppLinkExternalButton bgColor={buttonBackGroundColor} title={loginText} link={loginLink}/>
                         : <AppLinkButton bgColor={buttonBackGroundColor} title={loginText} link={loginLink}/>
                     }
-                    {hasRegisterLink &&
-                        <Link to="/register/legal"
-                            className="self-center underline font-small-link">{translate('registerLink')}
-                        </Link>
+                    {hasRegisterLink && (
+                        <>
+                            <p className="text-secondary-color text-xs self-center pt-6">¿No tienes cuenta todavía?</p>
+                            <Link to="/register/legal"
+                                className="self-center text-primary-color text-base font-bold">{'Crea una cuenta nueva'}
+                            </Link>
+                        </>)
                     }
                 </div>
             </div>

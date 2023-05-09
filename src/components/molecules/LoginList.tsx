@@ -9,9 +9,6 @@ const LoginList = () => {
 
     return (
         <div className="flex flex-col justify-between h-[calc(100vh-2rem)] mt-8">
-            <div className="app-logo-center splash">
-                <LogoFesbalWhiteIcon/>
-            </div>
             <LoginCard
                 title={translate('recipient.title')}
                 description={translate('recipient.description')}
