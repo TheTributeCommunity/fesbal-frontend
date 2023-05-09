@@ -25,7 +25,7 @@ const RegisterFamilyMembers = () => {
     const [memberToDelete, setMemberToDelete] = useState('')
     const [showDeleteErrorDialog, setShowDeleteErrorDialog] = useState(false)
     const navigate = useNavigate()
-    const { data, loading } = useRecipient()
+    const { loading } = useRecipient()
 
     const handleWithoutFamilyMembers = () => navigate(AppRoute.REGISTER_REFERRAL_SHEET)
 
@@ -69,12 +69,10 @@ const RegisterFamilyMembers = () => {
                     <AppNextButton title={translate('nextWithMembers') ?? ''} disabled={disableNext}
                         onClick={handleNextWithFamilyMembers}/>
                 </div>
-                <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('incumbent')}</span>
-                {data && <FamilyMemberCard person={data} />}
                 {familyMembers.map((familyMember, index) => 
                     <div key={`familyMember_${index}`} className="flex flex-col gap-4">
                         <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('familyMember')} {index+1}</span>
-                        <FamilyMemberCard person={familyMember} allowEdit={true} deleteRelative={handleConfirmDeleteRelative} editRelative={handleEditRelative} />
+                        <FamilyMemberCard relative={familyMember} allowEdit={true} deleteRelative={handleConfirmDeleteRelative} editRelative={handleEditRelative} />
                     </div>)}
                 
             </div>

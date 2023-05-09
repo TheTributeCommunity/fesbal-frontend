@@ -1,5 +1,5 @@
 interface ButtonProps {
-    title?: string
+    title?: string | null
     disabled?: boolean
     bgColor?: string
     onClick?: () => void
