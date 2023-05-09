@@ -1,9 +1,10 @@
 export const registerReferralEs = {
     headerTitle: 'Hoja de derivación',
     title: 'Adjunta tu hoja de derivación',
-    description: 'Por favor, saca una fotografía de la hoja de derivación oficial emitida por Servicios Sociales y adjúntala en el siguiente apartado.',
-    upload: 'Adjunta tu hoja de derivación',
-    link: 'No tengo hoja de derivación, pero tengo una cita con la Seguridad Social',
+    description1: 'Por favor, saca una fotografía de la hoja de derivación oficial emitida por Servicios Sociales y adjúntala en el siguiente apartado.',
+    description2: 'La organización podrá pedir la hoja oficial en cualquier recogida. Asegúrate de conservarla.',
+    upload: 'Adjuntar hoja de derivación',
+    link: 'No tengo hoja de derivación, pero tengo una cita con Servicios Sociales para su solicitud',
     next: 'Enviar',
     unsuccessfulValidationTitle: 'Se ha producido un error',
     unsuccessfulValidationMessage: 'No se pudo subir el archivo, contacte con su centro de recogida FESBAL',

@@ -1,13 +1,14 @@
 interface PageHeaderProps {
     title?: string | null;
-    description?: string | null;
+    description?: string | string[] | null;
 }
 
 const AppPageHeader = ({title, description}: PageHeaderProps) => {
     return (
         <div>
             {title && <h1 className="mb-4 font-big-title text-secondary-color">{title}</h1>}
-            <p className="font-text text-secondary-color">{description}</p>
+            { Array.isArray(description) ? description.map((paragraph, index) => <><p className="font-text text-secondary-color">{paragraph}</p>{index + 1 < description.length && <br />} </>) :
+            <p className="font-text text-secondary-color">{description}</p>}
         </div>
     )
 }
