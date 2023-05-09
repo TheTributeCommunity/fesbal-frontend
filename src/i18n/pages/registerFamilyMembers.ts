@@ -1,7 +1,7 @@
 export const registerFamilyMembersEs = {
     title: 'Unidad familiar',
-    description: 'Añade a los miembros familiares recogidos en la hoja de derivación entregada por Servicios Sociales.',
-    pageHeading: 'Miembros de la unidad familiar',
+    description: 'Agrega a los miembros familiares recogidos en la hoja de derivación entregada por Servicios Sociales.',
+    pageHeading: 'Añade a tus familiares',
     addMember: 'Añadir familiar',
     nextWithoutMembers: 'Continuar sin añadir familiares',
     nextWithMembers: 'Continuar',
@@ -30,7 +30,7 @@ export const registerFamilyMembersEs = {
 export const registerFamilyMembersEn = {
     title: 'Family unit',
     description: 'Add the family members listed in the referral form provided by Social Services.',
-    pageHeading: 'Members of the family',
+    pageHeading: 'Add your family members',
     addMember: 'Add family member',
     nextWithoutMembers: 'Continue without adding family members',
     nextWithMembers: 'Continue',
