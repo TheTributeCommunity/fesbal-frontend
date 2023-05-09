@@ -35,7 +35,7 @@ const RegisterReferral = () => {
                     buttonText={translate('continue')}
                     buttonOnClick={() => {
                         setShowSuccessDialog(false)
-                        navigate(AppRoute.REGISTER_REQUEST_SENT)
+                        navigate(AppRoute.RECIPIENT_HOME)
                     }}
                 />
             )}

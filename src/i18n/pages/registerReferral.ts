@@ -8,7 +8,7 @@ export const registerReferralEs = {
     unsuccessfulValidationTitle: 'Se ha producido un error',
     unsuccessfulValidationMessage: 'No se pudo subir el archivo, contacte con su centro de recogida FESBAL',
     tryAgainButton: 'Intentarlo de nuevo',
-    successfulValidationMessage: 'El archivo se ha subido correctamente.',
+    successfulValidationMessage: 'El equipo de FESBAL revisará y validará el documento. Puedes consultar si ha sido aprobado en la sección de Hoja de derivación.',
     successfulValidationTitle: 'Archivo subido con éxito',
     continue: 'Continuar'
 }
