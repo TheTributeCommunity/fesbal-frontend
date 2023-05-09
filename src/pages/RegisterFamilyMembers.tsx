@@ -55,17 +55,18 @@ const RegisterFamilyMembers = () => {
             <div className="flex flex-col gap-4 w-full">
                 <AppPageHeader
                     title={translate('pageHeading')} description={translate('description') as string}/>
-                <div className="flex flex-col gap-8">
-                    <Link to={AppRoute.REGISTER_FAMILY_MEMBERS_ADD}
-                        className="flex gap-2 bg-secondary-color p-3.5 rounded-lg justify-center border border-white">
-                        <PlusIcon colorClass="text-white"/>
-                        <p className="font-button text-white">{translate('addMember')}</p>
-                    </Link>
+                <div className="flex flex-col gap-4">
+                    <AppNextButton bgColor="bg-secondary-color" onClick={() => navigate(AppRoute.REGISTER_FAMILY_MEMBERS_ADD)}>
+                        <div className="flex gap-2 justify-center items-center">
+                            <PlusIcon colorClass="text-white"/>
+                            <p className="font-button text-white">{translate('addMember')}</p>
+                        </div>
+                    </AppNextButton>
                     {familyMembers.length === 0 &&
-                        <p className="cursor-pointer text-center underline font-big-link"
+                        <p className="cursor-pointer text-center underline font-big-link py-2"
                             onClick={() => setShowNoRelativesDialog(true)}>{translate('nextWithoutMembers')}</p>
                     }
-                    <AppNextButton title={translate('nextWithMembers')} disabled={disableNext}
+                    <AppNextButton title={translate('nextWithMembers') ?? ''} disabled={disableNext}
                         onClick={handleNextWithFamilyMembers}/>
                 </div>
                 <span className="text-primary-color font-roboto-flex font-bold text-base leading-5">{translate('incumbent')}</span>
