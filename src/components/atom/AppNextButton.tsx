@@ -3,7 +3,7 @@ import ButtonProps from '../../types/ButtonProps'
 import classNames from 'classnames'
 
 
-const AppNextButton: FC<ButtonProps> = ({title, disabled = false, bgColor = 'bg-primary-color', onClick, id}) => {
+const AppNextButton: FC<ButtonProps> = ({title, disabled = false, bgColor = 'bg-primary-color', onClick, id, children}) => {
     const btnClasses = classNames(
         'flex items-center justify-center rounded-2xl py-5 text-center font-button w-full',
         {
@@ -17,7 +17,7 @@ const AppNextButton: FC<ButtonProps> = ({title, disabled = false, bgColor = 'bg-
     return (
         <button
             className={btnClasses} disabled={disabled} type={buttonType} onClick={onClick} id={id}>
-            {title}
+            {children ? children : title}
         </button>
     )
 }
