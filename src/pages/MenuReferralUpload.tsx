@@ -22,10 +22,9 @@ const MenuReferralUpload = () => {
     }
 
     return (
-        <AppWrapper title={translate('title')} showBackButton>
-            <div className="flex flex-col gap-4">
-                <AppPageHeader 
-                    description={translate('description') as string}/>
+        <AppWrapper bgOpaque={false} showBackButton>
+            <div className="flex flex-col">
+                <AppPageHeader title={translate('title')} description={[translate('description1'), translate('description2')]}/>
                 <AppReferralForm showSubLink={false} onSubmit={onSubmit}/>
             </div>
             {showSuccessDialog && (

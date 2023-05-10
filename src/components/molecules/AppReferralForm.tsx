@@ -8,7 +8,6 @@ import AppNextButton from '../atom/AppNextButton'
 import Spinner from '../atom/Spinner'
 import ReferralFileUploaded from './ReferralFileUploaded'
 import ReferralNoFileUploaded from './ReferralNoFileUploaded'
-import AppFormInput from '../atom/AppFormInput'
 import AppCalendar from '../atom/AppCalendar'
 import { backendDateToDate } from '../../helpers/dateHelper'
 import classNames from 'classnames'
@@ -115,7 +114,7 @@ const AppReferralForm = ({
             </p>
           )}
         </div>
-        <div>
+        <div className="pt-4">
           {!file && (
             <ReferralNoFileUploaded
               upload={translate('upload')}
