@@ -26,7 +26,7 @@ const ValidatePhone = () => {
     }
 
     return (
-        <AppWrapper showBackButton title={translate('headerTitle')}>
+        <AppWrapper showBackButton title={'Teléfono móvil'}>
             <AppPageHeader
                 title={translate('title')}
                 description={translate('description') as string}

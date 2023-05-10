@@ -1,7 +1,7 @@
 export const validatePhoneEs = {
     headerTitle: 'Teléfono móvil',
-    title: 'Valida tu número de teléfono',
-    description: 'Revisa tu bandeja de SMS, te hemos enviado un código de validación de un único uso.',
+    title: 'Añade el código de validación',
+    description: 'Te hemos enviado un SMS a tu móvil con un código de validación de un único uso.',
     validateMessage: 'Código de validación',
     resendCode: 'Reenviar código',
 

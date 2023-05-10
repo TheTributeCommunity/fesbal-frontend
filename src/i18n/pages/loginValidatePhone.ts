@@ -1,7 +1,7 @@
 export const loginValidatePhoneEs = {
     title: 'Código de acceso',
     description: 'Introduce el código de acceso que te hemos enviado vía SMS para poder acceder a la aplicación.',
-    validateMessage: 'Código de validación',
+    validateMessage: 'Código de acceso',
     resendCode: 'Reenviar código',
 
     successfulValidationTitle: 'Validación correcta',
