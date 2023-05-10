@@ -8,18 +8,16 @@ import { useNavigate } from 'react-router-dom'
 import UnsuccessIcon from '../components/icons/UnsuccessIcon'
 import { useState } from 'react'
 import { AppRoute } from '../enums/app-route'
-import SuccessIcon from '../components/icons/SuccessIcon'
 
 const LoginValidatePhone = () => {
     const { t: translate } = useTranslation(namespaces.pages.loginValidatePhone)
-    const [showSuccessDialog, setShowSuccessDialog] = useState(false)
     const [showFailureDialog, setShowFailureDialog] = useState(false)
 
     const navigate = useNavigate()
 
     const handleSubmit = (success: boolean) => {
         if (success) {
-            setShowSuccessDialog(true)
+            navigate(AppRoute.RECIPIENT_HOME)
         } else {
             setShowFailureDialog(true)
         }
@@ -32,21 +30,6 @@ const LoginValidatePhone = () => {
                 description={translate('description') as string}
             />
             <LoginValidatePhoneForm onSubmit={handleSubmit} />
-            {showSuccessDialog && (
-                <AppMessageDialog
-                    icon={<SuccessIcon />}
-                    description={translate('successfulValidationMessage')}
-                    title={translate('successfulValidationTitle')}
-                    buttonText={translate('continue')}
-                    buttonOnClick={() => {
-                        // TODO login was successful,
-                        // but we need to redirect the user to a different screen
-                        // depending on its role
-                        setShowSuccessDialog(false)
-                        navigate(AppRoute.RECIPIENT_HOME)
-                    }}
-                />
-            )}
             {showFailureDialog && (
                 <AppMessageDialog
                     icon={<UnsuccessIcon />}
