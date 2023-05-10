@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from 'react'
 import { RecipientUserService } from '../services/recipient-user-service'
 import axios from 'axios'
 import { UsersContext } from '../contexts/usersContext'
-import { ReferralSheetUploadUrl } from '../models/referral-sheet-upload-url'
+import { ReferralSheetUpload } from '../models/referral-sheet-upload-url'
 import { RegistrationRequest } from '../models/registration-request'
 import { RegistrationRequestService } from '../services/registration-request-service'
 import { v4 as uuidv4 } from 'uuid'
@@ -27,9 +27,9 @@ const useUploadReferral = () => {
         }
     }
 
-    const onSubmit = async (): Promise<boolean> => {
+    const onSubmit = async (entityId: string, endDate: Date): Promise<boolean> => {
         if (file && isValidFile(file) && userId) {
-            const result = await uploadReferralSheet(userId, file).catch(e => {
+            const result = await uploadReferralSheet(file, entityId, endDate).catch(e => {
                 console.log(e)
                 return false
             }).then( () => submitRegistrationRequest(file)).catch(e => {
@@ -40,12 +40,17 @@ const useUploadReferral = () => {
         } return false
     }
 
-    const uploadReferralSheet = (recipientUserId: string, file: File): Promise<boolean> => {
-        return RecipientUserService.getReferralSheetUploadUrl(file.name)
+    const uploadReferralSheet = (file: File, entityId: string, endDate: Date): Promise<boolean> => {
+        const payload = {
+            filename: file.name,
+            entityId,
+            endDate: endDate.getTime()
+        }
+        return RecipientUserService.getReferralSheetUploadUrl(payload)
             .then((referralSheetUploadUrl) => uploadFileToReferralSheetUploadUrl(referralSheetUploadUrl, file))
     }
 
-    const uploadFileToReferralSheetUploadUrl = async (referralSheetUploadUrl: ReferralSheetUploadUrl, file: File) => {
+    const uploadFileToReferralSheetUploadUrl = async (referralSheetUploadUrl: ReferralSheetUpload, file: File) => {
         const form = new FormData()
         for (const key in referralSheetUploadUrl.fields) {
             form.append(key, referralSheetUploadUrl.fields[key])

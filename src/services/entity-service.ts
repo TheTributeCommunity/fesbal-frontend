@@ -20,6 +20,16 @@ export class EntityService {
         })
         return result.data.EntityReadModel
     }
+
+    public static async getEntities(): Promise<Entity[]> {
+        const result = await BoosterClient.query<{
+            ListEntityReadModels: { items: Entity[] }
+        }>({
+            query: GET_ENTITIES,
+            variables: {}
+        })
+        return result.data.ListEntityReadModels.items
+    }
 }
 
 const GET_ENTITY_BY_ID = gql`
@@ -50,6 +60,24 @@ const GET_ENTITY_MESSAGES = gql`
                 readAt
                 isDeleted
               }
+        }
+    }
+`
+
+const GET_ENTITIES = gql`
+    query ListEntityReadModels {
+        ListEntityReadModels {
+            items {
+                id
+                entityName
+                entityCode
+                region
+                address
+                contactPerson
+                email
+                phone
+                storingCapacity
+            }
         }
     }
 `

@@ -40,8 +40,8 @@ export const GET_RECIPIENT_BY_PHONE = gql`
 `
 
 export const REFERRAL_SHEET_UPLOAD_URL = gql`
-  mutation ReferralSheetUploadUrl($filename: String!) {
-    ReferralSheetUploadUrl(input: { filename: $filename }) {
+  mutation ReferralSheetUploadUrl($referralSheetUploadInput: ReferralSheetUploadUrlInput!) {
+    ReferralSheetUploadUrl(input: $referralSheetUploadInput) {
       url
       fields
     }

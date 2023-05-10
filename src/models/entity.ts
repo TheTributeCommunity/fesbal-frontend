@@ -5,7 +5,6 @@ export interface Entity {
     entityName: string,
     entityCode: string,
     region: string,
-    nextDelivery: string,
     address: string,
     contactPerson: string,
     email: string,
@@ -16,3 +15,5 @@ export interface Entity {
 export interface EntityMessages {
     notifications: Notification[]
 }
+
+export const mapEntityToOptionLabel = (entity: Entity) => `${entity.entityName} (${entity.region})`

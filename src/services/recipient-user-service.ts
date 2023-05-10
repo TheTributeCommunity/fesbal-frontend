@@ -1,8 +1,7 @@
 import { BoosterClient } from './booster-service'
-import { gql } from '@apollo/client'
 import { Recipient, RecipientMessages } from '../models/recipient-user'
 import { AuthService } from './auth-service'
-import { ReferralSheetUploadUrl } from '../models/referral-sheet-upload-url'
+import { ReferralSheetUpload } from '../models/referral-sheet-upload-url'
 import {
   CREATE_RECIPIENT,
   DELETE_RECIPIENT_USER,
@@ -16,6 +15,7 @@ import {
   UPDATE_RECIPIENT_EMAIL,
   UPDATE_RECIPIENT_REFERRAL_SHEET_URL,
 } from '../graphql/recipient-queries'
+import { ReferralSheetUploadInput } from '../models/referral-sheet-upload-input'
 
 export class RecipientUserService {
   public static async getAll(): Promise<Recipient[]> {
@@ -81,13 +81,13 @@ export class RecipientUserService {
   }
 
   public static async getReferralSheetUploadUrl(
-    filename: string
-  ): Promise<ReferralSheetUploadUrl> {
+    referralSheetUploadInput: ReferralSheetUploadInput
+  ): Promise<ReferralSheetUpload> {
     const result = await BoosterClient.mutate<{
-      ReferralSheetUploadUrl: ReferralSheetUploadUrl
+      ReferralSheetUploadUrl: ReferralSheetUpload
     }>({
       mutation: REFERRAL_SHEET_UPLOAD_URL,
-      variables: { filename },
+      variables: { referralSheetUploadInput: referralSheetUploadInput },
     })
     if (!result.data?.ReferralSheetUploadUrl) {
       throw new Error('Error getting the URL to upload the referral sheet')
