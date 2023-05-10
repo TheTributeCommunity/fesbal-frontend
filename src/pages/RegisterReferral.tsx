@@ -22,7 +22,7 @@ const RegisterReferral = () => {
     }
 
     return (
-        <AppWrapper showBackButton bgOpaque={false}>
+        <AppWrapper showBackButton bgOpaque title="Adjunta tu hoja de derivación">
             <div className="flex h-full w-full flex-col self-center text-secondary-color">
                 <AppPageHeader title={translate('title')} description={[translate('description1') as string, translate('description2') as string]}/>
                 <AppReferralForm showSubLink onSubmit={onSubmit}/>
