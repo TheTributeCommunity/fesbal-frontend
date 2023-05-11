@@ -11,7 +11,7 @@ type InputProps = {
 
 const SearchInput = ({ value, placeholder, onChange, onClear }: InputProps) => {
     return (
-        <div className="w-full h-24 bg-white flex place-items-center justify-end  border-solid border-[1px] border-[#DBF4FF] focus-within:border-primary-color">
+        <div className="w-full h-24 bg-white flex place-items-center justify-end  border-solid border-[1px] border-[#DBF4FF]">
             <input
                 type="text"
                 className="w-[80%] h-full bg-transparent font-mega-input text-secondary-color placeholder-primary-color text-center border-none outline-none"
@@ -20,7 +20,7 @@ const SearchInput = ({ value, placeholder, onChange, onClear }: InputProps) => {
                 onChange={onChange}
             />
             <div className="w-[10%] flex flex-col justify-center items-start" onClick={onClear}>
-                { value.length ? <CrossIcon color="text-secondary-color" /> : <SearchIcon />}
+                { value.length ? <CrossIcon color="text-primary-color" /> : <SearchIcon />}
             </div>
         </div>
     )
