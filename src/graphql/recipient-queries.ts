@@ -11,7 +11,7 @@ export const RECIPIENT_DETAILS_FRAGMENT = gql`
     phone
     phoneVerified
     email
-    referralSheetUrl
+    referralSheetsIds
   }
 `
 
