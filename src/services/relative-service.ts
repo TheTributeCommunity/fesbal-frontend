@@ -71,7 +71,6 @@ const GET_ALL_RELATIVES_BY_RECIPIENT_USER = gql`
   query ListRelativeReadModels ($recipientUserId: ID!) {
     ListRelativeReadModels(
       filter: { recipientUserId: {eq: $recipientUserId }, isDeleted: {eq: false} }
-      sortBy: {}
   )  {
       items {
         id
@@ -120,14 +119,11 @@ const DELETE_RELATIVE = gql`
 export const SUBSCRIBE_TO_RELATIVES_BY_UID = gql`
     subscription relativeReadModels($id: ID!) {
         RelativeReadModels(filter: { recipientUserId: { eq: $id } }) {
-        id
-        recipientUserId
-        firstName
-        lastName
-        isDeleted
-        dateOfBirth
-        typeOfIdentityDocument
-        identityDocumentNumber
+            id
+            firstName
+            lastName
+            dateOfBirth
+            isDeleted
         }
     }
 `

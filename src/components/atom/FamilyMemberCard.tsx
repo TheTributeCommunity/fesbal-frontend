@@ -24,8 +24,8 @@ const FamilyMemberCard = ({relative, allowEdit = false, deleteRelative, editRela
                 </div>
                 {allowEdit &&
                 <div className="flex flex-row align-center items-center gap-4">
-                    <div onClick={() => deleteRelative && deleteRelative(relative.id)}><DeleteIcon /></div>
-                    <div onClick={() => editRelative && editRelative(relative)}><EditIcon /></div>
+                    <div className="cursor-pointer" onClick={() => deleteRelative && deleteRelative(relative.id)}><DeleteIcon /></div>
+                    <div className="cursor-pointer" onClick={() => editRelative && editRelative(relative)}><EditIcon /></div>
                     <Link to={''}></Link>
                 </div>}
             </div>

@@ -11,7 +11,7 @@ export const RECIPIENT_DETAILS_FRAGMENT = gql`
     phone
     phoneVerified
     email
-    referralSheetUrl
+    relativesIds    
   }
 `
 
@@ -124,18 +124,11 @@ export const DELETE_RECIPIENT_USER = gql`
 export const SUBSCRIBE_TO_RECIPIENT_USER = gql`
   subscription ($id: ID!) {
     RecipientReadModel(id: $id) {
-      id
-      firstName
-      lastName
-      dateOfBirth
-      typeOfIdentityDocument
-      identityDocumentNumber
-      phone
-      email
-      referralSheetUrl
-      relativesIds
-    }
+        ...RecipientDetails
+      }
   }
+
+  ${RECIPIENT_DETAILS_FRAGMENT}
 `
 
 export const SUBSCRIBE_TO_RECIPIENT_MESSAGES = gql`

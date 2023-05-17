@@ -1,16 +1,9 @@
-import { gql, useMutation, useQuery } from '@apollo/client'
-import { deserializeFood } from '../helpers/foodHelper'
-import { InflatedPickup, Pickup } from '../types/Pickup'
+import { gql } from '@apollo/client'
+import { Pickup } from '../types/Pickup'
 import { BoosterClient } from './booster-service'
-import { EntityService } from './entity-service'
-import { RecipientUserService } from './recipient-user-service'
 
 class PickupService {
   public static async startPickup(recipientId: string): Promise<string> {
-    const [startPickup] = useMutation(START_PICKUP, {
-      variables: { recipientId },
-    })
-
     const result = await BoosterClient.mutate<{ StartPickUp: string }>({
       mutation: START_PICKUP,
       variables: { recipientId },
@@ -33,58 +26,45 @@ class PickupService {
     }
   }
 
-  public static async getRecipientPickupHistory(
-    userId: string
-  ): Promise<Pickup[]> {
-    const { data, error } = useQuery(GET_PICKUPS_BY_USER_ID, {
-      variables: { id: userId },
+  public static async getRecipientPickupHistory(userId: string): Promise<Pickup[]> {
+    const result = await BoosterClient.query<{
+        ListPickUpReadModels: { items: Pickup[] }
+    }>({
+        query: GET_PICKUPS_BY_USER_ID,
+        variables: { id: userId }
     })
-
-    if (error) {
-      throw new Error(`Pickup history could not be retrieved: ${error}`)
+    if (result.error) {
+        throw new Error(`Pickups for recipient ${userId} could not be retrieved`)
     }
-
-    return data.ListPickUpReadModels.items
-  }
+    return result.data.ListPickUpReadModels.items
+}
 
   public static async getEntityPickupHistory(
     entityId: string
   ): Promise<Pickup[]> {
-    const { data, error } = useQuery(GET_PICKUPS_BY_ENTITY_ID, {
-      variables: { id: entityId },
+    const result = await BoosterClient.query<{
+        ListPickUpReadModels: { items: Pickup[] }
+    }>({
+        query: GET_PICKUPS_BY_ENTITY_ID,
+        variables: { id: entityId }
     })
-
-    if (error) {
-      throw new Error(`Pickup history could not be retrieved: ${error}`)
+    if (result.error) {
+        throw new Error(`Pickups for entity ${entityId} could not be retrieved`)
     }
-
-    return data.ListPickUpReadModels.items
+    return result.data.ListPickUpReadModels.items
   }
 
-  public static async getPickupDetails(id: string): Promise<InflatedPickup> {
+  public static async getPickupDetails(id: string): Promise<Pickup> {
     const result = await BoosterClient.query<{
-      PickupReadModel: InflatedPickup
+      PickupReadModel: Pickup
     }>({
       query: GET_PICKUP_BY_ID,
       variables: { id: id },
     })
-    return result.data.PickupReadModel
-  }
-
-  public static async inflatePickup(pickup: Pickup): Promise<InflatedPickup> {
-    const [recipient, entity] = await Promise.all([
-      RecipientUserService.getUserById(pickup.recipientId),
-      EntityService.getById(pickup.entityId),
-    ])
-    return {
-      id: pickup.id,
-      recipient,
-      entity,
-      startedAt: new Date(pickup.startedAt),
-      endedAt: new Date(pickup.endedAt),
-      signed: pickup.signed,
-      signDate: new Date(pickup.signDate),
+    if (!result.data.PickupReadModel) {
+        throw new Error(`Could not retrieve pickup ${id}`)
     }
+    return result.data.PickupReadModel
   }
 }
 
@@ -103,11 +83,17 @@ const SUBMIT_PICKUP = gql`
 const PICK_UP_DETAILS_FRAGMENT = gql`
   fragment PickUpDetails on PickUpReadModel {
     id
-    recipientId
     entityId
+    recipientId
+    recipientFirstName
+    recipientLastName
+    recipientIdentityDocumentNumber
+    recipientNumberOfRelatives
     startedAt
+    submittedAt
     endedAt
     signed
+    declined
     signDate
   }
 `

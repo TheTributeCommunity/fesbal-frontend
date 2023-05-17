@@ -6,50 +6,50 @@ import Spinner from '../components/atom/Spinner'
 import FamilyMembersIcon from '../components/icons/FamilyMembersIcon'
 import AppWrapper from '../components/molecules/AppWrapper'
 import { AppRoute } from '../enums/app-route'
-import useRegisterFamilyMembers from '../hooks/useRegisterFamilyMembers'
+import { formatDate } from '../helpers/dateHelper'
+import useRecipientAndRelatives from '../hooks/useRecipientAndRelatives'
 import { namespaces } from '../i18n/i18n.constants'
 import PersonalDataItemProps from '../types/PersonalDataItemProps'
-import { useRecipient } from '../hooks/useRecipient'
-
 
 const ProfileScreen = () => {
     const {t: translate} = useTranslation(namespaces.pages.profileScreen)
-    const {familyMembers} = useRegisterFamilyMembers()
-    const { data, loading } = useRecipient()
+    const { user, familyMembers } = useRecipientAndRelatives()
+    console.log('PS', user, familyMembers)
+
     const getPersonalData = (): PersonalDataItemProps[] => {
         return [
             {
                 title: translate('fullName'),
-                value: `${data.RecipientReadModel.firstName} ${data.RecipientReadModel.lastName}`,
+                value: `${user?.firstName} ${user?.lastName}`,
                 hasEditButton: true,
                 goTo: AppRoute.PROFILE_EDIT_NAME_AND_SURNAME
             },
             {
                 title: translate('id'),
-                value: data.RecipientReadModel.identityDocumentNumber
+                value: user?.identityDocumentNumber
             },
             {
                 title: translate('birthDate'),
-                value: data.RecipientReadModel.dateOfBirth,
+                value: user?.dateOfBirth ? formatDate(new Date(user.dateOfBirth)) : '',
                 hasEditButton: true,
                 goTo: AppRoute.PROFILE_EDIT_BIRTHDATE,
             },
             {
                 title: translate('email'),
-                value: data.RecipientReadModel.email,
+                value: user?.email,
                 hasEditButton: true,
                 goTo: AppRoute.PROFILE_EDIT_EMAIL,
             },
             {
                 title: translate('phone'),
-                value: data.RecipientReadModel.phone,
+                value: user?.phone,
                 hasEditButton: true,
                 goTo: AppRoute.PROFILE_EDIT_PHONE_NUMBER,
             }
         ]
     }
 
-    if (loading) return (
+    if (!user) return (
         <BlankStage>
             <Spinner />
         </BlankStage>

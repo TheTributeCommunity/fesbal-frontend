@@ -5,7 +5,7 @@ export interface Recipient {
     id: string
     firstName: string
     lastName: string
-    dateOfBirth: string
+    dateOfBirth: number
     typeOfIdentityDocument: string
     identityDocumentNumber: string
     phone: string

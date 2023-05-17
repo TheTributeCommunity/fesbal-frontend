@@ -3,7 +3,7 @@ export interface Relative {
     recipientUserId: string
     firstName: string
     lastName: string
-    dateOfBirth: string
+    dateOfBirth: number
     identityDocumentNumber?: string
     typeOfIdentityDocument?: string
     isDeleted?: boolean
@@ -14,7 +14,7 @@ export interface RelativeMutate {
     recipientUserId: string
     firstName: string
     lastName: string
-    dateOfBirth: string
+    dateOfBirth: number
     identityDocumentNumber?: string
     typeOfIdentityDocument?: string
 }

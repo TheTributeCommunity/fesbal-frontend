@@ -6,9 +6,6 @@ import AppWrapper from '../components/molecules/AppWrapper'
 import { AppRoute } from '../enums/app-route'
 import useAppInput from '../hooks/useAppInput'
 import useSearchRecipient, { SearchResult } from '../hooks/useSearchRecipient'
-import { usePickUpActions } from '../hooks/usePickUpActions'
-import { useMutation } from '@apollo/client'
-import { START_PICKUP } from '../services/PickupService'
 
 const RecipientSearch = (): JSX.Element => {
   const { inputValue, deleteInputValue, handleInputChange } = useAppInput('')
@@ -17,24 +14,14 @@ const RecipientSearch = (): JSX.Element => {
   const [searching, setSearching] = useState(false)
   const navigate = useNavigate()
 
-  const [startPickup] = useMutation(START_PICKUP)
-
   const handleOnClear = () => {
     deleteInputValue()
     clearSearchResults()
   }
 
   const handleClickOnUser = (searchResult: SearchResult) => {
-    startPickup({
-      variables: {
-        recipientId: searchResult.recipient.id,
-      },
-    }).then((pickUpId) => {
-      if (pickUpId) {
-        navigate(AppRoute.ENTITY_USER_SCANNED, {
-          state: { recipient: searchResult.recipient, pickUpId: pickUpId },
-        })
-      }
+    navigate(AppRoute.ENTITY_USER_SCANNED, {
+      state: { recipient: searchResult.recipient},
     })
   }
 
@@ -62,7 +49,7 @@ const RecipientSearch = (): JSX.Element => {
         <div
           key={index}
           onClick={() => handleClickOnUser(result)}
-          className={classNames('w-full py-4 px-8 bg-white', {
+          className={classNames('cursor-pointer w-full py-4 px-8 bg-white', {
             'bg-[#DBF4FF]': index % 2 !== 0,
           })}
         >

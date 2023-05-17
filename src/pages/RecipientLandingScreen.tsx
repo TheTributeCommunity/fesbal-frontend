@@ -8,7 +8,7 @@ import { useRecipient } from '../hooks/useRecipient'
 
 const RecipientLandingScreen = (): JSX.Element => {
   const { t: translate } = useTranslation(namespaces.pages.recipientLanding)
-  const { data, loading } = useRecipient()
+  const { data, error, loading } = useRecipient()
   
   return (
     <AppWrapper

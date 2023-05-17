@@ -7,12 +7,12 @@ import AppNextButton from '../atom/AppNextButton'
 import ReferralFileUploaded from './ReferralFileUploaded'
 import ReferralNoFileUploaded from './ReferralNoFileUploaded'
 import AppCalendar from '../atom/AppCalendar'
-import { backendDateToDate } from '../../helpers/dateHelper'
 import classNames from 'classnames'
 import { Dropdown } from 'primereact/dropdown'
 import { SelectItem } from 'primereact/selectitem'
 import { Option } from '../../types/Option'
 import { useState } from 'react'
+import { parseCalendarDate } from '../../helpers/dateHelper'
 
 interface AppReferralFormProps {
   showSubLink: boolean
@@ -35,7 +35,7 @@ const AppReferralForm = ({
     return file && selectedEntity && isValidDate()
   }
   const setDate = (dateString: string) => {
-    setSelectedDate(backendDateToDate(dateString))
+    setSelectedDate(parseCalendarDate(dateString))
   }
 
   const isValidDate = () => selectedDate && selectedDate > new Date()

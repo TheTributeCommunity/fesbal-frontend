@@ -10,33 +10,31 @@ import { useEffect, useState } from 'react'
 import { Recipient } from '../models/recipient-user'
 import FamilyUnitAges from '../types/FamilyUnitAges'
 import { usePickUpActions } from '../hooks/usePickUpActions'
+import useRecipientAndRelatives from '../hooks/useRecipientAndRelatives'
+import BlankStage from '../components/atom/BlankStage'
+import Spinner from '../components/atom/Spinner'
 
 const EntityUserScanned = () => {
   const { state } = useLocation()
-  const [user, setUser] = useState<Recipient>()
   const [pickUpId, setPickUpId] = useState<string>('')
+  const { user, familyMembers, loading } = useRecipientAndRelatives(state.recipient.id)
   const [familyUnitAges, setFamilyUnitAges] = useState<FamilyUnitAges>()
   const { t: translate } = useTranslation(namespaces.pages.entityUserScanned)
-
   const { submitPickUp } = usePickUpActions();
 
   useEffect(() => {
-    if (state.recipient) {
-      const recipient = state.recipient as Recipient
-      const familyAges = getFamilyUnitAges(recipient)
-      setFamilyUnitAges(familyAges)
-      setUser(recipient)
-    }
-
-    if (state.pickUpId) {
-      setPickUpId(state.pickUpId)
-    }
-
-  }, [])
+    !loading && user && setFamilyUnitAges(getFamilyUnitAges(user, familyMembers))
+  }, [loading])
 
   const handleSubmitDelivery = () => {
     submitPickUp(pickUpId)
   }
+
+  if (loading) return (
+    <BlankStage>
+      <Spinner />
+    </BlankStage>
+  )
 
   return (
     <AppWrapper
@@ -47,10 +45,10 @@ const EntityUserScanned = () => {
     >
       <div className='h-full'>
         <div className='flex flex-col bg-white px-8 py-4 gap-2'>
-          <h1 className='font-big-title text-secondary-color'>
+          <h1 className='font-bold text-2xl text-secondary-color'>
             {user?.firstName ?? ''} {user?.lastName ?? ''}
           </h1>
-          <h2 className='font-medium-title text-primary-color'>
+          <h2 className='font-medium text-2xl text-primary-color'>
             {user?.identityDocumentNumber ?? ''}
           </h2>
         </div>

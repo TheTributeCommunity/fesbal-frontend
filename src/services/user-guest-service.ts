@@ -9,7 +9,7 @@ export class UserGuestService {
             id: uuidv4(),
             firstName: firstName,
             lastName: lastName,
-            dateOfBirth: dateOfBirth.toLocaleDateString('es-ES'),
+            dateOfBirth: dateOfBirth.getTime(),
             typeOfIdentityDocument: typeOfIdentityDocument,
             identityDocumentNumber: identityDocumentNumber
         }

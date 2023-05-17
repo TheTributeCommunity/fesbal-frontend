@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom'
+import {Route, Routes, useNavigate} from 'react-router-dom'
 import {AppRoute} from './enums/app-route'
 import AddFamilyMember from './pages/AddFamilyMember'
 import EntityHome from './pages/EntityHome'
@@ -11,7 +11,6 @@ import MenuReferral from './pages/MenuReferral'
 import MenuReferralUpload from './pages/MenuReferralUpload'
 import NotificationDetails from './pages/NotificationDetails'
 import NotificationsScreen from './pages/NotificationsScreen'
-import {PickupDetails} from './pages/PickupDetails'
 import PickupHistoryPage from './pages/PickupHistoryPage'
 import PickupPoint from './pages/PickupPoint'
 import ProfileEditEmail from './pages/ProfileEditEmail'
@@ -56,10 +55,10 @@ import { RecipientUserService } from './services/recipient-user-service'
 import { RecipientMessages } from './models/recipient-user'
 import Notification from './types/Notification'
 import PickupService from './services/PickupService'
-import { InflatedPickup } from './types/Pickup'
 import { EntityService } from './services/entity-service'
 import { SUBSCRIBE_TO_RECIPIENT_MESSAGES } from './graphql/recipient-queries'
 import { useUserStore } from './store/logged-user'
+import { Pickup } from './types/Pickup'
 
 addLocale('en', {
     firstDayOfWeek: 1, // set first day of the week to Monday
@@ -68,7 +67,7 @@ addLocale('en', {
 const App = () => {
     const [loggedUserType, setLoggedUserType] = useState<string>()
     const [firebaseUser, setFirebaseUser] = useState<User>()
-    const [pickupToSign, setPickupToSign] = useState<InflatedPickup>()
+    const [pickupToSign, setPickupToSign] = useState<Pickup>()
     const [notifications, setNotifications] = useState<Notification[]>([])
     const [loadedAuthData, setLoadedAuthData] = useState(localStorage.getItem('token') ? false : true)
     const navigate = useNavigate()
@@ -76,6 +75,7 @@ const App = () => {
 
     useEffect(() => {
         onIdTokenChanged(getAuth(), user => {
+            console.log('onIdTokenChanged!')
             if (user) {
                 !loadedAuthData && setLoadedAuthData(true)
                 user.getIdToken().then(async token => {
@@ -178,7 +178,6 @@ const App = () => {
                     <Route path={AppRoute.PICKUP_POINT} element={<PickupPoint/>}/>
                     <Route path={AppRoute.REFERRAL_UPLOAD} element={<MenuReferralUpload/>}/>
                     <Route path={AppRoute.PICKUP_HISTORY} element={<PickupHistoryPage/>}/>
-                    <Route path={AppRoute.PICKUP_DETAILS} element={<PickupDetails/>}/>
                     <Route path={AppRoute.USER_SIGNATURE} element={<UserSignature/>}/>
                 </Route>
 

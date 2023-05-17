@@ -1,25 +1,15 @@
-import { Recipient } from '../models/recipient-user'
-import { Entity } from '../models/entity'
-import { FoodPicking } from './FoodPicking'
-
-export interface InflatedPickup {
-    id: string
-    recipient: Recipient
-    entity: Entity
-    startedAt: Date
-    endedAt: Date
-    signed: boolean
-    signDate: Date
-}
-
 export interface Pickup {
     id: string
-    recipientId: string
     entityId: string
-    startedAt: string
-    recipient: Recipient
-    entity: Entity
-    endedAt: string
+    recipientId: string
+    recipientFirstName: string
+    recipientLastName: string
+    recipientIdentityDocumentNumber: string
+    recipientNumberOfRelatives: number
+    startedAt: number
+    submittedAt: number
+    endedAt: number
     signed: boolean
-    signDate: string
+    declined: boolean
+    signDate: number
 }
