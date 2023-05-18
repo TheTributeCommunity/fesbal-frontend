@@ -1,32 +1,28 @@
 import AppWrapper from '../components/molecules/AppWrapper'
-import getDefaultFoodItems from '../helpers/getDefaultFoodItems'
 import getFamilyUnitAges from '../helpers/getFamilyUnitAges'
 import {useTranslation} from 'react-i18next'
 import {namespaces} from '../i18n/i18n.constants'
 import EntityUserSignatureHeader from '../components/atom/EntityUserSignatureHeader'
-import UserSignatureFoodList from '../components/atom/EntityUserSignatureFoodList'
 import UserSignatureFooter from '../components/molecules/UserSignatureFooter'
-import useRegisterFamilyMembers from '../hooks/useRegisterFamilyMembers'
+import useRecipientAndRelatives from '../hooks/useRecipientAndRelatives'
 import Spinner from '../components/atom/Spinner'
-import { FoodPicking } from '../types/FoodPicking'
 import { useEffect, useState } from 'react'
 import AppMessageDialog from '../components/molecules/AppMessageDialog'
 import SuccessIcon from '../components/icons/SuccessIcon'
 import { useNavigate } from 'react-router-dom'
 import UnsuccessIcon from '../components/icons/UnsuccessIcon'
 import { AppRoute } from '../enums/app-route'
-import { useRecipient } from '../hooks/useRecipient'
 
 const UserSignature = () => {
     const {t: translate} = useTranslation(namespaces.pages.entityUserSignature)
-    const { data, loading } = useRecipient()
+    const { user, familyMembers, loading } = useRecipientAndRelatives()
     const [showConfirmed, setShowConfirmed] = useState(false)
     const [showRejected, setShowRejected] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (!loading) {
-            const ages = getFamilyUnitAges(data)
+        if (!loading && user) {
+            const ages = getFamilyUnitAges(user, familyMembers)
         }
     }, [loading])
 
@@ -46,9 +42,9 @@ const UserSignature = () => {
                 <>
                     <div className="h-full px-8">
                         <EntityUserSignatureHeader
-                            firstName={data.RecipientReadModel.firstName ?? ''}
-                            lastName={data.RecipientReadModel.lastName ?? ''}
-                            identityDocumentNumber={data.RecipientReadModel.identityDocumentNumber ?? ''}
+                            firstName={user?.firstName ?? ''}
+                            lastName={user?.lastName ?? ''}
+                            identityDocumentNumber={user?.identityDocumentNumber ?? ''}
                         />
                     </div>
                     <UserSignatureFooter onConfirm={onConfirm} onReject={onReject} translate={translate}/>

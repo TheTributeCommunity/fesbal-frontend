@@ -8,6 +8,7 @@ import LogoFesbalWhiteIcon from '../components/icons/LogoFesbalWhiteIcon'
 import RequestSentIcon from '../components/icons/RequestSentIcon'
 import { UsersContext } from '../contexts/usersContext'
 import { AppRoute } from '../enums/app-route'
+import { formatDate } from '../helpers/dateHelper'
 import { namespaces } from '../i18n/i18n.constants'
 import { Recipient } from '../models/recipient-user'
 import { RecipientUserService } from '../services/recipient-user-service'
@@ -40,7 +41,7 @@ const RegisterRequestSent = () => {
                 },
                 {
                     title: translate('birthDate'),
-                    value: user.dateOfBirth,
+                    value: formatDate(new Date(user.dateOfBirth)),
                     span: 1
                 },
                 {

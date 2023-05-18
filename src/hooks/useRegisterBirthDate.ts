@@ -1,6 +1,5 @@
-import moment from 'moment'
 import { useState } from 'react'
-import { backendDateToDate } from '../helpers/dateHelper'
+import { parseCalendarDate } from '../helpers/dateHelper'
 
 const useRegisterBirthDate = () => {
     const [selectedDate, setSelectedDate] = useState<Date>(new Date())
@@ -25,7 +24,7 @@ const useRegisterBirthDate = () => {
         } else return ''
     }
 
-    const setDate = (dateString: string) => { setSelectedDate(backendDateToDate(dateString)) }
+    const setDate = (dateString: string) => { setSelectedDate(parseCalendarDate(dateString)) }
 
     return {
         selectedDate,

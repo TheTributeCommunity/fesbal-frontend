@@ -3,7 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {namespaces} from '../i18n/i18n.constants'
 import AppNextButton from '../components/atom/AppNextButton'
 import PlusIcon from '../components/icons/PlusIcon'
-import useRegisterFamilyMembers from '../hooks/useRegisterFamilyMembers'
+import useRecipientAndRelatives from '../hooks/useRecipientAndRelatives'
 import AppPageHeader from '../components/molecules/AppPageHeader'
 import AppWrapper from '../components/molecules/AppWrapper'
 import FamilyMemberCard from '../components/atom/FamilyMemberCard'
@@ -19,7 +19,7 @@ import { useRecipient } from '../hooks/useRecipient'
 
 const RegisterFamilyMembers = () => {
     const {t: translate} = useTranslation(namespaces.pages.registerFamilyMembers)
-    const {familyMembers, handleNextWithFamilyMembers, disableNext} = useRegisterFamilyMembers()
+    const {familyMembers} = useRecipientAndRelatives()
     const [showNoRelativesDialog, setShowNoRelativesDialog] = useState(false)
     const [showConfirmDeleteDialog, setShowConfirmDeleteDialog] = useState(false)
     const [memberToDelete, setMemberToDelete] = useState('')
@@ -42,6 +42,14 @@ const RegisterFamilyMembers = () => {
 
     const handleEditRelative = (relative: Relative) => {
         navigate(AppRoute.REGISTER_FAMILY_MEMBERS_ADD, { state: { relative: relative }})
+    }
+
+    const disableNext = familyMembers.length === 0
+
+    const handleNextWithFamilyMembers = () => {
+        if (!disableNext) {
+            navigate(AppRoute.REGISTER_REFERRAL_SHEET)
+        }
     }
 
     if (loading) return (

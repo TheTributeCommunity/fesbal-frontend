@@ -13,7 +13,7 @@ export class AuthService {
     public static updatePhoneNumber: string
 
     public static initialize(): void {
-        initializeApp({
+        const firebaseApp = initializeApp({
             apiKey: getEnvVar('FIREBASE_API_KEY'),
             authDomain: getEnvVar('FIREBASE_AUTH_DOMAIN'),
             databaseURL: getEnvVar('FIREBASE_DATABASE_URL'),
@@ -22,12 +22,8 @@ export class AuthService {
             messagingSenderId: getEnvVar('FIREBASE_MESSAGING_SENDER_ID'),
             appId: getEnvVar('FIREBASE_APP_ID'),
         })
-        this.setUpAuth()
-    }
-
-    private static setUpAuth() {
-        this.auth = getAuth()
-        this.auth.useDeviceLanguage()
+       this.auth = getAuth(firebaseApp)
+       this.auth.useDeviceLanguage()
     }
 
     public static signInWithPhoneNumber(submitButtonId: string, phoneWithoutPrefix: string) {

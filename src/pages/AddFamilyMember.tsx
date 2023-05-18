@@ -20,6 +20,7 @@ import { IDtypes } from '../enums/IDtypes.ts'
 import AppMessageDialog from '../components/molecules/AppMessageDialog'
 import UnsuccessIcon from '../components/icons/UnsuccessIcon'
 import { useUserStore } from '../store/logged-user'
+import { formatDate } from '../helpers/dateHelper'
 
 const AddFamilyMember = (): JSX.Element => {
     const {userName, userSurname, validateNameSurname, onNameChange, onSurnameChange, setUserName, setUserSurname} = useRegisterNameForm()
@@ -40,7 +41,7 @@ const AddFamilyMember = (): JSX.Element => {
             setEditID(memberData.id)
             setUserName(memberData.firstName)
             setUserSurname(memberData.lastName)
-            setDate(memberData.dateOfBirth)
+            setDate(formatDate(new Date(memberData.dateOfBirth)))
             memberData.typeOfIdentityDocument && setSelectedOption(memberData.typeOfIdentityDocument)
             memberData.identityDocumentNumber && setUserID(memberData.identityDocumentNumber)
         }
@@ -60,7 +61,7 @@ const AddFamilyMember = (): JSX.Element => {
                 relativeId: mode === 'create' ? uuidv4() : editID,
                 firstName: userName,
                 lastName: userSurname,
-                dateOfBirth: selectedDate.toLocaleDateString('es-ES'),
+                dateOfBirth: selectedDate.getTime(),
             }
             if (mode === 'create') relative.recipientUserId = userId
             if (selectedOption && userID) {

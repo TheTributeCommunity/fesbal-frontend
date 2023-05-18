@@ -1,49 +1,71 @@
-import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
-import { createClient } from 'graphql-ws'
-import { getEnvVar } from '../helpers/envVars'
-import { ApolloClient, HttpLink, InMemoryCache, split } from '@apollo/client'
+import { ApolloClient, createHttpLink, DefaultOptions, InMemoryCache, split } from '@apollo/client'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { setContext } from '@apollo/client/link/context'
+import { WebSocketLink } from '@apollo/client/link/ws'
+import { SubscriptionClient } from 'subscriptions-transport-ws'
+import { getEnvVar } from '../helpers/envVars'
+
+const apolloOptions: DefaultOptions = {
+    watchQuery: {
+        fetchPolicy: 'network-only',
+        errorPolicy: 'ignore',
+    },
+    query: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+    },
+}
 
 const getUserToken = (): string => localStorage.getItem('token') || ''
 
-const httpLink = new HttpLink({
-  uri: getEnvVar('BACKEND_URL') || 'http://localhost:3000/graphql',
-})
+const buildLinks = () => {
+    const httpLink = createHttpLink({
+        uri: getEnvVar('BACKEND_URL') || 'http://localhost:3000/graphql'
+    })
 
-const authLink = setContext((_, { headers }) => {
-  const token = getUserToken()
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  }
-})
-
-const wsLink = new GraphQLWsLink(
-  createClient({
-    url: getEnvVar('BACKEND_WS') || 'ws://localhost:3000/graphql',
-    connectionParams: {
-      Authorization: getUserToken(),
-    },
-  })
-)
-
-const splitLink = split(
-  ({ query }) => {
-    const definition = getMainDefinition(query)
-    return (
-      definition.kind === 'OperationDefinition' &&
-      definition.operation === 'subscription'
+    const subscriptionsClient = new SubscriptionClient(
+        getEnvVar('BACKEND_WS') || 'wss://localhost:3000',
+        {
+            connectionParams: () => {
+                return {
+                    Authorization: `Bearer ${getUserToken()}`,
+                }
+            },
+        }
     )
-  },
-  wsLink,
-  authLink.concat(httpLink)
-)
+
+    const wsLink = new WebSocketLink(
+        subscriptionsClient
+    )
+
+    const authLink = setContext((_, { headers }) => {
+        return {
+            headers: {
+                ...headers,
+                Authorization: getUserToken() ? `Bearer ${getUserToken()}` : '',
+            },
+        }
+    })
+
+    return split(
+        ({ query }) => {
+            const definition = getMainDefinition(query)
+            return (
+                definition.kind === 'OperationDefinition' &&
+                definition.operation === 'subscription'
+            )
+        },
+        wsLink,
+        authLink.concat(httpLink)
+    )
+}
 
 export const BoosterClient = new ApolloClient({
-  connectToDevTools: true,
-  link: splitLink,
-  cache: new InMemoryCache(),
+    link: buildLinks(),
+    cache: new InMemoryCache(),
+    defaultOptions: apolloOptions,
+})
+
+BoosterClient.onResetStore(async () => {
+    BoosterClient.setLink(buildLinks())
 })

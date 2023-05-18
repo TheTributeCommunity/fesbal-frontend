@@ -22,7 +22,7 @@ const ProfileEditBirthDate = () => {
 
     const onSubmit = () => {
         if (validForm()) {
-            RecipientUserService.update({ dateOfBirth: selectedDate.toLocaleDateString('es-ES')}).then(success => {
+            RecipientUserService.update({ dateOfBirth: selectedDate.getTime()}).then(success => {
                 if (success) navigate(AppRoute.PROFILE)
                 else setShowErrorDialog(true)
             })
