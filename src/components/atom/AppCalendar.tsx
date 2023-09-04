@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next'
 import { namespaces } from '../../i18n/i18n.constants'
 import { Dropdown, DropdownChangeParams } from 'primereact/dropdown'
 import 'primereact/resources/primereact.css'
-import 'primeicons/primeicons.css'
 
 interface AppCalendarProps {
   id?: string
