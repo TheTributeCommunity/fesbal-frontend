@@ -16,7 +16,7 @@ export class UserGuestService {
       id: uuidv4(),
       firstName: firstName,
       lastName: lastName,
-      dateOfBirth: moment(dateOfBirth).format('DD-MM-YYYY'),
+            dateOfBirth: formatDate(dateOfBirth),
       typeOfIdentityDocument: typeOfIdentityDocument,
       identityDocumentNumber: identityDocumentNumber,
     }
