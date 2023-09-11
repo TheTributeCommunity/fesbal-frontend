@@ -1,46 +1,53 @@
-import {UserGuest} from '../models/user-guest'
+import { formatDate } from '../helpers/dateHelper'
+import { UserGuest } from '../models/user-guest'
 import { v4 as uuidv4 } from 'uuid'
 
 export class UserGuestService {
-    private static USER_GUEST_KEY = 'userGuest'
+  private static USER_GUEST_KEY = 'userGuest'
 
-    public static create(firstName: string, lastName: string, dateOfBirth: Date, typeOfIdentityDocument: string, identityDocumentNumber: string) {
-        return {
-            id: uuidv4(),
-            firstName: firstName,
-            lastName: lastName,
-            dateOfBirth: dateOfBirth.getTime(),
-            typeOfIdentityDocument: typeOfIdentityDocument,
-            identityDocumentNumber: identityDocumentNumber
-        }
+  public static create(
+    firstName: string,
+    lastName: string,
+    dateOfBirth: Date,
+    typeOfIdentityDocument: string,
+    identityDocumentNumber: string
+  ) {
+    return {
+      id: uuidv4(),
+      firstName: firstName,
+      lastName: lastName,
+            dateOfBirth: formatDate(dateOfBirth),
+      typeOfIdentityDocument: typeOfIdentityDocument,
+      identityDocumentNumber: identityDocumentNumber,
     }
+  }
 
-    public static save(userGuest: UserGuest) {
-        localStorage.setItem(this.USER_GUEST_KEY, this.toString(userGuest))
+  public static save(userGuest: UserGuest) {
+    localStorage.setItem(this.USER_GUEST_KEY, this.toString(userGuest))
+  }
+
+  public static get(): UserGuest {
+    const userGuestSaved = localStorage.getItem(this.USER_GUEST_KEY)
+
+    if (!userGuestSaved) {
+      throw new Error('UserGuest not found')
     }
+    return this.toObject(userGuestSaved)
+  }
 
-    public static get(): UserGuest {
-        const userGuestSaved = localStorage.getItem(this.USER_GUEST_KEY)
+  public static setPhone(phone: string) {
+    let userGuest = this.get()
 
-        if(!userGuestSaved) {
-            throw new Error('UserGuest not found')
-        }
-        return this.toObject(userGuestSaved)
-    }
+    userGuest = { ...userGuest, phone: phone }
 
-    public static setPhone(phone: string) {
-        let userGuest = this.get()
+    this.save(userGuest)
+  }
 
-        userGuest = {...userGuest, phone: phone}
+  private static toString(userNotRegistered: object): string {
+    return JSON.stringify(userNotRegistered)
+  }
 
-        this.save(userGuest)
-    }
-
-    private static toString(userNotRegistered: object): string {
-        return JSON.stringify(userNotRegistered)
-    }
-
-    private static toObject(userGuest: string): UserGuest {
-        return JSON.parse(userGuest)
-    }
+  private static toObject(userGuest: string): UserGuest {
+    return JSON.parse(userGuest)
+  }
 }
