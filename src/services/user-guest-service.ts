@@ -1,4 +1,4 @@
-import moment from 'moment'
+import { formatDate } from '../helpers/dateHelper'
 import { UserGuest } from '../models/user-guest'
 import { v4 as uuidv4 } from 'uuid'
 
